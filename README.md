@@ -44,6 +44,16 @@ python scripts/filter_consumer_cases.py `
 
 For a quick smoke test against a small sample, add `--max-records 10`. The script writes JSONL to `data/curated/` by default and records an Act version only when the judgment text expressly mentions 1986 or 2019.
 
+Create a review sheet from those local candidates with:
+
+```powershell
+python scripts/export_review_sample.py `
+  --source data/curated/consumer_dev_candidates.jsonl `
+  --sample-size 50
+```
+
+Open `data/curated/consumer_case_review_sample.csv` in Excel. Mark each row `approved`, `rejected`, or `needs_review`, and add a short reason. Do not publish case search until the approved rows have been reviewed for relevance, source provenance, and Act version.
+
 ## Data policy
 
 - Do not commit raw judgment datasets or downloaded PDFs.
