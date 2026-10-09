@@ -27,6 +27,23 @@ Run the deterministic search checks with:
 node scripts/test-search.mjs
 ```
 
+Run the data-pipeline unit test with:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+## Prepare judgment candidates locally
+
+The NyayaAnumana source files remain outside this repository. Create a local, ignored review file with:
+
+```powershell
+python scripts/filter_consumer_cases.py `
+  --source "B:\Dataset\CJPE_ext_SCI_HCs_tribunals_dailyorder_dev_wo_RoD_ternary (1).csv"
+```
+
+For a quick smoke test against a small sample, add `--max-records 10`. The script writes JSONL to `data/curated/` by default and records an Act version only when the judgment text expressly mentions 1986 or 2019.
+
 ## Data policy
 
 - Do not commit raw judgment datasets or downloaded PDFs.
