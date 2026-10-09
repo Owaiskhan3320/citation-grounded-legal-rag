@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A source-backed research prototype for selected provisions of Indian consumer law."
+    />
+    <title>Consumer Law Research</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="masthead">
+        <p class="eyebrow">Research prototype</p>
+        <div class="title-row">
+          <div>
+            <h1>Consumer Law Research</h1>
+            <p class="subtitle">
+              Source-backed lookup for selected provisions of the Consumer Protection Act, 2019.
+            </p>
+          </div>
+          <span class="scope-tag">India</span>
+        </div>
+      </header>
+
+      <section class="search-panel" aria-labelledby="search-title">
+        <div class="search-copy">
+          <p class="eyebrow">Ask a focused question</p>
+          <h2 id="search-title">Find the relevant provision</h2>
+          <p>
+            This version uses deterministic matching and only returns material that is present in its
+            curated statute data.
+          </p>
+        </div>
+
+        <form id="search-form" class="search-form">
+          <label for="query">Question or section number</label>
+          <div class="input-row">
+            <input
+              id="query"
+              name="query"
+              type="search"
+              placeholder="For example: What are consumer rights under section 2(9)?"
+              autocomplete="off"
+              required
+            />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+
+        <div class="examples" aria-label="Example searches">
+          <button type="button" data-query="What are consumer rights under section 2(9)?">
+            Consumer rights
+          </button>
+          <button type="button" data-query="What can the Central Authority do about misleading advertisements?">
+            Misleading advertisements
+          </button>
+          <button type="button" data-query="How can a consumer file a complaint under section 35?">
+            Filing a complaint
+          </button>
+        </div>
+      </section>
+
+      <section class="results-section" aria-live="polite" aria-labelledby="results-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Research result</p>
+            <h2 id="results-title">Start with a statute query</h2>
+          </div>
+          <span id="result-status" class="status">Curated statute data</span>
+        </div>
+        <div id="results" class="results-empty">
+          Enter a question about consumer rights, complaints, unfair trade practices, or misleading
+          advertisements.
+        </div>
+      </section>
+
+      <section class="case-section" aria-labelledby="cases-title">
+        <div>
+          <p class="eyebrow">Next corpus milestone</p>
+          <h2 id="cases-title">Related decisions</h2>
+        </div>
+        <p>
+          Judgment search is intentionally disabled until Consumer Disputes records from the
+          NyayaAnumana dataset are filtered, version-tagged, and manually reviewed. The prototype
+          will not display unverified case summaries.
+        </p>
+      </section>
+
+      <aside class="notice" aria-label="Research limitation">
+        <strong>Important:</strong> This is an educational research tool, not legal advice. Read the
+        linked primary source and consult a qualified professional for legal decisions.
+      </aside>
+
+      <footer>
+        <span>Scope: Consumer Protection Act, 2019</span>
+        <span>Last updated: October 2026</span>
+      </footer>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+# Generated local data and editor files should not enter the repository.
+data/raw/
+data/curated/
+__pycache__/
+*.py[cod]
+.DS_Store
+.vscode/
+
