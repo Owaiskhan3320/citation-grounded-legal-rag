@@ -59,6 +59,10 @@ For a quick smoke test against a small sample, add `--max-records 10`. The scrip
 4. Evaluate statute lookup and case retrieval against a hand-labelled benchmark.
 5. Deploy the static site through Cloudflare Pages.
 
+## Deployment
+
+The planned deployment is a static Cloudflare Pages site, so it does not rely on a paid API or an application server staying awake. See [the deployment guide](docs/deployment.md) for the exact setup and pre-deployment checks.
+
 ## Limitation
 
 This educational research prototype is not legal advice. Users should verify the linked primary source and seek qualified legal advice for decisions.
