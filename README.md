@@ -1,50 +1,63 @@
-# Consumer Law Research
+# Citation-Grounded Legal RAG
 
-A source-backed research prototype for selected provisions of the Indian Consumer Protection Act, 2019.
+A small, deployable legal RAG system for selected provisions of the Indian Consumer Protection Act, 2019. It retrieves source records before generation, requires model citations, and falls back to verified retrieval when generation cannot be trusted.
 
-## Current scope
+## What it does
 
-- Exact and keyword-based statute lookup for selected consumer-law provisions.
-- Direct links to the official Act source.
-- Explicit non-answer behaviour when the curated statute records do not support a query.
-- No generative AI or legal outcome prediction.
+```text
+Question
+  -> retrieve relevant statute records
+  -> send only those records to Groq
+  -> validate [S1], [S2], ... citations
+  -> show answer and official sources
+  -> fall back to source-backed retrieval on failure
+```
 
-Judgment search is intentionally not enabled yet. The next milestone is to curate Consumer Disputes records from the NyayaAnumana dataset, validate their legal version and metadata, then add evidence-linked case search.
+Current statute coverage:
+
+- Section 2(9): consumer rights
+- Section 21: false or misleading advertisements
+- Section 2(47): unfair trade practices
+- Section 35: consumer complaints
+
+The current corpus does not support a question? The API returns a clear non-answer instead of generating from outside knowledge.
 
 ## Run locally
 
-This is a dependency-free static site. From the project directory, run:
+The interface works locally without an API key; it will display the verified retrieval fallback.
 
 ```powershell
+cd B:\Rag\consumer-law-research
 python -m http.server 8080
 ```
 
-Then open `http://localhost:8080` in a browser.
+Open `http://localhost:8080`.
 
-Run the deterministic search checks with:
+Run all local checks with:
 
 ```powershell
 node scripts/test-search.mjs
-```
-
-Run the data-pipeline unit test with:
-
-```powershell
+node scripts/test-rag.mjs
+node scripts/test-api.mjs
 python -m unittest discover -s tests -v
 ```
 
+## Groq and Vercel
+
+Copy `.env.example` only for local reference; never commit a real key. In production, set `GROQ_API_KEY` and optionally `GROQ_MODEL` in Vercel Environment Variables. The API route is `POST /api/ask`.
+
+See [the Vercel deployment guide](docs/deployment.md) for the full setup, fallback behaviour, and security checklist.
+
 ## Prepare judgment candidates locally
 
-The NyayaAnumana source files remain outside this repository. Create a local, ignored review file with:
+The NyayaAnumana source files remain outside the repository. Create an ignored review file with:
 
 ```powershell
 python scripts/filter_consumer_cases.py `
   --source "B:\Dataset\CJPE_ext_SCI_HCs_tribunals_dailyorder_dev_wo_RoD_ternary (1).csv"
 ```
 
-For a quick smoke test against a small sample, add `--max-records 10`. The script writes JSONL to `data/curated/` by default and records an Act version only when the judgment text expressly mentions 1986 or 2019.
-
-Create a review sheet from those local candidates with:
+Export a review sheet from local candidates with:
 
 ```powershell
 python scripts/export_review_sample.py `
@@ -52,27 +65,18 @@ python scripts/export_review_sample.py `
   --sample-size 50
 ```
 
-Open `data/curated/consumer_case_review_sample.csv` in Excel. Mark each row `approved`, `rejected`, or `needs_review`, and add a short reason. Do not publish case search until the approved rows have been reviewed for relevance, source provenance, and Act version.
+Open `data/curated/consumer_case_review_sample.csv` in Excel. Mark each row `approved`, `rejected`, or `needs_review`, and add a short reason. Do not publish case search until approved rows have been reviewed for relevance, source provenance, and Act version.
 
 ## Data policy
 
-- Do not commit raw judgment datasets or downloaded PDFs.
-- Keep raw and intermediate data in `data/raw/` and `data/curated/`; both are ignored by Git.
+- Do not commit raw judgments, downloaded PDFs, review sheets, or API keys.
+- `data/raw/` and `data/curated/` remain local and ignored by Git.
 - Publish only reviewed metadata, permitted excerpts, and source links.
-- Label judgments under the Consumer Protection Act, 1986 separately from judgments under the 2019 Act.
+- Keep Consumer Protection Act, 1986 decisions separate from Consumer Protection Act, 2019 material.
 
-## Planned milestones
+## Limitations
 
-1. Filter and review consumer-dispute judgment candidates.
-2. Build a compact client-side search index.
-3. Add related-decision results with source provenance.
-4. Evaluate statute lookup and case retrieval against a hand-labelled benchmark.
-5. Deploy the static site through Cloudflare Pages.
-
-## Deployment
-
-The planned deployment is a static Cloudflare Pages site, so it does not rely on a paid API or an application server staying awake. See [the deployment guide](docs/deployment.md) for the exact setup and pre-deployment checks.
-
-## Limitation
-
-This educational research prototype is not legal advice. Users should verify the linked primary source and seek qualified legal advice for decisions.
+- This educational research prototype is not legal advice.
+- It currently retrieves statutes only, not judgments.
+- Groq free-tier availability and rate limits can affect generated answers; the retrieval fallback remains available.
+- Users should verify the linked primary source and consult a qualified professional for legal decisions.
