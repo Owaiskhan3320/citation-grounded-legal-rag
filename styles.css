@@ -177,6 +177,11 @@ button {
   background: var(--forest-dark);
 }
 
+.input-row button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .examples {
   display: flex;
   flex-wrap: wrap;
@@ -220,6 +225,36 @@ button {
   display: grid;
   gap: 1rem;
   margin-top: 1.1rem;
+}
+
+.answer-card {
+  border: 1px solid var(--line);
+  background: var(--warm-white);
+  padding: 1.25rem;
+}
+
+.answer-card h3 {
+  margin-bottom: 0.45rem;
+}
+
+.answer-text {
+  margin-bottom: 0;
+  color: var(--ink);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.answer-notice {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.source-heading {
+  margin: 1.5rem 0 -0.15rem;
+  font-size: 1.15rem;
 }
 
 .result-card {

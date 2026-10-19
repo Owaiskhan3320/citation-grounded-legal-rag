@@ -7,7 +7,7 @@
       name="description"
       content="A source-backed research prototype for selected provisions of Indian consumer law."
     />
-    <title>Consumer Law Research</title>
+    <title>Citation-Grounded Legal RAG</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -16,9 +16,9 @@
         <p class="eyebrow">Research prototype</p>
         <div class="title-row">
           <div>
-            <h1>Consumer Law Research</h1>
+            <h1>Citation-Grounded Legal RAG</h1>
             <p class="subtitle">
-              Source-backed lookup for selected provisions of the Consumer Protection Act, 2019.
+              Consumer-law answers generated only from retrieved Consumer Protection Act source records.
             </p>
           </div>
           <span class="scope-tag">India</span>
@@ -30,8 +30,8 @@
           <p class="eyebrow">Ask a focused question</p>
           <h2 id="search-title">Find the relevant provision</h2>
           <p>
-            This version uses deterministic matching and only returns material that is present in its
-            curated statute data.
+            The system retrieves relevant legal records first, then generates an answer only when
+            those records support it.
           </p>
         </div>
 
@@ -69,11 +69,11 @@
             <p class="eyebrow">Research result</p>
             <h2 id="results-title">Start with a statute query</h2>
           </div>
-          <span id="result-status" class="status">Curated statute data</span>
+          <span id="result-status" class="status">Citation-grounded retrieval</span>
         </div>
         <div id="results" class="results-empty">
           Enter a question about consumer rights, complaints, unfair trade practices, or misleading
-          advertisements.
+          advertisements. Every response includes the source records used.
         </div>
       </section>
 
