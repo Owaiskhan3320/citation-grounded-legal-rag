@@ -123,7 +123,7 @@ export default async function handler(request, response) {
       answer: "I could not verify this from the available source records.",
       sources: [],
       mode: "no_answer",
-      notice: "Try a question about the current Consumer Protection Act source records.",
+      notice: "Try a question about the current consumer-law source records.",
     });
   }
 

@@ -13,7 +13,7 @@ function createSourceCard(source) {
 
   const metadata = document.createElement("div");
   metadata.className = "result-meta";
-  for (const label of [source.id, source.section, "Consumer Protection Act, 2019"]) {
+  for (const label of [source.id, source.section, source.sourceName]) {
     const tag = document.createElement("span");
     tag.textContent = label;
     metadata.append(tag);
@@ -33,7 +33,7 @@ function createSourceCard(source) {
   sourceLink.href = source.sourceUrl;
   sourceLink.target = "_blank";
   sourceLink.rel = "noreferrer";
-  sourceLink.textContent = "Read the official Act source ->";
+  sourceLink.textContent = "Read the official source ->";
 
   article.append(metadata, heading, summary, excerpt, sourceLink);
   return article;
