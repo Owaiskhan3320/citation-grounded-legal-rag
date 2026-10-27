@@ -9,6 +9,7 @@ export function retrieveEvidence(question) {
     .map((record, index) => ({
       id: `S${index + 1}`,
       section: record.section,
+      sourceName: record.sourceName || "Consumer Protection Act, 2019",
       title: record.title,
       summary: record.summary,
       excerpt: record.excerpt,

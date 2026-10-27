@@ -37,12 +37,31 @@ const sectionChecks = [
   ["What is the complaint limitation period under section 69?", "Section 69"],
 ];
 
-assert.equal(statutes.length, 15);
+const ecommerceRuleChecks = [
+  ["Do the E-Commerce Rules apply under rule 2?", "Rule 2"],
+  ["What information must a platform display under rule 4(2)?", "Rule 4(2)"],
+  ["What grievance mechanism is required under rule 4(4)?", "Rule 4(4)"],
+  ["What must a marketplace disclose under rule 5?", "Rule 5"],
+  ["What practices are prohibited for sellers under rule 6(1)?", "Rule 6(1)-(2)"],
+  ["Can a seller refuse a refund under rule 6(3)?", "Rule 6(3)"],
+  ["What response time applies under rule 6(4)?", "Rule 6(4)"],
+  ["What must a seller disclose under rule 6(5)?", "Rule 6(5)"],
+  ["What information is required under rule 7(1)?", "Rule 7(1)"],
+  ["What does rule 7(2) say about reviews and refunds?", "Rule 7(2)-(5)"],
+];
+
+assert.equal(statutes.length, 25);
 
 for (const [question, expectedSection] of sectionChecks) {
   const matches = findStatuteMatches(question, statutes);
   assert.equal(matches.length, 1, question);
   assert.equal(matches[0].section, expectedSection, question);
+}
+
+for (const [question, expectedRule] of ecommerceRuleChecks) {
+  const matches = findStatuteMatches(question, statutes);
+  assert.equal(matches.length, 1, question);
+  assert.equal(matches[0].section, expectedRule, question);
 }
 
 const consumerDefinitionResult = findStatuteMatches("Who is a consumer under this Act?", statutes);
@@ -53,6 +72,36 @@ assert.equal(productRecallResult[0].section, "Section 20");
 
 const lateComplaintResult = findStatuteMatches("Can I make a complaint after two years?", statutes);
 assert.equal(lateComplaintResult[0].section, "Section 69");
+
+const sellerRefundResult = findStatuteMatches(
+  "Can a marketplace seller refuse a refund for a defective product?",
+  statutes,
+);
+assert.equal(sellerRefundResult[0].section, "Rule 6(3)");
+
+const sellerResponseResult = findStatuteMatches(
+  "How long does a marketplace seller have to acknowledge a complaint?",
+  statutes,
+);
+assert.equal(sellerResponseResult[0].section, "Rule 6(4)");
+
+const platformContactResult = findStatuteMatches(
+  "What contact details must an online platform display?",
+  statutes,
+);
+assert.equal(platformContactResult[0].section, "Rule 4(2)");
+
+const marketplaceDisclosureResult = findStatuteMatches(
+  "What ranking parameters must an online marketplace explain?",
+  statutes,
+);
+assert.equal(marketplaceDisclosureResult[0].section, "Rule 5");
+
+const foreignPlatformResult = findStatuteMatches(
+  "Do the rules apply to a foreign website selling in India?",
+  statutes,
+);
+assert.equal(foreignPlatformResult[0].section, "Rule 2");
 
 const unsupportedResult = findStatuteMatches("How do I contest a divorce?", statutes);
 assert.equal(unsupportedResult.length, 0);

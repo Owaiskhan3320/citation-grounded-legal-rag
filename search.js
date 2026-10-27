@@ -43,9 +43,10 @@ export function findStatuteMatches(query, statutes) {
   const normalised = normaliseQuery(query);
   const tokens = [...new Set(queryTokens(query))];
 
-  const exactSectionMatches = statutes.filter((record) =>
-    normalised.includes(normaliseQuery(record.section)),
-  );
+  const exactSectionMatches = statutes.filter((record) => {
+    const references = record.references || [record.section];
+    return references.some((reference) => normalised.includes(normaliseQuery(reference)));
+  });
 
   // A specific section reference is more reliable than keyword relevance.
   if (exactSectionMatches.length > 0) {

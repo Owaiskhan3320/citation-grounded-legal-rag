@@ -1,5 +1,8 @@
 const OFFICIAL_ACT_URL =
   "https://www.indiacode.nic.in/bitstream/123456789/15256/1/a2019-35.pdf";
+const E_COMMERCE_RULES_URL =
+  "https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf";
+const E_COMMERCE_RULES_NAME = "Consumer Protection (E-Commerce) Rules, 2020";
 
 export const statutes = [
   {
@@ -284,5 +287,189 @@ export const statutes = [
       "section 69",
     ],
     sourceUrl: OFFICIAL_ACT_URL,
+  },
+  {
+    id: "ecommerce-scope",
+    section: "Rule 2",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Scope and applicability of the E-Commerce Rules",
+    summary:
+      "The E-Commerce Rules apply to goods and services bought or sold over digital or electronic networks, including marketplace and inventory models, and may also apply to an entity outside India that systematically offers goods or services to consumers in India.",
+    excerpt:
+      "The Rules apply to goods and services bought or sold over digital or electronic networks, all marketplace and inventory models of e-commerce, e-commerce retail, and unfair trade practices across e-commerce models. They also apply to an e-commerce entity not established in India that systematically offers goods or services to consumers in India.",
+    keywords: [
+      "e commerce rules apply",
+      "ecommerce rules apply",
+      "foreign website selling in india",
+      "online goods services rules",
+      "marketplace inventory model",
+      "rule 2",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "ecommerce-platform-information",
+    section: "Rule 4(2)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Platform identity and contact information",
+    summary:
+      "An e-commerce entity must prominently display its legal name, principal address, website details, and customer-care and grievance-officer contact information in a clear and accessible manner.",
+    excerpt:
+      "Every e-commerce entity must provide prominently on its platform its legal name; principal geographic address of headquarters and branches; website details; and customer-care and grievance-officer contact details, including e-mail address and telephone numbers.",
+    keywords: [
+      "ecommerce platform contact information",
+      "online platform legal name address",
+      "customer care grievance officer contact",
+      "website must display address",
+      "rule 4(2)",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "ecommerce-platform-grievance",
+    section: "Rule 4(4)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Platform grievance redressal mechanism",
+    summary:
+      "An e-commerce entity must establish an adequate consumer grievance-redressal mechanism, appoint a grievance officer, and display that officer's name, contact details, and designation on its platform.",
+    excerpt:
+      "Every e-commerce entity must establish an adequate grievance-redressal mechanism, having regard to grievances ordinarily received from India, appoint a grievance officer for consumer grievance redressal, and display the officer's name, contact details and designation on its platform.",
+    keywords: [
+      "ecommerce grievance officer",
+      "online platform grievance mechanism",
+      "complain to ecommerce platform",
+      "grievance officer contact details",
+      "rule 4(4)",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "marketplace-disclosures",
+    section: "Rule 5",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Marketplace disclosures and seller transparency",
+    summary:
+      "A marketplace platform must require accurate product information and prominently provide seller, complaint-tracking, return, refund, payment, and grievance information, including an explanation of key ranking parameters.",
+    excerpt:
+      "Marketplace e-commerce entities must require sellers to ensure that product descriptions, images and other content are accurate. They must prominently provide seller details, complaint ticket numbers, return, refund, exchange, delivery, payment and grievance information, relevant seller disclosures, and an explanation of the main ranking parameters for goods or sellers.",
+    keywords: [
+      "marketplace seller information",
+      "online marketplace return refund information",
+      "complaint ticket number marketplace",
+      "seller rating country of origin",
+      "ranking parameters online marketplace",
+      "rule 5",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "marketplace-seller-fair-practices",
+    section: "Rule 6(1)-(2)",
+    references: ["Rule 6(1)", "Rule 6(2)"],
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Fair practices by marketplace sellers",
+    summary:
+      "A seller on a marketplace must not use an unfair trade practice, falsely present itself as a consumer, post false consumer reviews, or misrepresent product or service quality or features.",
+    excerpt:
+      "A seller offering goods or services through a marketplace must not adopt an unfair trade practice. The seller must not falsely represent itself as a consumer and post reviews, or misrepresent the quality or features of goods or services.",
+    keywords: [
+      "fake review seller marketplace",
+      "seller pretending to be consumer",
+      "marketplace seller unfair trade practice",
+      "misrepresent product quality online seller",
+      "rule 6",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "marketplace-seller-returns",
+    section: "Rule 6(3)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Returns and refunds by marketplace sellers",
+    summary:
+      "A marketplace seller must not refuse to take back goods, withdraw or discontinue services, or refund paid consideration when goods or services are defective, deficient, spurious, misdescribed, or delivered late, subject to the force-majeure exception for late delivery.",
+    excerpt:
+      "A marketplace seller must not refuse return, withdrawal or discontinuation of services, or refund of consideration where goods or services are defective, deficient or spurious; do not match advertised or agreed characteristics or features; or are delivered late from the stated schedule. The late-delivery part does not apply where delay was due to force majeure.",
+    keywords: [
+      "marketplace seller refund defective product",
+      "online seller refuses return",
+      "late delivery refund ecommerce",
+      "spurious product refund",
+      "rule 6(3)",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "marketplace-seller-grievance",
+    section: "Rule 6(4)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Grievance officer and response times for marketplace sellers",
+    summary:
+      "A marketplace seller must appoint a grievance officer, acknowledge a consumer complaint within forty-eight hours, and redress it within one month of receipt.",
+    excerpt:
+      "A seller offering goods or services through a marketplace must appoint a grievance officer for consumer grievance redressal. The grievance officer must acknowledge receipt of a consumer complaint within forty-eight hours and redress the complaint within one month from receipt.",
+    keywords: [
+      "seller complaint acknowledged forty eight hours",
+      "marketplace seller redress complaint one month",
+      "seller grievance officer response time",
+      "online seller complaint timeline",
+      "rule 6(4)",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "marketplace-seller-prepurchase-information",
+    section: "Rule 6(5)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Pre-purchase information from marketplace sellers",
+    summary:
+      "A marketplace seller must provide information for display before purchase, including total price and charges, applicable notices, relevant product details, return and refund terms, grievance-officer details, importer details where applicable, delivery information, and warranties or guarantees.",
+    excerpt:
+      "A marketplace seller must provide information for display on the platform, including contractual disclosures, the total price with compulsory and voluntary charges, applicable notices, relevant goods or service details needed for an informed pre-purchase decision, grievance-officer details, importer details where applicable, return and refund terms, delivery information, and relevant guarantees or warranties.",
+    keywords: [
+      "seller total price delivery charges ecommerce",
+      "online seller pre purchase information",
+      "country of origin importer marketplace",
+      "return refund warranty details seller",
+      "rule 6(5)",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "inventory-platform-information",
+    section: "Rule 7(1)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Information provided by inventory e-commerce entities",
+    summary:
+      "An inventory e-commerce entity must prominently provide clear information about returns, refunds, exchange, warranty, delivery, payment methods, fees, charge-back options, grievance redressal, total price with charges, and a complaint-tracking ticket number.",
+    excerpt:
+      "An inventory e-commerce entity must prominently provide accurate, accessible information about returns, refunds, exchange, warranties, delivery, payment methods and security, fees or charges, charge-back options, grievance redressal, total price with compulsory and voluntary charges, and a ticket number for each complaint so a consumer can track it.",
+    keywords: [
+      "inventory ecommerce total price charges",
+      "online retailer complaint ticket number",
+      "chargeback options ecommerce",
+      "inventory platform return refund information",
+      "rule 7(1)",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "inventory-platform-returns-and-reviews",
+    section: "Rule 7(2)-(5)",
+    references: ["Rule 7(2)", "Rule 7(3)", "Rule 7(4)", "Rule 7(5)"],
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Reviews, advertising, returns and authenticity on inventory platforms",
+    summary:
+      "An inventory platform must not post false consumer reviews or misrepresent product features, must keep advertising consistent with actual characteristics, and must not refuse returns or refunds in the situations specified by the Rules. A platform that vouches for authenticity can bear liability concerning authenticity.",
+    excerpt:
+      "An inventory e-commerce entity must not falsely represent itself as a consumer or post reviews, and must not misrepresent quality or features. Its advertising must match actual characteristics, access and usage conditions. It must not refuse return, withdrawal or refund for defective, deficient, spurious, misdescribed or late-delivered goods or services, subject to the force-majeure exception for late delivery. A platform that vouches for authenticity may bear appropriate liability in an authenticity action.",
+    keywords: [
+      "inventory ecommerce fake reviews",
+      "online retailer refuses refund defective product",
+      "inventory platform authenticity guarantee",
+      "online retailer misleading advertisement",
+      "rule 7",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
   },
 ];
