@@ -8,6 +8,11 @@ const rightsResult = findStatuteMatches(
   statutes,
 );
 assert.equal(rightsResult[0].section, "Section 2(9)");
+assert.equal(rightsResult.length, 1);
+
+const rightsKeywordResult = findStatuteMatches("What consumer rights does the Act recognise?", statutes);
+assert.equal(rightsKeywordResult.length, 1);
+assert.equal(rightsKeywordResult[0].section, "Section 2(9)");
 
 const advertisementResult = findStatuteMatches(
   "What can the Central Authority do about misleading advertisements?",

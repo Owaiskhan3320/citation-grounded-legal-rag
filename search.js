@@ -4,16 +4,24 @@ const STOP_WORDS = new Set([
   "and",
   "are",
   "about",
+  "act",
   "can",
+  "consumer",
   "do",
   "for",
   "how",
   "i",
+  "india",
+  "indian",
   "in",
   "is",
   "it",
+  "law",
+  "legal",
   "of",
   "or",
+  "protection",
+  "section",
   "the",
   "to",
   "under",
@@ -33,16 +41,21 @@ function queryTokens(query) {
 
 export function findStatuteMatches(query, statutes) {
   const normalised = normaliseQuery(query);
-  const tokens = queryTokens(query);
+  const tokens = [...new Set(queryTokens(query))];
+
+  const exactSectionMatches = statutes.filter((record) =>
+    normalised.includes(normaliseQuery(record.section)),
+  );
+
+  // A specific section reference is more reliable than keyword relevance.
+  if (exactSectionMatches.length > 0) {
+    return exactSectionMatches;
+  }
 
   return statutes
     .map((record) => {
       let score = 0;
       const field = `${record.section} ${record.title} ${record.summary} ${record.keywords.join(" ")}`.toLowerCase();
-
-      if (normalised.includes(record.section.toLowerCase())) {
-        score += 20;
-      }
 
       for (const keyword of record.keywords) {
         if (normalised.includes(keyword.toLowerCase())) {
@@ -58,7 +71,7 @@ export function findStatuteMatches(query, statutes) {
 
       return { record, score };
     })
-    .filter((result) => result.score >= 4)
+    .filter((result) => result.score >= 2)
     .sort((left, right) => right.score - left.score)
     .map((result) => result.record);
 }
