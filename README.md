@@ -13,12 +13,13 @@ Question
   -> fall back to source-backed retrieval on failure
 ```
 
-Current statute coverage:
+Current statute coverage: 15 curated provisions from the Consumer Protection Act, 2019.
 
-- Section 2(9): consumer rights
-- Section 21: false or misleading advertisements
-- Section 2(47): unfair trade practices
-- Section 35: consumer complaints
+- Definitions: Sections 2(6), 2(7), 2(9), and 2(47)
+- Central Consumer Protection Authority: Sections 17 to 21
+- Consumer complaint process: Sections 34, 35, 38, 39, 41, and 69
+
+The records cover common questions about eligibility, consumer rights, class-wide complaints, unsafe goods, misleading advertisements, filing, forum, procedure, remedies, appeals, and limitation. This is still a focused research corpus, not the complete Act.
 
 The current corpus does not support a question? The API returns a clear non-answer instead of generating from outside knowledge.
 
@@ -41,6 +42,8 @@ node scripts/test-rag.mjs
 node scripts/test-api.mjs
 python -m unittest discover -s tests -v
 ```
+
+`scripts/test-search.mjs` includes a focused retrieval check for every curated provision, plus common-language checks for consumer status, unsafe-goods recall, and late complaints.
 
 ## Groq and Vercel
 
