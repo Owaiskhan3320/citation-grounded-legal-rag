@@ -50,7 +50,21 @@ const ecommerceRuleChecks = [
   ["What does rule 7(2) say about reviews and refunds?", "Rule 7(2)-(5)"],
 ];
 
-assert.equal(statutes.length, 25);
+const guidanceChecks = [
+  ["What makes an advertisement valid?", "Valid advertisements and disclaimers"],
+  ["What is a bait and free-claim advertisement?", "Bait and free-claim advertisements"],
+  ["What safeguards apply to advertisements targeting children?", "Advertisements targeting children"],
+  ["What is a surrogate advertisement?", "Surrogate advertisements"],
+  ["What is endorser due diligence?", "Endorser due diligence"],
+  ["What is a dark pattern?", "Dark patterns"],
+  ["What is false urgency?", "False urgency"],
+  ["What is basket sneaking?", "Basket sneaking"],
+  ["What is a subscription trap?", "Subscription trap"],
+  ["What is drip pricing?", "Drip pricing"],
+  ["What is bait and switch in an online advertisement?", "Bait and switch and disguised advertisements"],
+];
+
+assert.equal(statutes.length, 36);
 
 for (const [question, expectedSection] of sectionChecks) {
   const matches = findStatuteMatches(question, statutes);
@@ -62,6 +76,12 @@ for (const [question, expectedRule] of ecommerceRuleChecks) {
   const matches = findStatuteMatches(question, statutes);
   assert.equal(matches.length, 1, question);
   assert.equal(matches[0].section, expectedRule, question);
+}
+
+for (const [question, expectedGuidance] of guidanceChecks) {
+  const matches = findStatuteMatches(question, statutes);
+  assert.equal(matches.length, 1, question);
+  assert.equal(matches[0].section, expectedGuidance, question);
 }
 
 const consumerDefinitionResult = findStatuteMatches("Who is a consumer under this Act?", statutes);
@@ -102,6 +122,36 @@ const foreignPlatformResult = findStatuteMatches(
   statutes,
 );
 assert.equal(foreignPlatformResult[0].section, "Rule 2");
+
+const disclaimerResult = findStatuteMatches(
+  "Can a disclaimer hide a misleading claim?",
+  statutes,
+);
+assert.equal(disclaimerResult[0].section, "Valid advertisements and disclaimers");
+
+const endorserResult = findStatuteMatches(
+  "Can an influencer endorse a product without checking it?",
+  statutes,
+);
+assert.equal(endorserResult[0].section, "Endorser due diligence");
+
+const falseUrgencyResult = findStatuteMatches(
+  "Is fake limited stock on a website allowed?",
+  statutes,
+);
+assert.equal(falseUrgencyResult[0].section, "False urgency");
+
+const basketSneakingResult = findStatuteMatches(
+  "Can a website preselect a donation at checkout?",
+  statutes,
+);
+assert.equal(basketSneakingResult[0].section, "Basket sneaking");
+
+const hiddenChargesResult = findStatuteMatches(
+  "What if an online platform adds hidden charges at checkout?",
+  statutes,
+);
+assert.equal(hiddenChargesResult[0].section, "Drip pricing");
 
 const unsupportedResult = findStatuteMatches("How do I contest a divorce?", statutes);
 assert.equal(unsupportedResult.length, 0);

@@ -3,6 +3,14 @@ const OFFICIAL_ACT_URL =
 const E_COMMERCE_RULES_URL =
   "https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf";
 const E_COMMERCE_RULES_NAME = "Consumer Protection (E-Commerce) Rules, 2020";
+const MISLEADING_AD_GUIDELINES_URL =
+  "https://consumeraffairs.nic.in/latestnews/guidelines-prevention-misleading-advertisements-and-endorsements-misleading";
+const MISLEADING_AD_GUIDELINES_NAME =
+  "Guidelines for Prevention of Misleading Advertisements and Endorsements, 2022";
+const DARK_PATTERNS_GUIDELINES_URL =
+  "https://consumeraffairs.nic.in/sites/default/files/The%20Guidelines%20for%20Prevention%20and%20Regulation%20of%20Dark%20Patterns%2C%202023.pdf";
+const DARK_PATTERNS_GUIDELINES_NAME =
+  "Guidelines for Prevention and Regulation of Dark Patterns, 2023";
 
 export const statutes = [
   {
@@ -471,5 +479,204 @@ export const statutes = [
       "rule 7",
     ],
     sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "advertisement-validity-and-disclaimers",
+    section: "Valid advertisements and disclaimers",
+    sourceName: MISLEADING_AD_GUIDELINES_NAME,
+    title: "Conditions for a non-misleading advertisement",
+    summary:
+      "An advertisement should be truthful and accurate, should not exaggerate or hide material information, and a disclaimer must not be used to correct a misleading claim or conceal the advertisement's commercial intent.",
+    excerpt:
+      "The Guidelines set conditions for an advertisement to be non-misleading and valid. A disclaimer must not attempt to hide material information whose omission could make an advertisement deceptive, conceal its commercial intent, or correct a misleading claim. It should be in the same language as the claim and use the same font.",
+    keywords: [
+      "misleading advertisement disclaimer",
+      "disclaimer hide material information",
+      "valid advertisement truthful accurate",
+      "disclaimer correct misleading claim",
+      "commercial intent advertisement",
+    ],
+    sourceUrl: MISLEADING_AD_GUIDELINES_URL,
+  },
+  {
+    id: "bait-and-free-claim-advertisements",
+    section: "Bait and free-claim advertisements",
+    references: ["Bait and free-claim advertisement", "Bait advertisement", "Free-claim advertisement"],
+    sourceName: MISLEADING_AD_GUIDELINES_NAME,
+    title: "Bait advertisements and free claims",
+    summary:
+      "The Guidelines set conditions for bait advertisements and advertisements that make a free claim, so consumers are not drawn in by offers that are unavailable, misleading, or subject to undisclosed costs or conditions.",
+    excerpt:
+      "The Guidelines include specific stipulations for bait advertisements and free-claim advertisements. They are intended to prevent offers from misleading consumers about availability, price, or the cost and conditions connected with a claimed free product or service.",
+    keywords: [
+      "bait advertisement offer unavailable",
+      "free claim advertisement hidden cost",
+      "free product undisclosed charges",
+      "limited offer advertisement",
+      "bait and free claim",
+    ],
+    sourceUrl: MISLEADING_AD_GUIDELINES_URL,
+  },
+  {
+    id: "advertisements-targeting-children",
+    section: "Advertisements targeting children",
+    sourceName: MISLEADING_AD_GUIDELINES_NAME,
+    title: "Additional safeguards for advertisements targeting children",
+    summary:
+      "Advertisements targeting children must not exploit their vulnerability or exaggerate product features in a way that creates unrealistic expectations. Health or nutritional claims need adequate scientific substantiation.",
+    excerpt:
+      "The Guidelines contain pre-emptive provisions for advertisements targeting children. They prohibit exaggerating product or service features in a way that gives children unrealistic expectations and prohibit health or nutritional claims or benefits without adequate scientific substantiation by a recognised body.",
+    keywords: [
+      "advertisement targeting children",
+      "child unrealistic expectations advertisement",
+      "children health nutritional claim",
+      "advertising to children safeguards",
+      "scientific substantiation children ad",
+    ],
+    sourceUrl: MISLEADING_AD_GUIDELINES_URL,
+  },
+  {
+    id: "surrogate-advertisements",
+    section: "Surrogate advertisements",
+    sourceName: MISLEADING_AD_GUIDELINES_NAME,
+    title: "Prohibition on surrogate advertisements",
+    summary:
+      "The Guidelines prohibit surrogate advertisements, which are used to indirectly promote goods or services whose direct advertising is prohibited or restricted by law.",
+    excerpt:
+      "The Guidelines include a prohibition on surrogate advertisements as part of their measures to prevent misleading advertising and protect consumers from indirect promotion that disguises the true product or service being advertised.",
+    keywords: [
+      "surrogate advertisement",
+      "indirect advertisement prohibited product",
+      "disguised promotion restricted product",
+      "tobacco alcohol surrogate ad",
+    ],
+    sourceUrl: MISLEADING_AD_GUIDELINES_URL,
+  },
+  {
+    id: "endorser-due-diligence",
+    section: "Endorser due diligence",
+    sourceName: MISLEADING_AD_GUIDELINES_NAME,
+    title: "Due diligence and disclosure by endorsers",
+    summary:
+      "An endorsement should reflect a genuine and reasonably current opinion based on adequate information or experience, and a material connection between an endorser and advertiser that audiences would not reasonably expect should be fully disclosed.",
+    excerpt:
+      "The Guidelines require due diligence before an endorsement. An endorsement must reflect the genuine, reasonably current opinion of the endorser, be based on adequate information about or experience with the product or service, and not otherwise be deceptive. A connection that could materially affect credibility and is not reasonably expected by the audience must be fully disclosed.",
+    keywords: [
+      "endorser due diligence",
+      "celebrity endorsement check product",
+      "influencer paid partnership disclosure",
+      "genuine current opinion endorsement",
+      "advertiser endorser connection disclosure",
+    ],
+    sourceUrl: MISLEADING_AD_GUIDELINES_URL,
+  },
+  {
+    id: "dark-pattern-definition",
+    section: "Dark patterns",
+    sourceName: DARK_PATTERNS_GUIDELINES_NAME,
+    title: "Meaning and prevention of dark patterns",
+    summary:
+      "Dark patterns are deceptive user-interface or user-experience practices that mislead or trick users into actions they did not intend or want, by impairing consumer autonomy, decision-making, or choice.",
+    excerpt:
+      "The Guidelines describe dark patterns as deceptive design practices using user-interface or user-experience interactions on a platform to mislead or trick users into doing something they did not intend or want, by subverting or impairing consumer autonomy, decision-making or choice. They identify thirteen specified dark patterns.",
+    keywords: [
+      "what is a dark pattern",
+      "dark pattern meaning",
+      "deceptive user interface",
+      "trick user online platform",
+      "consumer choice manipulation",
+    ],
+    sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
+  },
+  {
+    id: "dark-pattern-false-urgency",
+    section: "False urgency",
+    sourceName: DARK_PATTERNS_GUIDELINES_NAME,
+    title: "False urgency or scarcity",
+    summary:
+      "False urgency is a false claim or implication of urgency or scarcity intended to push a user into an immediate purchase or action that may lead to a purchase.",
+    excerpt:
+      "False urgency includes falsely showing popularity or stating that quantities are more limited than they actually are in order to mislead a user into making an immediate purchase or taking an immediate action that may lead to a purchase.",
+    keywords: [
+      "false urgency",
+      "fake limited stock",
+      "fake scarcity online sale",
+      "only few left false",
+      "fake popularity product",
+    ],
+    sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
+  },
+  {
+    id: "dark-pattern-basket-sneaking",
+    section: "Basket sneaking",
+    sourceName: DARK_PATTERNS_GUIDELINES_NAME,
+    title: "Additional items added at checkout without consent",
+    summary:
+      "Basket sneaking is adding an extra product, service, payment, charity contribution, or donation at checkout without the user's consent, increasing the amount payable beyond the item selected.",
+    excerpt:
+      "Basket sneaking includes adding extra items, services, payments to charity or donations at checkout without the user's consent so that the amount payable exceeds the amount for the selected product or service. Disclosed necessary fees and complimentary services are treated differently by the Guidelines.",
+    keywords: [
+      "basket sneaking",
+      "preselected donation checkout",
+      "extra item added cart without consent",
+      "automatic travel insurance checkout",
+      "hidden checkout addition",
+    ],
+    sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
+  },
+  {
+    id: "dark-pattern-subscription-trap",
+    section: "Subscription trap",
+    sourceName: DARK_PATTERNS_GUIDELINES_NAME,
+    title: "Difficult or hidden subscription cancellation",
+    summary:
+      "A subscription trap includes making cancellation impossible, complex, lengthy, hidden, or confusing, or requiring payment details or auto-debit authorisation for a free subscription.",
+    excerpt:
+      "Subscription trap includes making cancellation of a paid subscription impossible or a complex and lengthy process; hiding the cancellation option; forcing payment details or auto-debit authorisation for a free subscription; or giving ambiguous, latent, confusing or cumbersome cancellation instructions.",
+    keywords: [
+      "subscription trap",
+      "cancel subscription difficult",
+      "hidden cancellation option",
+      "free trial payment details auto debit",
+      "subscription cancellation confusing",
+    ],
+    sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
+  },
+  {
+    id: "dark-pattern-drip-pricing",
+    section: "Drip pricing",
+    sourceName: DARK_PATTERNS_GUIDELINES_NAME,
+    title: "Hidden or delayed price elements",
+    summary:
+      "Drip pricing is not revealing price elements upfront, revealing them later in the user journey, charging more than the checkout price, or presenting something as free without disclosing a later in-app cost or condition.",
+    excerpt:
+      "Drip pricing includes not revealing price elements upfront or revealing them surreptitiously during the user experience; charging an amount higher than that disclosed at checkout; advertising a service as free without appropriate disclosure that continued use requires an in-app purchase; or preventing use of an already paid service unless something additional is bought.",
+    keywords: [
+      "drip pricing",
+      "hidden charges checkout",
+      "price increased after checkout",
+      "free app later payment",
+      "undisclosed fees online",
+    ],
+    sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
+  },
+  {
+    id: "dark-pattern-bait-switch-and-disguised-ads",
+    section: "Bait and switch and disguised advertisements",
+    references: ["Bait and switch", "Disguised advertisement"],
+    sourceName: DARK_PATTERNS_GUIDELINES_NAME,
+    title: "Switching offers and masking advertisements",
+    summary:
+      "Bait and switch means advertising one outcome while deceptively serving another, and a disguised advertisement masks promotional content as other material to trick users into clicking or acting on it.",
+    excerpt:
+      "The Guidelines identify bait and switch, such as offering a product at one price but steering a user to a different or more expensive outcome, and disguised advertisements that pose as user-generated content, news articles, or other interface content to trick users into clicking them.",
+    keywords: [
+      "bait and switch",
+      "advertised product unavailable expensive alternative",
+      "disguised advertisement",
+      "ad looks like news article",
+      "sponsored content disguised",
+    ],
+    sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
   },
 ];
