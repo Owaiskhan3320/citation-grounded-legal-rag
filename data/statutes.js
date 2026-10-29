@@ -186,6 +186,24 @@ export const statutes = [
     sourceUrl: OFFICIAL_ACT_URL,
   },
   {
+    id: "false-or-misleading-advertisement-definition",
+    section: "Section 2(28)",
+    title: "Meaning of false or misleading advertisement",
+    summary:
+      "A false or misleading advertisement includes one that falsely describes a product or service, is likely to mislead consumers about it, makes a representation amounting to an unfair trade practice, or deliberately conceals important information.",
+    excerpt:
+      "A false or misleading advertisement includes an advertisement that falsely describes a product or service; gives a false guarantee or is likely to mislead consumers about its nature, substance, quantity, quality or standard; conveys a representation that would amount to an unfair trade practice; or deliberately conceals important information.",
+    keywords: [
+      "false or misleading advertisement definition",
+      "misleading advertisement definition",
+      "concealing important information",
+      "hides material condition advertisement",
+      "section 2(28)",
+      "2(28)",
+    ],
+    sourceUrl: OFFICIAL_ACT_URL,
+  },
+  {
     id: "filing-complaint",
     section: "Section 35",
     title: "Manner in which complaint shall be made",
@@ -486,34 +504,71 @@ export const statutes = [
     sourceName: MISLEADING_AD_GUIDELINES_NAME,
     title: "Conditions for a non-misleading advertisement",
     summary:
-      "An advertisement should be truthful and accurate, should not exaggerate or hide material information, and a disclaimer must not be used to correct a misleading claim or conceal the advertisement's commercial intent.",
+      "A valid advertisement must be truthful and honest, must not exaggerate a product or service's accuracy, scientific validity, usefulness, capability or performance, and must not hide material information.",
     excerpt:
-      "The Guidelines set conditions for an advertisement to be non-misleading and valid. A disclaimer must not attempt to hide material information whose omission could make an advertisement deceptive, conceal its commercial intent, or correct a misleading claim. It should be in the same language as the claim and use the same font.",
+      "An advertisement is non-misleading and valid when it contains a truthful and honest representation and does not mislead consumers by exaggerating the accuracy, scientific validity, practical usefulness, capability or performance of the goods, product or service. It must not hide material information whose omission could make the advertisement deceptive.",
     keywords: [
-      "misleading advertisement disclaimer",
-      "disclaimer hide material information",
       "valid advertisement truthful accurate",
-      "disclaimer correct misleading claim",
-      "commercial intent advertisement",
+      "advertisement scientific validity performance",
+      "exaggerated product performance",
+      "hide material information advertisement",
     ],
     sourceUrl: MISLEADING_AD_GUIDELINES_URL,
   },
   {
     id: "bait-and-free-claim-advertisements",
-    section: "Bait and free-claim advertisements",
-    references: ["Bait and free-claim advertisement", "Bait advertisement", "Free-claim advertisement"],
+    section: "Bait advertisements",
+    references: ["Bait advertisement"],
     sourceName: MISLEADING_AD_GUIDELINES_NAME,
-    title: "Bait advertisements and free claims",
+    title: "Availability and stock disclosures in bait advertisements",
     summary:
-      "The Guidelines set conditions for bait advertisements and advertisements that make a free claim, so consumers are not drawn in by offers that are unavailable, misleading, or subject to undisclosed costs or conditions.",
+      "A bait advertisement offering goods, products or services at a low price must have a reasonable prospect of availability at that price. If demand is expected to exceed stock, the advertisement must clearly state the stock limitation.",
     excerpt:
-      "The Guidelines include specific stipulations for bait advertisements and free-claim advertisements. They are intended to prevent offers from misleading consumers about availability, price, or the cost and conditions connected with a claimed free product or service.",
+      "A bait advertisement must not offer goods, products or services at a low price without a reasonable prospect of selling them at that price. Where an advertiser expects demand to exceed available stock, the advertisement must clearly state that limitation. Availability at the advertised price must be ensured for a reasonable period and in reasonable quantities, having regard to the market and nature of the advertisement.",
     keywords: [
       "bait advertisement offer unavailable",
+      "low price no reasonable prospect",
+      "advertised stock limitation",
+      "demand exceeds stock advertisement",
+      "limited stock bait advertisement",
+    ],
+    sourceUrl: MISLEADING_AD_GUIDELINES_URL,
+  },
+  {
+    id: "advertisement-disclaimers",
+    section: "Advertisement disclaimers",
+    references: ["Disclaimer"],
+    sourceName: MISLEADING_AD_GUIDELINES_NAME,
+    title: "Limits on disclaimers in advertisements",
+    summary:
+      "A disclaimer cannot hide material information, correct a misleading claim, or conceal commercial intent. It should use the claim's language and font and must not be unclear or inconspicuous in placement or presentation.",
+    excerpt:
+      "A disclaimer must not hide material information whose omission could make an advertisement deceptive, conceal the advertisement's commercial intent, or correct a misleading claim. It should be in the same language as the claim and use the same font. Its placement and presentation should not be unclear or inconspicuous to consumers.",
+    keywords: [
+      "misleading advertisement disclaimer",
+      "disclaimer hide material information",
+      "disclaimer correct misleading claim",
+      "disclaimer language font prominence legibility",
+      "commercial intent advertisement",
+    ],
+    sourceUrl: MISLEADING_AD_GUIDELINES_URL,
+  },
+  {
+    id: "free-claim-advertisements",
+    section: "Free-claim advertisements",
+    references: ["Free-claim advertisement", "Free claim advertisement"],
+    sourceName: MISLEADING_AD_GUIDELINES_NAME,
+    title: "Conditions for describing a product or service as free",
+    summary:
+      "An advertisement must not describe a product or service as free where the consumer must pay for packing, packaging, handling or administration. An unavoidable, separately stated delivery cost is treated differently.",
+    excerpt:
+      "A product or service must not be described as free if the consumer has to pay anything other than the unavoidable cost of responding, collecting or paying for delivery. It must not be described as free where the consumer pays for packing, packaging, handling or administration, or where the response, collection or delivery cost is passed on as part of the price of the product or service.",
+    keywords: [
       "free claim advertisement hidden cost",
+      "free product handling administration fees",
+      "free advertisement packing packaging charges",
+      "unavoidable delivery charge free claim",
       "free product undisclosed charges",
-      "limited offer advertisement",
-      "bait and free claim",
     ],
     sourceUrl: MISLEADING_AD_GUIDELINES_URL,
   },
@@ -523,13 +578,14 @@ export const statutes = [
     sourceName: MISLEADING_AD_GUIDELINES_NAME,
     title: "Additional safeguards for advertisements targeting children",
     summary:
-      "Advertisements targeting children must not exploit their vulnerability or exaggerate product features in a way that creates unrealistic expectations. Health or nutritional claims need adequate scientific substantiation.",
+      "Advertisements targeting children must not exploit their vulnerability, exaggerate product features to create unrealistic expectations, or make children feel inferior for not buying the advertised product or service. Health or nutritional claims need adequate scientific substantiation.",
     excerpt:
-      "The Guidelines contain pre-emptive provisions for advertisements targeting children. They prohibit exaggerating product or service features in a way that gives children unrealistic expectations and prohibit health or nutritional claims or benefits without adequate scientific substantiation by a recognised body.",
+      "Advertisements targeting children must not exploit their vulnerability or lack of experience, exaggerate product or service features in a way that gives children unrealistic expectations, or make children feel inferior to others for not buying the advertised product or service. Health or nutritional claims or benefits require adequate scientific substantiation by a recognised body.",
     keywords: [
       "advertisement targeting children",
       "child unrealistic expectations advertisement",
       "children health nutritional claim",
+      "child feel inferior not buying product",
       "advertising to children safeguards",
       "scientific substantiation children ad",
     ],
@@ -541,13 +597,14 @@ export const statutes = [
     sourceName: MISLEADING_AD_GUIDELINES_NAME,
     title: "Prohibition on surrogate advertisements",
     summary:
-      "The Guidelines prohibit surrogate advertisements, which are used to indirectly promote goods or services whose direct advertising is prohibited or restricted by law.",
+      "The Guidelines prohibit surrogate advertisements used to indirectly promote goods or services whose direct advertising is prohibited or restricted by law. Mere use of a shared brand or company name is not automatically surrogate advertising when the advertisement is otherwise unobjectionable.",
     excerpt:
-      "The Guidelines include a prohibition on surrogate advertisements as part of their measures to prevent misleading advertising and protect consumers from indirect promotion that disguises the true product or service being advertised.",
+      "A surrogate advertisement promotes goods, products or services whose direct advertising is prohibited or restricted by law by portraying it as an advertisement for other goods, products or services. Mere use of a brand name or company name also used for restricted goods, products or services is not by itself a surrogate advertisement if the advertisement is not otherwise objectionable under the Guidelines.",
     keywords: [
       "surrogate advertisement",
       "indirect advertisement prohibited product",
       "disguised promotion restricted product",
+      "shared brand name surrogate advertisement",
       "tobacco alcohol surrogate ad",
     ],
     sourceUrl: MISLEADING_AD_GUIDELINES_URL,
@@ -573,6 +630,7 @@ export const statutes = [
   {
     id: "dark-pattern-definition",
     section: "Dark patterns",
+    isBroadTopic: true,
     sourceName: DARK_PATTERNS_GUIDELINES_NAME,
     title: "Meaning and prevention of dark patterns",
     summary:
@@ -594,7 +652,7 @@ export const statutes = [
     sourceName: DARK_PATTERNS_GUIDELINES_NAME,
     title: "False urgency or scarcity",
     summary:
-      "False urgency is a false claim or implication of urgency or scarcity intended to push a user into an immediate purchase or action that may lead to a purchase.",
+      "False urgency is a false claim or implication of urgency or scarcity intended to push a user into an immediate purchase or action that may lead to a purchase. Genuine remaining stock or a genuine deadline alone is not false urgency.",
     excerpt:
       "False urgency includes falsely showing popularity or stating that quantities are more limited than they actually are in order to mislead a user into making an immediate purchase or taking an immediate action that may lead to a purchase.",
     keywords: [
@@ -603,6 +661,9 @@ export const statutes = [
       "fake scarcity online sale",
       "only few left false",
       "fake popularity product",
+      "fake countdown",
+      "fake countdown sale deadline",
+      "genuine stock genuine deadline",
     ],
     sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
   },
@@ -612,14 +673,16 @@ export const statutes = [
     sourceName: DARK_PATTERNS_GUIDELINES_NAME,
     title: "Additional items added at checkout without consent",
     summary:
-      "Basket sneaking is adding an extra product, service, payment, charity contribution, or donation at checkout without the user's consent, increasing the amount payable beyond the item selected.",
+      "Basket sneaking is adding an extra product, service, payment, charity contribution, or donation at checkout without the user's consent, increasing the amount payable beyond the item selected. Clearly disclosed necessary fees and complimentary services are not treated as basket sneaking.",
     excerpt:
-      "Basket sneaking includes adding extra items, services, payments to charity or donations at checkout without the user's consent so that the amount payable exceeds the amount for the selected product or service. Disclosed necessary fees and complimentary services are treated differently by the Guidelines.",
+      "Basket sneaking includes adding extra items, services, payments to charity or donations at checkout without the user's consent so that the amount payable exceeds the amount for the selected product or service. Free samples, complimentary services and necessary fees disclosed at the time of purchase are not treated as basket sneaking.",
     keywords: [
       "basket sneaking",
       "preselected donation checkout",
       "extra item added cart without consent",
       "automatic travel insurance checkout",
+      "paid insurance without consent",
+      "necessary fee disclosed at purchase",
       "hidden checkout addition",
     ],
     sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
@@ -648,15 +711,17 @@ export const statutes = [
     sourceName: DARK_PATTERNS_GUIDELINES_NAME,
     title: "Hidden or delayed price elements",
     summary:
-      "Drip pricing is not revealing price elements upfront, revealing them later in the user journey, charging more than the checkout price, or presenting something as free without disclosing a later in-app cost or condition.",
+      "Drip pricing is not revealing price elements upfront, revealing them later in the user journey, charging more than the checkout price, or presenting something as free without disclosing a later in-app cost or condition. A marketplace is not automatically liable for price changes attributable to third-party sellers or factors beyond its control.",
     excerpt:
-      "Drip pricing includes not revealing price elements upfront or revealing them surreptitiously during the user experience; charging an amount higher than that disclosed at checkout; advertising a service as free without appropriate disclosure that continued use requires an in-app purchase; or preventing use of an already paid service unless something additional is bought.",
+      "Drip pricing includes not revealing price elements upfront or revealing them surreptitiously during the user experience; charging an amount higher than that disclosed at checkout; advertising a service as free without appropriate disclosure that continued use requires an in-app purchase; or preventing use of an already paid service unless something additional is bought. A marketplace e-commerce entity is not liable for price fluctuations attributable to third-party sellers or other factors beyond its control.",
     keywords: [
       "drip pricing",
       "hidden charges checkout",
       "price increased after checkout",
       "free app later payment",
       "undisclosed fees online",
+      "mandatory fee at payment",
+      "third party seller price fluctuation",
     ],
     sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
   },

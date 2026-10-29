@@ -8,7 +8,8 @@ import {
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 const DEFAULT_MODEL = "openai/gpt-oss-20b";
 const MAX_QUESTION_LENGTH = 600;
-const UPSTREAM_TIMEOUT_MS = 12_000;
+const UPSTREAM_TIMEOUT_MS = 16_000;
+const MAX_GENERATION_TOKENS = 500;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 8;
 const requestWindows = new Map();
@@ -67,8 +68,13 @@ async function askGroq(question, evidence, apiKey) {
     body: JSON.stringify({
       model: process.env.GROQ_MODEL || DEFAULT_MODEL,
       temperature: 0.1,
-      max_tokens: 350,
+      max_tokens: MAX_GENERATION_TOKENS,
       messages: [
+        {
+          role: "system",
+          content:
+            "Answer only from the supplied source records. Cite every factual statement using the supplied source labels. Do not invent missing legal details.",
+        },
         {
           role: "user",
           content: buildGroundedPrompt(question, evidence),
@@ -83,7 +89,12 @@ async function askGroq(question, evidence, apiKey) {
   }
 
   const payload = await response.json();
-  const answer = payload?.choices?.[0]?.message?.content?.trim();
+  const choice = payload?.choices?.[0];
+  if (choice?.finish_reason === "length") {
+    throw new Error("Groq response was incomplete.");
+  }
+
+  const answer = choice?.message?.content?.trim();
   if (!answer || !hasValidCitations(answer, evidence)) {
     throw new Error("Groq response did not contain valid evidence citations.");
   }
