@@ -61,6 +61,10 @@ Copy `.env.example` only for local reference; never commit a real key. In produc
 
 See [the Vercel deployment guide](docs/deployment.md) for the full setup, fallback behaviour, and security checklist.
 
+## Evaluation
+
+The project keeps manual evaluation reports under [docs/evaluation](docs/evaluation/README.md). The current regression baseline is [Run 3](docs/evaluation/run-3-2026-10-29.md): 45 of 50 core questions passed on a known, manually checked suite. This is not a claim of overall legal accuracy or unseen-question performance.
+
 ## Prepare judgment candidates locally
 
 The NyayaAnumana source files remain outside the repository. Create an ignored review file with:
