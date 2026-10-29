@@ -1,6 +1,6 @@
 # Citation-Grounded Legal RAG
 
-A small, deployable legal RAG system for selected provisions of the Indian Consumer Protection Act, 2019 and Consumer Protection (E-Commerce) Rules, 2020. It retrieves source records before generation, requires model citations, and falls back to verified retrieval when generation cannot be trusted.
+A small, deployable legal RAG system for selected Indian consumer-law primary sources. It retrieves source records before generation, requires model citations, and falls back to verified retrieval when generation cannot be trusted.
 
 ## What it does
 
@@ -13,14 +13,16 @@ Question
   -> fall back to source-backed retrieval on failure
 ```
 
-Current coverage: 25 curated primary-source records.
+Current coverage: 36 curated primary-source records.
 
 - Definitions: Sections 2(6), 2(7), 2(9), and 2(47)
 - Central Consumer Protection Authority: Sections 17 to 21
 - Consumer complaint process: Sections 34, 35, 38, 39, 41, and 69
 - E-commerce duties and consumer disclosures: Rules 2, 4, 5, 6, and 7
+- Misleading advertisements and endorsements: validity, disclaimers, bait and free claims, children, surrogate advertising, and endorser due diligence
+- Dark patterns: false urgency, basket sneaking, subscription traps, drip pricing, bait and switch, and disguised advertisements
 
-The records cover common questions about eligibility, consumer rights, class-wide complaints, unsafe goods, misleading advertisements, filing, forum, procedure, remedies, appeals, limitation, online-marketplace disclosures, seller obligations, refunds, and grievance handling. This is still a focused research corpus, not the complete Act or Rules.
+The records cover common questions about eligibility, consumer rights, class-wide complaints, unsafe goods, misleading advertisements, filing, forum, procedure, remedies, appeals, limitation, online-marketplace disclosures, seller obligations, refunds, grievance handling, advertising claims, endorsements, and manipulative online design. This is still a focused research corpus, not the complete body of consumer law.
 
 When the current corpus does not support a question, the API returns a clear non-answer instead of generating from outside knowledge.
 
@@ -28,6 +30,8 @@ Primary sources:
 
 - [Consumer Protection Act, 2019](https://www.indiacode.nic.in/bitstream/123456789/15256/1/a2019-35.pdf)
 - [Consumer Protection (E-Commerce) Rules, 2020](https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf)
+- [Misleading Advertisements and Endorsements Guidelines, 2022](https://consumeraffairs.nic.in/latestnews/guidelines-prevention-misleading-advertisements-and-endorsements-misleading)
+- [Dark Patterns Guidelines, 2023](https://consumeraffairs.nic.in/sites/default/files/The%20Guidelines%20for%20Prevention%20and%20Regulation%20of%20Dark%20Patterns%2C%202023.pdf)
 
 ## Run locally
 
@@ -49,7 +53,7 @@ node scripts/test-api.mjs
 python -m unittest discover -s tests -v
 ```
 
-`scripts/test-search.mjs` includes a focused retrieval check for every curated provision and rule, plus common-language checks for consumer status, unsafe-goods recall, late complaints, marketplace refunds, seller response times, platform contacts, marketplace disclosures, and foreign platforms serving India.
+`scripts/test-search.mjs` includes a focused retrieval check for every curated provision, rule, and guidance record, plus common-language checks for consumer status, unsafe-goods recall, late complaints, marketplace refunds, seller response times, platform contacts, marketplace disclosures, foreign platforms serving India, misleading disclaimers, endorsements, false urgency, basket sneaking, and hidden charges.
 
 ## Groq and Vercel
 
