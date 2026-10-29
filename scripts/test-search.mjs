@@ -24,6 +24,7 @@ const sectionChecks = [
   ["What does section 2(6) say about a complaint?", "Section 2(6)"],
   ["Who is a consumer under section 2(7)?", "Section 2(7)"],
   ["What are consumer rights under section 2(9)?", "Section 2(9)"],
+  ["What does section 2(28) say about a misleading advertisement?", "Section 2(28)"],
   ["What does section 2(47) say about unfair trade practices?", "Section 2(47)"],
   ["What does section 17 say about complaints to authorities?", "Section 17"],
   ["What are the Central Authority's functions under section 18?", "Section 18"],
@@ -52,7 +53,9 @@ const ecommerceRuleChecks = [
 
 const guidanceChecks = [
   ["What makes an advertisement valid?", "Valid advertisements and disclaimers"],
-  ["What is a bait and free-claim advertisement?", "Bait and free-claim advertisements"],
+  ["What is a bait advertisement?", "Bait advertisements"],
+  ["What is a free-claim advertisement?", "Free-claim advertisements"],
+  ["What are the rules for an advertisement disclaimer?", "Advertisement disclaimers"],
   ["What safeguards apply to advertisements targeting children?", "Advertisements targeting children"],
   ["What is a surrogate advertisement?", "Surrogate advertisements"],
   ["What is endorser due diligence?", "Endorser due diligence"],
@@ -64,7 +67,7 @@ const guidanceChecks = [
   ["What is bait and switch in an online advertisement?", "Bait and switch and disguised advertisements"],
 ];
 
-assert.equal(statutes.length, 36);
+assert.equal(statutes.length, 39);
 
 for (const [question, expectedSection] of sectionChecks) {
   const matches = findStatuteMatches(question, statutes);
@@ -127,7 +130,7 @@ const disclaimerResult = findStatuteMatches(
   "Can a disclaimer hide a misleading claim?",
   statutes,
 );
-assert.equal(disclaimerResult[0].section, "Valid advertisements and disclaimers");
+assert.equal(disclaimerResult[0].section, "Advertisement disclaimers");
 
 const endorserResult = findStatuteMatches(
   "Can an influencer endorse a product without checking it?",
@@ -152,6 +155,28 @@ const hiddenChargesResult = findStatuteMatches(
   statutes,
 );
 assert.equal(hiddenChargesResult[0].section, "Drip pricing");
+
+const misleadingDefinitionResult = findStatuteMatches(
+  "Can concealing important information make an advertisement misleading?",
+  statutes,
+);
+assert.equal(misleadingDefinitionResult.length, 1);
+assert.equal(misleadingDefinitionResult[0].section, "Section 2(28)");
+
+const combinedDarkPatternsResult = findStatuteMatches(
+  "A shopping app uses a fake countdown, adds paid insurance without consent and reveals a mandatory fee at payment. Identify the three relevant dark patterns.",
+  statutes,
+);
+assert.deepEqual(
+  combinedDarkPatternsResult.map((record) => record.section).sort(),
+  ["Basket sneaking", "Drip pricing", "False urgency"].sort(),
+);
+
+const freeClaimResult = findStatuteMatches(
+  "Can a product be called free when handling and administration fees apply?",
+  statutes,
+);
+assert.equal(freeClaimResult[0].section, "Free-claim advertisements");
 
 const unsupportedResult = findStatuteMatches("How do I contest a divorce?", statutes);
 assert.equal(unsupportedResult.length, 0);

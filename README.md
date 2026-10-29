@@ -13,9 +13,9 @@ Question
   -> fall back to source-backed retrieval on failure
 ```
 
-Current coverage: 36 curated primary-source records.
+Current coverage: 39 curated primary-source records.
 
-- Definitions: Sections 2(6), 2(7), 2(9), and 2(47)
+- Definitions: Sections 2(6), 2(7), 2(9), 2(28), and 2(47)
 - Central Consumer Protection Authority: Sections 17 to 21
 - Consumer complaint process: Sections 34, 35, 38, 39, 41, and 69
 - E-commerce duties and consumer disclosures: Rules 2, 4, 5, 6, and 7

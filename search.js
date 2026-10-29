@@ -18,6 +18,7 @@ const STOP_WORDS = new Set([
   "it",
   "law",
   "legal",
+  "makes",
   "of",
   "or",
   "protection",
@@ -48,9 +49,11 @@ export function findStatuteMatches(query, statutes) {
     return references.some((reference) => normalised.includes(normaliseQuery(reference)));
   });
 
-  // A specific section reference is more reliable than keyword relevance.
-  if (exactSectionMatches.length > 0) {
-    return exactSectionMatches;
+  // A specific provision or named topic is more reliable than keyword relevance.
+  // Broad topic labels must not hide concrete scenarios in a combined question.
+  const specificExactMatches = exactSectionMatches.filter((record) => !record.isBroadTopic);
+  if (specificExactMatches.length > 0) {
+    return specificExactMatches;
   }
 
   return statutes
@@ -59,8 +62,9 @@ export function findStatuteMatches(query, statutes) {
       const field = `${record.section} ${record.title} ${record.summary} ${record.keywords.join(" ")}`.toLowerCase();
 
       for (const keyword of record.keywords) {
-        if (normalised.includes(keyword.toLowerCase())) {
-          score += keyword.includes(" ") ? 8 : 4;
+        const normalisedKeyword = normaliseQuery(keyword);
+        if (normalised.includes(normalisedKeyword)) {
+          score += normalisedKeyword.includes(" ") ? 8 : 4;
         }
       }
 
@@ -74,5 +78,9 @@ export function findStatuteMatches(query, statutes) {
     })
     .filter((result) => result.score >= 2)
     .sort((left, right) => right.score - left.score)
+    .filter((result, index, ranked) => {
+      const strongestScore = ranked[0].score;
+      return index === 0 || result.score >= strongestScore * 0.6;
+    })
     .map((result) => result.record);
 }

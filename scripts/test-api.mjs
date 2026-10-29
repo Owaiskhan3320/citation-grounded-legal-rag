@@ -53,6 +53,8 @@ try {
     assert.equal(url, "https://api.groq.com/openai/v1/chat/completions");
     assert.equal(options.headers.Authorization, "Bearer test-key");
     assert.match(options.body, /test-model/);
+    assert.match(options.body, /"max_tokens":500/);
+    assert.match(options.body, /"role":"system"/);
     return new Response(
       JSON.stringify({
         choices: [
@@ -93,6 +95,31 @@ try {
     console.error = savedConsoleError;
   }
   assert.equal(invalidCitations.payload.mode, "retrieval_fallback");
+
+  globalThis.fetch = async () =>
+    new Response(
+      JSON.stringify({
+        choices: [
+          {
+            finish_reason: "length",
+            message: { content: "Consumer rights include safety [S1" },
+          },
+        ],
+      }),
+      { status: 200, headers: { "Content-Type": "application/json" } },
+    );
+
+  let incompleteGeneration;
+  try {
+    console.error = () => {};
+    incompleteGeneration = await request({
+      question: "What are consumer rights under section 2(9)?",
+    });
+  } finally {
+    console.error = savedConsoleError;
+  }
+  assert.equal(incompleteGeneration.payload.mode, "retrieval_fallback");
+  assert.match(incompleteGeneration.payload.answer, /quality, quantity, potency/);
 
   globalThis.fetch = async () =>
     new Response(
