@@ -12,4 +12,4 @@ The report is preserved as captured. It records the exact prompts, visible respo
 
 ## Next evaluation step
 
-The next evaluation will use a separate set of independently checked questions written before the system is tested against them. That set will be kept distinct from this regression suite so that future fixes can be assessed for generalisation as well as regression prevention.
+The next evaluation uses [Unseen Evaluation Set 1](unseen-set-1.md): 20 independently checked questions written before the system is tested against them. It is kept distinct from the regression suite so that future work can be assessed for generalisation as well as regression prevention.
