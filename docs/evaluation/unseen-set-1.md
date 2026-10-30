@@ -70,3 +70,30 @@ The questions deliberately use different wording and scenarios from the 50-quest
 | U18 | Generated | Adequate, noisy | Pass | Supported | Drip pricing. |
 | U19 | Generated | Adequate | Pass | Supported | Disguised advertisement. |
 | U20 | Fallback | Missing expected record | Fail | Not supported | Bait-and-switch record was not retrieved. |
+
+## Stage 4 Re-run Scorecard
+
+The Stage 4 source and retrieval fixes were evaluated against the same frozen prompts on 31 October 2026. Detailed method and answer notes are in [the Stage 4 re-run report](unseen-set-1-stage4-results-2026-10-31.md).
+
+| ID | Mode | Retrieval | Grade | Citation/card support | Notes |
+| --- | --- | --- | --- | --- | --- |
+| U01 | Generated | Adequate | Pass | Supported | Product-liability complaint definition. |
+| U02 | Fallback | Adequate | Pass | Supported | Unfair or deceptive methods and false representations. |
+| U03 | Generated | Adequate, noisy | Pass | Supported | Safety notice; Sections 17 and 20 were extra cards. |
+| U04 | Generated | Adequate, noisy | Pass | Supported | Unsafe-service withdrawal and reimbursement; Section 21 was extra. |
+| U05 | Generated | Adequate, noisy | Pass | Supported | 30 days with up to 15 days' extension; Sections 2(6) and 35 were extra. |
+| U06 | Generated | Adequate | Pass | Supported | Scope of digital and electronic commerce. |
+| U07 | Generated | Adequate | Pass | Supported | Platform identity and customer-care or grievance contact details. |
+| U08 | Generated | Adequate, noisy | Pass | Supported | Ranking-parameter explanation; Rule 6(3) and Rule 2 were extra. |
+| U09 | Generated | Adequate | Pass | Supported | Seller impersonation and review restrictions. |
+| U10 | Fallback | Adequate, noisy | Pass | Supported | Charges and complaint tracking; Rule 6(5) was extra. |
+| U11 | Generated | Adequate | Pass | Supported | Scientific-validity and performance claims. |
+| U12 | Generated | Adequate | Pass | Supported | Disclaimer restrictions. |
+| U13 | Generated | Adequate | Pass | Supported | Bait-advertisement stock limitation. |
+| U14 | Generated | Adequate | Pass | Supported | Endorser diligence and disclosure. |
+| U15 | Generated | Adequate | Pass | Supported | Child-targeted advertising safeguards. |
+| U16 | Generated | Adequate, noisy | Pass | Supported | Subscription trap; generic dark-pattern and drip-pricing cards were extra. |
+| U17 | Generated | Adequate, noisy | Pass | Supported | Basket sneaking; generic dark-pattern and Section 2(28) cards were extra. |
+| U18 | Generated | Adequate, noisy | Pass | Supported | Drip pricing; generic dark-pattern card was extra. |
+| U19 | Generated | Adequate | Pass | Supported | Disguised advertisement. |
+| U20 | Generated | Adequate | Pass | Supported | Bait-and-switch record was retrieved after the Stage 4 fix. |
