@@ -50,23 +50,23 @@ The questions deliberately use different wording and scenarios from the 50-quest
 
 | ID | Mode | Retrieval | Grade | Citation/card support | Notes |
 | --- | --- | --- | --- | --- | --- |
-| U01 |  |  |  |  |  |
-| U02 |  |  |  |  |  |
-| U03 |  |  |  |  |  |
-| U04 |  |  |  |  |  |
-| U05 |  |  |  |  |  |
-| U06 |  |  |  |  |  |
-| U07 |  |  |  |  |  |
-| U08 |  |  |  |  |  |
-| U09 |  |  |  |  |  |
-| U10 |  |  |  |  |  |
-| U11 |  |  |  |  |  |
-| U12 |  |  |  |  |  |
-| U13 |  |  |  |  |  |
-| U14 |  |  |  |  |  |
-| U15 |  |  |  |  |  |
-| U16 |  |  |  |  |  |
-| U17 |  |  |  |  |  |
-| U18 |  |  |  |  |  |
-| U19 |  |  |  |  |  |
-| U20 |  |  |  |  |  |
+| U01 | Generated | Adequate | Pass | Supported | Product-liability complaint definition. |
+| U02 | Fallback | Adequate | Pass | Supported | Unfair trade practice definition. |
+| U03 | Fallback | Adequate, noisy | Pass | Supported | Safety notices; extra cards displayed. |
+| U04 | Generated | Adequate, noisy | Pass | Supported | Unsafe-service withdrawal and reimbursement. |
+| U05 | Generated | Adequate | Pass | Supported | 30 days with up to 15 days' extension. |
+| U06 | Generated | Adequate | Pass | Supported | Scope of digital and electronic commerce. |
+| U07 | Generated | Adequate, noisy | Pass | Supported | Platform identity and contact details. |
+| U08 | Generated | Adequate, noisy | Pass | Supported | Ranking-parameter explanation. |
+| U09 | Generated | Adequate | Pass | Supported | Seller impersonation and review restrictions. |
+| U10 | Generated | Adequate, noisy | Pass | Supported | Charges and complaint tracking. |
+| U11 | Generated | Adequate | Pass | Supported | Validity and scientific-performance claims. |
+| U12 | Generated | Adequate | Pass | Supported | Disclaimer restrictions. |
+| U13 | Generated | Adequate | Pass | Supported | Bait-advertisement stock limitation. |
+| U14 | Generated | Adequate | Pass | Supported | Endorser diligence and disclosure. |
+| U15 | Generated | Adequate | Pass | Supported | Child-targeted advertising safeguards. |
+| U16 | Generated | Adequate, noisy | Pass | Supported | Subscription trap. |
+| U17 | Generated | Adequate, noisy | Pass | Supported | Basket sneaking. |
+| U18 | Generated | Adequate, noisy | Pass | Supported | Drip pricing. |
+| U19 | Generated | Adequate | Pass | Supported | Disguised advertisement. |
+| U20 | Fallback | Missing expected record | Fail | Not supported | Bait-and-switch record was not retrieved. |
