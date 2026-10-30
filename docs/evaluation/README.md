@@ -1,6 +1,6 @@
 # Evaluation
 
-This folder records manual evaluation runs for the deployed application. The aim is to make quality claims inspectable rather than relying on a few favourable examples.
+This folder records evaluation runs for the deployed application. The aim is to make quality claims inspectable rather than relying on a few favourable examples.
 
 ## Run 3 baseline
 
@@ -15,3 +15,7 @@ The report is preserved as captured. It records the exact prompts, visible respo
 The next evaluation uses [Unseen Evaluation Set 1](unseen-set-1.md): 20 independently checked questions written before the system is tested against them. It is kept distinct from the regression suite so that future work can be assessed for generalisation as well as regression prevention.
 
 [Unseen Evaluation Set 1 results](unseen-set-1-results-2026-10-30.md) records the completed first-valid-answer run: 19 of 20 core questions passed, with one documented bait-and-switch retrieval failure.
+
+## Stage 4 re-run
+
+[The Stage 4 re-run](unseen-set-1-stage4-results-2026-10-31.md) used the same frozen 20-question set after the targeted source-card and retrieval fixes were merged. All **20 of 20** core checkpoints passed, including the formerly failing bait-and-switch scenario. Eight responses still displayed nonessential source cards, so this is evidence of improved core retrieval coverage, not a claim of perfect retrieval precision or overall legal accuracy.
