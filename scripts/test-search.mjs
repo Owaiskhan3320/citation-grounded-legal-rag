@@ -67,7 +67,7 @@ const guidanceChecks = [
   ["What is bait and switch in an online advertisement?", "Bait and switch and disguised advertisements"],
 ];
 
-assert.equal(statutes.length, 39);
+assert.equal(statutes.length, 41);
 
 for (const [question, expectedSection] of sectionChecks) {
   const matches = findStatuteMatches(question, statutes);
@@ -120,6 +120,29 @@ const marketplaceDisclosureResult = findStatuteMatches(
 );
 assert.equal(marketplaceDisclosureResult[0].section, "Rule 5");
 
+const sellerAccuracyResult = findStatuteMatches(
+  "A marketplace seller uses product photographs and descriptions that do not match the goods. What undertaking must the marketplace require regarding accuracy under Rule 5?",
+  statutes,
+);
+assert.ok(
+  sellerAccuracyResult.some((record) => record.section === "Rule 5(2)"),
+  "The Rule 5(2) undertaking should be retrieved for inaccurate marketplace listings.",
+);
+
+const sellerDetailsResult = findStatuteMatches(
+  "After buying on a marketplace, a consumer makes a written request for the seller's details needed to resolve a dispute. What seller information must the marketplace provide under Rule 5(3)(a)?",
+  statutes,
+);
+assert.equal(sellerDetailsResult[0].section, "Rule 5(3)(a)");
+
+const prePurchaseDisclosureResult = findStatuteMatches(
+  "Under Rule 6(5), what must a marketplace seller disclose about total price, compulsory and voluntary charges, return/refund terms and warranties before purchase?",
+  statutes,
+);
+assert.equal(prePurchaseDisclosureResult[0].section, "Rule 6(5)");
+assert.match(prePurchaseDisclosureResult[0].excerpt, /single figure/i);
+assert.match(prePurchaseDisclosureResult[0].excerpt, /return-shipping costs/i);
+
 const foreignPlatformResult = findStatuteMatches(
   "Do the rules apply to a foreign website selling in India?",
   statutes,
@@ -155,6 +178,18 @@ const hiddenChargesResult = findStatuteMatches(
   statutes,
 );
 assert.equal(hiddenChargesResult[0].section, "Drip pricing");
+
+const mandatoryFeeResult = findStatuteMatches(
+  "A website reveals a mandatory fee only at payment.",
+  statutes,
+);
+assert.equal(mandatoryFeeResult[0].section, "Drip pricing");
+
+const baitAndSwitchResult = findStatuteMatches(
+  "A seller advertises a low-priced item but then tells the buyer it is unavailable and pushes a similar, more expensive item. Which dark pattern fits?",
+  statutes,
+);
+assert.equal(baitAndSwitchResult[0].section, "Bait and switch and disguised advertisements");
 
 const misleadingDefinitionResult = findStatuteMatches(
   "Can concealing important information make an advertisement misleading?",

@@ -375,9 +375,9 @@ export const statutes = [
     sourceName: E_COMMERCE_RULES_NAME,
     title: "Marketplace disclosures and seller transparency",
     summary:
-      "A marketplace platform must require accurate product information and prominently provide seller, complaint-tracking, return, refund, payment, and grievance information, including an explanation of key ranking parameters.",
+      "A marketplace platform must prominently provide seller, complaint-tracking, return, refund, payment, and grievance information, including seller-provided information under Rule 6(5) and an explanation of key ranking parameters.",
     excerpt:
-      "Marketplace e-commerce entities must require sellers to ensure that product descriptions, images and other content are accurate. They must prominently provide seller details, complaint ticket numbers, return, refund, exchange, delivery, payment and grievance information, relevant seller disclosures, and an explanation of the main ranking parameters for goods or sellers.",
+      "Marketplace e-commerce entities must prominently provide seller details, complaint ticket numbers, return, refund, exchange, delivery, payment and grievance information, information provided by sellers under Rule 6(5), and an explanation of the main ranking parameters for goods or sellers.",
     keywords: [
       "marketplace seller information",
       "online marketplace return refund information",
@@ -385,6 +385,42 @@ export const statutes = [
       "seller rating country of origin",
       "ranking parameters online marketplace",
       "rule 5",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "marketplace-seller-accuracy-undertaking",
+    section: "Rule 5(2)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Seller undertaking for accurate listings",
+    summary:
+      "A marketplace must obtain an undertaking from sellers that listing descriptions, images, and other content are accurate and correspond directly with the goods or services offered.",
+    excerpt:
+      "A marketplace e-commerce entity shall obtain an undertaking from sellers to ensure that descriptions, images and other content pertaining to goods or services on its platform are accurate and correspond directly with the appearance, nature, quality, purpose and other general features of the goods or services.",
+    keywords: [
+      "seller undertaking accurate listing",
+      "product photographs do not match goods",
+      "descriptions images accurate goods",
+      "marketplace listing accuracy",
+      "rule 5(2)",
+    ],
+    sourceUrl: E_COMMERCE_RULES_URL,
+  },
+  {
+    id: "marketplace-post-purchase-seller-details",
+    section: "Rule 5(3)(a)",
+    sourceName: E_COMMERCE_RULES_NAME,
+    title: "Seller details after a written post-purchase request",
+    summary:
+      "After a consumer makes a written request following a purchase, a marketplace must provide the seller's principal geographic address, website details, email address, and other information needed for effective dispute-resolution communication.",
+    excerpt:
+      "On a written request made by a consumer after purchase, a marketplace e-commerce entity shall provide information regarding the seller, including the principal geographic address of its headquarters and all branches, the name and details of its website, its email address, and other information necessary for communication with the seller for effective dispute resolution.",
+    keywords: [
+      "written request after purchase seller details",
+      "seller address website email dispute resolution",
+      "post purchase seller contact information",
+      "marketplace seller details written request",
+      "rule 5(3)(a)",
     ],
     sourceUrl: E_COMMERCE_RULES_URL,
   },
@@ -449,14 +485,16 @@ export const statutes = [
     sourceName: E_COMMERCE_RULES_NAME,
     title: "Pre-purchase information from marketplace sellers",
     summary:
-      "A marketplace seller must provide information for display before purchase, including total price and charges, applicable notices, relevant product details, return and refund terms, grievance-officer details, importer details where applicable, delivery information, and warranties or guarantees.",
+      "Before purchase, a marketplace seller must provide the total price in a single figure and a breakup showing compulsory and voluntary charges, clear exchange, return and refund terms including return-shipping costs, delivery and shipment details, and relevant guarantees or warranties.",
     excerpt:
-      "A marketplace seller must provide information for display on the platform, including contractual disclosures, the total price with compulsory and voluntary charges, applicable notices, relevant goods or service details needed for an informed pre-purchase decision, grievance-officer details, importer details where applicable, return and refund terms, delivery information, and relevant guarantees or warranties.",
+      "A marketplace seller must provide the total price in a single figure and the breakup price showing compulsory and voluntary charges, such as delivery, postage and handling, conveyance and applicable tax. It must also provide accurate information about exchange, returns and refunds, including return-shipping costs, relevant delivery and shipment details, and applicable guarantees or warranties.",
     keywords: [
       "seller total price delivery charges ecommerce",
+      "single figure breakup compulsory voluntary charges",
       "online seller pre purchase information",
       "country of origin importer marketplace",
       "return refund warranty details seller",
+      "return shipping costs",
       "rule 6(5)",
     ],
     sourceUrl: E_COMMERCE_RULES_URL,
@@ -721,6 +759,7 @@ export const statutes = [
       "free app later payment",
       "undisclosed fees online",
       "mandatory fee at payment",
+      "mandatory fee only at payment",
       "third party seller price fluctuation",
     ],
     sourceUrl: DARK_PATTERNS_GUIDELINES_URL,
@@ -738,6 +777,8 @@ export const statutes = [
     keywords: [
       "bait and switch",
       "advertised product unavailable expensive alternative",
+      "low priced item",
+      "similar more expensive item",
       "disguised advertisement",
       "ad looks like news article",
       "sponsored content disguised",
