@@ -14,7 +14,7 @@ const evidence = retrieveEvidence(
 assert.equal(evidence[0].section, "Section 21");
 assert.equal(evidence[0].id, "S1");
 assert.match(buildFallbackAnswer(evidence), /\[S1\]/);
-assert.match(buildFallbackAnswer(evidence), /discontinue or modify/);
+assert.match(buildFallbackAnswer(evidence), /discontinue such advertisement or to modify/);
 
 const rightsEvidence = retrieveEvidence(
   "What are consumer rights under section 2(9) of the Consumer Protection Act, 2019?",
@@ -69,7 +69,7 @@ const remediesPrompt = buildGroundedPrompt(
   "Are repair, replacement, refund and compensation possible under section 39?",
   retrieveEvidence("What remedies can the District Commission order under section 39?"),
 );
-assert.match(remediesPrompt, /removal of defects/i);
+assert.match(remediesPrompt, /to remove the defects in goods/i);
 assert.match(remediesPrompt, /rather than treating the wording difference as evidence that a remedy is excluded/);
 
 assert.equal(hasValidCitations("A supported statement. [S1]", evidence), true);

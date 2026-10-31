@@ -27,6 +27,11 @@ The current corpus contains 41 curated records from four source families:
 
 The app does not search judgments yet. Judgment search is held back until Consumer Disputes material has been filtered, source-linked, and reviewed.
 
+Records now live in versioned JSON, with official quotations, PDF page references,
+source hashes, and effective dates. Five replacement versions of existing
+e-commerce records are kept separate until 1 January 2027. See [source data](docs/source-data.md)
+for the format and checks. This is not a complete consolidated edition of these laws.
+
 ## Request path
 
 ```mermaid
@@ -51,9 +56,12 @@ The evaluation notes are kept in [docs/evaluation](docs/evaluation/README.md).
 
 These are small, source-scoped checks. They are not a claim of overall legal accuracy, production readiness, or legal advice. The Stage 4 report also records eight responses that displayed nonessential extra source cards.
 
+Those reports predate the versioned-corpus migration. The updated quotations need
+a fresh answer evaluation before reusing the same accuracy figures.
+
 ## Run locally
 
-Requires Node.js 20+ and Python for the small case-curation test suite.
+Requires Node.js 20.18.3+ (22+ recommended) and Python 3.10+ for data checks.
 
 ```powershell
 cd B:\Rag\consumer-law-research
@@ -65,6 +73,8 @@ Open `http://localhost:8080`. A plain static server has no `/api/ask` function, 
 Run the checks with:
 
 ```powershell
+python -m pip install -r requirements-dev.txt
+python scripts/validate_corpus.py
 npm test
 python -m unittest discover -s tests -v
 ```
