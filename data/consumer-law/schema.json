@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Consumer-law release",
+  "type": "object",
+  "required": ["schema_version", "release", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "release": {"type": "string", "pattern": "^consumer-law-v[1-9][0-9]*$"},
+    "records": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/record"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "date": {"type": "string", "format": "date"},
+    "strings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "passage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_id", "page", "text"],
+      "properties": {
+        "source_id": {"$ref": "#/$defs/id"},
+        "page": {"type": "integer", "minimum": 1},
+        "text": {"$ref": "#/$defs/text"}
+      }
+    },
+    "record": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "version", "section", "title", "summary", "keywords", "provisions", "source_id", "source_type", "passages", "effective_from", "effective_to", "commencement_source_id", "checked_on", "review_status", "review_note"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "version": {"$ref": "#/$defs/date"},
+        "section": {"$ref": "#/$defs/text"},
+        "title": {"$ref": "#/$defs/text"},
+        "summary": {"$ref": "#/$defs/text"},
+        "keywords": {"$ref": "#/$defs/strings"},
+        "references": {"$ref": "#/$defs/strings"},
+        "isBroadTopic": {"type": "boolean"},
+        "provisions": {"$ref": "#/$defs/strings"},
+        "source_id": {"$ref": "#/$defs/id"},
+        "source_type": {"enum": ["statute", "rules", "guidelines", "action"]},
+        "passages": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/passage"}},
+        "effective_from": {"$ref": "#/$defs/date"},
+        "effective_to": {"anyOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+        "commencement_source_id": {"$ref": "#/$defs/id"},
+        "checked_on": {"$ref": "#/$defs/date"},
+        "review_status": {"enum": ["pending", "source_checked"]},
+        "review_note": {"$ref": "#/$defs/text"}
+      }
+    },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "title", "source_type", "authority", "official_url", "published_on", "retrieved_on", "checked_on", "pdf_sha256", "snapshot", "snapshot_sha256", "note"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "title": {"$ref": "#/$defs/text"},
+        "source_type": {"enum": ["statute", "rules", "guidelines", "notification", "amendment", "action"]},
+        "authority": {"$ref": "#/$defs/text"},
+        "official_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "published_on": {"$ref": "#/$defs/date"},
+        "retrieved_on": {"$ref": "#/$defs/date"},
+        "checked_on": {"$ref": "#/$defs/date"},
+        "pdf_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "snapshot": {"type": "string", "pattern": "^snapshots/[a-z0-9-]+\\.json$"},
+        "snapshot_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "note": {"$ref": "#/$defs/text"}
+      }
+    },
+    "manifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "release", "sources"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "release": {"type": "string", "pattern": "^consumer-law-v[1-9][0-9]*$"},
+        "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/source"}}
+      }
+    }
+  }
+}

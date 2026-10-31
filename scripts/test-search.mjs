@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 
-import { statutes } from "../data/statutes.js";
+import { getStatutes } from "../data/statutes.js";
 import { findStatuteMatches } from "../search.js";
+
+const statutes = getStatutes("2026-11-01");
 
 const rightsResult = findStatuteMatches(
   "What are consumer rights under section 2(9)?",
@@ -141,7 +143,7 @@ const prePurchaseDisclosureResult = findStatuteMatches(
 );
 assert.equal(prePurchaseDisclosureResult[0].section, "Rule 6(5)");
 assert.match(prePurchaseDisclosureResult[0].excerpt, /single figure/i);
-assert.match(prePurchaseDisclosureResult[0].excerpt, /return-shipping costs/i);
+assert.match(prePurchaseDisclosureResult[0].excerpt, /costs of return shipping/i);
 
 const foreignPlatformResult = findStatuteMatches(
   "Do the rules apply to a foreign website selling in India?",

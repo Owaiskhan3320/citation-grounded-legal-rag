@@ -1,10 +1,10 @@
-import { statutes } from "./data/statutes.js";
+import { getStatutes } from "./data/statutes.js";
 import { findStatuteMatches } from "./search.js";
 
 const MAX_EVIDENCE_RECORDS = 3;
 
-export function retrieveEvidence(question) {
-  return findStatuteMatches(question, statutes)
+export function retrieveEvidence(question, asOf) {
+  return findStatuteMatches(question, getStatutes(asOf))
     .slice(0, MAX_EVIDENCE_RECORDS)
     .map((record, index) => ({
       id: `S${index + 1}`,
@@ -14,6 +14,13 @@ export function retrieveEvidence(question) {
       summary: record.summary,
       excerpt: record.excerpt,
       sourceUrl: record.sourceUrl,
+      recordId: record.id,
+      version: record.version,
+      effectiveFrom: record.effective_from,
+      effectiveTo: record.effective_to,
+      checkedOn: record.checked_on,
+      provisions: record.provisions,
+      passages: record.passages,
     }));
 }
 

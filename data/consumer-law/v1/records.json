@@ -1,0 +1,1671 @@
+{
+  "schema_version": 1,
+  "release": "consumer-law-v1",
+  "records": [
+    {
+      "id": "complaint-definition",
+      "section": "Section 2(6)",
+      "title": "Meaning of complaint",
+      "summary": "A complaint is a written allegation by an eligible complainant seeking relief under the Act for matters such as unfair trade practices, defective goods, deficient services, overcharging, unsafe goods or services, or product liability.",
+      "keywords": [
+        "what is a complaint",
+        "meaning of complaint",
+        "eligible complaint",
+        "defective goods",
+        "deficient service",
+        "overcharging",
+        "section 2(6)",
+        "2(6)"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 2(6)"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 2,
+          "text": "(6) \"complaint\" means any allegation in writing, made by a complainant for obtaining any relief provided by or under this Act, that— (i) an unfair contract or unfair trade practice or a restrictive trade practice has been adopted by any trader or service provider; (ii) the goods bought by him or agreed to be bought by him suffer from one or more defects; (iii) the services hired or availed of or agreed to be hired or availed of by him suffer from any deficiency; (iv) a trader or a service provider, as the case may be, has charged for the goods or for the services mentioned in the complaint, a price in excess of the price— (a) fixed by or under any law for the time being in force; or"
+        },
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 3,
+          "text": "(b) displayed on the goods or any package containing such goods; or (c) displayed on the price list exhibited by him by or under any law for the time being in force; or (d) agreed between the parties; (v) the goods, which are hazardous to life and safety when used, are being offered for sale to the public— (a) in contravention of standards relating to safety of such goods as required to be complied with, by or under any law for the time being in force; (b) where the trader knows that the goods so offered are unsafe to the public; (vi) the services which are hazardous or likely to be hazardous to life and safety of the public when used, are being offered by a person who provides any service and who knows it to be injurious to life and safety; (vii) a claim for product liability action lies against the product manufacturer, product seller or product service provider, as the case may be;"
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "consumer-definition",
+      "section": "Section 2(7)",
+      "title": "Meaning of consumer",
+      "summary": "A consumer includes a person who buys goods or hires or avails services for consideration, including in covered online transactions, but generally excludes resale or commercial-purpose purchases.",
+      "keywords": [
+        "who is a consumer",
+        "meaning of consumer",
+        "consumer definition",
+        "commercial purpose",
+        "resale",
+        "online transaction",
+        "section 2(7)",
+        "2(7)"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 2(7)"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 3,
+          "text": "(7) \"consumer\" means any person who— (i) buys any goods for a consideration which has been paid or promised or partly paid and partly promised, or under any system of deferred payment and includes any user of such goods other than the person who buys such goods for consideration paid or promised or partly paid or partly promised, or under any system of deferred payment, when such use is made with the approval of such person, but does not include a person who obtains such goods for resale or for any commercial purpose; or (ii) hires or avails of any service for a consideration which has been paid or promised or partly paid and partly promised, or under any system of deferred payment and includes any beneficiary of such service other than the person who hires or avails of the services for consideration paid or promised, or partly paid and partly promised, or under any system of deferred payment, when such services are availed of with the approval of the first mentioned person, but does not include a person who avails of such service for any commercial purpose. Explanation.—For the purposes of this clause,— (a) the expression \"commercial purpose\" does not include use by a person of goods bought and used by him exclusively for the purpose of earning his livelihood, by means of self-employment; (b) the expressions \"buys any goods\" and \"hires or avails any services\" includes offline or online transactions through electronic means or by teleshopping or direct selling or multi-level marketing;"
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "consumer-rights",
+      "section": "Section 2(9)",
+      "title": "Consumer rights",
+      "summary": "The Act recognises rights to safety, information, choice, being heard, redressal, and consumer awareness.",
+      "keywords": [
+        "consumer rights",
+        "right to safety",
+        "right to information",
+        "right to choice",
+        "right to be heard",
+        "right to redressal",
+        "consumer awareness",
+        "section 2(9)",
+        "2(9)"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 2(9)"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 3,
+          "text": "(9) \"consumer rights\" includes,— (i) the right to be protected against the marketing of goods, products or services which are hazardous to life and property; (ii) the right to be informed about the quality, quantity, potency, purity, standard and price of goods, products or services, as the case may be, so as to protect the consumer against unfair trade practices;"
+        },
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 4,
+          "text": "(iii) the right to be assured, wherever possible, access to a variety of goods, products or services at competitive prices; (iv) the right to be heard and to be assured that consumer's interests will receive due consideration at appropriate fora; (v) the right to seek redressal against unfair trade practice or restrictive trade practices or unscrupulous exploitation of consumers; and (vi) the right to consumer awareness;"
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "class-complaints-to-authorities",
+      "section": "Section 17",
+      "title": "Complaints to authorities",
+      "summary": "A complaint about consumer-rights violations, unfair trade practices, or false or misleading advertisements affecting consumers as a class may be sent in writing or electronically to the District Collector, a regional-office Commissioner, or the Central Authority.",
+      "keywords": [
+        "complaint to central authority",
+        "class complaint",
+        "consumer rights violation",
+        "district collector complaint",
+        "electronic complaint authority",
+        "section 17"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 17"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 13,
+          "text": "17. A complaint relating to violation of consumer rights or unfair trade practices or false or misleading advertisements which are prejudicial to the interests of consumers as a class, may be forwarded either in writing or in electronic mode, to any one of the authorities, namely, the District Collector or the Commissioner of regional office or the Central Authority."
+        }
+      ],
+      "effective_from": "2020-07-24",
+      "effective_to": null,
+      "version": "2020-07-24",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july24"
+    },
+    {
+      "id": "ccpa-functions",
+      "section": "Section 18",
+      "title": "Powers and functions of the Central Authority",
+      "summary": "The Central Consumer Protection Authority protects consumer rights as a class, works to prevent unfair trade practices and false or misleading advertisements, and may inquire into violations, file complaints, issue safety notices, and issue guidelines.",
+      "keywords": [
+        "ccpa powers",
+        "central consumer protection authority functions",
+        "central authority functions",
+        "consumer safety notice",
+        "prevent unfair trade practice",
+        "section 18"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 18"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 13,
+          "text": "18. (1) The Central Authority shall— (a) protect, promote and enforce the rights of consumers as a class, and prevent violation of consumers rights under this Act; (b) prevent unfair trade practices and ensure that no person engages himself in unfair trade practices; (c) ensure that no false or misleading advertisement is made of any goods or services which contravenes the provisions of this Act or the rules or regulations made thereunder; (d) ensure that no person takes part in the publication of any advertisement which is false or misleading. (2) Without prejudice to the generality of the provisions contained in sub-section (1), the Central Authority may, for any of the purposes aforesaid,— (a) inquire or cause an inquiry or investigation to be made into violations of consumer rights or unfair trade practices, either suo motu or on a complaint received or on the directions from the Central Government; (b) file complaints before the District Commission, the State Commission or the National Commission, as the case may be, under this Act; (c) intervene in any proceedings before the District Commission or the State Commission or the National Commission, as the case may be, in respect of any allegation of violation of consumer rights or unfair trade practices; (d) review the matters relating to, and the factors inhibiting enjoyment of, consumer rights, including safeguards provided for the protection of consumers under any other law for the time being in force and recommend appropriate remedial measures for their effective implementation; (e) recommend adoption of international covenants and best international practices on consumer rights to ensure effective enforcement of consumer rights; (f) undertake and promote research in the field of consumer rights; (g) spread and promote awareness on consumer rights; (h) encourage non-Governmental organisations and other institutions working in the field of consumer rights to co-operate and work with consumer protection agencies; (i) mandate the use of unique and universal goods identifiers in such goods, as may be necessary, to prevent unfair trade practices and to protect consumers' interest;"
+        },
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 14,
+          "text": "(j) issue safety notices to alert consumers against dangerous or hazardous or unsafe goods or services; (k) advise the Ministries and Departments of the Central and State Governments on consumer welfare measures; (l) issue necessary guidelines to prevent unfair trade practices and protect consumers' interest."
+        }
+      ],
+      "effective_from": "2020-07-24",
+      "effective_to": null,
+      "version": "2020-07-24",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july24"
+    },
+    {
+      "id": "ccpa-investigation",
+      "section": "Section 19",
+      "title": "Preliminary inquiry and investigation by the Central Authority",
+      "summary": "After receiving information, a complaint, government directions, or acting on its own motion, the Central Authority may conduct a preliminary inquiry and, where there is a prima facie case, direct an investigation or refer the matter to another regulator.",
+      "keywords": [
+        "ccpa investigation",
+        "central authority investigation",
+        "preliminary inquiry",
+        "prima facie case",
+        "refer to regulator",
+        "section 19"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 19"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 14,
+          "text": "19. (1) The Central Authority may, after receiving any information or complaint or directions from the Central Government or of its own motion, conduct or cause to be conducted a preliminary inquiry as to whether there exists a prima facie case of violation of consumer rights or any unfair trade practice or any false or misleading advertisement, by any person, which is prejudicial to the public interest or to the interests of consumers and if it is satisfied that there exists a prima facie case, it shall cause investigation to be made by the Director- General or by the District Collector. (2) Where, after preliminary inquiry, the Central Authority is of the opinion that the matter is to be dealt with by a Regulator established under any other law for the time being in force, it may refer such matter to the concerned Regulator along with its report. (3) For the purposes of investigation under sub-section (1), the Central Authority, the Director General or the District Collector may call upon a person referred to in sub-section (1) and also direct him to produce any document or record in his possession."
+        }
+      ],
+      "effective_from": "2020-07-24",
+      "effective_to": null,
+      "version": "2020-07-24",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july24"
+    },
+    {
+      "id": "unsafe-goods-recall",
+      "section": "Section 20",
+      "title": "Recall of goods and withdrawal of services",
+      "summary": "After investigation, the Central Authority may order recall of dangerous, hazardous or unsafe goods, withdrawal of unsafe services, reimbursement to purchasers, or discontinuation of unfair practices, after giving the affected person an opportunity to be heard.",
+      "keywords": [
+        "recall unsafe goods",
+        "hazardous product recall",
+        "withdraw unsafe service",
+        "refund recalled product",
+        "ccpa recall powers",
+        "section 20"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 20"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 14,
+          "text": "20. Where the Central Authority is satisfied on the basis of investigation that there is sufficient evidence to show violation of consumer rights or unfair trade practice by a person, it may pass such order as may be necessary, including— (a) recalling of goods or withdrawal of services which are dangerous, hazardous or unsafe; (b) reimbursement of the prices of goods or services so recalled to purchasers of such goods or services; and (c) discontinuation of practices which are unfair and prejudicial to consumers' interest: Provided that the Central Authority shall give the person an opportunity of being heard before passing an order under this section."
+        }
+      ],
+      "effective_from": "2020-07-24",
+      "effective_to": null,
+      "version": "2020-07-24",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july24"
+    },
+    {
+      "id": "misleading-advertisements",
+      "section": "Section 21",
+      "title": "Directions and penalties for false or misleading advertisements",
+      "summary": "The Central Authority may direct a false or misleading advertisement to be discontinued or modified, and may impose statutory penalties in applicable cases.",
+      "keywords": [
+        "misleading advertisement",
+        "false advertisement",
+        "false or misleading",
+        "central authority",
+        "ccpa",
+        "advertiser",
+        "endorser",
+        "section 21",
+        "penalty advertisement"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 21"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 14,
+          "text": "21. (1) Where the Central Authority is satisfied after investigation that any advertisement is false or misleading and is prejudicial to the interest of any consumer or is in contravention of consumer rights, it may, by order, issue directions to the concerned trader or manufacturer or endorser or advertiser or publisher, as the case may be, to discontinue such advertisement or to modify the same in such manner and within such time as may be specified in that order. (2) Notwithstanding the order passed under sub-section (1), if the Central Authority is of the opinion that it is necessary to impose a penalty in respect of such false or misleading advertisement, by a manufacturer or an endorser, it may, by order, impose on manufacturer or endorser a penalty which may extend to ten lakh rupees: Provided that the Central Authority may, for every subsequent contravention by a manufacturer or endorser, impose a penalty, which may extend to fifty lakh rupees. (3) Notwithstanding any order under sub-sections (1) and (2), where the Central Authority deems it necessary, it may, by order, prohibit the endorser of a false or misleading advertisement from making endorsement of any product or service for a period which may extend to one year:"
+        },
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 15,
+          "text": "Provided that the Central Authority may, for every subsequent contravention, prohibit such endorser from making endorsement in respect of any product or service for a period which may extend to three years. (4) Where the Central Authority is satisfied after investigation that any person is found to publish, or is a party to the publication of, a misleading advertisement, it may impose on such person a penalty which may extend to ten lakh rupees. (5) No endorser shall be liable to a penalty under sub-sections (2) and (3) if he has exercised due diligence to verify the veracity of the claims made in the advertisement regarding the product or service being endorsed by him. (6) No person shall be liable to such penalty if he proves that he had published or arranged for the publication of such advertisement in the ordinary course of his business: Provided that no such defence shall be available to such person if he had previous knowledge of the order passed by the Central Authority for withdrawal or modification of such advertisement. (7) While determining the penalty under this section, regard shall be had to the following, namely:— (a) the population and the area impacted or affected by such offence; (b) the frequency and duration of such offence; (c) the vulnerability of the class of persons likely to be adversely affected by such offence; and (d) the gross revenue from the sales effected by virtue of such offence. (8) The Central Authority shall give the person an opportunity of being heard before an order under this section is passed."
+        }
+      ],
+      "effective_from": "2020-07-24",
+      "effective_to": null,
+      "version": "2020-07-24",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july24"
+    },
+    {
+      "id": "unfair-trade-practice",
+      "section": "Section 2(47)",
+      "title": "Unfair trade practice",
+      "summary": "The Act defines unfair trade practices, including misleading representations and specified deceptive practices connected with the sale or supply of goods and services.",
+      "keywords": [
+        "unfair trade practice",
+        "deceptive practice",
+        "misrepresentation",
+        "false representation",
+        "section 2(47)",
+        "2(47)"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 2(47), opening and (i)(a)-(f)"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 8,
+          "text": "(47) \"unfair trade practice\" means a trade practice which, for the purpose of promoting the sale, use or supply of any goods or for the provision of any service, adopts any unfair method or unfair or deceptive practice including any of the following practices, namely:— (i) making any statement, whether orally or in writing or by visible representation including by means of electronic record, which— (a) falsely represents that the goods are of a particular standard, quality, quantity, grade, composition, style or model; (b) falsely represents that the services are of a particular standard, quality or grade; (c) falsely represents any re-built, second-hand, renovated, reconditioned or old goods as new goods; (d) represents that the goods or services have sponsorship, approval, performance, characteristics, accessories, uses or benefits which such goods or services do not have; (e) represents that the seller or the supplier has a sponsorship or approval or affiliation which such seller or supplier does not have; (f) makes a false or misleading representation concerning the need for, or the usefulness of, any goods or services;"
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "false-or-misleading-advertisement-definition",
+      "section": "Section 2(28)",
+      "title": "Meaning of false or misleading advertisement",
+      "summary": "A false or misleading advertisement includes one that falsely describes a product or service, is likely to mislead consumers about it, makes a representation amounting to an unfair trade practice, or deliberately conceals important information.",
+      "keywords": [
+        "false or misleading advertisement definition",
+        "misleading advertisement definition",
+        "concealing important information",
+        "hides material condition advertisement",
+        "section 2(28)",
+        "2(28)"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 2(28)"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 5,
+          "text": "(28) \"misleading advertisement\" in relation to any product or service, means an advertisement, which— (i) falsely describes such product or service; or (ii) gives a false guarantee to, or is likely to mislead the consumers as to the nature, substance, quantity or quality of such product or service; or (iii) conveys an express or implied representation which, if made by the manufacturer or seller or service provider thereof, would constitute an unfair trade practice; or (iv) deliberately conceals important information;"
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "filing-complaint",
+      "section": "Section 35",
+      "title": "Manner in which complaint shall be made",
+      "summary": "An eligible complainant may file a consumer complaint before the District Commission, including electronically in the manner prescribed by the Act and rules.",
+      "keywords": [
+        "file complaint",
+        "filing complaint",
+        "consumer complaint",
+        "district commission",
+        "how to complain",
+        "section 35",
+        "electronic filing",
+        "e filing"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 35"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 18,
+          "text": "35. (1) A complaint, in relation to any goods sold or delivered or agreed to be sold or delivered or any service provided or agreed to be provided, may be filed with a District Commission by— (a) the consumer,— (i) to whom such goods are sold or delivered or agreed to be sold or delivered or such service is provided or agreed to be provided; or (ii) who alleges unfair trade practice in respect of such goods or service; (b) any recognised consumer association, whether the consumer to whom such goods are sold or delivered or agreed to be sold or delivered or such service is provided or agreed to be provided, or who alleges unfair trade practice in respect of such goods or service, is a member of such association or not; (c) one or more consumers, where there are numerous consumers having the same interest, with the permission of the District Commission, on behalf of, or for the benefit of, all consumers so interested; or (d) the Central Government, the Central Authority or the State Government, as the case may be: Provided that the complaint under this sub-section may be filed electronically in such manner as may be prescribed. Explanation.—For the purposes of this sub-section, \"recognised consumer association\" means any voluntary consumer association registered under any law for the time being in force. (2) Every complaint filed under sub-section (1) shall be accompanied with such fee and payable in such manner, including electronic form, as may be prescribed."
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "district-commission-jurisdiction",
+      "section": "Section 34",
+      "title": "Jurisdiction of District Commission",
+      "summary": "A complaint may be filed before a District Commission with the required jurisdiction, including where the opposite party is located, the cause of action arises, or the complainant resides or personally works for gain, subject to the Act and applicable rules.",
+      "keywords": [
+        "where to file complaint",
+        "district commission jurisdiction",
+        "complainant residence jurisdiction",
+        "consumer forum location",
+        "cause of action",
+        "section 34"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 34(2)"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 17,
+          "text": "(2) A complaint shall be instituted in a District Commission within the local limits of whose jurisdiction,— (a) the opposite party or each of the opposite parties, where there are more than one, at the time of the institution of the complaint, ordinarily resides or carries on business or has a branch office or personally works for gain; or (b) any of the opposite parties, where there are more than one, at the time of the institution of the complaint, actually and voluntarily resides, or carries on business or has a branch office, or personally works for gain, provided that in such case the permission of the District Commission is given; or (c) the cause of action, wholly or in part, arises; or (d) the complainant resides or personally works for gain."
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "complaint-procedure",
+      "section": "Section 38",
+      "title": "Procedure on admission of complaint",
+      "summary": "After admitting a complaint, the District Commission follows the Act's procedure for obtaining the opposite party's version and, where required, considering testing of goods or other evidence before making an order.",
+      "keywords": [
+        "complaint procedure",
+        "after complaint admission",
+        "opposite party response",
+        "district commission process",
+        "laboratory testing goods",
+        "section 38"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 38(1)-(2)"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 19,
+          "text": "38. (1) The District Commission shall, on admission of a complaint, or in respect of cases referred for mediation on failure of settlement by mediation, proceed with such complaint. (2) Where the complaint relates to any goods, the District Commission shall,— (a) refer a copy of the admitted complaint, within twenty-one days from the date of its admission to the opposite party mentioned in the complaint directing him to give his version of the case within a period of thirty days or such extended period not exceeding fifteen days as may be granted by it; (b) if the opposite party on receipt of a complaint referred to him under clause (a) denies or disputes the allegations contained in the complaint, or omits or fails to take any action to represent his case within the time given by the District Commission, proceed to settle the consumer dispute in the manner specified in clauses (c) to (g); (c) if the complaint alleges a defect in the goods which cannot be determined without proper analysis or test of the goods, obtain a sample of the goods from the complainant, seal it and authenticate it in the manner as may be prescribed and refer the sample so sealed to the appropriate laboratory along with a direction that such laboratory to make an analysis or test, whichever may be necessary, with a view to finding out whether such goods suffer from any defect alleged in the complaint or from any other defect and to report its findings thereon to the District Commission within a period of forty-five days of the receipt of the reference or within such extended period as may be granted by it; (d) before any sample of the goods is referred to any appropriate laboratory under clause (c), require the complainant to deposit to the credit of the Commission such fees as may be specified, for payment to the appropriate laboratory for carrying out the necessary analysis or test in relation to the goods in question; (e) remit the amount deposited to its credit under clause (d) to the appropriate laboratory to enable it to carry out the analysis or test mentioned in clause (c) and on receipt of the report from the appropriate laboratory, it shall forward a copy of the report along with such remarks as it may feel appropriate to the opposite party; (f) if any of the parties disputes the correctness of the findings of the appropriate laboratory, or disputes the correctness of the methods of analysis or test adopted by the appropriate laboratory, require the opposite party or the complainant to submit in writing his objections with regard to the report made by the appropriate laboratory; (g) give a reasonable opportunity to the complainant as well as the opposite party of being heard as to the correctness or otherwise of the report made by the appropriate laboratory and also as to the objection made in relation thereto under clause (f) and issue an appropriate order under section 39."
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "district-commission-remedies",
+      "section": "Section 39",
+      "title": "Findings and orders of District Commission",
+      "summary": "If a complaint is proved, the District Commission may grant remedies including removal of defects, replacement, refund, compensation, discontinuation of unfair practices, corrective advertising, and costs, as applicable.",
+      "keywords": [
+        "consumer complaint remedy",
+        "district commission order",
+        "refund compensation replacement",
+        "corrective advertisement",
+        "removal of defects",
+        "section 39"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 39"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 21,
+          "text": "39. (1) Where the District Commission is satisfied that the goods complained against suffer from any of the defects specified in the complaint or that any of the allegations contained in the complaint about the services or any unfair trade practices, or claims for compensation under product liability are proved, it shall issue an order to the opposite party directing him to do one or more of the following, namely:— (a) to remove the defect pointed out by the appropriate laboratory from the goods in question; (b) to replace the goods with new goods of similar description which shall be free from any defect; (c) to return to the complainant the price, or, as the case may be, the charges paid by the complainant along with such interest on such price or charges as may be decided; (d) to pay such amount as may be awarded by it as compensation to the consumer for any loss or injury suffered by the consumer due to the negligence of the opposite party: Provided that the District Commission shall have the power to grant punitive damages in such circumstances as it deems fit; (e) to pay such amount as may be awarded by it as compensation in a product liability action under Chapter VI; (f) to remove the defects in goods or deficiencies in the services in question; (g) to discontinue the unfair trade practice or restrictive trade practice and not to repeat them; (h) not to offer the hazardous or unsafe goods for sale; (i) to withdraw the hazardous goods from being offered for sale; (j) to cease manufacture of hazardous goods and to desist from offering services which are hazardous in nature; (k) to pay such sum as may be determined by it, if it is of the opinion that loss or injury has been suffered by a large number of consumers who are not identifiable conveniently: Provided that the minimum amount of sum so payable shall not be less than twenty-five per cent. of the value of such defective goods sold or service provided, as the case may be, to such consumers;"
+        },
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 22,
+          "text": "(l) to issue corrective advertisement to neutralise the effect of misleading advertisement at the cost of the opposite party responsible for issuing such misleading advertisement; (m) to provide for adequate costs to parties; and (n) to cease and desist from issuing any misleading advertisement. (2) Any amount obtained under sub-section (1) shall be credited to such fund and utilised in such manner as may be prescribed. (3) In any proceeding conducted by the President and a member and if they differ on any point or points, they shall state the point or points on which they differ and refer the same to another member for hearing on such point or points and the opinion of the majority shall be the order of the District Commission: Provided that the other member shall give his opinion on such point or points referred to him within a period of one month from the date of such reference. (4) Every order made by the District Commission under sub-section (1) shall be signed by the President and the member who conducted the proceeding: Provided that where the order is made as per majority opinion under sub-section (3), such order shall also be signed by the other member."
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "appeal-district-commission",
+      "section": "Section 41",
+      "title": "Appeal against order of District Commission",
+      "summary": "A person aggrieved by a District Commission order may appeal to the State Commission on facts or law within forty-five days, subject to the Act's conditions for delay and pre-deposit.",
+      "keywords": [
+        "appeal district commission order",
+        "appeal to state commission",
+        "forty five days appeal",
+        "consumer forum appeal",
+        "appeal deposit",
+        "section 41"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 41"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 22,
+          "text": "41. Any person aggrieved by an order made by the District Commission may prefer an appeal against such order to the State Commission on the grounds of facts or law within a period of forty-five days from the date of the order, in such form and manner, as may be prescribed: Provided that the State Commission may entertain an appeal after the expiry of the said period of forty-five days, if it is satisfied that there was sufficient cause for not filing it within that period: Provided further that no appeal by a person, who is required to pay any amount in terms of an order of the District Commission, shall be entertained by the State Commission unless the appellant has deposited fifty per cent. of that amount in the manner as may be prescribed: Provided also that no appeal shall lie from any order passed under sub-section (1) of section 81 by the District Commission pursuant to a settlement by mediation under section 80."
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "complaint-limitation",
+      "section": "Section 69",
+      "title": "Limitation period",
+      "summary": "A consumer complaint is ordinarily to be filed within two years from the date the cause of action arose. A Commission may admit a delayed complaint if sufficient cause is shown and reasons are recorded.",
+      "keywords": [
+        "complaint time limit",
+        "limitation period consumer complaint",
+        "two years complaint",
+        "complaint after two years",
+        "late consumer complaint",
+        "condonation of delay",
+        "section 69"
+      ],
+      "source_id": "consumer-protection-act-2019",
+      "source_type": "statute",
+      "provisions": [
+        "Section 69"
+      ],
+      "passages": [
+        {
+          "source_id": "consumer-protection-act-2019",
+          "page": 28,
+          "text": "69. (1) The District Commission, the State Commission or the National Commission shall not admit a complaint unless it is filed within two years from the date on which the cause of action has arisen. (2) Notwithstanding anything contained in sub-section (1), a complaint may be entertained after the period specified in sub-section (1), if the complainant satisfies the District Commission, the State Commission or the National Commission, as the case may be, that he had sufficient cause for not filing the complaint within such period: Provided that no such complaint shall be entertained unless the District Commission or the State Commission or the National Commission, as the case may be, records its reasons for condoning such delay."
+        }
+      ],
+      "effective_from": "2020-07-20",
+      "effective_to": null,
+      "version": "2020-07-20",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "act-commencement-july20"
+    },
+    {
+      "id": "ecommerce-scope",
+      "section": "Rule 2",
+      "title": "Scope and applicability of the E-Commerce Rules",
+      "summary": "The E-Commerce Rules apply to goods and services bought or sold over digital or electronic networks, including marketplace and inventory models, and may also apply to an entity outside India that systematically offers goods or services to consumers in India.",
+      "keywords": [
+        "e commerce rules apply",
+        "ecommerce rules apply",
+        "foreign website selling in india",
+        "online goods services rules",
+        "marketplace inventory model",
+        "rule 2"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 2"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 7,
+          "text": "2. Scope and Applicability. – (1) Save as otherwise expressly provided by the Central Government by notification, these rules shall apply to: (a) all goods and services bought or sold over digital or electronic network including digital products; (b) all models of e-commerce, including marketplace and inventory models of e-commerce; (c) all e-commerce retail, including multi-channel single brand retailers and single brand retailers in single or multiple formats; and (d) all forms of unfair trade practices across all models of e-commerce: Provided that these rules shall not apply to any activity of a natural person carried out in a personal capacity not being part of any professional or commercial activity undertaken on a regular or systematic basis. (2) Notwithstanding anything contained in sub-rule (1), these rules shall apply to a e-commerce entity which is not established in India, but systematically offers goods or services to consumers in India."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": null,
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "ecommerce-platform-information",
+      "section": "Rule 4(2)",
+      "title": "Platform identity and contact information",
+      "summary": "An e-commerce entity must prominently display its legal name, principal address, website details, and customer-care and grievance-officer contact information in a clear and accessible manner.",
+      "keywords": [
+        "ecommerce platform contact information",
+        "online platform legal name address",
+        "customer care grievance officer contact",
+        "website must display address",
+        "rule 4(2)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 4(2)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 8,
+          "text": "(2) Every e-commerce entity shall provide the following information in a clear and accessible manner on its platform, displayed prominently to its users, namely:-- (क) legal name of the e-commerce entity; (ख) principal geographic address of its headquarters and all branches; (ग) name and details of its website; and (घ) contact details like e-mail address, fax, landline and mobile numbers of customer care as well as of grievance officer."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": "2027-01-01",
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "ecommerce-platform-grievance",
+      "section": "Rule 4(4)",
+      "title": "Platform grievance redressal mechanism",
+      "summary": "An e-commerce entity must establish an adequate consumer grievance-redressal mechanism, appoint a grievance officer, and display that officer's name, contact details, and designation on its platform.",
+      "keywords": [
+        "ecommerce grievance officer",
+        "online platform grievance mechanism",
+        "complain to ecommerce platform",
+        "grievance officer contact details",
+        "rule 4(4)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 4(4)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 8,
+          "text": "(4) Every e-commerce entity shall establish an adequate grievance redressal mechanism having regard to the number of grievances ordinarily received by such entity from India, and shall appoint a grievance officer for consumer grievance redressal, and shall display the name, contact details, and designation of such officer on its platform."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": null,
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "marketplace-disclosures",
+      "section": "Rule 5",
+      "title": "Marketplace disclosures and seller transparency",
+      "summary": "A marketplace platform must prominently provide seller, complaint-tracking, return, refund, payment, and grievance information, including seller-provided information under Rule 6(5) and an explanation of key ranking parameters.",
+      "keywords": [
+        "marketplace seller information",
+        "online marketplace return refund information",
+        "complaint ticket number marketplace",
+        "seller rating country of origin",
+        "ranking parameters online marketplace",
+        "rule 5"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 5(3)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 9,
+          "text": "(3) Every marketplace e-commerce entity shall provide the following information in a clear and accessible manner, displayed prominently to its users at the appropriate place on its platform: (a) details about the sellers offering goods and services, including the name of their business, whether registered or not, their geographic address,customer care number, any rating or other aggregated feedback about such seller, and any other information necessary for enabling consumers to make informed decisions at the pre- purchase stage: Provided that a marketplace e-commerce entity shall, on a request in writing made by a consumer after the purchase of any goods or services on its platform by such consumer, provide him with information regarding the seller from which such consumer has made such purchase, including the principal geographic address of its headquarters and all branches, name and details of its website, its email address and any other information necessary for communication with the seller for effective dispute resolution; (b) a ticket number for each complaint lodged through which the consumer can track the status of the complaint; (c) information relating to return, refund, exchange, warranty and guarantee, delivery and shipment, modes of payment, and grievance redressal mechanism, and any other similar information which may be required by consumers to make informed decisions; (d) information on available payment methods, the security of those payment methods, any fees or charges payable by users, the procedure to cancel regular payments under those methods, charge-back options, if any, and the contact information of the relevant payment service provider; (ङ) all information provided to it by sellers under sub-rule (5) of rule 6; and"
+        },
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 10,
+          "text": "(च) an explanation of the main parameters which, individually or collectively, are most significant in determining the ranking of goods or sellers on its platform and the relative importance of those main parameters through an easily and publicly available description drafted in plain and intelligible language."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": "2027-01-01",
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "marketplace-seller-accuracy-undertaking",
+      "section": "Rule 5(2)",
+      "title": "Seller undertaking for accurate listings",
+      "summary": "A marketplace must obtain an undertaking from sellers that listing descriptions, images, and other content are accurate and correspond directly with the goods or services offered.",
+      "keywords": [
+        "seller undertaking accurate listing",
+        "product photographs do not match goods",
+        "descriptions images accurate goods",
+        "marketplace listing accuracy",
+        "rule 5(2)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 5(2)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 9,
+          "text": "(2) Every marketplace e-commerce entity shall require sellers through an undertaking to ensure that descriptions, images, and other content pertaining to goods or services on their platform is accurate and corresponds directly with the appearance, nature, quality, purpose and other general features of such good or service."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": null,
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "marketplace-post-purchase-seller-details",
+      "section": "Rule 5(3)(a)",
+      "title": "Seller details after a written post-purchase request",
+      "summary": "After a consumer makes a written request following a purchase, a marketplace must provide the seller's principal geographic address, website details, email address, and other information needed for effective dispute-resolution communication.",
+      "keywords": [
+        "written request after purchase seller details",
+        "seller address website email dispute resolution",
+        "post purchase seller contact information",
+        "marketplace seller details written request",
+        "rule 5(3)(a)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 5(3)(a)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 9,
+          "text": "Provided that a marketplace e-commerce entity shall, on a request in writing made by a consumer after the purchase of any goods or services on its platform by such consumer, provide him with information regarding the seller from which such consumer has made such purchase, including the principal geographic address of its headquarters and all branches, name and details of its website, its email address and any other information necessary for communication with the seller for effective dispute resolution;"
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": "2027-01-01",
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "marketplace-seller-fair-practices",
+      "section": "Rule 6(1)-(2)",
+      "references": [
+        "Rule 6(1)",
+        "Rule 6(2)"
+      ],
+      "title": "Fair practices by marketplace sellers",
+      "summary": "A seller on a marketplace must not use an unfair trade practice, falsely present itself as a consumer, post false consumer reviews, or misrepresent product or service quality or features.",
+      "keywords": [
+        "fake review seller marketplace",
+        "seller pretending to be consumer",
+        "marketplace seller unfair trade practice",
+        "misrepresent product quality online seller",
+        "rule 6"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 6(1)",
+        "Rule 6(2)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 10,
+          "text": "(1) No seller offering goods or services through a marketplace e-commerce entity shall adopt any unfair trade practice whether in the course of the offer on the e-commerce entity’s platform or otherwise. (2) No such seller shall falsely represent itself as a consumer and post reviews about goods or services or misrepresent the quality or the features of any goods or services."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": null,
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "marketplace-seller-returns",
+      "section": "Rule 6(3)",
+      "title": "Returns and refunds by marketplace sellers",
+      "summary": "A marketplace seller must not refuse to take back goods, withdraw or discontinue services, or refund paid consideration when goods or services are defective, deficient, spurious, misdescribed, or delivered late, subject to the force-majeure exception for late delivery.",
+      "keywords": [
+        "marketplace seller refund defective product",
+        "online seller refuses return",
+        "late delivery refund ecommerce",
+        "spurious product refund",
+        "rule 6(3)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 6(3)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 10,
+          "text": "(3) No seller offering goods or services through a marketplace e-commerce entity shall refuse to take back goods, or withdraw or discontinue services purchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services are defective, deficient or spurious, or if the goods or services are not of the characteristics or features as advertised or as agreed to, or if such goods or services are delivered late from the stated delivery schedule: Provided that in the case of late delivery, this sub-rule shall not be applied if such late delivery was due to force majeure."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": null,
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "marketplace-seller-grievance",
+      "section": "Rule 6(4)",
+      "title": "Grievance officer and response times for marketplace sellers",
+      "summary": "A marketplace seller must appoint a grievance officer, acknowledge a consumer complaint within forty-eight hours, and redress it within one month of receipt.",
+      "keywords": [
+        "seller complaint acknowledged forty eight hours",
+        "marketplace seller redress complaint one month",
+        "seller grievance officer response time",
+        "online seller complaint timeline",
+        "rule 6(4)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 6(4)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 10,
+          "text": "(4) Any seller offering goods or services through a marketplace e-commerce entity shall: (a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit such sale or offer; (b) appoint a grievance officer for consumer grievance redressal and ensure that the grievance officer acknowledges the receipt of any consumer complaint within forty-eight hours and redresses the complaint within one month from the date of receipt of the complaint; (c) ensure that the advertisements for marketing of goods or services are consistent with the actual characteristics, access and usage conditions of such goods or services. (d) provide to the e-commerce entity its legal name, principal geographic address of its headquarters and all branches, the name and details of its website, its e-mail address, customer care contact details such as fax, landline, and mobile numbers and where applicable, its GSTIN and PAN details."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": null,
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "marketplace-seller-prepurchase-information",
+      "section": "Rule 6(5)",
+      "title": "Pre-purchase information from marketplace sellers",
+      "summary": "Before purchase, a marketplace seller must provide the total price in a single figure and a breakup showing compulsory and voluntary charges, clear exchange, return and refund terms including return-shipping costs, delivery and shipment details, and relevant guarantees or warranties.",
+      "keywords": [
+        "seller total price delivery charges ecommerce",
+        "single figure breakup compulsory voluntary charges",
+        "online seller pre purchase information",
+        "country of origin importer marketplace",
+        "return refund warranty details seller",
+        "return shipping costs",
+        "rule 6(5)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 6(5)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 10,
+          "text": "(5) Any seller offering goods or services through a marketplace e-commerce entity shall provide the following information to the e-commerce entity to be displayed on its platform or website: (a) all contractual information required to be disclosed by law; (b) total price in single figure of any good or service, along with the breakup price for the good or service, showing all the compulsory and voluntary charges such as delivery charges, postage and handling charges, conveyance charges and the applicable tax, as applicable; (c) all mandatory notices and information provided by applicable laws, and the expiry date of the good being offered for sale, where applicable; (d) all relevant details about the goods and services offered for sale by the seller including country of origin which are necessary for enabling the consumer to make an informed decision at the pre- purchase stage; (e) the name and contact numbers, and designation of the grievance officer for consumer grievance redressal or for reporting any other matter; (f) name and details of importer, and guarantees related to the authenticity or genuineness of the imported products;"
+        },
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 11,
+          "text": "(g) accurate information related to terms of exchange, returns, and refund including information related to costs of return shipping in a clear and accessible manner; (h) relevant details related to delivery and shipment of such goods or services; and (i) any relevant guarantees or warranties applicable to such goods or services."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": "2027-01-01",
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "inventory-platform-information",
+      "section": "Rule 7(1)",
+      "title": "Information provided by inventory e-commerce entities",
+      "summary": "An inventory e-commerce entity must prominently provide clear information about returns, refunds, exchange, warranty, delivery, payment methods, fees, charge-back options, grievance redressal, total price with charges, and a complaint-tracking ticket number.",
+      "keywords": [
+        "inventory ecommerce total price charges",
+        "online retailer complaint ticket number",
+        "chargeback options ecommerce",
+        "inventory platform return refund information",
+        "rule 7(1)"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 7(1)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 11,
+          "text": "(1) Every inventory e-commerce entity shall provide the following information in a clear and accessible manner, displayed prominently to its users: (a) accurate information related to return, refund, exchange, warranty and guarantee, delivery and shipment, cost of return shipping, mode of payments, grievance redressal mechanism, and any other similar information which may be required by consumers to make informed decisions; (b) all mandatory notices and information required by applicable laws; (c) information on available payment methods, the security of those payment methods, the procedure to cancel regular payments under those methods, any fees or charges payable by users, charge back options, if any, and the contact information of the relevant payment service provider; (d) all contractual information required to be disclosed by law; (e) total price in single figure of any good or service along with the breakup price for the good or service, showing all the compulsory and voluntary charges, such as delivery charges, postage and handling charges, conveyance charges and the applicable tax; and (f) a ticket number for each complaint lodged, through which the consumer can track the status of their complaint."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": "2027-01-01",
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "inventory-platform-returns-and-reviews",
+      "section": "Rule 7(2)-(5)",
+      "references": [
+        "Rule 7(2)",
+        "Rule 7(3)",
+        "Rule 7(4)",
+        "Rule 7(5)"
+      ],
+      "title": "Reviews, advertising, returns and authenticity on inventory platforms",
+      "summary": "An inventory platform must not post false consumer reviews or misrepresent product features, must keep advertising consistent with actual characteristics, and must not refuse returns or refunds in the situations specified by the Rules. A platform that vouches for authenticity can bear liability concerning authenticity.",
+      "keywords": [
+        "inventory ecommerce fake reviews",
+        "online retailer refuses refund defective product",
+        "inventory platform authenticity guarantee",
+        "online retailer misleading advertisement",
+        "rule 7"
+      ],
+      "source_id": "ecommerce-rules-2020",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 7(2)",
+        "Rule 7(3)",
+        "Rule 7(4)",
+        "Rule 7(5)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 11,
+          "text": "(2) No inventory e-commerce entity shall falsely represent itself as a consumer and post reviews about goods and services or misrepresent the quality or the features of any goods or services. (3) Every inventory e-commerce entity shall ensure that the advertisements for marketing of goods or services are consistent with the actual characteristics, access and usage conditions of such goods or services; (4) No inventory e-commerce entity shall refuse to take back goods, or withdraw or discontinue services purchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services are defective, deficient spurious, or if the goods or services are not of the characteristics or features as advertised or as agreed to, or if such goods or services are delivered late from the stated delivery schedule: Provided that in the case of late delivery, this sub rule shall not apply if such late delivery was due to force majeure. (5) Any inventory e-commerce entity which explicitly or implicitly vouches for the authenticity of the goods or services sold by it, or guarantees that such goods or services are authentic, shall bear appropriate liability in any action related to the authenticity of such good or service."
+        }
+      ],
+      "effective_from": "2020-07-23",
+      "effective_to": null,
+      "version": "2020-07-23",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-rules-2020"
+    },
+    {
+      "id": "advertisement-validity-and-disclaimers",
+      "section": "Valid advertisements and disclaimers",
+      "title": "Conditions for a non-misleading advertisement",
+      "summary": "A valid advertisement must be truthful and honest, must not exaggerate a product or service's accuracy, scientific validity, usefulness, capability or performance, and must not hide material information.",
+      "keywords": [
+        "valid advertisement truthful accurate",
+        "advertisement scientific validity performance",
+        "exaggerated product performance",
+        "hide material information advertisement"
+      ],
+      "source_id": "advertising-guidelines-2022",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 4",
+        "Paragraph 11(1)(b)"
+      ],
+      "passages": [
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 7,
+          "text": "4. Conditions for non-misleading and valid advertisement. – (1) An advertisement shall be considered to be valid and not misleading, if– (a) it contains truthful and honest representation; (b) it does not mislead consumers by exaggerating the accuracy, scientific validity or practical usefulness or capability or performance or service of the goods or product; (c) it does not present rights conferred on consumers by any law as a distinctive feature of advertiser’s offer; (d) it does not suggest that the claims made in such advertisement are universally accepted if there is a significant division of informed or scientific opinion pertaining to such claims; (e) it does not mislead about the nature or extent of the risk to consumers’ personal security, or that of their family if they fail to purchase the advertised goods, product or service; (f) it ensures that the claims that have not been independently substantiated but are based merely on the content of a publication do not mislead consumers; (g) it complies with the provisions contained in any other sector specific law and the rules and regulations made thereunder. (2) Notwithstanding anything contained in sub-paragraph (1), if any occasional and unintentional lapse in the fulfilment of an advertised promise or claim occurs while carrying out mass manufacture and distribution of goods, products and services, such unintentional lapse may not invalidate the advertisement, provided– (a) Such promise or claim is capable of fulfilment by a typical specimen of the product advertised; (b) the proportion of product failures is within the generally acceptable limits; (c) the advertiser has taken prompt action to make good the deficiency to the consumer."
+        },
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 10,
+          "text": "(b) shall not attempt to hide material information with respect to any claim made in such advertisement, the omission or absence of which is likely to make the advertisement deceptive or conceal its commercial intent;"
+        }
+      ],
+      "effective_from": "2022-06-09",
+      "effective_to": null,
+      "version": "2022-06-09",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "advertising-guidelines-2022"
+    },
+    {
+      "id": "bait-and-free-claim-advertisements",
+      "section": "Bait advertisements",
+      "references": [
+        "Bait advertisement"
+      ],
+      "title": "Availability and stock disclosures in bait advertisements",
+      "summary": "A bait advertisement offering goods, products or services at a low price must have a reasonable prospect of availability at that price. If demand is expected to exceed stock, the advertisement must clearly state the stock limitation.",
+      "keywords": [
+        "bait advertisement offer unavailable",
+        "low price no reasonable prospect",
+        "advertised stock limitation",
+        "demand exceeds stock advertisement",
+        "limited stock bait advertisement"
+      ],
+      "source_id": "advertising-guidelines-2022",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 5"
+      ],
+      "passages": [
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 7,
+          "text": "5. Conditions for bait advertisements. — A bait advertisement shall fulfil the following conditions, namely:-"
+        },
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 8,
+          "text": "(a) such advertisement shall not seek to entice consumers to purchase goods, products or services without a reasonable prospect of selling such advertised goods, products or services at the price offered; (b) the advertiser shall ensure that there is adequate supply of goods, products or services to meet foreseeable demand generated by such advertisement; (c) such advertisement shall state the reasonable grounds which the advertiser has for believing that he might not be able to supply the advertised goods, products or services within a reasonable period and in reasonable quantities, and in particular,– (i) if the estimated demand exceeds the supply, such advertisement shall make clear that the stock of the goods or services is limited; (ii) if the purpose of the advertisement is to assess potential demand, it shall be clearly stated such advertisement; and (iii) the advertisement shall not mislead consumers by omitting restrictions, including geographic restrictions and age-limit on the availability of the goods, products or services; (d) such advertisement does not mislead consumers about the market conditions with respect to the goods, products or services or the lack of their availability in order to induce consumers to purchase such goods, products or services at conditions less favourable than normal market conditions."
+        }
+      ],
+      "effective_from": "2022-06-09",
+      "effective_to": null,
+      "version": "2022-06-09",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "advertising-guidelines-2022"
+    },
+    {
+      "id": "advertisement-disclaimers",
+      "section": "Advertisement disclaimers",
+      "references": [
+        "Disclaimer"
+      ],
+      "title": "Limits on disclaimers in advertisements",
+      "summary": "A disclaimer cannot hide material information, correct a misleading claim, or conceal commercial intent. It should use the claim's language and font and must not be unclear or inconspicuous in placement or presentation.",
+      "keywords": [
+        "misleading advertisement disclaimer",
+        "disclaimer hide material information",
+        "disclaimer correct misleading claim",
+        "disclaimer language font prominence legibility",
+        "commercial intent advertisement"
+      ],
+      "source_id": "advertising-guidelines-2022",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 11"
+      ],
+      "passages": [
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 9,
+          "text": "11. Disclaimers in Advertisements. – (1) A Disclaimer in advertisement – (a) may expand or clarify a claim made in such advertisement or make qualifications or resolve ambiguities therein in order to explain such claim in further detail, but such disclaimer shall not"
+        },
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 10,
+          "text": "contradict the material claim made in the advertisement or contradict the main message conveyed by the advertiser or change the dictionary meaning of the words used in the claims received or perceived by a consumer; (b) shall not attempt to hide material information with respect to any claim made in such advertisement, the omission or absence of which is likely to make the advertisement deceptive or conceal its commercial intent; (c) shall not attempt to correct a misleading claim made in an advertisement. (2) A Disclaimer in advertisement shall fulfil the following requirements, namely:- (a) a disclaimer shall be in the same language as the claim made in the advertisement; (b) the font used in a disclaimer shall be the same as that used in the claim; (c) the placement of the disclaimer shall be at a prominent and visible place on the packaging and ideally be on the same panel of the packaging as that of the claim; (d) if the claim is presented as voice over, the disclaimer shall be displayed in sync with the voice over and at the same speed as that of original claim made in the advertisement; (e) a disclaimer shall be so clear, prominent and legible as to make it clearly visible to a normally-sighted person reading the marketing communication once, from a reasonable distance and at a reasonable speed."
+        }
+      ],
+      "effective_from": "2022-06-09",
+      "effective_to": null,
+      "version": "2022-06-09",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "advertising-guidelines-2022"
+    },
+    {
+      "id": "free-claim-advertisements",
+      "section": "Free-claim advertisements",
+      "references": [
+        "Free-claim advertisement",
+        "Free claim advertisement"
+      ],
+      "title": "Conditions for describing a product or service as free",
+      "summary": "An advertisement must not describe a product or service as free where the consumer must pay for packing, packaging, handling or administration. An unavoidable, separately stated delivery cost is treated differently.",
+      "keywords": [
+        "free claim advertisement hidden cost",
+        "free product handling administration fees",
+        "free advertisement packing packaging charges",
+        "unavoidable delivery charge free claim",
+        "free product undisclosed charges"
+      ],
+      "source_id": "advertising-guidelines-2022",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 7"
+      ],
+      "passages": [
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 8,
+          "text": "7. Free claims advertisements. – A free claims advertisement shall – (a) not describe any goods, product or service to be ‘free’, ‘without charge’ or use such other terms if the consumer has to pay anything other than the unavoidable cost of responding to such advertisement and collecting or paying for the delivery of such item; (b) make clear the extent of commitment that a consumer shall make to take advantage of a free offer; (c) not describe any goods, product or service to be free, if– (i) the consumer has to pay for packing, packaging, handling or administration of such free goods, product or service; (ii) the cost of response, including the price of goods, product or service which the consumer has to purchase to take advantage of such offer, has been increased, except where such increase results from factors unrelated to the cost of promotion; or (iii) the quality or quantity of the goods, product or service that a consumer shall purchase to take advantage of the offer has been reduced; (d) not describe an element of a package as free if such element is included in the package price; (e) not use the term ‘free trial’ to describe a ‘satisfaction or your money back’ offer or an offer for which a non-refundable purchase is required."
+        }
+      ],
+      "effective_from": "2022-06-09",
+      "effective_to": null,
+      "version": "2022-06-09",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "advertising-guidelines-2022"
+    },
+    {
+      "id": "advertisements-targeting-children",
+      "section": "Advertisements targeting children",
+      "title": "Additional safeguards for advertisements targeting children",
+      "summary": "Advertisements targeting children must not exploit their vulnerability, exaggerate product features to create unrealistic expectations, or make children feel inferior for not buying the advertised product or service. Health or nutritional claims need adequate scientific substantiation.",
+      "keywords": [
+        "advertisement targeting children",
+        "child unrealistic expectations advertisement",
+        "children health nutritional claim",
+        "child feel inferior not buying product",
+        "advertising to children safeguards",
+        "scientific substantiation children ad"
+      ],
+      "source_id": "advertising-guidelines-2022",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 8"
+      ],
+      "passages": [
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 8,
+          "text": "8. Children targeted advertisements. – (1) An advertisement that addresses or targets or uses children shall not – (a) condone, encourage, inspire or unreasonably emulate behaviour that could be dangerous for children;"
+        },
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 9,
+          "text": "(b) take advantage of children's inexperience, credulity or sense of loyalty; (c) exaggerate the features of goods, product or service in such manner as to lead children to have unrealistic expectations of such goods, product or service; (d) condone or encourage practices that are detrimental to children's physical health or mental wellbeing; (e) imply that children are likely to be ridiculed or made to feel inferior to others or become less popular or disloyal if they do not purchase or make use of such goods, product or service; (f) include a direct exhortation to children to purchase any goods, product or service or to persuade their parents, guardians or other persons to purchase such goods, product or service for them; (g) use qualifiers such as ‘just’ or ‘only’ to make the price of goods, product or service seem less expensive where such advertisement includes additional cost or charge; (h) feature children for advertisements prohibited by any law for the time being in force, including tobacco or alcohol-based products; (i) feature personalities from the field of sports, music or cinema for products which under any law requires a health warning for such advertisement or cannot be purchased by children; (j) make it difficult for children to judge the size, characteristics and performance of advertised products and to distinguish between real life situations and fantasy; (k) exaggerate what is attainable by an ordinary child using the product being marketed; (l) exploit children’s susceptibility to charitable appeals and shall explain the extent to which their participation will help in any charity-linked promotions; (m) resort to promotions that require a purchase to participate and include a direct exhortation to make a purchase addressed to or targeted at children; (n) claim that consumption of a product advertised shall have an effect on enhancing intelligence or physical ability or bring exceptional recognition without any valid substantiation or adequate scientific evidence; (o) claim any health or nutritional claims or benefits without being adequately and scientifically substantiated by a recognized body; (p) be published in any mass media, including advertisement on network games in respect of medical services, drugs, dietary supplements, medical instruments, cosmetic products, liquor or cosmetic surgery which are adverse to the physical and mental health of children. (2) An advertisement of any goods, product or service which addresses or targets children shall not– (a) be such as to develop negative body image in children; (b) give any impression that such goods, product or service is better than the natural or traditional food which children may be consuming. (3) An advertisement for junk foods, including chips, carbonated beverages and such other snacks and drinks shall not be advertised during a program meant for children or on a channel meant exclusively for children. (4) Any advertisement which offers promotional gifts to persuade children to buy goods, product or service without necessity or promotes illogical consumerism shall be discouraged."
+        }
+      ],
+      "effective_from": "2022-06-09",
+      "effective_to": null,
+      "version": "2022-06-09",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "advertising-guidelines-2022"
+    },
+    {
+      "id": "surrogate-advertisements",
+      "section": "Surrogate advertisements",
+      "title": "Prohibition on surrogate advertisements",
+      "summary": "The Guidelines prohibit surrogate advertisements used to indirectly promote goods or services whose direct advertising is prohibited or restricted by law. Mere use of a shared brand or company name is not automatically surrogate advertising when the advertisement is otherwise unobjectionable.",
+      "keywords": [
+        "surrogate advertisement",
+        "indirect advertisement prohibited product",
+        "disguised promotion restricted product",
+        "shared brand name surrogate advertisement",
+        "tobacco alcohol surrogate ad"
+      ],
+      "source_id": "advertising-guidelines-2022",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 6"
+      ],
+      "passages": [
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 8,
+          "text": "6. Prohibition of surrogate advertising. — (1) No surrogate advertisement or indirect advertisement shall be made for goods or services whose advertising is otherwise prohibited or restricted by law, by circumventing such prohibition or restriction and portraying it to be an advertisement for other goods or services, the advertising of which is not prohibited or restricted by law. (2) An advertisement shall be considered to be a surrogate advertisement or indirect advertisement, if– (a) such advertisement indicates or suggests directly or indirectly to consumers that it is an advertisement for the goods, product or service whose advertising is prohibited or restricted by law; (b) such advertisement uses any brand name, logo, colour, layout and presentation associated with such goods, product or services whose advertisement is prohibited or restricted: Provided that mere use of a brand name or company name which may also be applied to goods, product or service whose advertising is prohibited or restricted shall not be considered to be surrogate advertisement or indirect advertisement, if such advertisement is not otherwise objectionable as per the provisions set out in these guidelines."
+        }
+      ],
+      "effective_from": "2022-06-09",
+      "effective_to": null,
+      "version": "2022-06-09",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "advertising-guidelines-2022"
+    },
+    {
+      "id": "endorser-due-diligence",
+      "section": "Endorser due diligence",
+      "title": "Due diligence and disclosure by endorsers",
+      "summary": "An endorsement should reflect a genuine and reasonably current opinion based on adequate information or experience, and a material connection between an endorser and advertiser that audiences would not reasonably expect should be fully disclosed.",
+      "keywords": [
+        "endorser due diligence",
+        "celebrity endorsement check product",
+        "influencer paid partnership disclosure",
+        "genuine current opinion endorsement",
+        "advertiser endorser connection disclosure"
+      ],
+      "source_id": "advertising-guidelines-2022",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 13",
+        "Paragraph 14"
+      ],
+      "passages": [
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 10,
+          "text": "13. Due diligence required for endorsement of advertisements. – (1) Any endorsement in an advertisement must reflect the genuine, reasonably current opinion of the individual, group or organisation making such representation and must be based on adequate information about, or experience with, the identified goods, product or service and must not otherwise be deceptive."
+        },
+        {
+          "source_id": "advertising-guidelines-2022",
+          "page": 11,
+          "text": "(2) Where, Indian professionals, whether resident in India or otherwise, are barred under any law for the time being in force from making endorsement in any advertisement pertaining to any profession, then, foreigner professionals of such profession shall also be not permitted to make endorsement in such advertisement. Explanation. – For the purposes of this paragraph, “foreigner professional” means a person who is not a citizen of India. 14. Disclosure of material connection. – Where there exists a connection between the endorser and the trader, manufacturer or advertiser of the endorsed product that might materially affect the value or credibility of the endorsement and the connection is not reasonably expected by the audience, such connection shall be fully disclosed in making the endorsement."
+        }
+      ],
+      "effective_from": "2022-06-09",
+      "effective_to": null,
+      "version": "2022-06-09",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "advertising-guidelines-2022"
+    },
+    {
+      "id": "dark-pattern-definition",
+      "section": "Dark patterns",
+      "isBroadTopic": true,
+      "title": "Meaning and prevention of dark patterns",
+      "summary": "Dark patterns are deceptive user-interface or user-experience practices that mislead or trick users into actions they did not intend or want, by impairing consumer autonomy, decision-making, or choice.",
+      "keywords": [
+        "what is a dark pattern",
+        "dark pattern meaning",
+        "deceptive user interface",
+        "trick user online platform",
+        "consumer choice manipulation"
+      ],
+      "source_id": "dark-patterns-guidelines-2023",
+      "source_type": "guidelines",
+      "provisions": [
+        "Paragraph 2(1)(e)"
+      ],
+      "passages": [
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 7,
+          "text": "(e) “dark patterns” shall mean any practices or deceptive design pattern using user interface or user experience interactions on any platform that is designed to mislead or trick users to do something they originally did not intend or want to do, by subverting or impairing the consumer autonomy, decision making or choice, amounting to misleading advertisement or unfair trade practice or violation of consumer rights;"
+        }
+      ],
+      "effective_from": "2023-11-30",
+      "effective_to": null,
+      "version": "2023-11-30",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "dark-patterns-guidelines-2023"
+    },
+    {
+      "id": "dark-pattern-false-urgency",
+      "section": "False urgency",
+      "title": "False urgency or scarcity",
+      "summary": "False urgency is a false claim or implication of urgency or scarcity intended to push a user into an immediate purchase or action that may lead to a purchase. Genuine remaining stock or a genuine deadline alone is not false urgency.",
+      "keywords": [
+        "false urgency",
+        "fake limited stock",
+        "fake scarcity online sale",
+        "only few left false",
+        "fake popularity product",
+        "fake countdown",
+        "fake countdown sale deadline",
+        "genuine stock genuine deadline"
+      ],
+      "source_id": "dark-patterns-guidelines-2023",
+      "source_type": "guidelines",
+      "provisions": [
+        "Annexure 1(1)"
+      ],
+      "passages": [
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 8,
+          "text": "(1) “False Urgency” means falsely stating or implying the sense of urgency or scarcity so as to mislead a user into making an immediate purchase or taking an immediate action, which may lead to a purchase, including - (i) showing false popularity of a product or service to manipulate user decision; (ii) stating that quantities of a particular product or service are more limited than they actually are. Illustrations: (a) presenting false data on high demand without appropriate context. For instance, “Only 2 rooms left! 30 others are looking at this right now”; (b) falsely creating time-bound pressure to make a purchase, such as describing a sale as an ‘exclusive’ sale for a limited time only for a select group of users."
+        }
+      ],
+      "effective_from": "2023-11-30",
+      "effective_to": null,
+      "version": "2023-11-30",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "dark-patterns-guidelines-2023"
+    },
+    {
+      "id": "dark-pattern-basket-sneaking",
+      "section": "Basket sneaking",
+      "title": "Additional items added at checkout without consent",
+      "summary": "Basket sneaking is adding an extra product, service, payment, charity contribution, or donation at checkout without the user's consent, increasing the amount payable beyond the item selected. Clearly disclosed necessary fees and complimentary services are not treated as basket sneaking.",
+      "keywords": [
+        "basket sneaking",
+        "preselected donation checkout",
+        "extra item added cart without consent",
+        "automatic travel insurance checkout",
+        "paid insurance without consent",
+        "necessary fee disclosed at purchase",
+        "hidden checkout addition"
+      ],
+      "source_id": "dark-patterns-guidelines-2023",
+      "source_type": "guidelines",
+      "provisions": [
+        "Annexure 1(2)"
+      ],
+      "passages": [
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 8,
+          "text": "(2) “Basket sneaking” means inclusion of additional items such as products, services, payments to charity or donation at the time of checkout from a platform, without the consent of the user, such that the total amount payable by the user is more than the amount payable for the product or service chosen by the user:"
+        },
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 9,
+          "text": "Provided that the addition of free samples or providing complimentary services or addition of necessary fees disclosed at the time of purchase, shall not be considered as basket sneaking. Explanation- The term “necessary fees” means, the fees which is necessary to fulfill the completion of the order such as delivery charges, gift wrapping, additional taxes on the product charged by the government or any other charges which are explicitly disclosed to the consumer at the time of purchase. Illustrations: (a) automatic addition of paid ancillary services with a pre-ticked box or otherwise to the cart when a consumer is purchasing a product or service; (b) a user purchases a single salon service, but while checking out, a subscription to the salon service is automatically added; (c) automatically adding travel insurance while a user purchases a flight ticket."
+        }
+      ],
+      "effective_from": "2023-11-30",
+      "effective_to": null,
+      "version": "2023-11-30",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "dark-patterns-guidelines-2023"
+    },
+    {
+      "id": "dark-pattern-subscription-trap",
+      "section": "Subscription trap",
+      "title": "Difficult or hidden subscription cancellation",
+      "summary": "A subscription trap includes making cancellation impossible, complex, lengthy, hidden, or confusing, or requiring payment details or auto-debit authorisation for a free subscription.",
+      "keywords": [
+        "subscription trap",
+        "cancel subscription difficult",
+        "hidden cancellation option",
+        "free trial payment details auto debit",
+        "subscription cancellation confusing"
+      ],
+      "source_id": "dark-patterns-guidelines-2023",
+      "source_type": "guidelines",
+      "provisions": [
+        "Annexure 1(5)"
+      ],
+      "passages": [
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 9,
+          "text": "(5) “Subscription trap” means the process of- (i) making cancellation of a paid subscription impossible or a complex and lengthy process; or (ii) hiding the cancellation option for a subscription; or (iii) forcing a user to provide payment details or authorization for auto debits for availing a free subscription; or (iv) making the instructions related to cancellation of subscription ambiguous, latent, confusing, cumbersome."
+        }
+      ],
+      "effective_from": "2023-11-30",
+      "effective_to": null,
+      "version": "2023-11-30",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "dark-patterns-guidelines-2023"
+    },
+    {
+      "id": "dark-pattern-drip-pricing",
+      "section": "Drip pricing",
+      "title": "Hidden or delayed price elements",
+      "summary": "Drip pricing is not revealing price elements upfront, revealing them later in the user journey, charging more than the checkout price, or presenting something as free without disclosing a later in-app cost or condition. A marketplace is not automatically liable for price changes attributable to third-party sellers or factors beyond its control.",
+      "keywords": [
+        "drip pricing",
+        "hidden charges checkout",
+        "price increased after checkout",
+        "free app later payment",
+        "undisclosed fees online",
+        "mandatory fee at payment",
+        "mandatory fee only at payment",
+        "third party seller price fluctuation"
+      ],
+      "source_id": "dark-patterns-guidelines-2023",
+      "source_type": "guidelines",
+      "provisions": [
+        "Annexure 1(8)"
+      ],
+      "passages": [
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 10,
+          "text": "(8) “Drip pricing” means a practice whereby- (i) elements of prices are not revealed upfront or are revealed surreptitiously within the user experience; or (ii) revealing the price post-confirmation of purchase, i.e. charging an amount higher than the amount disclosed at the time of checkout; or (iii) a product or service is advertised as free without appropriate disclosure of the fact that the continuation of use requires in-app purchase; or (iv) a user is prevented from availing a service which is already paid for unless something additional is purchased. Explanation-: A marketplace e-commerce entity shall not be liable for price fluctuations to the extent attributable to price changes by third party sellers or due to other factors beyond their control. Illustrations: (a) A consumer is booking a flight, the online platform showcases the price as X at the checkout page, and when payment is being made, price Y (which is more than X) has been charged by the platform to the consumer; (b) A consumer has downloaded a mobile application for playing chess, which was advertised as ‘play chess for free’. However, after 7 days, the app asked for a payment to continue playing chess. The fact that the free version of the game is available only for a limited time, i.e., 7 days in this case, was not disclosed to the consumer at the time of downloading the mobile application; (c) A consumer has purchased a gym membership. In order to actually use the gym, the user must purchase special shoes/boxing gloves from the gym, and the same was not displayed at the time of offering the gym membership."
+        }
+      ],
+      "effective_from": "2023-11-30",
+      "effective_to": null,
+      "version": "2023-11-30",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "dark-patterns-guidelines-2023"
+    },
+    {
+      "id": "dark-pattern-bait-switch-and-disguised-ads",
+      "section": "Bait and switch and disguised advertisements",
+      "references": [
+        "Bait and switch",
+        "Disguised advertisement"
+      ],
+      "title": "Switching offers and masking advertisements",
+      "summary": "Bait and switch means advertising one outcome while deceptively serving another, and a disguised advertisement masks promotional content as other material to trick users into clicking or acting on it.",
+      "keywords": [
+        "bait and switch",
+        "advertised product unavailable expensive alternative",
+        "low priced item",
+        "similar more expensive item",
+        "disguised advertisement",
+        "ad looks like news article",
+        "sponsored content disguised"
+      ],
+      "source_id": "dark-patterns-guidelines-2023",
+      "source_type": "guidelines",
+      "provisions": [
+        "Annexure 1(7)",
+        "Annexure 1(9)"
+      ],
+      "passages": [
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 10,
+          "text": "(7) “Bait and switch” means the practice of advertising a particular outcome based on the user’s action but deceptively serving an alternate outcome. Illustrations: (a) a seller offers a quality product at a cheap price but when the consumer is about to pay or buy, the seller states that the product is no longer available and instead offers a similar looking product but more expensive; (b) a product is unavailable but is falsely shown as available to lure the consumer to move it to the shopping cart. Once the consumer moves it to the shopping cart, it is revealed that the product is ‘out of stock’ and instead, a higher-priced product is now available."
+        },
+        {
+          "source_id": "dark-patterns-guidelines-2023",
+          "page": 10,
+          "text": "(9) “Disguised advertisement” means a practice of posing, masking advertisements as other types of content such as user generated content or new articles or false advertisements, which are designed to blend in with the rest of an interface in order to trick customers into clicking on them. Explanation- (a) for the purposes of this paragraph, the expression “disguised advertisement” shall also include misleading advertisement as defined in clause 2(28) of the Act and the “Guidelines for Prevention of Misleading Advertisements and Endorsements for Misleading Advertisements, 2022” shall also be applicable to it. (b) in relation to content posted by a seller or an advertiser on a platform, the responsibility of making the disclosure that such content is an advertisement shall be on such seller or advertiser."
+        }
+      ],
+      "effective_from": "2023-11-30",
+      "effective_to": null,
+      "version": "2023-11-30",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "dark-patterns-guidelines-2023"
+    },
+    {
+      "id": "ecommerce-platform-information",
+      "section": "Rule 4(2)",
+      "title": "Platform identity and contact information",
+      "summary": "An e-commerce entity must prominently display its legal name, principal address, website details, and customer-care and grievance-officer contact information in a clear and accessible manner.",
+      "keywords": [
+        "ecommerce platform contact information",
+        "online platform legal name address",
+        "customer care grievance officer contact",
+        "website must display address",
+        "rule 4(2)"
+      ],
+      "source_id": "ecommerce-amendment-2026",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 4(2)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 5,
+          "text": "Every e-commerce entity shall provide the following information in a clear and accessible manner on its platform, displayed prominently at an appropriate place to its users, namely: - (a) legal name of the e-commerce entity; (b) principal geographic address of its headquarters and all branches; (c) name and details of its website; and (d) contact details like e-mail address, landline and mobile numbers of customer care as well as of grievance officer."
+        }
+      ],
+      "effective_from": "2027-01-01",
+      "effective_to": null,
+      "version": "2027-01-01",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-amendment-2026"
+    },
+    {
+      "id": "marketplace-disclosures",
+      "section": "Rule 5",
+      "title": "Marketplace disclosures and seller transparency",
+      "summary": "A marketplace platform must prominently provide seller, complaint-tracking, return, refund, payment, and grievance information, including seller-provided information under Rule 6(5) and an explanation of key ranking parameters.",
+      "keywords": [
+        "marketplace seller information",
+        "online marketplace return refund information",
+        "complaint ticket number marketplace",
+        "seller rating country of origin",
+        "ranking parameters online marketplace",
+        "rule 5"
+      ],
+      "source_id": "ecommerce-amendment-2026",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 5(3)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 6,
+          "text": "“(a) details about the sellers offering goods and services, including the name of their business, whether registered or not, their geographic address, customer care number, name and details of its website and email address, where available, any rating or other aggregated feedback about such seller and any other information necessary for enabling consumers to make informed decisions at the pre-purchase stage: Provided that a marketplace e-commerce entity shall, on a request in writing made by a consumer after the purchase of any goods or services on its platform by such consumer, provide him with information regarding the seller from which such consumer has made such purchase, including the principal geographic address of its headquarters and all branches, name and details of its website, its email address and any other information necessary for communication with the seller for effective dispute resolution;"
+        },
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 9,
+          "text": "(b) a ticket number for each complaint lodged through which the consumer can track the status of the complaint;"
+        },
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 6,
+          "text": "(c) information relating to return, refund, exchange warranty and guarantee, best before or use before date, delivery and shipment, modes of payment, grievance redressal mechanism and any other similar information which may be required by consumers to make informed decisions: Provided that in respect of food products, the requirement relating to display of best before or use before date shall be subject to the provisions of the Food Safety and Standards Act, 2006 (34 of 2006) and the regulations made thereunder;"
+        },
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 9,
+          "text": "(d) information on available payment methods, the security of those payment methods, any fees or charges payable by users, the procedure to cancel regular payments under those methods, charge-back options, if any, and the contact information of the relevant payment service provider; (ङ) all information provided to it by sellers under sub-rule (5) of rule 6; and"
+        },
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 6,
+          "text": "(f) an explanation of the main parameters in descending order which, individually or collectively are most significant in determining the ranking of goods or sellers on its platform and the relative importance of those main parameters through an easily and publicly available description drafted in plain and intelligible language.”;"
+        }
+      ],
+      "effective_from": "2027-01-01",
+      "effective_to": null,
+      "version": "2027-01-01",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-amendment-2026"
+    },
+    {
+      "id": "marketplace-post-purchase-seller-details",
+      "section": "Rule 5(3)(a)",
+      "title": "Seller details after a written post-purchase request",
+      "summary": "After a consumer makes a written request following a purchase, a marketplace must provide the seller's principal geographic address, website details, email address, and other information needed for effective dispute-resolution communication.",
+      "keywords": [
+        "written request after purchase seller details",
+        "seller address website email dispute resolution",
+        "post purchase seller contact information",
+        "marketplace seller details written request",
+        "rule 5(3)(a)"
+      ],
+      "source_id": "ecommerce-amendment-2026",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 5(3)(a)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 6,
+          "text": "Provided that a marketplace e-commerce entity shall, on a request in writing made by a consumer after the purchase of any goods or services on its platform by such consumer, provide him with information regarding the seller from which such consumer has made such purchase, including the principal geographic address of its headquarters and all branches, name and details of its website, its email address and any other information necessary for communication with the seller for effective dispute resolution;"
+        }
+      ],
+      "effective_from": "2027-01-01",
+      "effective_to": null,
+      "version": "2027-01-01",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-amendment-2026"
+    },
+    {
+      "id": "marketplace-seller-prepurchase-information",
+      "section": "Rule 6(5)",
+      "title": "Pre-purchase information from marketplace sellers",
+      "summary": "Before purchase, a marketplace seller must provide the total price in a single figure and a breakup showing compulsory and voluntary charges, clear exchange, return and refund terms including return-shipping costs, delivery and shipment details, and relevant guarantees or warranties.",
+      "keywords": [
+        "seller total price delivery charges ecommerce",
+        "single figure breakup compulsory voluntary charges",
+        "online seller pre purchase information",
+        "country of origin importer marketplace",
+        "return refund warranty details seller",
+        "return shipping costs",
+        "rule 6(5)"
+      ],
+      "source_id": "ecommerce-amendment-2026",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 6(5)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 10,
+          "text": "(5) Any seller offering goods or services through a marketplace e-commerce entity shall provide the following information to the e-commerce entity to be displayed on its platform or website: (a) all contractual information required to be disclosed by law; (b) total price in single figure of any good or service, along with the breakup price for the good or service, showing all the compulsory and voluntary charges such as delivery charges, postage and handling charges, conveyance charges and the applicable tax, as applicable; (c) all mandatory notices and information provided by applicable laws, and the expiry date of the good being offered for sale, where applicable;"
+        },
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 7,
+          "text": "“(d) all relevant details about the goods and services offered for sale by the seller including country of origin, best before or use before date, information related to return, refund, exchange, warranty and guarantee, delivery and shipment, cost and return shipping, mode of payments and any other similar information which are necessary for enabling the consumer to make an informed decision at the pre-purchase stage: Provided that in respect of food products, the requirement relating to display of best before or use before date shall be subject to the provisions of the Food Safety and Standards Act, 2006 (34 of 2006) and the regulations made thereunder.”;"
+        },
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 10,
+          "text": "(e) the name and contact numbers, and designation of the grievance officer for consumer grievance redressal or for reporting any other matter; (f) name and details of importer, and guarantees related to the authenticity or genuineness of the imported products;"
+        },
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 11,
+          "text": "(g) accurate information related to terms of exchange, returns, and refund including information related to costs of return shipping in a clear and accessible manner; (h) relevant details related to delivery and shipment of such goods or services; and (i) any relevant guarantees or warranties applicable to such goods or services."
+        },
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 7,
+          "text": "“(j) any identification number issued by the Central Government including Goods and Services Tax Identification Number or Micro and Small Medium Enterprises registration number ”. ."
+        }
+      ],
+      "effective_from": "2027-01-01",
+      "effective_to": null,
+      "version": "2027-01-01",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-amendment-2026"
+    },
+    {
+      "id": "inventory-platform-information",
+      "section": "Rule 7(1)",
+      "title": "Information provided by inventory e-commerce entities",
+      "summary": "An inventory e-commerce entity must prominently provide clear information about returns, refunds, exchange, warranty, delivery, payment methods, fees, charge-back options, grievance redressal, total price with charges, and a complaint-tracking ticket number.",
+      "keywords": [
+        "inventory ecommerce total price charges",
+        "online retailer complaint ticket number",
+        "chargeback options ecommerce",
+        "inventory platform return refund information",
+        "rule 7(1)"
+      ],
+      "source_id": "ecommerce-amendment-2026",
+      "source_type": "rules",
+      "provisions": [
+        "Rule 7(1)"
+      ],
+      "passages": [
+        {
+          "source_id": "ecommerce-amendment-2026",
+          "page": 7,
+          "text": "accurate information related to return, refund, exchange, best before or use before date, warranty and guarantee, delivery and shipment, cost of return shipping, mode of payments, grievance redressal mechanism and any other similar information which may be required by consumers to make informed decisions: Provided that in respect of food products, the requirement relating to display of best before or use before date shall be subject to the provisions of the Food Safety and Standards Act, 2006 (34 of 2006) and the regulations made thereunder.”."
+        },
+        {
+          "source_id": "ecommerce-rules-2020",
+          "page": 11,
+          "text": "(b) all mandatory notices and information required by applicable laws; (c) information on available payment methods, the security of those payment methods, the procedure to cancel regular payments under those methods, any fees or charges payable by users, charge back options, if any, and the contact information of the relevant payment service provider; (d) all contractual information required to be disclosed by law; (e) total price in single figure of any good or service along with the breakup price for the good or service, showing all the compulsory and voluntary charges, such as delivery charges, postage and handling charges, conveyance charges and the applicable tax; and (f) a ticket number for each complaint lodged, through which the consumer can track the status of their complaint."
+        }
+      ],
+      "effective_from": "2027-01-01",
+      "effective_to": null,
+      "version": "2027-01-01",
+      "checked_on": "2026-11-01",
+      "review_status": "source_checked",
+      "review_note": "Quotation checked against the linked official PDF; whitespace normalised. Not a professional legal review.",
+      "commencement_source_id": "ecommerce-amendment-2026"
+    }
+  ]
+}
