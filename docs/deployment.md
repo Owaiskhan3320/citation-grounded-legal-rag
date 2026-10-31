@@ -42,4 +42,4 @@ The site remains usable without `GROQ_API_KEY`. `/api/ask` returns a source-back
 
 ## Current scope limit
 
-The deployed RAG currently retrieves only four curated provisions of the Consumer Protection Act, 2019. It does not yet retrieve judgments. Judgment search will be enabled only after Consumer Disputes records have been reviewed, source-linked, and version-labelled.
+The deployed RAG currently retrieves 41 curated records drawn from the Consumer Protection Act, 2019; the Consumer Protection (E-Commerce) Rules, 2020; and two CCPA guideline sets on advertisements and dark patterns. It does not yet retrieve judgments. Judgment search will be enabled only after Consumer Disputes records have been reviewed, source-linked, and version-labelled.
