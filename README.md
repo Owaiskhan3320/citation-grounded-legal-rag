@@ -1,99 +1,88 @@
 # Citation-Grounded Legal RAG
 
-A small, deployable legal RAG system for selected Indian consumer-law primary sources. It retrieves source records before generation, requires model citations, and falls back to verified retrieval when generation cannot be trusted.
+[Open the live demo](https://citation-grounded-legal-rag.vercel.app/)
 
-## What it does
+This is a small legal-research prototype for selected Indian consumer-law sources. A question is matched against a curated source set before an answer is generated. The page always shows the records used and links back to the primary source.
 
-```text
-Question
-  -> retrieve relevant statute records
-  -> send only those records to Groq
-  -> validate [S1], [S2], ... citations
-  -> show answer and official sources
-  -> fall back to source-backed retrieval on failure
+The project is intentionally narrow. It is a demonstration of retrieval, evidence handling, safe fallback behaviour, and evaluation, not a general-purpose legal assistant.
+
+## Interface
+
+Desktop search view:
+
+![Desktop search view](docs/images/live-search-desktop.png)
+
+Mobile search view:
+
+![Mobile search view](docs/images/live-search-mobile.png)
+
+## What is in scope
+
+The current corpus contains 41 curated records from four source families:
+
+- Consumer Protection Act, 2019: definitions, complaints, CCPA powers, remedies, appeals, and limitation.
+- Consumer Protection (E-Commerce) Rules, 2020: platform disclosures, seller duties, refunds, complaint handling, and pre-purchase information.
+- Guidelines for Prevention of Misleading Advertisements and Endorsements, 2022.
+- Guidelines for Prevention and Regulation of Dark Patterns, 2023.
+
+The app does not search judgments yet. Judgment search is held back until Consumer Disputes material has been filtered, source-linked, and reviewed.
+
+## Request path
+
+```mermaid
+flowchart LR
+    Q[Question] --> R[Keyword and provision retrieval]
+    R --> E[Up to three source records]
+    E --> G[Groq generation]
+    G --> C[Citation check]
+    C --> V[Answer with source cards]
+    E --> F[Verified retrieval fallback]
+    F --> V
 ```
 
-Current coverage: 39 curated primary-source records.
+If generation is unavailable, incomplete, or returns invalid citations, the app shows a retrieval fallback from the same evidence instead of inventing an answer.
 
-- Definitions: Sections 2(6), 2(7), 2(9), 2(28), and 2(47)
-- Central Consumer Protection Authority: Sections 17 to 21
-- Consumer complaint process: Sections 34, 35, 38, 39, 41, and 69
-- E-commerce duties and consumer disclosures: Rules 2, 4, 5, 6, and 7
-- Misleading advertisements and endorsements: validity, disclaimers, bait and free claims, children, surrogate advertising, and endorser due diligence
-- Dark patterns: false urgency, basket sneaking, subscription traps, drip pricing, bait and switch, and disguised advertisements
+## Evaluation
 
-The records cover common questions about eligibility, consumer rights, class-wide complaints, unsafe goods, misleading advertisements, filing, forum, procedure, remedies, appeals, limitation, online-marketplace disclosures, seller obligations, refunds, grievance handling, advertising claims, endorsements, and manipulative online design. This is still a focused research corpus, not the complete body of consumer law.
+The evaluation notes are kept in [docs/evaluation](docs/evaluation/README.md).
 
-When the current corpus does not support a question, the API returns a clear non-answer instead of generating from outside knowledge.
+- The known 50-question regression suite recorded 45 core passes after Stage 3. See [Run 3](docs/evaluation/run-3-2026-10-29.md).
+- The frozen 20-question unseen set recorded 20 core passes after the Stage 4 retrieval fixes. See the [Stage 4 re-run](docs/evaluation/unseen-set-1-stage4-results-2026-10-31.md).
 
-Primary sources:
-
-- [Consumer Protection Act, 2019](https://www.indiacode.nic.in/bitstream/123456789/15256/1/a2019-35.pdf)
-- [Consumer Protection (E-Commerce) Rules, 2020](https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf)
-- [Misleading Advertisements and Endorsements Guidelines, 2022](https://consumeraffairs.nic.in/latestnews/guidelines-prevention-misleading-advertisements-and-endorsements-misleading)
-- [Dark Patterns Guidelines, 2023](https://consumeraffairs.nic.in/sites/default/files/The%20Guidelines%20for%20Prevention%20and%20Regulation%20of%20Dark%20Patterns%2C%202023.pdf)
+These are small, source-scoped checks. They are not a claim of overall legal accuracy, production readiness, or legal advice. The Stage 4 report also records eight responses that displayed nonessential extra source cards.
 
 ## Run locally
 
-The interface works locally without an API key; it will display the verified retrieval fallback.
+Requires Node.js 20+ and Python for the small case-curation test suite.
 
 ```powershell
 cd B:\Rag\consumer-law-research
 python -m http.server 8080
 ```
 
-Open `http://localhost:8080`.
+Open `http://localhost:8080`. A plain static server has no `/api/ask` function, so the interface uses its local, source-backed fallback.
 
-Run all local checks with:
+Run the checks with:
 
 ```powershell
-node scripts/test-search.mjs
-node scripts/test-rag.mjs
-node scripts/test-api.mjs
+npm test
 python -m unittest discover -s tests -v
 ```
 
-`scripts/test-search.mjs` includes a focused retrieval check for every curated provision, rule, and guidance record, plus common-language checks for consumer status, unsafe-goods recall, late complaints, marketplace refunds, seller response times, platform contacts, marketplace disclosures, foreign platforms serving India, misleading disclaimers, endorsements, false urgency, basket sneaking, and hidden charges.
+## Deploy
 
-## Groq and Vercel
+The site is deployed on Vercel. Set `GROQ_API_KEY` in Vercel Environment Variables to enable generated answers; without it, the source-backed fallback still works. Deployment details and the security notes are in [docs/deployment.md](docs/deployment.md).
 
-Copy `.env.example` only for local reference; never commit a real key. In production, set `GROQ_API_KEY` and optionally `GROQ_MODEL` in Vercel Environment Variables. The API route is `POST /api/ask`.
+## Source material
 
-See [the Vercel deployment guide](docs/deployment.md) for the full setup, fallback behaviour, and security checklist.
+- [Consumer Protection Act, 2019](https://www.indiacode.nic.in/bitstream/123456789/15256/1/a2019-35.pdf)
+- [Consumer Protection (E-Commerce) Rules, 2020](https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf)
+- [Misleading Advertisements and Endorsements Guidelines, 2022](https://consumeraffairs.nic.in/latestnews/guidelines-prevention-misleading-advertisements-and-endorsements-misleading)
+- [Dark Patterns Guidelines, 2023](https://consumeraffairs.nic.in/sites/default/files/The%20Guidelines%20for%20Prevention%20and%20Regulation%20of%20Dark%20Patterns%2C%202023.pdf)
 
-## Evaluation
+## Limits
 
-The project keeps manual evaluation reports under [docs/evaluation](docs/evaluation/README.md). The current regression baseline is [Run 3](docs/evaluation/run-3-2026-10-29.md): 45 of 50 core questions passed on a known, manually checked suite. This is not a claim of overall legal accuracy or unseen-question performance.
-
-## Prepare judgment candidates locally
-
-The NyayaAnumana source files remain outside the repository. Create an ignored review file with:
-
-```powershell
-python scripts/filter_consumer_cases.py `
-  --source "B:\Dataset\CJPE_ext_SCI_HCs_tribunals_dailyorder_dev_wo_RoD_ternary (1).csv"
-```
-
-Export a review sheet from local candidates with:
-
-```powershell
-python scripts/export_review_sample.py `
-  --source data/curated/consumer_dev_candidates.jsonl `
-  --sample-size 50
-```
-
-Open `data/curated/consumer_case_review_sample.csv` in Excel. Mark each row `approved`, `rejected`, or `needs_review`, and add a short reason. Do not publish case search until approved rows have been reviewed for relevance, source provenance, and Act version.
-
-## Data policy
-
-- Do not commit raw judgments, downloaded PDFs, review sheets, or API keys.
-- `data/raw/` and `data/curated/` remain local and ignored by Git.
-- Publish only reviewed metadata, permitted excerpts, and source links.
-- Keep Consumer Protection Act, 1986 decisions separate from Consumer Protection Act, 2019 material.
-
-## Limitations
-
-- This educational research prototype is not legal advice.
-- It currently retrieves statutes only, not judgments.
-- Groq free-tier availability and rate limits can affect generated answers; the retrieval fallback remains available.
-- Users should verify the linked primary source and consult a qualified professional for legal decisions.
+- This is an educational research tool, not legal advice.
+- Only the listed source families are searchable.
+- Generated answers depend on Groq availability and request limits; retrieval fallback remains available.
+- Users should read the linked primary source before acting on a result.

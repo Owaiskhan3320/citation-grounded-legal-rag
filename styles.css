@@ -51,6 +51,10 @@ footer {
   gap: 1rem;
 }
 
+.title-row > div {
+  min-width: 0;
+}
+
 .eyebrow {
   margin: 0 0 0.45rem;
   color: var(--forest);
@@ -334,6 +338,28 @@ footer {
   footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .title-row > div {
+    width: 100%;
+  }
+
+  .subtitle,
+  .search-copy p {
+    max-width: none;
+    overflow-wrap: anywhere;
+  }
+
+  .search-panel,
+  .input-row,
+  input {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.15rem, 9vw, 2.65rem);
+    letter-spacing: -0.045em;
   }
 
   .input-row {
