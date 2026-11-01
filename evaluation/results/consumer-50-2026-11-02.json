@@ -1,0 +1,3358 @@
+{
+  "benchmark": "consumer-50-v1",
+  "run_at": "2026-11-01T19:37:27.434Z",
+  "as_of": "2026-11-02",
+  "authorship": "Agent-authored after inspecting the corpus and existing regressions; not an independent human holdout.",
+  "fingerprints": {
+    "evaluation/consumer-50.json": "16953021c73b670c199d3806880722f7ea0578d9719b472997cef7fa46801d6e",
+    "data/consumer-law/v1/records.json": "38e7b56bd0d10cf9c6c6966a241d0ec16122ac2ad9754ba39e1f4801a9d8abbb",
+    "data/consumer-law/v1/sources.json": "bc4db08578618d51da60ad40e1d727c0f1113655bf1882cce9faadcb3338a99a",
+    "data/statutes.js": "447590b74d0263c8acf945a3de799a5fbb0b1afd69155632735a07fb15499136",
+    "search.js": "c85c908287321a6de592f68f135a17519453131ba7f9d9f9c7df31c6e46f9c70",
+    "rag.js": "7d80e5bbfb60c3478a2a59cb75ba5f0ea4e15f95b57e8c8e99ea39c31408b206"
+  },
+  "input_sha256": "4db5b41c8bd77a078f6dfb29b2fe2b070ea2a3bcc8bee4453c081845754166aa",
+  "record_count": 90,
+  "runtime": {
+    "node": "v24.22.1",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-1235U"
+  },
+  "configuration": {
+    "top_k": 3,
+    "bm25": {
+      "k1": 1.5,
+      "b": 0.75
+    },
+    "dense_abstention_threshold": null,
+    "bm25_min_score_exclusive": 0,
+    "rrf_k": 60,
+    "rrf_depth": 90
+  },
+  "implementation_fingerprints": {
+    "scripts/evaluate-retrieval.mjs": "a2377261c1b8aea928e25f1c86bf9ad2a71861458d739c4ceeb67aaf836f7500",
+    "scripts/retrieval-metrics.mjs": "366f3f486bd8078d2041eeba3afaf826c7db72df4758d697271638904b44dcbb",
+    "scripts/export_embeddings.py": "29edce509de63939097377708b57dc1c34d5bd7adf664c9f14745dca9c3cc3bf"
+  },
+  "embedding_artifact_sha256": "af7a5e8b6a853d4d2540db90403a03f57263e3811496cb4a9678f418b720f313",
+  "embedding": {
+    "input_sha256": "4db5b41c8bd77a078f6dfb29b2fe2b070ea2a3bcc8bee4453c081845754166aa",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf",
+    "normalised": true,
+    "dimensions": 384,
+    "device": "cpu",
+    "threads": 4,
+    "max_sequence_length": 256,
+    "load_ms": 1081.4748,
+    "index_ms": 4444.0472,
+    "truncated": {
+      "records": [],
+      "questions": []
+    },
+    "libraries": {
+      "sentence-transformers": "5.2.2",
+      "torch": "2.10.0",
+      "transformers": "5.1.0",
+      "huggingface-hub": "1.4.1",
+      "numpy": "2.1.3"
+    }
+  },
+  "runs": {
+    "keyword": {
+      "metrics": {
+        "in_scope_count": 40,
+        "hit_at_1": 0.625,
+        "macro_evidence_recall_at_3": 0.7791666666666667,
+        "complete_evidence_at_3": 0.75,
+        "mrr_at_3": 0.7041666666666666,
+        "out_of_scope_count": 10,
+        "out_of_scope_abstentions": 2,
+        "out_of_scope_false_matches": 8,
+        "query_p50_ms": 1.4799,
+        "query_p95_ms": 2.2786
+      },
+      "questions": [
+        {
+          "id": "C01",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "ecommerce-scope",
+            "marketplace-post-purchase-seller-details",
+            "dark-pattern-false-urgency"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.9904
+        },
+        {
+          "id": "C02",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "deficiency-definition",
+            "ecommerce-scope",
+            "marketplace-seller-returns"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 0.5,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.741
+        },
+        {
+          "id": "C03",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "service-definition",
+            "consumer-definition",
+            "false-or-misleading-advertisement-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.9952
+        },
+        {
+          "id": "C04",
+          "kind": "in_scope",
+          "category": "contracts",
+          "retrieved": [
+            "unfair-contract-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.6843
+        },
+        {
+          "id": "C05",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "complaint-admission",
+            "class-complaints-to-authorities",
+            "filing-complaint"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.745
+        },
+        {
+          "id": "C06",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "filing-complaint"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.8584
+        },
+        {
+          "id": "C07",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "filing-complaint"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.7523
+        },
+        {
+          "id": "C08",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "district-commission-remedies",
+            "filing-complaint",
+            "district-review"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.3333333333333333
+          },
+          "query_ms": 1.6669
+        },
+        {
+          "id": "C09",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "filing-complaint",
+            "appeal-district-commission",
+            "appeal-state-commission"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 1.9929
+        },
+        {
+          "id": "C10",
+          "kind": "in_scope",
+          "category": "mediation",
+          "retrieved": [
+            "recording-mediation-settlement"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.7519
+        },
+        {
+          "id": "C11",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-action"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.4638
+        },
+        {
+          "id": "C12",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-manufacturer-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 2.004
+        },
+        {
+          "id": "C13",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-seller-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.726
+        },
+        {
+          "id": "C14",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-scope",
+            "product-service-provider-liability",
+            "product-liability-exceptions"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.3333333333333333
+          },
+          "query_ms": 1.0919
+        },
+        {
+          "id": "C15",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-state-value",
+            "jurisdiction-district-value",
+            "jurisdiction-national-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 1.6685
+        },
+        {
+          "id": "C16",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-district-value",
+            "jurisdiction-state-value",
+            "jurisdiction-national-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 1.3676
+        },
+        {
+          "id": "C17",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-state-value",
+            "jurisdiction-national-value",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 1.3299
+        },
+        {
+          "id": "C18",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-platform-response-time",
+            "consumer-rights",
+            "ecommerce-platform-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.4799
+        },
+        {
+          "id": "C19",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 2.36
+        },
+        {
+          "id": "C20",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 2.2786
+        },
+        {
+          "id": "C21",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-cancellation-charges"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.7559
+        },
+        {
+          "id": "C22",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "inventory-platform-returns-and-reviews",
+            "ecommerce-accepted-refunds",
+            "ecommerce-scope"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 1.2588
+        },
+        {
+          "id": "C23",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-affirmative-consent",
+            "marketplace-disclosures"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.0072
+        },
+        {
+          "id": "C24",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.6014
+        },
+        {
+          "id": "C25",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-accuracy-undertaking"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.4225
+        },
+        {
+          "id": "C26",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-post-purchase-seller-details"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.3681
+        },
+        {
+          "id": "C27",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-fair-practices"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.1584
+        },
+        {
+          "id": "C28",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "endorser-due-diligence"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 2.4585
+        },
+        {
+          "id": "C29",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "class-complaints-to-authorities",
+            "ccpa-functions",
+            "misleading-advertisements"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.461
+        },
+        {
+          "id": "C30",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "free-claim-advertisements",
+            "marketplace-seller-prepurchase-information",
+            "inventory-platform-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.7114
+        },
+        {
+          "id": "C31",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "advertisements-targeting-children"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.412
+        },
+        {
+          "id": "C32",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "unfair-trade-practice"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.8075
+        },
+        {
+          "id": "C33",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-trick-question"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.8254
+        },
+        {
+          "id": "C34",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-interface-interference",
+            "ecommerce-platform-information",
+            "advertisements-targeting-children"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.2068
+        },
+        {
+          "id": "C35",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-basket-sneaking",
+            "dark-pattern-bait-switch-and-disguised-ads",
+            "jurisdiction-state-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.6681
+        },
+        {
+          "id": "C36",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-drip-pricing",
+            "inventory-platform-information",
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.54
+        },
+        {
+          "id": "C37",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-complaint-channels",
+            "nch-prelitigation-limits",
+            "nch-grievance-details"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 1.1279
+        },
+        {
+          "id": "C38",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-prelitigation-limits"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.3359
+        },
+        {
+          "id": "C39",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "ejagriti-help-resources"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.1945
+        },
+        {
+          "id": "C40",
+          "kind": "in_scope",
+          "category": "combined",
+          "retrieved": [
+            "dark-pattern-basket-sneaking",
+            "endorser-due-diligence",
+            "dark-pattern-false-urgency"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 0.6666666666666666,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 1.9394
+        },
+        {
+          "id": "O01",
+          "kind": "out_of_scope",
+          "category": "banking",
+          "retrieved": [
+            "dark-pattern-basket-sneaking",
+            "dark-pattern-drip-pricing",
+            "jurisdiction-state-value"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.5052
+        },
+        {
+          "id": "O02",
+          "kind": "out_of_scope",
+          "category": "food_labelling",
+          "retrieved": [
+            "filing-complaint"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.0496
+        },
+        {
+          "id": "O03",
+          "kind": "out_of_scope",
+          "category": "metrology",
+          "retrieved": [
+            "unfair-contract-definition",
+            "nch-prelitigation-limits",
+            "ccpa-investigation"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.3828
+        },
+        {
+          "id": "O04",
+          "kind": "out_of_scope",
+          "category": "rti",
+          "retrieved": [
+            "complaint-limitation",
+            "marketplace-post-purchase-seller-details",
+            "ejagriti-online-filing"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.2773
+        },
+        {
+          "id": "O05",
+          "kind": "out_of_scope",
+          "category": "privacy",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "surrogate-advertisements",
+            "nch-grievance-details"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.1514
+        },
+        {
+          "id": "O06",
+          "kind": "out_of_scope",
+          "category": "judgments",
+          "retrieved": [
+            "ejagriti-case-search",
+            "ccpa-investigation",
+            "complaint-limitation"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.4183
+        },
+        {
+          "id": "O07",
+          "kind": "out_of_scope",
+          "category": "tenancy",
+          "retrieved": [],
+          "grade": {
+            "abstained": true
+          },
+          "query_ms": 1.0712
+        },
+        {
+          "id": "O08",
+          "kind": "out_of_scope",
+          "category": "motor_accidents",
+          "retrieved": [],
+          "grade": {
+            "abstained": true
+          },
+          "query_ms": 1.1863
+        },
+        {
+          "id": "O09",
+          "kind": "out_of_scope",
+          "category": "criminal_procedure",
+          "retrieved": [
+            "marketplace-disclosures",
+            "inventory-platform-information",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.2003
+        },
+        {
+          "id": "O10",
+          "kind": "out_of_scope",
+          "category": "outcome_prediction",
+          "retrieved": [
+            "district-commission-remedies",
+            "complaint-admission",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 1.2414
+        }
+      ]
+    },
+    "bm25": {
+      "metrics": {
+        "in_scope_count": 40,
+        "hit_at_1": 0.8,
+        "macro_evidence_recall_at_3": 0.8916666666666666,
+        "complete_evidence_at_3": 0.875,
+        "mrr_at_3": 0.8458333333333334,
+        "out_of_scope_count": 10,
+        "out_of_scope_abstentions": 0,
+        "out_of_scope_false_matches": 10,
+        "query_p50_ms": 0.2697,
+        "query_p95_ms": 0.5955
+      },
+      "questions": [
+        {
+          "id": "C01",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "ecommerce-scope",
+            "ccpa-investigation",
+            "ecommerce-cancellation-charges"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 0.5923
+        },
+        {
+          "id": "C02",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "deficiency-definition",
+            "defect-definition",
+            "advertisement-validity-and-disclaimers"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.5469
+        },
+        {
+          "id": "C03",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "service-definition",
+            "free-claim-advertisements",
+            "deficiency-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.5955
+        },
+        {
+          "id": "C04",
+          "kind": "in_scope",
+          "category": "contracts",
+          "retrieved": [
+            "unfair-contract-definition",
+            "marketplace-post-purchase-seller-details",
+            "appeal-district-commission"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2912
+        },
+        {
+          "id": "C05",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "filing-complaint",
+            "reference-to-mediation",
+            "endorser-due-diligence"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 0.3091
+        },
+        {
+          "id": "C06",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "district-commission-jurisdiction",
+            "state-commission-territorial-jurisdiction",
+            "complaint-procedure"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2466
+        },
+        {
+          "id": "C07",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "complaint-limitation",
+            "dark-pattern-drip-pricing",
+            "ecommerce-affirmative-consent"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.4531
+        },
+        {
+          "id": "C08",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "district-review",
+            "complaint-procedure",
+            "appeal-district-commission"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.3638
+        },
+        {
+          "id": "C09",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "appeal-district-commission",
+            "appeal-state-commission",
+            "appeal-national-commission"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.3893
+        },
+        {
+          "id": "C10",
+          "kind": "in_scope",
+          "category": "mediation",
+          "retrieved": [
+            "recording-mediation-settlement",
+            "mediation-settlement",
+            "complaint-admission"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.3891
+        },
+        {
+          "id": "C11",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-action",
+            "product-service-provider-liability",
+            "product-seller-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2619
+        },
+        {
+          "id": "C12",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-manufacturer-liability",
+            "product-seller-liability",
+            "product-liability-action"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.4267
+        },
+        {
+          "id": "C13",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-seller-liability",
+            "dark-pattern-definition",
+            "advertisements-targeting-children"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2617
+        },
+        {
+          "id": "C14",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-exceptions",
+            "product-liability-scope",
+            "product-service-provider-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2119
+        },
+        {
+          "id": "C15",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-state-value",
+            "jurisdiction-national-value",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.3333333333333333
+          },
+          "query_ms": 0.3489
+        },
+        {
+          "id": "C16",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-district-value",
+            "jurisdiction-state-value",
+            "jurisdiction-national-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 0.3371
+        },
+        {
+          "id": "C17",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-national-value",
+            "jurisdiction-state-value",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2406
+        },
+        {
+          "id": "C18",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-platform-response-time",
+            "marketplace-seller-grievance",
+            "ecommerce-platform-grievance"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.3497
+        },
+        {
+          "id": "C19",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "marketplace-disclosures",
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.7791
+        },
+        {
+          "id": "C20",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "marketplace-post-purchase-seller-details",
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2461
+        },
+        {
+          "id": "C21",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-cancellation-charges",
+            "harm-definition",
+            "complaint-procedure"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2346
+        },
+        {
+          "id": "C22",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-accepted-refunds",
+            "ecommerce-scope",
+            "inventory-platform-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2278
+        },
+        {
+          "id": "C23",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-affirmative-consent",
+            "dark-pattern-drip-pricing",
+            "ecommerce-platform-response-time"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.19
+        },
+        {
+          "id": "C24",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-prepurchase-information",
+            "inventory-platform-information",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2176
+        },
+        {
+          "id": "C25",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-accuracy-undertaking",
+            "marketplace-differentiated-treatment",
+            "marketplace-seller-returns"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2697
+        },
+        {
+          "id": "C26",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-post-purchase-seller-details",
+            "marketplace-seller-prepurchase-information",
+            "ecommerce-platform-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2407
+        },
+        {
+          "id": "C27",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-fair-practices",
+            "marketplace-seller-accuracy-undertaking",
+            "marketplace-seller-returns"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.709
+        },
+        {
+          "id": "C28",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "endorser-due-diligence",
+            "surrogate-advertisements",
+            "dark-pattern-basket-sneaking"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.4257
+        },
+        {
+          "id": "C29",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "misleading-advertisements",
+            "false-or-misleading-advertisement-definition",
+            "surrogate-advertisements"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 0.2705
+        },
+        {
+          "id": "C30",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "free-claim-advertisements",
+            "marketplace-seller-prepurchase-information",
+            "ecommerce-cancellation-charges"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.3773
+        },
+        {
+          "id": "C31",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "advertisements-targeting-children",
+            "dark-pattern-drip-pricing",
+            "bait-and-free-claim-advertisements"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2232
+        },
+        {
+          "id": "C32",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-rogue-malware",
+            "unfair-trade-practice",
+            "marketplace-seller-fair-practices"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.4567
+        },
+        {
+          "id": "C33",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-trick-question",
+            "dark-pattern-definition",
+            "dark-pattern-rogue-malware"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2212
+        },
+        {
+          "id": "C34",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-interface-interference",
+            "ecommerce-platform-information",
+            "product-manufacturer-liability"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 0.2556
+        },
+        {
+          "id": "C35",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-definition",
+            "dark-pattern-subscription-trap",
+            "dark-pattern-basket-sneaking"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 0.2736
+        },
+        {
+          "id": "C36",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-drip-pricing",
+            "dark-pattern-definition",
+            "dark-pattern-rogue-malware"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.3165
+        },
+        {
+          "id": "C37",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-complaint-channels",
+            "nch-tracking",
+            "nch-forwarding-and-docket"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 0.1738
+        },
+        {
+          "id": "C38",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-prelitigation-limits",
+            "nch-complaint-channels",
+            "nch-tracking"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.1903
+        },
+        {
+          "id": "C39",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "ejagriti-help-resources",
+            "ejagriti-online-filing",
+            "ejagriti-case-search"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.2531
+        },
+        {
+          "id": "C40",
+          "kind": "in_scope",
+          "category": "combined",
+          "retrieved": [
+            "dark-pattern-basket-sneaking",
+            "dark-pattern-definition",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 0.6666666666666666,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 0.3085
+        },
+        {
+          "id": "O01",
+          "kind": "out_of_scope",
+          "category": "banking",
+          "retrieved": [
+            "ecommerce-scope",
+            "dark-pattern-false-urgency",
+            "jurisdiction-state-value"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.2
+        },
+        {
+          "id": "O02",
+          "kind": "out_of_scope",
+          "category": "food_labelling",
+          "retrieved": [
+            "filing-complaint",
+            "ecommerce-unfair-practices",
+            "ecommerce-platform-grievance"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.1555
+        },
+        {
+          "id": "O03",
+          "kind": "out_of_scope",
+          "category": "metrology",
+          "retrieved": [
+            "nch-prelitigation-limits",
+            "unfair-contract-definition",
+            "product-liability-scope"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.4437
+        },
+        {
+          "id": "O04",
+          "kind": "out_of_scope",
+          "category": "rti",
+          "retrieved": [
+            "marketplace-post-purchase-seller-details",
+            "appeal-district-commission",
+            "appeal-state-commission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.1792
+        },
+        {
+          "id": "O05",
+          "kind": "out_of_scope",
+          "category": "privacy",
+          "retrieved": [
+            "marketplace-post-purchase-seller-details",
+            "service-definition",
+            "marketplace-seller-returns"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.1834
+        },
+        {
+          "id": "O06",
+          "kind": "out_of_scope",
+          "category": "judgments",
+          "retrieved": [
+            "appeal-national-commission",
+            "ejagriti-case-search",
+            "ccpa-investigation"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.206
+        },
+        {
+          "id": "O07",
+          "kind": "out_of_scope",
+          "category": "tenancy",
+          "retrieved": [
+            "nch-prelitigation-limits",
+            "appeal-district-commission",
+            "appeal-national-commission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.1852
+        },
+        {
+          "id": "O08",
+          "kind": "out_of_scope",
+          "category": "motor_accidents",
+          "retrieved": [
+            "appeal-district-commission",
+            "product-liability-scope",
+            "district-commission-remedies"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.1865
+        },
+        {
+          "id": "O09",
+          "kind": "out_of_scope",
+          "category": "criminal_procedure",
+          "retrieved": [
+            "endorser-due-diligence",
+            "filing-complaint",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.4511
+        },
+        {
+          "id": "O10",
+          "kind": "out_of_scope",
+          "category": "outcome_prediction",
+          "retrieved": [
+            "district-commission-remedies",
+            "state-commission-territorial-jurisdiction",
+            "complaint-admission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 0.3161
+        }
+      ]
+    },
+    "dense": {
+      "metrics": {
+        "in_scope_count": 40,
+        "hit_at_1": 0.75,
+        "macro_evidence_recall_at_3": 0.9333333333333333,
+        "complete_evidence_at_3": 0.925,
+        "mrr_at_3": 0.8458333333333334,
+        "out_of_scope_count": 10,
+        "out_of_scope_abstentions": 0,
+        "out_of_scope_false_matches": 10,
+        "query_p50_ms": 39.6217,
+        "query_p95_ms": 48.5474
+      },
+      "questions": [
+        {
+          "id": "C01",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "inventory-platform-returns-and-reviews",
+            "harm-definition",
+            "product-manufacturer-liability"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 44.6064
+        },
+        {
+          "id": "C02",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "deficiency-definition",
+            "defect-definition",
+            "product-service-provider-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 40.7499
+        },
+        {
+          "id": "C03",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "service-definition",
+            "free-claim-advertisements",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 43.64
+        },
+        {
+          "id": "C04",
+          "kind": "in_scope",
+          "category": "contracts",
+          "retrieved": [
+            "unfair-contract-definition",
+            "product-service-provider-liability",
+            "product-liability-exceptions"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 47.0923
+        },
+        {
+          "id": "C05",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "marketplace-seller-grievance",
+            "complaint-admission",
+            "complaint-limitation"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 38.5218
+        },
+        {
+          "id": "C06",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "district-commission-jurisdiction",
+            "class-complaints-to-authorities",
+            "state-commission-territorial-jurisdiction"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 46.595
+        },
+        {
+          "id": "C07",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "complaint-limitation",
+            "marketplace-seller-grievance",
+            "ecommerce-platform-response-time"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 43.7625
+        },
+        {
+          "id": "C08",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "district-review",
+            "appeal-district-commission",
+            "complaint-procedure"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 48.2579
+        },
+        {
+          "id": "C09",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "appeal-district-commission",
+            "appeal-national-commission",
+            "appeal-state-commission"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 38.7643
+        },
+        {
+          "id": "C10",
+          "kind": "in_scope",
+          "category": "mediation",
+          "retrieved": [
+            "recording-mediation-settlement",
+            "reference-to-mediation",
+            "mediation-procedure"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 38.5881
+        },
+        {
+          "id": "C11",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-action",
+            "product-service-provider-liability",
+            "product-manufacturer-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 37.8036
+        },
+        {
+          "id": "C12",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-manufacturer-liability",
+            "product-liability-action",
+            "harm-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 49.9665
+        },
+        {
+          "id": "C13",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "harm-definition",
+            "product-manufacturer-liability",
+            "product-liability-action"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 40.413
+        },
+        {
+          "id": "C14",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-exceptions",
+            "harm-definition",
+            "inventory-platform-returns-and-reviews"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 37.9015
+        },
+        {
+          "id": "C15",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-state-value",
+            "jurisdiction-national-value",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.3333333333333333
+          },
+          "query_ms": 49.3407
+        },
+        {
+          "id": "C16",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-district-value",
+            "jurisdiction-state-value",
+            "jurisdiction-national-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 44.9795
+        },
+        {
+          "id": "C17",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-national-value",
+            "jurisdiction-state-value",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 36.4467
+        },
+        {
+          "id": "C18",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-grievance",
+            "ecommerce-platform-response-time",
+            "complaint-admission"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 38.0465
+        },
+        {
+          "id": "C19",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "marketplace-seller-prepurchase-information",
+            "marketplace-disclosures"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 40.7919
+        },
+        {
+          "id": "C20",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "ecommerce-accepted-refunds",
+            "marketplace-seller-grievance"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 39.6217
+        },
+        {
+          "id": "C21",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-cancellation-charges",
+            "marketplace-seller-returns",
+            "dark-pattern-subscription-trap"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.4286
+        },
+        {
+          "id": "C22",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-accepted-refunds",
+            "marketplace-seller-returns",
+            "inventory-platform-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 38.6646
+        },
+        {
+          "id": "C23",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-affirmative-consent",
+            "dark-pattern-basket-sneaking",
+            "inventory-platform-returns-and-reviews"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 37.1243
+        },
+        {
+          "id": "C24",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-prepurchase-information",
+            "dark-pattern-drip-pricing",
+            "ecommerce-cancellation-charges"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 36.5466
+        },
+        {
+          "id": "C25",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-accuracy-undertaking",
+            "inventory-platform-returns-and-reviews",
+            "marketplace-disclosures"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 35.7768
+        },
+        {
+          "id": "C26",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-post-purchase-seller-details",
+            "marketplace-disclosures",
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.1665
+        },
+        {
+          "id": "C27",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-fair-practices",
+            "inventory-platform-returns-and-reviews",
+            "marketplace-disclosures"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 42.8743
+        },
+        {
+          "id": "C28",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "endorser-due-diligence",
+            "advertisement-validity-and-disclaimers",
+            "surrogate-advertisements"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 40.4719
+        },
+        {
+          "id": "C29",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "advertisement-validity-and-disclaimers",
+            "advertisement-disclaimers",
+            "false-or-misleading-advertisement-definition"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 35.6183
+        },
+        {
+          "id": "C30",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "free-claim-advertisements",
+            "marketplace-seller-prepurchase-information",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 41.2124
+        },
+        {
+          "id": "C31",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "advertisements-targeting-children",
+            "advertisement-validity-and-disclaimers",
+            "false-or-misleading-advertisement-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 34.8124
+        },
+        {
+          "id": "C32",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-rogue-malware",
+            "advertisement-validity-and-disclaimers",
+            "false-or-misleading-advertisement-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 45.4598
+        },
+        {
+          "id": "C33",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-trick-question",
+            "dark-pattern-definition",
+            "marketplace-seller-fair-practices"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 39.352
+        },
+        {
+          "id": "C34",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-interface-interference",
+            "dark-pattern-confirm-shaming",
+            "dark-pattern-forced-action"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 47.3931
+        },
+        {
+          "id": "C35",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-definition",
+            "dark-pattern-subscription-trap",
+            "dark-pattern-interface-interference"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 45.3181
+        },
+        {
+          "id": "C36",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-drip-pricing",
+            "dark-pattern-definition",
+            "dark-pattern-saas-billing"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 43.8705
+        },
+        {
+          "id": "C37",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-tracking",
+            "nch-complaint-channels",
+            "ecommerce-platform-grievance"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 35.8446
+        },
+        {
+          "id": "C38",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-prelitigation-limits",
+            "nch-tracking",
+            "marketplace-seller-grievance"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 35.6224
+        },
+        {
+          "id": "C39",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "ejagriti-help-resources",
+            "ejagriti-online-filing",
+            "ejagriti-case-search"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.0737
+        },
+        {
+          "id": "C40",
+          "kind": "in_scope",
+          "category": "combined",
+          "retrieved": [
+            "dark-pattern-definition",
+            "dark-pattern-drip-pricing",
+            "dark-pattern-rogue-malware"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0.3333333333333333,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 47.3608
+        },
+        {
+          "id": "O01",
+          "kind": "out_of_scope",
+          "category": "banking",
+          "retrieved": [
+            "jurisdiction-state-value",
+            "jurisdiction-national-value",
+            "ecommerce-accepted-refunds"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 39.3082
+        },
+        {
+          "id": "O02",
+          "kind": "out_of_scope",
+          "category": "food_labelling",
+          "retrieved": [
+            "marketplace-differentiated-treatment",
+            "consumer-rights",
+            "product-liability-exceptions"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.9826
+        },
+        {
+          "id": "O03",
+          "kind": "out_of_scope",
+          "category": "metrology",
+          "retrieved": [
+            "inventory-platform-returns-and-reviews",
+            "marketplace-seller-fair-practices",
+            "misleading-advertisements"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 35.3989
+        },
+        {
+          "id": "O04",
+          "kind": "out_of_scope",
+          "category": "rti",
+          "retrieved": [
+            "appeal-state-commission",
+            "appeal-district-commission",
+            "appeal-national-commission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 37.7652
+        },
+        {
+          "id": "O05",
+          "kind": "out_of_scope",
+          "category": "privacy",
+          "retrieved": [
+            "noncompliance-with-orders",
+            "complaint-limitation",
+            "complaint-admission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 40.3713
+        },
+        {
+          "id": "O06",
+          "kind": "out_of_scope",
+          "category": "judgments",
+          "retrieved": [
+            "appeal-national-commission",
+            "appeal-district-commission",
+            "appeal-state-commission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.6427
+        },
+        {
+          "id": "O07",
+          "kind": "out_of_scope",
+          "category": "tenancy",
+          "retrieved": [
+            "jurisdiction-district-value",
+            "jurisdiction-state-value",
+            "appeal-district-commission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.4531
+        },
+        {
+          "id": "O08",
+          "kind": "out_of_scope",
+          "category": "motor_accidents",
+          "retrieved": [
+            "product-liability-scope",
+            "product-liability-action",
+            "harm-definition"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.7001
+        },
+        {
+          "id": "O09",
+          "kind": "out_of_scope",
+          "category": "criminal_procedure",
+          "retrieved": [
+            "dark-pattern-rogue-malware",
+            "ecommerce-platform-grievance",
+            "ecommerce-platform-information"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.5758
+        },
+        {
+          "id": "O10",
+          "kind": "out_of_scope",
+          "category": "outcome_prediction",
+          "retrieved": [
+            "jurisdiction-district-value",
+            "jurisdiction-state-value",
+            "jurisdiction-national-value"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 48.5474
+        }
+      ]
+    },
+    "hybrid_rrf": {
+      "metrics": {
+        "in_scope_count": 40,
+        "hit_at_1": 0.775,
+        "macro_evidence_recall_at_3": 0.9416666666666667,
+        "complete_evidence_at_3": 0.925,
+        "mrr_at_3": 0.8583333333333334,
+        "out_of_scope_count": 10,
+        "out_of_scope_abstentions": 0,
+        "out_of_scope_false_matches": 10,
+        "query_p50_ms": 39.9043,
+        "query_p95_ms": 48.8986
+      },
+      "questions": [
+        {
+          "id": "C01",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "marketplace-seller-prepurchase-information",
+            "ecommerce-scope",
+            "product-seller-liability"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 45.339
+        },
+        {
+          "id": "C02",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "deficiency-definition",
+            "defect-definition",
+            "complaint-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 41.4769
+        },
+        {
+          "id": "C03",
+          "kind": "in_scope",
+          "category": "definitions",
+          "retrieved": [
+            "service-definition",
+            "free-claim-advertisements",
+            "dark-pattern-drip-pricing"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.367
+        },
+        {
+          "id": "C04",
+          "kind": "in_scope",
+          "category": "contracts",
+          "retrieved": [
+            "unfair-contract-definition",
+            "product-service-provider-liability",
+            "noncompliance-with-orders"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 47.4535
+        },
+        {
+          "id": "C05",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "complaint-limitation",
+            "complaint-admission",
+            "district-commission-jurisdiction"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 38.9892
+        },
+        {
+          "id": "C06",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "district-commission-jurisdiction",
+            "state-commission-territorial-jurisdiction",
+            "class-complaints-to-authorities"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 46.9116
+        },
+        {
+          "id": "C07",
+          "kind": "in_scope",
+          "category": "complaints",
+          "retrieved": [
+            "complaint-limitation",
+            "appeal-national-commission",
+            "class-complaints-to-authorities"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.2877
+        },
+        {
+          "id": "C08",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "district-review",
+            "appeal-district-commission",
+            "complaint-procedure"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 48.7028
+        },
+        {
+          "id": "C09",
+          "kind": "in_scope",
+          "category": "review_and_appeal",
+          "retrieved": [
+            "appeal-district-commission",
+            "appeal-national-commission",
+            "appeal-state-commission"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 39.2923
+        },
+        {
+          "id": "C10",
+          "kind": "in_scope",
+          "category": "mediation",
+          "retrieved": [
+            "recording-mediation-settlement",
+            "mediation-settlement",
+            "mediation-procedure"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 39.0201
+        },
+        {
+          "id": "C11",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-action",
+            "product-service-provider-liability",
+            "product-manufacturer-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 38.1076
+        },
+        {
+          "id": "C12",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-manufacturer-liability",
+            "product-liability-action",
+            "harm-definition"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 50.4504
+        },
+        {
+          "id": "C13",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-seller-liability",
+            "product-liability-action",
+            "inventory-platform-returns-and-reviews"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 40.7152
+        },
+        {
+          "id": "C14",
+          "kind": "in_scope",
+          "category": "product_liability",
+          "retrieved": [
+            "product-liability-exceptions",
+            "harm-definition",
+            "product-service-provider-liability"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 38.1504
+        },
+        {
+          "id": "C15",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-state-value",
+            "jurisdiction-national-value",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.3333333333333333
+          },
+          "query_ms": 49.7354
+        },
+        {
+          "id": "C16",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-district-value",
+            "jurisdiction-state-value",
+            "jurisdiction-national-value"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 45.3533
+        },
+        {
+          "id": "C17",
+          "kind": "in_scope",
+          "category": "jurisdiction",
+          "retrieved": [
+            "jurisdiction-national-value",
+            "jurisdiction-state-value",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 36.7202
+        },
+        {
+          "id": "C18",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-platform-response-time",
+            "marketplace-seller-grievance",
+            "class-complaints-to-authorities"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 38.4373
+        },
+        {
+          "id": "C19",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "marketplace-disclosures",
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 41.6401
+        },
+        {
+          "id": "C20",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-returns",
+            "marketplace-seller-prepurchase-information",
+            "marketplace-disclosures"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 39.9043
+        },
+        {
+          "id": "C21",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-cancellation-charges",
+            "inventory-platform-information",
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.7059
+        },
+        {
+          "id": "C22",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-accepted-refunds",
+            "inventory-platform-information",
+            "inventory-platform-returns-and-reviews"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 38.924
+        },
+        {
+          "id": "C23",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "ecommerce-affirmative-consent",
+            "inventory-platform-returns-and-reviews",
+            "ecommerce-unfair-practices"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 37.3471
+        },
+        {
+          "id": "C24",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-prepurchase-information",
+            "dark-pattern-drip-pricing",
+            "inventory-platform-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 36.8063
+        },
+        {
+          "id": "C25",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-accuracy-undertaking",
+            "marketplace-seller-fair-practices",
+            "marketplace-seller-prepurchase-information"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 36.0907
+        },
+        {
+          "id": "C26",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-post-purchase-seller-details",
+            "marketplace-seller-prepurchase-information",
+            "marketplace-disclosures"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.4582
+        },
+        {
+          "id": "C27",
+          "kind": "in_scope",
+          "category": "ecommerce",
+          "retrieved": [
+            "marketplace-seller-fair-practices",
+            "marketplace-seller-accuracy-undertaking",
+            "inventory-platform-returns-and-reviews"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 43.7032
+        },
+        {
+          "id": "C28",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "endorser-due-diligence",
+            "surrogate-advertisements",
+            "advertisement-validity-and-disclaimers"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 40.9544
+        },
+        {
+          "id": "C29",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "misleading-advertisements",
+            "false-or-misleading-advertisement-definition",
+            "advertisement-validity-and-disclaimers"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0
+          },
+          "query_ms": 35.9366
+        },
+        {
+          "id": "C30",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "free-claim-advertisements",
+            "marketplace-seller-prepurchase-information",
+            "surrogate-advertisements"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 41.6314
+        },
+        {
+          "id": "C31",
+          "kind": "in_scope",
+          "category": "advertising",
+          "retrieved": [
+            "advertisements-targeting-children",
+            "bait-and-free-claim-advertisements",
+            "advertisement-validity-and-disclaimers"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 35.0706
+        },
+        {
+          "id": "C32",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-rogue-malware",
+            "false-or-misleading-advertisement-definition",
+            "marketplace-seller-fair-practices"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 45.9697
+        },
+        {
+          "id": "C33",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-trick-question",
+            "dark-pattern-definition",
+            "dark-pattern-confirm-shaming"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 39.602
+        },
+        {
+          "id": "C34",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-interface-interference",
+            "dark-pattern-confirm-shaming",
+            "product-manufacturer-liability"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 47.6834
+        },
+        {
+          "id": "C35",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-definition",
+            "dark-pattern-subscription-trap",
+            "dark-pattern-rogue-malware"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 45.6257
+        },
+        {
+          "id": "C36",
+          "kind": "in_scope",
+          "category": "dark_patterns",
+          "retrieved": [
+            "dark-pattern-drip-pricing",
+            "dark-pattern-definition",
+            "dark-pattern-rogue-malware"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.2231
+        },
+        {
+          "id": "C37",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-complaint-channels",
+            "nch-tracking",
+            "ecommerce-platform-grievance"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 36.0551
+        },
+        {
+          "id": "C38",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "nch-prelitigation-limits",
+            "nch-tracking",
+            "nch-complaint-channels"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 35.8614
+        },
+        {
+          "id": "C39",
+          "kind": "in_scope",
+          "category": "official_routes",
+          "retrieved": [
+            "ejagriti-help-resources",
+            "ejagriti-online-filing",
+            "ejagriti-case-search"
+          ],
+          "grade": {
+            "hit_at_1": true,
+            "recall_at_k": 1,
+            "complete_at_k": true,
+            "reciprocal_rank_at_k": 1
+          },
+          "query_ms": 44.3638
+        },
+        {
+          "id": "C40",
+          "kind": "in_scope",
+          "category": "combined",
+          "retrieved": [
+            "dark-pattern-definition",
+            "dark-pattern-drip-pricing",
+            "dark-pattern-basket-sneaking"
+          ],
+          "grade": {
+            "hit_at_1": false,
+            "recall_at_k": 0.6666666666666666,
+            "complete_at_k": false,
+            "reciprocal_rank_at_k": 0.5
+          },
+          "query_ms": 47.7012
+        },
+        {
+          "id": "O01",
+          "kind": "out_of_scope",
+          "category": "banking",
+          "retrieved": [
+            "jurisdiction-state-value",
+            "product-liability-scope",
+            "ecommerce-platform-response-time"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 39.5417
+        },
+        {
+          "id": "O02",
+          "kind": "out_of_scope",
+          "category": "food_labelling",
+          "retrieved": [
+            "marketplace-differentiated-treatment",
+            "ecommerce-unfair-practices",
+            "marketplace-seller-fair-practices"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 39.1723
+        },
+        {
+          "id": "O03",
+          "kind": "out_of_scope",
+          "category": "metrology",
+          "retrieved": [
+            "noncompliance-with-orders",
+            "inventory-platform-returns-and-reviews",
+            "misleading-advertisements"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 35.9773
+        },
+        {
+          "id": "O04",
+          "kind": "out_of_scope",
+          "category": "rti",
+          "retrieved": [
+            "appeal-state-commission",
+            "appeal-district-commission",
+            "appeal-national-commission"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 37.9799
+        },
+        {
+          "id": "O05",
+          "kind": "out_of_scope",
+          "category": "privacy",
+          "retrieved": [
+            "marketplace-post-purchase-seller-details",
+            "noncompliance-with-orders",
+            "marketplace-seller-returns"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 40.5835
+        },
+        {
+          "id": "O06",
+          "kind": "out_of_scope",
+          "category": "judgments",
+          "retrieved": [
+            "appeal-national-commission",
+            "ccpa-investigation",
+            "complaint-limitation"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.8807
+        },
+        {
+          "id": "O07",
+          "kind": "out_of_scope",
+          "category": "tenancy",
+          "retrieved": [
+            "appeal-district-commission",
+            "jurisdiction-district-value",
+            "jurisdiction-state-value"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.6634
+        },
+        {
+          "id": "O08",
+          "kind": "out_of_scope",
+          "category": "motor_accidents",
+          "retrieved": [
+            "product-liability-scope",
+            "district-commission-remedies",
+            "jurisdiction-district-value"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 38.9183
+        },
+        {
+          "id": "O09",
+          "kind": "out_of_scope",
+          "category": "criminal_procedure",
+          "retrieved": [
+            "dark-pattern-rogue-malware",
+            "marketplace-disclosures",
+            "ecommerce-platform-grievance"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 39.0644
+        },
+        {
+          "id": "O10",
+          "kind": "out_of_scope",
+          "category": "outcome_prediction",
+          "retrieved": [
+            "district-commission-remedies",
+            "jurisdiction-district-value",
+            "jurisdiction-national-value"
+          ],
+          "grade": {
+            "abstained": false
+          },
+          "query_ms": 48.8986
+        }
+      ]
+    }
+  }
+}

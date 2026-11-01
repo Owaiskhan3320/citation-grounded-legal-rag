@@ -35,6 +35,7 @@ The site remains usable without `GROQ_API_KEY`. `/api/ask` returns a source-back
 - Run `node scripts/test-rag.mjs`.
 - Run `node scripts/test-api.mjs`.
 - Run `node scripts/test-corpus.mjs` and `node scripts/test-issues.mjs`.
+- Run `node scripts/test-evaluation.mjs` and `node scripts/evaluate-retrieval.mjs --check`.
 - Run `python scripts/validate_corpus.py` after installing `requirements-dev.txt`.
 - Run `python -m unittest discover -s tests -v`.
 - Confirm every generated answer exposes the official source record below it.
@@ -48,3 +49,8 @@ This branch has 90 current records from the Consumer Protection Act, E-Commerce 
 CCPA guidelines, commission jurisdiction rules and official NCH/e-Jagriti guidance.
 Six replacement versions are excluded until 1 January 2027. The production site uses
 the version on `main`, not an unmerged branch. Judgment search is not included.
+
+The Week 3 retrieval comparison is offline only. Do not install `requirements-eval.txt`
+or add an embedding API key to Vercel for this PR. The app still uses the existing
+keyword/provision retriever and Groq. See the evaluation report before treating its
+out-of-scope refusal behaviour as production-ready.

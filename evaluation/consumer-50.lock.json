@@ -1,0 +1,13 @@
+{
+  "frozen_on": "2026-11-02",
+  "as_of": "2026-11-02",
+  "fingerprints": {
+    "evaluation/consumer-50.json": "16953021c73b670c199d3806880722f7ea0578d9719b472997cef7fa46801d6e",
+    "data/consumer-law/v1/records.json": "38e7b56bd0d10cf9c6c6966a241d0ec16122ac2ad9754ba39e1f4801a9d8abbb",
+    "data/consumer-law/v1/sources.json": "bc4db08578618d51da60ad40e1d727c0f1113655bf1882cce9faadcb3338a99a",
+    "data/statutes.js": "447590b74d0263c8acf945a3de799a5fbb0b1afd69155632735a07fb15499136",
+    "search.js": "c85c908287321a6de592f68f135a17519453131ba7f9d9f9c7df31c6e46f9c70",
+    "rag.js": "7d80e5bbfb60c3478a2a59cb75ba5f0ea4e15f95b57e8c8e99ea39c31408b206"
+  },
+  "input_sha256": "4db5b41c8bd77a078f6dfb29b2fe2b070ea2a3bcc8bee4453c081845754166aa"
+}
