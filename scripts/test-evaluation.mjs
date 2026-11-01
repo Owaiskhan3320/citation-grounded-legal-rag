@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 
-import { assertSameRankings, evaluate, loadEvaluation, validateBenchmark, validateEmbeddings } from "./evaluate-retrieval.mjs";
+import { assertSameRankings, evaluate, loadEvaluation, validateBenchmark, validateEmbeddings, validateSavedGrades } from "./evaluate-retrieval.mjs";
 import { buildBm25, gradeRanking, rankVectors, reciprocalRankFusion, summarise, tokens } from "./retrieval-metrics.mjs";
 
 const record = (id, summary) => ({ id, section: "", title: "", summary, keywords: [] });
@@ -77,9 +77,17 @@ reordered.questions.reverse();
 assert.throws(() => validateEmbeddings(reordered, evaluation), /reordered/);
 const runs = evaluate(evaluation);
 assertSameRankings(runs, runs);
+validateSavedGrades(runs, evaluation);
 const changed = clone(runs);
 changed.bm25.questions[0].retrieved = ["different"];
 assert.throws(() => assertSameRankings(runs, changed), /rankings changed/);
+const aggregateChanged = clone(runs);
+aggregateChanged.bm25.metrics.hit_at_1 = -1;
+assert.throws(() => assertSameRankings(runs, aggregateChanged), /aggregate metrics/);
+assert.throws(() => validateSavedGrades(aggregateChanged, evaluation), /saved aggregates/);
+const gradeChanged = clone(runs);
+gradeChanged.keyword.questions[0].grade.complete_at_k = !gradeChanged.keyword.questions[0].grade.complete_at_k;
+assert.throws(() => validateSavedGrades(gradeChanged, evaluation), /saved grade/);
 
 // This was observed before the new benchmark: it is a known failure, not a holdout.
 const known = "How long does an e-commerce platform have to acknowledge and resolve a consumer complaint?";

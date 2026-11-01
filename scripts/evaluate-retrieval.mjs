@@ -65,7 +65,12 @@ export async function loadEvaluation() {
     records: records.map((record) => ({ id: record.id, text: recordText(record) })),
     questions: benchmark.questions.map(({ id, question }) => ({ id, text: question })),
   };
-  return { benchmark, records, fingerprints, inputs, input_sha256: hash(JSON.stringify(inputs)) };
+  const implementationFingerprints = {};
+  for (const file of ["scripts/evaluate-retrieval.mjs", "scripts/retrieval-metrics.mjs", "scripts/export_embeddings.py"]) {
+    implementationFingerprints[file] = hash((await readFile(resolve(ROOT, file), "utf8")).replaceAll("\r\n", "\n"));
+  }
+  return { benchmark, records, fingerprints, inputs, implementationFingerprints,
+    input_sha256: hash(JSON.stringify(inputs)) };
 }
 
 export function validateEmbeddings(artifact, evaluation) {
@@ -146,6 +151,30 @@ export function assertSameRankings(actual, expected) {
     if (JSON.stringify(snapshot(actual)) !== JSON.stringify(snapshot(expected))) {
       throw new Error(`${method} rankings changed. Inspect the per-question diff; do not silently overwrite the frozen run.`);
     }
+    const scores = (report) => Object.fromEntries(Object.entries(report[method].metrics)
+      .filter(([key]) => !key.startsWith("query_")));
+    if (JSON.stringify(scores(actual)) !== JSON.stringify(scores(expected))) {
+      throw new Error(`${method} aggregate metrics changed.`);
+    }
+  }
+}
+
+export function validateSavedGrades(runs, evaluation) {
+  for (const [method, run] of Object.entries(runs)) {
+    if (run.questions.length !== evaluation.benchmark.questions.length) throw new Error(`Invalid ${method} row count.`);
+    for (const [index, row] of run.questions.entries()) {
+      const question = evaluation.benchmark.questions[index];
+      if (row.id !== question.id || row.kind !== question.kind || row.category !== question.category ||
+          !Number.isFinite(row.query_ms) || row.query_ms < 0 ||
+          row.retrieved.length > evaluation.benchmark.top_k ||
+          row.retrieved.some((id) => !evaluation.records.some((record) => record.id === id)) ||
+          JSON.stringify(row.grade) !== JSON.stringify(gradeRanking(question, row.retrieved, evaluation.benchmark.top_k))) {
+        throw new Error(`Invalid saved grade/ranking: ${method}/${question.id}`);
+      }
+    }
+    if (JSON.stringify(run.metrics) !== JSON.stringify(summarise(run.questions))) {
+      throw new Error(`Invalid saved aggregates: ${method}`);
+    }
   }
 }
 
@@ -183,14 +212,17 @@ async function main(args) {
       embedding: evaluation.benchmark.embedding }));
     return;
   }
-  const embeddings = values.has("--embeddings") ? await readJson(values.get("--embeddings")) : undefined;
+  const embeddingBytes = values.has("--embeddings") ? await readFile(resolve(ROOT, values.get("--embeddings"))) : undefined;
+  const embeddings = embeddingBytes ? JSON.parse(embeddingBytes.toString("utf8")) : undefined;
   const runs = evaluate(evaluation, embeddings);
   if (values.has("--check")) {
     const saved = await readJson(RESULTS);
     if (saved.input_sha256 !== evaluation.input_sha256 ||
-        JSON.stringify(saved.fingerprints) !== JSON.stringify(evaluation.fingerprints)) {
+        JSON.stringify(saved.fingerprints) !== JSON.stringify(evaluation.fingerprints) ||
+        JSON.stringify(saved.implementation_fingerprints) !== JSON.stringify(evaluation.implementationFingerprints)) {
       throw new Error("Saved run was not produced from the frozen inputs.");
     }
+    validateSavedGrades(saved.runs, evaluation);
     assertSameRankings(runs, saved.runs);
     console.log("Frozen keyword/BM25 rankings unchanged across all 50 questions. This is not an answer-accuracy check.");
   }
@@ -202,7 +234,8 @@ async function main(args) {
     configuration: { top_k: evaluation.benchmark.top_k, bm25: evaluation.benchmark.bm25,
       dense_abstention_threshold: null, bm25_min_score_exclusive: 0,
       rrf_k: evaluation.benchmark.embedding.rrf_k, rrf_depth: evaluation.records.length },
-    comparator_sha256: hash(await readFile(resolve(ROOT, "scripts/retrieval-metrics.mjs"))),
+    implementation_fingerprints: evaluation.implementationFingerprints,
+    embedding_artifact_sha256: embeddingBytes ? hash(embeddingBytes) : null,
     embedding: embeddings ? Object.fromEntries(Object.entries(embeddings).filter(([key]) =>
       !["records", "questions"].includes(key))) : null,
     runs,

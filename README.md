@@ -58,6 +58,14 @@ If generation is unavailable, incomplete, or returns invalid citations, the app 
 
 The evaluation notes are kept in [docs/evaluation](docs/evaluation/README.md).
 
+The [2 November retrieval comparison](docs/evaluation/retrieval-comparison-2026-11-02.md)
+uses the expanded 90-record corpus. Of 40 supported questions, the current retriever
+found all labelled evidence in its top three for 30; BM25 for 35; dense and hybrid
+for 37 each. The current retriever abstained on only 2 of 10 unsupported questions;
+the comparators abstained on none. These agent-authored questions are not an
+independent human holdout or an answer-accuracy score. Production retrieval is
+unchanged while abstention and independent evaluation remain unresolved.
+
 - The known 50-question regression suite recorded 45 core passes after Stage 3. See [Run 3](docs/evaluation/run-3-2026-10-29.md).
 - The frozen 20-question unseen set recorded 20 core passes after the Stage 4 retrieval fixes. See the [Stage 4 re-run](docs/evaluation/unseen-set-1-stage4-results-2026-10-31.md).
 
@@ -66,8 +74,9 @@ These are small, source-scoped checks. They are not a claim of overall legal acc
 Those reports predate the versioned-corpus migration. The updated quotations need
 a fresh answer evaluation before reusing the same accuracy figures.
 
-The expanded corpus has 38 additional retrieval regression queries. These are
-development checks, not the held-out evaluation planned for the next stage.
+The expanded corpus also has 38 additional retrieval regression queries. CI checks
+the frozen 50-question keyword/BM25 rankings without downloading models. The
+embedding experiment is optional and local; it adds no dependency to the live app.
 
 ## Run locally
 

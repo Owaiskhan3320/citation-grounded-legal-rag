@@ -72,10 +72,14 @@ recall improvement on this agent-authored set is insufficient for adoption witho
 independent questions, acceptable abstention and a deployment/cost check.
 
 CI runs keyword and BM25 only, without network calls, keys, models or Groq. It
-checks frozen inputs and per-question rankings against the committed run. A ranking
+checks frozen inputs, scorer/encoder code, rankings and non-timing aggregates against
+the committed run. It also recomputes stored grades/aggregates for every method.
+A ranking
 change (including an improvement) needs an inspected new run and an explained
 version update. Known failures remain visible; CI success is not 100% accuracy.
 Embedding checks are optional local commands; model weights/vectors stay untracked.
+The report retains the vector artifact's SHA-256 and encoder-code fingerprint so
+the particular local artifact can be identified without publishing its vectors.
 
 References: [BM25](https://nlp.stanford.edu/IR-book/html/htmledition/okapi-bm25-a-non-binary-model-1.html),
 [MiniLM model card](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2),
