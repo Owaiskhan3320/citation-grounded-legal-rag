@@ -7,11 +7,12 @@
     "node": ">=20.18.3"
   },
   "scripts": {
+    "test:evaluation": "node scripts/test-evaluation.mjs && node scripts/evaluate-retrieval.mjs --check",
     "test:issues": "node scripts/test-issues.mjs",
     "test:corpus": "node scripts/test-corpus.mjs",
     "test:api": "node scripts/test-api.mjs",
     "test:rag": "node scripts/test-rag.mjs",
     "test:search": "node scripts/test-search.mjs",
-    "test": "npm run test:corpus && npm run test:search && npm run test:issues && npm run test:rag && npm run test:api"
+    "test": "npm run test:corpus && npm run test:search && npm run test:issues && npm run test:rag && npm run test:api && npm run test:evaluation"
   }
 }

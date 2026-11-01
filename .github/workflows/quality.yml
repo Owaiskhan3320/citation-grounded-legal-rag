@@ -43,3 +43,8 @@ jobs:
           node scripts/test-corpus.mjs
           node scripts/test-issues.mjs
           node --check app.js
+
+      - name: Check frozen retrieval evaluation (no models or API calls)
+        run: |
+          node scripts/test-evaluation.mjs
+          node scripts/evaluate-retrieval.mjs --check

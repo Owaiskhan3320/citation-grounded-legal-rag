@@ -1,0 +1,6 @@
+# Optional local embedding experiment only. Not needed by the app or CI.
+sentence-transformers==5.2.2
+numpy==2.1.3
+torch==2.10.0
+transformers==5.1.0
+huggingface-hub==1.4.1
