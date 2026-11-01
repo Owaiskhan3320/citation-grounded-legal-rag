@@ -205,6 +205,113 @@ button {
   border-color: var(--forest);
 }
 
+.issue-panel {
+  margin-top: 2rem;
+}
+
+.issue-panel > p,
+.issue-guide p,
+.routes-section p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.issue-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.6rem;
+}
+
+.issue-options button,
+.guide-question {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--line);
+  background: var(--warm-white);
+  color: var(--forest-dark);
+  text-align: left;
+}
+
+.issue-options button[aria-pressed="true"] {
+  border-color: var(--forest);
+  background: #e5efe8;
+}
+
+.issue-options button:focus-visible,
+.guide-question:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.issue-guide {
+  margin-top: 1rem;
+  padding: 1.2rem;
+  border-left: 3px solid var(--forest);
+  background: var(--panel);
+}
+
+.issue-guide ul {
+  padding-left: 1.3rem;
+}
+
+.issue-guide li {
+  margin-bottom: 1.15rem;
+}
+
+.issue-guide li p {
+  margin: 0.35rem 0;
+}
+
+.issue-guide a,
+.route-cards a {
+  color: var(--forest);
+  overflow-wrap: anywhere;
+}
+
+.issue-guide > a {
+  display: block;
+  margin-top: 0.85rem;
+}
+
+.preparation-note,
+.route-note,
+.privacy-note,
+.source-date {
+  font-size: 0.85rem;
+}
+
+.privacy-note {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.routes-section {
+  margin-top: 3rem;
+}
+
+.route-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.route-cards article {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background: var(--warm-white);
+}
+
+.route-cards h3 {
+  font-size: 1.15rem;
+}
+
+.route-cards a {
+  display: block;
+  margin-top: 0.65rem;
+}
+
 .results-section,
 .case-section {
   margin-top: 3.2rem;

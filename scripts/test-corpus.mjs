@@ -6,10 +6,10 @@ import { retrieveEvidence } from "../rag.js";
 
 const before = getStatutes("2026-12-31");
 const after = getStatutes("2027-01-01");
-assert.equal(corpus.records.length, 46);
-assert.equal(before.length, 41);
-assert.equal(after.length, 41);
-assert.equal(new Set(after.map((record) => record.id)).size, 41);
+assert.equal(corpus.records.length, 96);
+assert.equal(before.length, 90);
+assert.equal(after.length, 90);
+assert.equal(new Set(after.map((record) => record.id)).size, 90);
 assert.equal(getStatutes("2020-07-19").length, 0);
 assert.ok(!getStatutes("2020-07-20").some((r) => r.section === "Section 21"));
 assert.ok(getStatutes("2020-07-24").some((r) => r.section === "Section 21"));

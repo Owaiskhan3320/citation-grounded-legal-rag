@@ -69,7 +69,7 @@ const guidanceChecks = [
   ["What is bait and switch in an online advertisement?", "Bait and switch and disguised advertisements"],
 ];
 
-assert.equal(statutes.length, 41);
+assert.equal(statutes.length, 90);
 
 for (const [question, expectedSection] of sectionChecks) {
   const matches = findStatuteMatches(question, statutes);

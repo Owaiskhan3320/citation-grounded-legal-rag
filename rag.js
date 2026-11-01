@@ -14,6 +14,7 @@ export function retrieveEvidence(question, asOf) {
       summary: record.summary,
       excerpt: record.excerpt,
       sourceUrl: record.sourceUrl,
+      sourceFormat: record.sourceFormat,
       recordId: record.id,
       version: record.version,
       effectiveFrom: record.effective_from,

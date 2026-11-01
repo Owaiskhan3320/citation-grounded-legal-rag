@@ -34,6 +34,8 @@ The site remains usable without `GROQ_API_KEY`. `/api/ask` returns a source-back
 - Run `node scripts/test-search.mjs`.
 - Run `node scripts/test-rag.mjs`.
 - Run `node scripts/test-api.mjs`.
+- Run `node scripts/test-corpus.mjs` and `node scripts/test-issues.mjs`.
+- Run `python scripts/validate_corpus.py` after installing `requirements-dev.txt`.
 - Run `python -m unittest discover -s tests -v`.
 - Confirm every generated answer exposes the official source record below it.
 - Confirm unsupported questions return the no-answer message rather than an invented answer.
@@ -42,4 +44,7 @@ The site remains usable without `GROQ_API_KEY`. `/api/ask` returns a source-back
 
 ## Current scope limit
 
-The deployed RAG currently retrieves 41 curated records drawn from the Consumer Protection Act, 2019; the Consumer Protection (E-Commerce) Rules, 2020; and two CCPA guideline sets on advertisements and dark patterns. It does not yet retrieve judgments. Judgment search will be enabled only after Consumer Disputes records have been reviewed, source-linked, and version-labelled.
+This branch has 90 current records from the Consumer Protection Act, E-Commerce Rules,
+CCPA guidelines, commission jurisdiction rules and official NCH/e-Jagriti guidance.
+Six replacement versions are excluded until 1 January 2027. The production site uses
+the version on `main`, not an unmerged branch. Judgment search is not included.
