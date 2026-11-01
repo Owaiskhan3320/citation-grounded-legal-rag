@@ -28,10 +28,12 @@ export function getStatutes(asOf = currentIndianDate()) {
       ...record,
       sourceName: sourcesById.get(record.source_id).title,
       sourceUrl: sourcesById.get(record.source_id).official_url,
+      sourceFormat: sourcesById.get(record.source_id).source_format || "pdf",
       excerpt: record.passages.map((passage) => passage.text).join("\n\n"),
       passages: record.passages.map((passage) => ({
         ...passage,
         sourceUrl: sourcesById.get(passage.source_id).official_url,
+        sourceFormat: sourcesById.get(passage.source_id).source_format || "pdf",
       })),
     }));
 }

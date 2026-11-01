@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Week 2 browser checks</title>
+<p id="report">RUNNING</p>
+<iframe id="app" src="../index.html" style="width:390px;height:850px;border:0"></iframe>
+<script type="module">
+import { retrieveEvidence } from '../rag.js';
+const frame = document.querySelector('#app');
+const report = document.querySelector('#report');
+const assert = (condition, message) => { if (!condition) throw new Error(message); };
+const until = async (condition) => {
+  for (let i = 0; i < 100; i++) {
+    if (condition()) return;
+    await new Promise(resolve => setTimeout(resolve, 30));
+  }
+  throw new Error('Timed out waiting for the UI');
+};
+try {
+  await until(() => frame.contentDocument?.querySelectorAll('[data-issue]').length === 6);
+  const doc = frame.contentDocument;
+  assert(doc.querySelectorAll('#route-cards article').length === 3, 'official route cards');
+  for (const button of doc.querySelectorAll('[data-issue]')) {
+    button.click();
+    assert(button.getAttribute('aria-pressed') === 'true', 'selected issue state');
+    assert(!doc.querySelector('#issue-guide').hidden, 'guide visible');
+    assert(doc.querySelectorAll('#issue-guide li').length >= 3, 'guide has checked records');
+    assert([...doc.querySelectorAll('#issue-guide a[target]')].every(link => link.href.startsWith('https://')), 'official links');
+  }
+  for (const width of [390, 1200]) {
+    frame.style.width = `${width}px`;
+    await new Promise(resolve => setTimeout(resolve, 80));
+    assert(doc.documentElement.scrollWidth <= doc.documentElement.clientWidth + 1, `overflow at ${width}px`);
+  }
+  frame.contentWindow.fetch = async () => { throw new Error('Expected offline generation service'); };
+  doc.querySelector('[data-issue="refund"]').click();
+  doc.querySelector('.guide-question').click();
+  await until(() => doc.querySelector('#result-status').textContent === 'Verified retrieval fallback');
+  assert(doc.querySelector('#results').textContent.includes('force majeure'), 'actual refund source text');
+  doc.querySelector('#query').value = 'How do I contest a divorce?';
+  doc.querySelector('#search-form').dispatchEvent(new Event('submit', {bubbles:true,cancelable:true}));
+  await until(() => doc.querySelector('#result-status').textContent === 'No verified match');
+
+  const amendedSources = retrieveEvidence('Rule 6(5)', '2027-01-01');
+  frame.contentWindow.fetch = async () => new Response(JSON.stringify({mode:'generated',answer:'Test response. [S1]',sources:amendedSources}), {status:200});
+  doc.querySelector('#query').value = 'Rule 6(5)';
+  doc.querySelector('#search-form').dispatchEvent(new Event('submit', {bubbles:true,cancelable:true}));
+  await until(() => doc.querySelector('#result-status').textContent.startsWith('Groq answer'));
+  assert(doc.querySelector('#results .result-card a').href.startsWith(amendedSources[0].sourceUrl), 'mixed-source card must link to the named primary source');
+
+  const pending = [];
+  frame.contentWindow.fetch = () => new Promise(resolve => pending.push(resolve));
+  for (const query of ['First test request', 'Second test request']) {
+    doc.querySelector('#query').value = query;
+    doc.querySelector('#search-form').dispatchEvent(new Event('submit', {bubbles:true,cancelable:true}));
+  }
+  const response = answer => new Response(JSON.stringify({mode:'no_answer',answer,sources:[]}), {status:200});
+  pending[1](response('Latest response'));
+  await until(() => doc.querySelector('#results').textContent === 'Latest response');
+  pending[0](response('Stale response'));
+  await new Promise(resolve => setTimeout(resolve, 80));
+  assert(doc.querySelector('#results').textContent === 'Latest response', 'stale response must not overwrite a newer search');
+  report.textContent = 'PASS: six guides, three official routes, 390px/1200px layout, real local fallback, no-answer and request ordering.';
+} catch (error) {
+  report.textContent = `FAIL: ${error.message}`;
+}
+</script>
+</html>

@@ -1,4 +1,5 @@
 import { buildFallbackAnswer, retrieveEvidence } from "./rag.js";
+import { getIssueGuide, getOfficialRoutes, issuePaths } from "./issues.js";
 
 const form = document.querySelector("#search-form");
 const input = document.querySelector("#query");
@@ -6,6 +7,90 @@ const submitButton = form.querySelector("button[type='submit']");
 const results = document.querySelector("#results");
 const resultsTitle = document.querySelector("#results-title");
 const resultStatus = document.querySelector("#result-status");
+let latestSearch = 0;
+
+function sourceLink(record, label = "Read the official source ->") {
+  const link = document.createElement("a");
+  const first = record.passages?.find((passage) => passage.sourceUrl === record.sourceUrl) || record.passages?.[0];
+  const url = first?.sourceUrl || record.sourceUrl;
+  link.href = record.sourceFormat === "pdf" && first ? `${url}#page=${first.page}` : url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = label;
+  return link;
+}
+
+function showIssue(issueId) {
+  const guide = getIssueGuide(issueId);
+  if (!guide) return;
+  const panel = document.querySelector("#issue-guide");
+  panel.replaceChildren();
+  panel.hidden = false;
+
+  const title = document.createElement("h3");
+  title.textContent = guide.title;
+  const description = document.createElement("p");
+  description.textContent = guide.description;
+  const preparation = document.createElement("p");
+  preparation.className = "preparation-note";
+  preparation.textContent = guide.preparation;
+  const list = document.createElement("ul");
+  for (const record of guide.records) {
+    const item = document.createElement("li");
+    const heading = document.createElement("strong");
+    heading.textContent = `${record.section}: ${record.title}`;
+    const summary = document.createElement("p");
+    summary.textContent = record.summary;
+    item.append(heading, summary, sourceLink(record));
+    list.append(item);
+  }
+  const question = document.createElement("button");
+  question.type = "button";
+  question.className = "guide-question";
+  question.textContent = "Search this question";
+  question.addEventListener("click", () => {
+    submitQuery(guide.question);
+    document.querySelector(".results-section").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  const questionText = document.createElement("p");
+  questionText.textContent = guide.question;
+  const routesLink = document.createElement("a");
+  routesLink.href = "#official-routes";
+  routesLink.textContent = "See the official complaint routes";
+  panel.append(title, description, list, preparation, questionText, question, routesLink);
+  document.querySelectorAll("[data-issue]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.issue === issueId));
+  });
+}
+
+function renderIssuePaths() {
+  const options = document.querySelector("#issue-options");
+  for (const issue of issuePaths) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.issue = issue.id;
+    button.textContent = issue.title;
+    button.setAttribute("aria-pressed", "false");
+    button.setAttribute("aria-controls", "issue-guide");
+    button.addEventListener("click", () => showIssue(issue.id));
+    options.append(button);
+  }
+  const cards = document.querySelector("#route-cards");
+  for (const route of getOfficialRoutes()) {
+    const card = document.createElement("article");
+    const heading = document.createElement("h3");
+    heading.textContent = route.label;
+    const summary = document.createElement("p");
+    summary.textContent = route.source.summary;
+    const open = document.createElement("a");
+    open.href = route.url;
+    open.target = "_blank";
+    open.rel = "noopener noreferrer";
+    open.textContent = "Open the official service ->";
+    card.append(heading, summary, open, sourceLink(route.source, "Source for this guidance"));
+    cards.append(card);
+  }
+}
 
 function createSourceCard(source) {
   const article = document.createElement("article");
@@ -29,13 +114,10 @@ function createSourceCard(source) {
   const excerpt = document.createElement("blockquote");
   excerpt.textContent = source.excerpt;
 
-  const sourceLink = document.createElement("a");
-  sourceLink.href = source.sourceUrl;
-  sourceLink.target = "_blank";
-  sourceLink.rel = "noreferrer";
-  sourceLink.textContent = "Read the official source ->";
-
-  article.append(metadata, heading, summary, excerpt, sourceLink);
+  const checked = document.createElement("p");
+  checked.className = "source-date";
+  checked.textContent = `Source checked: ${source.checkedOn}`;
+  article.append(metadata, heading, summary, excerpt, sourceLink(source), checked);
   return article;
 }
 
@@ -122,6 +204,7 @@ async function submitQuery(query) {
   }
 
   input.value = cleanedQuery;
+  const searchId = ++latestSearch;
   submitButton.disabled = true;
   submitButton.textContent = "Searching...";
   resultStatus.textContent = "Retrieving source records";
@@ -130,10 +213,13 @@ async function submitQuery(query) {
   results.textContent = "Retrieving supporting legal sources before generating a response...";
 
   try {
-    renderResponse(cleanedQuery, await requestAnswer(cleanedQuery));
+    const payload = await requestAnswer(cleanedQuery);
+    if (searchId === latestSearch) renderResponse(cleanedQuery, payload);
   } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "Search";
+    if (searchId === latestSearch) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Search";
+    }
   }
 }
 
@@ -145,3 +231,5 @@ form.addEventListener("submit", (event) => {
 document.querySelectorAll("[data-query]").forEach((button) => {
   button.addEventListener("click", () => submitQuery(button.dataset.query));
 });
+
+renderIssuePaths();

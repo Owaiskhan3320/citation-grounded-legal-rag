@@ -1,0 +1,72 @@
+{
+  "issues": [
+    {
+      "id": "refund",
+      "title": "Return or refund refused",
+      "description": "Read the conditions for online returns and the rules for accepted refunds.",
+      "question": "When must a marketplace seller accept a return or refund under Rule 6(3)?",
+      "preparation": "Useful records to keep: the order confirmation, the return request, and the seller's reply. This is a practical suggestion, not an official filing checklist.",
+      "record_ids": ["marketplace-seller-returns", "inventory-platform-returns-and-reviews", "ecommerce-accepted-refunds"]
+    },
+    {
+      "id": "unsafe-product",
+      "title": "Unsafe or defective product",
+      "description": "Separate recall powers from compensation claims and their exceptions.",
+      "question": "What conditions apply to a manufacturer's product liability under section 84?",
+      "preparation": "Useful records to keep: purchase details, the product label, photos and any report of injury or damage. Avoid posting personal or medical documents in the question box.",
+      "record_ids": ["unsafe-goods-recall", "harm-definition", "product-manufacturer-liability", "product-liability-exceptions"]
+    },
+    {
+      "id": "misleading-ad",
+      "title": "Misleading advertisement",
+      "description": "Check the definition, advertisement safeguards and the Authority's powers.",
+      "question": "What can the Central Authority do about misleading advertisements under section 21?",
+      "preparation": "Useful records to keep: a copy of the advertisement, its URL and date, and the terms shown when you bought the product. These records do not by themselves establish a legal violation.",
+      "record_ids": ["false-or-misleading-advertisement-definition", "misleading-advertisements", "advertisement-disclaimers"]
+    },
+    {
+      "id": "hidden-charges",
+      "title": "Hidden charges or unwanted additions",
+      "description": "Compare drip pricing, basket sneaking and consent requirements.",
+      "question": "What is drip pricing and how does it differ from basket sneaking?",
+      "preparation": "Useful records to keep: screenshots of the first price, checkout and payment confirmation, including any selected extras. This is not a finding that every additional fee is unlawful.",
+      "record_ids": ["dark-pattern-drip-pricing", "dark-pattern-basket-sneaking", "ecommerce-affirmative-consent"]
+    },
+    {
+      "id": "seller-dispute",
+      "title": "Seller details or complaint response",
+      "description": "Find the seller-information and grievance-handling provisions.",
+      "question": "After purchase, what seller details must a marketplace provide on a written request under Rule 5(3)(a)?",
+      "preparation": "Useful records to keep: the listing, invoice, written request and complaint acknowledgement. Contact methods and response duties depend on which entity you are dealing with.",
+      "record_ids": ["marketplace-post-purchase-seller-details", "marketplace-seller-grievance", "ecommerce-platform-response-time"]
+    },
+    {
+      "id": "filing",
+      "title": "Where and how to complain",
+      "description": "Read the filing provision, ordinary value limits and complaint time limit.",
+      "question": "What are the District, State and National Commission value limits under the Jurisdiction Rules, 2021?",
+      "preparation": "NCH asks for grievance details and relevant documents. Formal Commission filing has its own requirements; use the current e-Jagriti manuals. This app does not submit a complaint or select a forum for you.",
+      "record_ids": ["filing-complaint", "jurisdiction-district-value", "jurisdiction-state-value", "jurisdiction-national-value", "complaint-limitation"]
+    }
+  ],
+  "routes": [
+    {
+      "id": "nch",
+      "label": "NCH: pre-litigation grievance help",
+      "record_id": "nch-prelitigation-limits",
+      "url": "https://consumerhelpline.gov.in/public/"
+    },
+    {
+      "id": "commission-filing",
+      "label": "e-Jagriti: Consumer Commission filing",
+      "record_id": "ejagriti-online-filing",
+      "url": "https://e-jagriti.gov.in/"
+    },
+    {
+      "id": "filing-guides",
+      "label": "e-Jagriti: official filing guides",
+      "record_id": "ejagriti-help-resources",
+      "url": "https://e-jagriti.gov.in/help-docs"
+    }
+  ]
+}

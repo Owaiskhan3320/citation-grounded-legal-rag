@@ -25,6 +25,13 @@
         </div>
       </header>
 
+      <section class="issue-panel" aria-labelledby="issue-title">
+        <h2 id="issue-title">What happened?</h2>
+        <p>Choose a starting point, or use the search below. These guides do not decide your case.</p>
+        <div id="issue-options" class="issue-options" aria-label="Consumer issue paths"></div>
+        <div id="issue-guide" class="issue-guide" aria-live="polite" hidden></div>
+      </section>
+
       <section class="search-panel" aria-labelledby="search-title">
         <div class="search-copy">
           <p class="eyebrow">Ask a focused question</p>
@@ -49,6 +56,9 @@
             <button type="submit">Search</button>
           </div>
         </form>
+
+        <p class="privacy-note">Describe the issue without names, account details or other personal
+          identifiers. Questions may be sent to Groq for answer generation. Do not paste complaint documents here.</p>
 
         <div class="examples" aria-label="Example searches">
           <button type="button" data-query="What are consumer rights under section 2(9)?">
@@ -83,16 +93,16 @@
         </div>
       </section>
 
-      <section class="case-section" aria-labelledby="cases-title">
-        <div>
-          <p class="eyebrow">Next corpus milestone</p>
-          <h2 id="cases-title">Related decisions</h2>
-        </div>
+      <section id="official-routes" class="routes-section" aria-labelledby="routes-title">
+        <h2 id="routes-title">Official complaint routes</h2>
         <p>
-          Judgment search is intentionally disabled until Consumer Disputes records from the
-          NyayaAnumana dataset are filtered, version-tagged, and manually reviewed. The prototype
-          will not display unverified case summaries.
+          NCH offers pre-litigation grievance help. e-Jagriti is for filing and following cases
+          in Consumer Commissions. These are different routes, not automatic steps in a required sequence.
+          Check the applicable filing time limit separately.
         </p>
+        <div id="route-cards" class="route-cards"></div>
+        <p class="route-note">Links and instructions checked on 1 November 2026. This app does not
+          register complaints, upload documents, or guarantee a remedy.</p>
       </section>
 
       <aside class="notice" aria-label="Research limitation">
@@ -101,7 +111,7 @@
       </aside>
 
       <footer>
-        <span>Scope: selected Consumer Protection Act, Rules, and CCPA guidance</span>
+        <span>Scope: consumer law, NCH and e-Jagriti guidance. Judgment search is not included.</span>
         <span>Last updated: November 2026</span>
       </footer>
     </main>

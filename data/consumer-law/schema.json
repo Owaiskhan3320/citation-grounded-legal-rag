@@ -44,25 +44,67 @@
         "commencement_source_id": {"$ref": "#/$defs/id"},
         "checked_on": {"$ref": "#/$defs/date"},
         "review_status": {"enum": ["pending", "source_checked"]},
+        "date_basis": {"enum": ["commencement", "observed"]},
         "review_note": {"$ref": "#/$defs/text"}
       }
     },
     "source": {
       "type": "object", "additionalProperties": false,
-      "required": ["id", "title", "source_type", "authority", "official_url", "published_on", "retrieved_on", "checked_on", "pdf_sha256", "snapshot", "snapshot_sha256", "note"],
+      "required": ["id", "title", "source_type", "authority", "official_url", "published_on", "retrieved_on", "checked_on", "snapshot", "snapshot_sha256", "note"],
+      "allOf": [{
+        "if": {"required": ["source_format"], "properties": {"source_format": {"const": "html"}}},
+        "then": {"required": ["content_sha256"]},
+        "else": {"required": ["pdf_sha256"], "properties": {"published_on": {"$ref": "#/$defs/date"}}}
+      }],
       "properties": {
         "id": {"$ref": "#/$defs/id"},
         "title": {"$ref": "#/$defs/text"},
         "source_type": {"enum": ["statute", "rules", "guidelines", "notification", "amendment", "action"]},
         "authority": {"$ref": "#/$defs/text"},
         "official_url": {"type": "string", "format": "uri", "pattern": "^https://"},
-        "published_on": {"$ref": "#/$defs/date"},
+        "published_on": {"anyOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+        "source_updated_on": {"$ref": "#/$defs/date"},
+        "source_format": {"enum": ["pdf", "html"]},
         "retrieved_on": {"$ref": "#/$defs/date"},
         "checked_on": {"$ref": "#/$defs/date"},
         "pdf_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "snapshot": {"type": "string", "pattern": "^snapshots/[a-z0-9-]+\\.json$"},
         "snapshot_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "note": {"$ref": "#/$defs/text"}
+      }
+    },
+    "issueGuide": {
+      "type": "object", "additionalProperties": false, "required": ["issues", "routes"],
+      "properties": {
+        "issues": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["id", "title", "description", "question", "preparation", "record_ids"],
+            "properties": {
+              "id": {"$ref": "#/$defs/id"},
+              "title": {"$ref": "#/$defs/text"},
+              "description": {"$ref": "#/$defs/text"},
+              "question": {"$ref": "#/$defs/text"},
+              "preparation": {"$ref": "#/$defs/text"},
+              "record_ids": {"$ref": "#/$defs/strings"}
+            }
+          }
+        },
+        "routes": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["id", "label", "record_id", "url"],
+            "properties": {
+              "id": {"$ref": "#/$defs/id"},
+              "label": {"$ref": "#/$defs/text"},
+              "record_id": {"$ref": "#/$defs/id"},
+              "url": {"type": "string", "format": "uri", "pattern": "^https://"}
+            }
+          }
+        }
       }
     },
     "manifest": {
