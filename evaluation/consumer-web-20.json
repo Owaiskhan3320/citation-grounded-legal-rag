@@ -1,0 +1,171 @@
+{
+  "name": "consumer-web-20-v1",
+  "created_on": "2026-11-02",
+  "as_of": "2026-11-02",
+  "authorship": "Publicly posted scenarios selected, anonymised and condensed by the implementation agent. Poster identity, case facts and unassisted human authorship are unverified. This is not a random sample or expert-reviewed holdout.",
+  "label_review": "Agent-checked against official corpus quotations before retrieval scoring; human review pending.",
+  "grading_target": "Minimum evidence for the supported part, not a complete answer or a decision on the poster's case.",
+  "human_review": "pending",
+  "selection": "Fifteen consumer-dispute posts with a corpus-supported part, then five neighbouring-domain questions without the requested evidence. One question per distinct post/incident; no selection using retrieval scores.",
+  "transformation": "Context paraphrased; names, usernames, identifiers, brands and unnecessary precise amounts removed. Original practical requests and missing-information problems retained. No provision numbers or search keywords inserted. Short source excerpts retained for meaning checks, not legal answers.",
+  "top_k": 3,
+  "bm25": { "k1": 1.5, "b": 0.75 },
+  "embedding": { "model": "sentence-transformers/all-MiniLM-L6-v2", "revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf", "normalise": true, "rrf_k": 60 },
+  "questions": [
+    {
+      "id": "W01", "kind": "in_scope", "coverage": "partial", "category": "returned_goods",
+      "question": "A marketplace collected my defective watch for return, then rejected the refund claiming I sent a fake item. It is keeping both the watch and my money. I have already complained to NCH. What options do I have now, should I go to consumer court, and has a similar case been resolved?",
+      "required_evidence": [["nch-prelitigation-limits"], ["district-commission-remedies"]],
+      "checkpoint": "Explain the route from an unsatisfactory NCH grievance to a Commission and conditional refund/compensation remedies. Do not determine what was returned or invent a similar judgment.",
+      "unsupported_requests": "The disputed return evidence, individual liability and examples of resolved cases cannot be established from these records.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1rqsoo4/amazon_india_rejected_my_14999_refund_claiming_i/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Should I escalate this to the consumer court?" }
+    },
+    {
+      "id": "W02", "kind": "in_scope", "coverage": "partial", "category": "replacement_or_refund",
+      "question": "A retailer delivered my laptop late and defective. Now that the price has risen, it offers only a refund, not the replacement I want, unless I pay extra. Can it do that, do repeated pressure calls count as harassment, and what compensation is realistic?",
+      "required_evidence": [["district-commission-remedies"]],
+      "checkpoint": "Explain the Commission's conditional replacement, refund, compensation and costs powers without guaranteeing a preferred remedy or award.",
+      "unsupported_requests": "A binding ruling on the retailer's conduct, harassment finding, replacement price and realistic award require facts and authority beyond this corpus.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1qpev9b/retailer_forcing_refund_instead_of_replacement/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Can a retailer legally force a refund when the customer wants replacement for a defective product?" }
+    },
+    {
+      "id": "W03", "kind": "in_scope", "coverage": "partial", "category": "warranty_service",
+      "question": "My stove has a faulty burner. Service support promised a warranty repair, but a month of follow-ups has achieved nothing. What grounds and remedies are available, how do I file, what documents and fees are required, and what will the case cost and how long will it take?",
+      "required_evidence": [["deficiency-definition"], ["district-commission-remedies"], ["ejagriti-help-resources"]],
+      "checkpoint": "Supply the service-deficiency definition, conditional remedies and official filing-help route. Do not invent a universal repair deadline or case-specific costs.",
+      "unsupported_requests": "No complete fee schedule, mandatory document checklist, warranty-specific repair SLA or realistic resolution-time estimate is supplied by these records.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1ipv7qv/help_needed_in_filing_a_consumer_complaint/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Typical cost and time frame for consumer resolution" }
+    },
+    {
+      "id": "W04", "kind": "in_scope", "coverage": "partial", "category": "subscription_payment",
+      "question": "I cancelled a streaming subscription on its website yesterday, but this morning it charged me through UPI autopay. I do not want to continue. What can I do?",
+      "required_evidence": [["ecommerce-platform-grievance"], ["deficiency-definition"]],
+      "checkpoint": "Explain the platform grievance mechanism and conditional service-deficiency concept, rather than asserting an automatic refund or bank-mandate procedure.",
+      "unsupported_requests": "The corpus cannot inspect cancellation records, supply current app-specific buttons or determine the UPI mandate's status.",
+      "source": { "url": "https://www.reddit.com/r/IndiaTech/comments/1og9odw/", "observed_on": "2026-11-02", "access": "search_index", "excerpt": "title, what can i do?" }
+    },
+    {
+      "id": "W05", "kind": "in_scope", "coverage": "partial", "category": "subscription_renewal",
+      "question": "A news site promised an early renewal would start after my existing subscription expired. Instead it created another account using my phone number and started the renewal immediately. Support refuses cancellation or refund. How can I escalate this, and is it a valid consumer-court case worth pursuing?",
+      "required_evidence": [["deficiency-definition"], ["filing-complaint"]],
+      "checkpoint": "Explain the conditional service-deficiency concept and eligibility to file a consumer complaint. Do not decide whether the disputed promise was made or predict whether litigation is worthwhile.",
+      "unsupported_requests": "Account repair instructions, evidentiary findings, success probability and litigation economics are unavailable.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1ie8vgv/", "observed_on": "2026-11-02", "access": "search_index", "excerpt": "Could this be a valid reason to go to consumer courts?" }
+    },
+    {
+      "id": "W06", "kind": "in_scope", "coverage": "partial", "category": "offline_cancellation_terms",
+      "question": "I cancelled a car booking at a showroom. The signed form and receipt did not mention a cancellation fee, but the dealer deducted one and says its terms were sent in a WhatsApp group. Can a WhatsApp message count as the company's official terms?",
+      "required_evidence": [["unfair-contract-definition"]],
+      "checkpoint": "Identify the Act's unfair-contract definition and unreasonable-charge/disproportionate-penalty conditions only. Do not apply an online-platform cancellation rule to this offline booking.",
+      "unsupported_requests": "The legal incorporation and enforceability of these WhatsApp terms require contract/electronic-evidence authorities and case facts not in this corpus.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1ga3j5o/", "observed_on": "2026-11-02", "access": "search_index", "excerpt": "Is WhatsApp message considered as official T&C for a company" }
+    },
+    {
+      "id": "W07", "kind": "in_scope", "coverage": "partial", "category": "travel_refund",
+      "question": "I cancelled a tour within the cancellation period after my visa was rejected. The booking document lists cancellation charges, but the travel site offers a smaller refund than my calculation and refuses an itemised explanation. Tickets keep closing, and the refund has been pending for eight months. How can I get my money back?",
+      "required_evidence": [["ecommerce-accepted-refunds"], ["ecommerce-platform-grievance"]],
+      "checkpoint": "Explain the accepted-refund timing duty and platform grievance route, retaining the condition that a refund request has been accepted.",
+      "unsupported_requests": "The correct contractual refund amount, tax treatment and justification for each deduction cannot be calculated from the corpus.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1m3x7ja/makemytrip_not_refunding_my_money/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "MakeMyTrip not refunding my money" }
+    },
+    {
+      "id": "W08", "kind": "in_scope", "coverage": "partial", "category": "expired_food",
+      "question": "A grocery platform delivered ice cream that had expired nearly two months earlier, and I tasted it before noticing. Should I report this to FSSAI or file a consumer complaint? Is e-Jagriti the place to start, and can I seek compensation beyond a refund?",
+      "required_evidence": [["ejagriti-online-filing"], ["district-commission-remedies"]],
+      "checkpoint": "Identify the official online complaint route and conditional Commission remedies, including compensation. Do not assert that a particular compensation award is guaranteed.",
+      "unsupported_requests": "FSSAI reporting procedure, food-specific offences and any medical conclusions are outside the corpus.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1m7tz0p/", "observed_on": "2026-11-02", "access": "search_index", "excerpt": "Can I ask for compensation beyond a refund?" }
+    },
+    {
+      "id": "W09", "kind": "in_scope", "coverage": "partial", "category": "nch_effectiveness",
+      "question": "An online clothing shop I have bought from before promised to return my money but has not done so. I am planning to complain to the National Consumer Helpline. Does it work?",
+      "required_evidence": [["nch-prelitigation-limits"], ["nch-forwarding-and-docket"]],
+      "checkpoint": "Explain NCH's forwarding and pre-litigation role and the Commission option if unresolved, rather than promising this grievance will succeed.",
+      "unsupported_requests": "No measured NCH success rate or prediction of this shop's response is available.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1qr6bj8/does_national_consumer_helpline_work/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "I'm planning to complaint to national consumer helpline but does it work?" }
+    },
+    {
+      "id": "W10", "kind": "in_scope", "coverage": "partial", "category": "nch_unresolved",
+      "question": "A courier lost my reverse shipment, refunded only a small part of its value and cited a policy not shown during booking. I filed an NCH grievance with evidence, but after twelve days it is still in process and the company ignores me. How should I proceed?",
+      "required_evidence": [["nch-forwarding-and-docket"], ["nch-prelitigation-limits"], ["consumer-definition"]],
+      "checkpoint": "Explain NCH forwarding/follow-up and the unresolved-grievance route, while checking consumer eligibility because the shipment's commercial purpose is unclear.",
+      "unsupported_requests": "The courier's liability cap, insurance contract, actual compensation and eligibility on these incomplete facts cannot be decided here.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1thexek/nch_grievance_ignored_by_company_what_to_do_next/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "How should i proceed further on this ?" }
+    },
+    {
+      "id": "W11", "kind": "in_scope", "coverage": "partial", "category": "filing_scrutiny",
+      "question": "My online clothing order was never delivered or refunded. After NCH did not resolve it, I filed through e-Jagriti. More than two months later it still says Pending for Scrutiny. Is that normal, should I contact the District Commission, and how do I follow up?",
+      "required_evidence": [["complaint-admission"], ["ejagriti-help-resources"]],
+      "checkpoint": "Distinguish the Act's admission provision from unverified portal/registry status and direct the user to official filing help.",
+      "unsupported_requests": "Actual portal scrutiny SLAs, local registry contacts and whether this filing is formally complete/admitted are not established. Do not say a status alone proves deemed admission.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1wh2xiv/consumer_complaint_stuck_in_scrutiny_for_2_months/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Is it normal for e-Jagriti scrutiny to take this long?" }
+    },
+    {
+      "id": "W12", "kind": "in_scope", "coverage": "partial", "category": "residence_proof",
+      "question": "I want to file a consumer case in my present city after a clinic in another city refused a refund. I have no rent agreement or identity document with my current address. Will a notarised residence affidavit be accepted on e-Jagriti, and could the case be rejected for jurisdiction?",
+      "required_evidence": [["district-commission-jurisdiction"], ["ejagriti-help-resources"]],
+      "checkpoint": "Explain territorial jurisdiction including residence and personal work, and refer to official filing guidance without promising acceptance of an affidavit.",
+      "unsupported_requests": "The sufficiency of the proposed address evidence and registry acceptance cannot be verified from these sources.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1wnpoku/consumer_court_ejagriti_can_i_file_a_case_in_my/", "observed_on": "2026-11-02", "access": "search_index", "excerpt": "Is my statement enough for the admission stage?" }
+    },
+    {
+      "id": "W13", "kind": "in_scope", "coverage": "partial", "category": "appeal_portal",
+      "question": "The District Consumer Commission partly allowed my complaint, but I want to appeal the compensation amount. The e-Jagriti first-appeal form asks for a certified State Commission order even though my order is from the District Commission. Which proceeding should I choose, what documents do I need, and is the downloaded order enough?",
+      "required_evidence": [["appeal-district-commission"], ["ejagriti-help-resources"]],
+      "checkpoint": "Identify the District-to-State appeal provision and official filing-help route. Retain the statutory appeal conditions rather than guessing portal buttons.",
+      "unsupported_requests": "No verified current certified-copy checklist, exemption procedure or diagnosis of the selected portal option is included.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1ua1twu/how_to_appeal_district_consumer_commission_order/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Whether I should file a First Appeal or some other proceeding?" }
+    },
+    {
+      "id": "W14", "kind": "in_scope", "coverage": "partial", "category": "expired_warranty",
+      "question": "I got a faulty product, but its warranty has expired. Can I still take legal action?",
+      "required_evidence": [["defect-definition"], ["complaint-limitation"]],
+      "checkpoint": "Explain the defect definition and complaint limitation/condonation rules as separate concepts, without deciding the missing facts.",
+      "unsupported_requests": "The corpus does not establish when the defect or cause of action arose, the warranty terms, latent-defect case law or this buyer's entitlement after expiry.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1qoaj6m/got_a_faulty_product_but_the_warranty_has_expired/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Got a faulty product. But the warranty has expired. Can I still take legal action?" }
+    },
+    {
+      "id": "W15", "kind": "in_scope", "coverage": "partial", "category": "filing_after_nch",
+      "question": "A local shop sent me a different product and no longer answers my calls or messages. I complained through the National Consumer Helpline months ago, but nothing happened. How do I file an actual consumer-court case against the seller now?",
+      "required_evidence": [["nch-prelitigation-limits"], ["filing-complaint"], ["ejagriti-help-resources"]],
+      "checkpoint": "Distinguish NCH from a Commission complaint, identify electronic filing under the Act and link official filing instructions.",
+      "unsupported_requests": "A complete local document/fee/affidavit checklist is not contained in the source records; do not invent one.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1ssjtcr/please_help_filing_a_consumer_court_case/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "HOW DO I FILE A CONSUMER COURT CASE AGAINST THEM?" }
+    },
+    {
+      "id": "W16", "kind": "out_of_scope", "coverage": "none", "category": "banking_rules",
+      "question": "A food-order payment failed through UPI linked to a credit card. The amount was debited on 1 July and refunded on 9 July. The RBI circular seems to require reversal within T+5 days and Rs 100 per day for delay. Am I interpreting it correctly, and can I claim compensation?",
+      "required_evidence": [], "checkpoint": "Do not substitute a general e-commerce refund provision for the absent RBI circular, its applicability or compensation calculation.",
+      "unsupported_requests": "The requested RBI turnaround-time and compensation rules are not in the corpus.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1urymbd/can_i_claim_rbi_100day_compensation_for_delayed/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Am I interpreting the RBI circular correctly?" }
+    },
+    {
+      "id": "W17", "kind": "out_of_scope", "coverage": "none", "category": "data_deletion",
+      "question": "How can I delete my personal data and identity information from a caller app when its app and email address are no longer operational?",
+      "required_evidence": [], "checkpoint": "No verified data-erasure procedure or applicable privacy-law provision is available in the corpus.",
+      "unsupported_requests": "Account recovery, app-specific deletion and privacy/data-retention law are outside the included records.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1tjmlgm/delete_my_personal_data_from_an_app/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Their app and email address are not operational." }
+    },
+    {
+      "id": "W18", "kind": "out_of_scope", "coverage": "none", "category": "medical_data_retention",
+      "question": "A health startup refused my request to delete patient data, citing page 22 of the Electronic Health Record standards from 2016 and saying records must be kept for life. Is that the correct interpretation, and can it legally refuse deletion?",
+      "required_evidence": [], "checkpoint": "Do not interpret medical-record retention standards that are not present in the corpus.",
+      "unsupported_requests": "The EHR standards and applicable health/privacy retention authorities are absent.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1ikq3dh/", "observed_on": "2026-11-02", "access": "search_index", "excerpt": "Is this the right interpretation?" }
+    },
+    {
+      "id": "W19", "kind": "out_of_scope", "coverage": "none", "category": "tenancy",
+      "question": "I vacated my rented flat after giving the agreed notice, and the landlord inspected it without raising problems. Now the landlord keeps my security deposit, cites painting and maintenance, and ignores calls. Should I send a legal notice or go to the police, and what recovery options do I have?",
+      "required_evidence": [], "checkpoint": "Do not treat an ordinary landlord deposit dispute as automatically governed by these consumer provisions.",
+      "unsupported_requests": "The applicable tenancy/recovery law, police-versus-civil procedure and legal-notice requirements are not included.",
+      "source": { "url": "https://www.reddit.com/r/LegalAdviceIndia/comments/1tgslud/security_deposit_issue_owner_not_returning_deposit/", "observed_on": "2026-11-02", "access": "page_text", "excerpt": "Is filing a police complaint useful or should I send a legal notice first?" }
+    },
+    {
+      "id": "W20", "kind": "out_of_scope", "coverage": "none", "category": "food_label_definition",
+      "question": "A protein-oats product says it uses jaggery, but the nutrition label says zero added sugar. I thought FSSAI counts jaggery as added sugar. Why can the label say zero, and is my understanding of that food-labelling rule correct?",
+      "required_evidence": [], "checkpoint": "A generic misleading-advertisement definition does not establish FSSAI's treatment of jaggery or the label's compliance.",
+      "unsupported_requests": "The food-labelling definitions, exemptions and product-specific facts required for this determination are absent.",
+      "source": { "url": "https://www.reddit.com/r/Fitness_India/comments/1wquqnw/doubts_regarding_jaggery_whether_it_is_counted_as/", "observed_on": "2026-11-02", "access": "search_index", "excerpt": "Then why Zero added sugar even after using jaggery." }
+    }
+  ]
+}

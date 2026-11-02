@@ -58,6 +58,16 @@ If generation is unavailable, incomplete, or returns invalid citations, the app 
 
 The evaluation notes are kept in [docs/evaluation](docs/evaluation/README.md).
 
+The [public-question check](docs/evaluation/public-questions-2026-11-02.md) is harder:
+on 15 partly supported requests from public posts, keyword found all labelled
+evidence for 1, BM25 for 2, dense for 4 and hybrid for 3. All four returned candidates
+for five unsupported requests. These are agent-condensed prompts with provisional
+source-based labels, not full-answer scores or independent legal validation. A
+[delegated agent review](docs/evaluation/public-question-owner-review.md) found two
+prompt-fact corrections and overly narrow evidence labels; the frozen counts remain
+provisional. The result shows that the live prototype is not reliable enough
+for broad practical consumer questions; adding embeddings alone did not solve it.
+
 The [2 November retrieval comparison](docs/evaluation/retrieval-comparison-2026-11-02.md)
 uses the expanded 90-record corpus. Of 40 supported questions, the current retriever
 found all labelled evidence in its top three for 30; BM25 for 35; dense and hybrid

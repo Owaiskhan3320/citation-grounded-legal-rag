@@ -48,3 +48,8 @@ jobs:
         run: |
           node scripts/test-evaluation.mjs
           node scripts/evaluate-retrieval.mjs --check
+
+      - name: Check public-question evaluation (no models or API calls)
+        run: |
+          node scripts/test-public-evaluation.mjs
+          node scripts/evaluate-public-questions.mjs --check
