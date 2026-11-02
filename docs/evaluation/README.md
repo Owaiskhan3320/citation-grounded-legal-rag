@@ -4,6 +4,12 @@ This folder records evaluation runs for the deployed application. The aim is to 
 
 ## Current corpus: offline retrieval
 
+The [request-scope follow-up](request-scope-development.md) records the new API and
+browser behavior. It is a development run on known questions, not an unseen test.
+The historical keyword experiments below still run their original code and do
+not measure the new live wrapper. The follow-up records both improved known
+rejections and the cost of declining some partly supported requests.
+
 The [public-question check](public-questions-2026-11-02.md) uses 20 externally posted
 scenarios, selected and anonymised before scoring. Fifteen are only partly
 answerable and five request authorities outside the corpus. The measured evidence

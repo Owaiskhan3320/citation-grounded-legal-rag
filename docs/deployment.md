@@ -36,6 +36,7 @@ The site remains usable without `GROQ_API_KEY`. `/api/ask` returns a source-back
 - Run `node scripts/test-api.mjs`.
 - Run `node scripts/test-corpus.mjs` and `node scripts/test-issues.mjs`.
 - Run `node scripts/test-evaluation.mjs` and `node scripts/evaluate-retrieval.mjs --check`.
+- Run `node scripts/test-research.mjs` and `node scripts/evaluate-request-scope.mjs --check`.
 - Run `python scripts/validate_corpus.py` after installing `requirements-dev.txt`.
 - Run `python -m unittest discover -s tests -v`.
 - Confirm every generated answer exposes the official source record below it.
@@ -52,5 +53,8 @@ the version on `main`, not an unmerged branch. Judgment search is not included.
 
 The Week 3 retrieval comparison is offline only. Do not install `requirements-eval.txt`
 or add an embedding API key to Vercel for this PR. The app still uses the existing
-keyword/provision retriever and Groq. See the evaluation report before treating its
-out-of-scope refusal behaviour as production-ready.
+Groq model, with a shared bounded source-lookup wrapper for the API and local
+fallback. Partial/declined requests skip generation and expose coverage limits.
+The historical keyword retriever remains an offline baseline. See the request-scope
+development report before treating the new heuristic refusal behavior as a general
+safety or legal-accuracy guarantee.

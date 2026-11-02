@@ -42,7 +42,9 @@ jobs:
           node scripts/test-api.mjs
           node scripts/test-corpus.mjs
           node scripts/test-issues.mjs
+          node scripts/test-research.mjs
           node --check app.js
+          node --check research.js
 
       - name: Check frozen retrieval evaluation (no models or API calls)
         run: |
@@ -53,3 +55,6 @@ jobs:
         run: |
           node scripts/test-public-evaluation.mjs
           node scripts/evaluate-public-questions.mjs --check
+
+      - name: Check request-scope development run
+        run: node scripts/evaluate-request-scope.mjs --check

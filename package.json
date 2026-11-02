@@ -7,6 +7,7 @@
     "node": ">=20.18.3"
   },
   "scripts": {
+    "test:research": "node scripts/test-research.mjs && node scripts/evaluate-request-scope.mjs --check",
     "test:public-evaluation": "node scripts/test-public-evaluation.mjs && node scripts/evaluate-public-questions.mjs --check",
     "test:evaluation": "node scripts/test-evaluation.mjs && node scripts/evaluate-retrieval.mjs --check",
     "test:issues": "node scripts/test-issues.mjs",
@@ -14,6 +15,6 @@
     "test:api": "node scripts/test-api.mjs",
     "test:rag": "node scripts/test-rag.mjs",
     "test:search": "node scripts/test-search.mjs",
-    "test": "npm run test:corpus && npm run test:search && npm run test:issues && npm run test:rag && npm run test:api && npm run test:evaluation && npm run test:public-evaluation"
+    "test": "npm run test:corpus && npm run test:search && npm run test:issues && npm run test:rag && npm run test:api && npm run test:evaluation && npm run test:public-evaluation && npm run test:research"
   }
 }

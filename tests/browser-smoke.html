@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <meta charset="utf-8">
-<title>Week 2 browser checks</title>
+<title>Consumer research browser checks</title>
 <p id="report">RUNNING</p>
 <iframe id="app" src="../index.html" style="width:390px;height:850px;border:0"></iframe>
 <script type="module">
@@ -41,6 +41,23 @@ try {
   doc.querySelector('#search-form').dispatchEvent(new Event('submit', {bubbles:true,cancelable:true}));
   await until(() => doc.querySelector('#result-status').textContent === 'No verified match');
 
+  doc.querySelector('#query').value = 'What does section 21 of the DPDP Act say?';
+  doc.querySelector('#search-form').dispatchEvent(new Event('submit', {bubbles:true,cancelable:true}));
+  await until(() => doc.querySelector('.coverage-limits')?.textContent.includes('Privacy'));
+  assert(doc.querySelectorAll('#results .result-card').length === 0, 'wrong-law lookup must have no source cards during an outage');
+
+  doc.querySelector('#query').value = 'Explain consumer rights under section 2(9). Also explain RBI reversal compensation.';
+  doc.querySelector('#search-form').dispatchEvent(new Event('submit', {bubbles:true,cancelable:true}));
+  await until(() => doc.querySelector('#result-status').textContent === 'Limited source coverage');
+  assert(doc.querySelectorAll('#results .result-card').length === 1, 'mixed query must show only the bounded consumer source');
+  assert(doc.querySelector('.coverage-limits').textContent.includes('Banking'), 'mixed query must disclose the unavailable banking answer');
+  assert(doc.querySelector('.answer-card h3').textContent === 'General source excerpts', 'partial query must not be presented as a complete answer');
+  for (const width of [390, 1200]) {
+    frame.style.width = `${width}px`;
+    await new Promise(resolve => setTimeout(resolve, 80));
+    assert(doc.documentElement.scrollWidth <= doc.documentElement.clientWidth + 1, `scope-limit overflow at ${width}px`);
+  }
+
   const amendedSources = retrieveEvidence('Rule 6(5)', '2027-01-01');
   frame.contentWindow.fetch = async () => new Response(JSON.stringify({mode:'generated',answer:'Test response. [S1]',sources:amendedSources}), {status:200});
   doc.querySelector('#query').value = 'Rule 6(5)';
@@ -60,7 +77,7 @@ try {
   pending[0](response('Stale response'));
   await new Promise(resolve => setTimeout(resolve, 80));
   assert(doc.querySelector('#results').textContent === 'Latest response', 'stale response must not overwrite a newer search');
-  report.textContent = 'PASS: six guides, three official routes, 390px/1200px layout, real local fallback, no-answer and request ordering.';
+  report.textContent = 'PASS: guides, routes, 390px/1200px layout, local fallback, wrong-law rejection, mixed-request limits and request ordering.';
 } catch (error) {
   report.textContent = `FAIL: ${error.message}`;
 }

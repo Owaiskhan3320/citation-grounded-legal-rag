@@ -1,4 +1,4 @@
-import { buildFallbackAnswer, retrieveEvidence } from "./rag.js";
+import { prepareResearch, researchFallback } from "./research.js";
 import { getIssueGuide, getOfficialRoutes, issuePaths } from "./issues.js";
 
 const form = document.querySelector("#search-form");
@@ -129,10 +129,11 @@ function renderResponse(query, payload) {
     resultStatus.textContent = "No verified match";
     results.className = "results-empty";
     results.textContent = payload.answer;
+    renderLimits(payload);
     return;
   }
 
-  resultStatus.textContent =
+  resultStatus.textContent = payload.coverage === "partial" ? "Limited source coverage" :
     payload.mode === "generated"
       ? `Groq answer with ${payload.sources.length} source${payload.sources.length === 1 ? "" : "s"}`
       : "Verified retrieval fallback";
@@ -141,7 +142,7 @@ function renderResponse(query, payload) {
   const answer = document.createElement("section");
   answer.className = "answer-card";
   const answerHeading = document.createElement("h3");
-  answerHeading.textContent = "Answer";
+  answerHeading.textContent = payload.coverage === "partial" ? "General source excerpts" : "Source explanation";
   const answerText = document.createElement("p");
   answerText.className = "answer-text";
   answerText.textContent = payload.answer;
@@ -156,26 +157,30 @@ function renderResponse(query, payload) {
 
   const sourceHeading = document.createElement("h3");
   sourceHeading.className = "source-heading";
-  sourceHeading.textContent = "Evidence used";
-  results.append(answer, sourceHeading, ...payload.sources.map(createSourceCard));
+  sourceHeading.textContent = payload.coverage === "partial" ? "Related source records" : "Evidence used";
+  results.append(answer);
+  renderLimits(payload);
+  results.append(sourceHeading, ...payload.sources.map(createSourceCard));
+}
+
+function renderLimits(payload) {
+  if (!payload.notVerified?.length) return;
+  const limits = document.createElement("section");
+  limits.className = "coverage-limits";
+  const heading = document.createElement("h3");
+  heading.textContent = "Not verified from these sources";
+  const list = document.createElement("ul");
+  for (const reason of payload.notVerified) {
+    const item = document.createElement("li");
+    item.textContent = reason;
+    list.append(item);
+  }
+  limits.append(heading, list);
+  results.append(limits);
 }
 
 function localFallback(question, notice) {
-  const sources = retrieveEvidence(question);
-  if (sources.length === 0) {
-    return {
-      answer: "I could not verify this from the available source records.",
-      sources: [],
-      mode: "no_answer",
-    };
-  }
-
-  return {
-    answer: buildFallbackAnswer(sources),
-    sources,
-    mode: "retrieval_fallback",
-    notice,
-  };
+  return researchFallback(prepareResearch(question), notice);
 }
 
 async function requestAnswer(question) {

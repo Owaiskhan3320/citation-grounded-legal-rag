@@ -43,20 +43,32 @@ practical suggestions, not official filing checklists.
 
 ```mermaid
 flowchart LR
-    Q[Question] --> R[Keyword and provision retrieval]
-    R --> E[Up to three source records]
-    E --> G[Groq generation]
-    G --> C[Citation check]
-    C --> V[Answer with source cards]
-    E --> F[Verified retrieval fallback]
-    F --> V
+    Q[Question] --> R[Bounded source-lookup check]
+    R --> N[No lookup: no answer or cards]
+    R --> E[Up to three checked source records]
+    E --> P[Partial request: excerpts and limits]
+    E --> G[Focused lookup: Groq explanation]
+    G --> C[Citation ID and truncation checks]
+    C --> V[Source explanation with cards]
+    G --> F[Generation unavailable: source excerpts]
 ```
 
-If generation is unavailable, incomplete, or returns invalid citations, the app shows a retrieval fallback from the same evidence instead of inventing an answer.
+The API and browser fallback use the same request check. Partial and declined
+requests do not call Groq. Focused generation uses source headings and quotations,
+not the raw user question. Citation-ID checks do not prove factual entailment.
+
+The [request-scope follow-up](docs/evaluation/request-scope-development.md) rejected
+all five known absent-authority requests without cards, but also declined six of
+15 partly supported examples. It is a conservative English-language policy layer,
+not a semantic relevance model or a complete solution for practical case questions.
 
 ## Evaluation
 
 The evaluation notes are kept in [docs/evaluation](docs/evaluation/README.md).
+
+The reports below describe the **older keyword baseline and offline comparators**,
+not the new live request wrapper. Their questions, labels and scores remain intact.
+The separate request-scope run is development evidence on already-seen questions.
 
 The [public-question check](docs/evaluation/public-questions-2026-11-02.md) is harder:
 on 15 partly supported requests from public posts, keyword found all labelled

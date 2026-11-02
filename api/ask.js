@@ -1,9 +1,7 @@
 import {
-  buildFallbackAnswer,
-  buildGroundedPrompt,
   hasValidCitations,
-  retrieveEvidence,
 } from "../rag.js";
+import { prepareResearch, researchFallback, researchPrompt, researchResponse } from "../research.js";
 
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 const DEFAULT_MODEL = "openai/gpt-oss-20b";
@@ -49,16 +47,7 @@ function isRateLimited(request) {
   return currentWindow.count > MAX_REQUESTS_PER_WINDOW;
 }
 
-function retrievalResponse(evidence, notice, mode = "retrieval_fallback") {
-  return {
-    answer: buildFallbackAnswer(evidence),
-    sources: evidence,
-    mode,
-    notice,
-  };
-}
-
-async function askGroq(question, evidence, apiKey) {
+async function askGroq(plan, apiKey) {
   const response = await fetch(GROQ_API_URL, {
     method: "POST",
     headers: {
@@ -77,7 +66,7 @@ async function askGroq(question, evidence, apiKey) {
         },
         {
           role: "user",
-          content: buildGroundedPrompt(question, evidence),
+          content: researchPrompt(plan),
         },
       ],
     }),
@@ -95,7 +84,7 @@ async function askGroq(question, evidence, apiKey) {
   }
 
   const answer = choice?.message?.content?.trim();
-  if (!answer || !hasValidCitations(answer, evidence)) {
+  if (!answer || !hasValidCitations(answer, plan.sources)) {
     throw new Error("Groq response did not contain valid evidence citations.");
   }
 
@@ -128,14 +117,11 @@ export default async function handler(request, response) {
     });
   }
 
-  const evidence = retrieveEvidence(question);
-  if (evidence.length === 0) {
-    return sendJson(response, 200, {
-      answer: "I could not verify this from the available source records.",
-      sources: [],
-      mode: "no_answer",
-      notice: "Try a question about the current consumer-law source records.",
-    });
+  const plan = prepareResearch(question);
+  if (plan.sources.length === 0 || plan.coverage === "partial") {
+    return sendJson(response, 200, researchFallback(plan,
+      plan.sources.length ? "Only the listed source lookups are available. General excerpts are shown without a generated case-specific conclusion." :
+        "Ask a focused question about the included consumer-law sources. No unrelated source cards have been attached."));
   }
 
   const apiKey = process.env.GROQ_API_KEY;
@@ -143,27 +129,23 @@ export default async function handler(request, response) {
     return sendJson(
       response,
       200,
-      retrievalResponse(
-        evidence,
+      researchFallback(
+        plan,
         "Generation is not configured, so this response uses the verified retrieval fallback.",
       ),
     );
   }
 
   try {
-    const answer = await askGroq(question, evidence, apiKey);
-    return sendJson(response, 200, {
-      answer,
-      sources: evidence,
-      mode: "generated",
-    });
+    const answer = await askGroq(plan, apiKey);
+    return sendJson(response, 200, researchResponse(plan, answer, "generated"));
   } catch (error) {
     console.error("Groq generation failed:", error.message);
     return sendJson(
       response,
       200,
-      retrievalResponse(
-        evidence,
+      researchFallback(
+        plan,
         "Generation was unavailable, so this response uses the verified retrieval fallback.",
       ),
     );
