@@ -1,0 +1,609 @@
+{
+  "name": "request-scope-development-v1",
+  "run_at": "2026-11-02T18:46:04.746Z",
+  "as_of": "2026-11-02",
+  "purpose": "Post-change development run on already-seen public questions, not an unseen evaluation or generated-answer accuracy measurement.",
+  "label_limit": "Frozen public labels have documented prompt-fact and evidence-strategy limitations. These grades are descriptive provisional checkpoint coverage only.",
+  "fingerprints": {
+    "evaluation/consumer-web-20.json": "3ccb744b088949fc030b8df10ec2e52cd0ad9764852e2f79e0ec36a9e3f960b9",
+    "evaluation/results/consumer-web-20-2026-11-02.json": "6901828478b6ee0dc64a1b222225db9212dd1037ad3e51579fa7932ecda1aab5",
+    "research.js": "b0720e4a567cbf3fb39a19824eb3a95466182d9a4e52b2ce4bc96a326ccdb39b",
+    "api/ask.js": "7ffb3433e1bfe3369a2f71e92a8f25a1a0ff2ca9df074dc669fc7026b3020327",
+    "app.js": "99eb63b85f5d6d11ade30965f07e27c304b0562778a0b5c01ffc100f5d650248",
+    "data/consumer-law/v1/records.json": "38e7b56bd0d10cf9c6c6966a241d0ec16122ac2ad9754ba39e1f4801a9d8abbb",
+    "scripts/evaluate-request-scope.mjs": "efbc5fee81c0bf4937e4fb2327d32e4a075fba7e8e8e32a66f78e6d35c920f38"
+  },
+  "metrics": {
+    "in_scope_count": 15,
+    "hit_at_1": 0.3333333333333333,
+    "macro_evidence_recall_at_3": 0.3,
+    "complete_evidence_at_3": 0.13333333333333333,
+    "mrr_at_3": 0.4,
+    "out_of_scope_count": 5,
+    "out_of_scope_abstentions": 5,
+    "out_of_scope_false_matches": 0,
+    "query_p50_ms": 0.6456,
+    "query_p95_ms": 1.9043
+  },
+  "behavior": {
+    "no_answer": 11,
+    "partial_excerpts": 9,
+    "unsupported_questions_without_cards": 5,
+    "partly_supported_questions_without_cards": [
+      "W02",
+      "W04",
+      "W05",
+      "W06",
+      "W07",
+      "W14"
+    ],
+    "partly_supported_questions_with_some_labelled_evidence": 7
+  },
+  "questions": [
+    {
+      "id": "W01",
+      "kind": "in_scope",
+      "category": "returned_goods",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "district-commission-remedies",
+        "nch-prelitigation-limits"
+      ],
+      "supported": [
+        "Section 39: Findings and orders of District Commission",
+        "NCH pre-litigation limits: NCH does not guarantee a remedy or replace a Commission"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"It is keeping both the watch and my money\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "These records cannot verify a similar judgment, predict a decision or guarantee an award.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": true,
+        "recall_at_k": 1,
+        "complete_at_k": true,
+        "reciprocal_rank_at_k": 1
+      },
+      "baseline_retrieved": [
+        "inventory-platform-returns-and-reviews",
+        "marketplace-seller-returns",
+        "marketplace-seller-prepurchase-information"
+      ],
+      "query_ms": 6.753
+    },
+    {
+      "id": "W02",
+      "kind": "in_scope",
+      "category": "replacement_or_refund",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"A retailer delivered my laptop late and defective\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Now that the price has risen, it offers only a refund, not the replacement I want, unless I pay extra\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Can it do that, do repeated pressure calls count as harassment,\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"what compensation is realistic\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "marketplace-seller-returns",
+        "inventory-platform-returns-and-reviews",
+        "dark-pattern-false-urgency"
+      ],
+      "query_ms": 1.2112
+    },
+    {
+      "id": "W03",
+      "kind": "in_scope",
+      "category": "warranty_service",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "filing-complaint"
+      ],
+      "supported": [
+        "Section 35: Manner in which complaint shall be made"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"My stove has a faulty burner\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Service support promised a warranty repair, but a month of follow-ups has achieved nothing\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "These records do not verify a complete filing checklist, exact fee, registry acceptance, portal error or whether particular evidence will be accepted. Use the current official filing instructions.",
+        "No bounded source lookup was identified for: \"what will the case cost\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"how long will it take\". Ask this part separately with a focused consumer-law topic or provision number."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "dark-pattern-basket-sneaking",
+        "consumer-definition",
+        "marketplace-seller-prepurchase-information"
+      ],
+      "query_ms": 1.9043
+    },
+    {
+      "id": "W04",
+      "kind": "in_scope",
+      "category": "subscription_payment",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"I cancelled a streaming subscription on its website yesterday, but this morning it charged me through UPI autopay\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"I do not want to continue\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"What can I do\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "dark-pattern-drip-pricing",
+        "dark-pattern-saas-billing",
+        "jurisdiction-state-value"
+      ],
+      "query_ms": 0.7045
+    },
+    {
+      "id": "W05",
+      "kind": "in_scope",
+      "category": "subscription_renewal",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"A news site promised an early renewal would start after my existing subscription expired\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Instead it created another account using my phone number and started the renewal immediately\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Support refuses cancellation or refund\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"How can I escalate this,\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"is it a valid consumer-court case worth pursuing\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "ccpa-investigation",
+        "dark-pattern-subscription-trap",
+        "ecommerce-accepted-refunds"
+      ],
+      "query_ms": 1.4996
+    },
+    {
+      "id": "W06",
+      "kind": "in_scope",
+      "category": "offline_cancellation_terms",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"I cancelled a car booking at a showroom\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "Whether a message became part of a particular contract requires authorities and facts not supplied here.",
+        "No bounded source lookup was identified for: \"Can a WhatsApp message count as the company's official terms\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "dark-pattern-basket-sneaking",
+        "dark-pattern-drip-pricing",
+        "advertisement-disclaimers"
+      ],
+      "query_ms": 0.3747
+    },
+    {
+      "id": "W07",
+      "kind": "in_scope",
+      "category": "travel_refund",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"I cancelled a tour within the cancellation period after my visa was rejected\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"The booking document lists cancellation charges, but the travel site offers a smaller refund than my calculation and ref\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Tickets keep closing, and the refund has been pending for eight months\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"How can I get my money back\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "dark-pattern-drip-pricing",
+        "ecommerce-cancellation-charges",
+        "unsafe-goods-recall"
+      ],
+      "query_ms": 0.7901
+    },
+    {
+      "id": "W08",
+      "kind": "in_scope",
+      "category": "expired_food",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "filing-complaint",
+        "ejagriti-help-resources"
+      ],
+      "supported": [
+        "Section 35: Manner in which complaint shall be made",
+        "e-Jagriti filing help: Official filing manuals and videos"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"A grocery platform delivered ice cream that had expired nearly two months earlier, and I tasted it before noticing\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "FSSAI rules, food-labelling compliance and food-regulator procedures are not included.",
+        "No bounded source lookup was identified for: \"can I seek compensation beyond a refund\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "filing-complaint"
+      ],
+      "query_ms": 0.6726
+    },
+    {
+      "id": "W09",
+      "kind": "in_scope",
+      "category": "nch_effectiveness",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "nch-prelitigation-limits"
+      ],
+      "supported": [
+        "NCH pre-litigation limits: NCH does not guarantee a remedy or replace a Commission"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"An online clothing shop I have bought from before promised to return my money but has not done so\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Does it work\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": true,
+        "recall_at_k": 0.5,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 1
+      },
+      "baseline_retrieved": [
+        "marketplace-seller-prepurchase-information",
+        "nch-prelitigation-limits",
+        "jurisdiction-state-value"
+      ],
+      "query_ms": 0.709
+    },
+    {
+      "id": "W10",
+      "kind": "in_scope",
+      "category": "nch_unresolved",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "nch-prelitigation-limits"
+      ],
+      "supported": [
+        "NCH pre-litigation limits: NCH does not guarantee a remedy or replace a Commission"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"A courier lost my reverse shipment, refunded only a small part of its value and cited a policy not shown during booking\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"How should I proceed\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": true,
+        "recall_at_k": 0.3333333333333333,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 1
+      },
+      "baseline_retrieved": [
+        "dark-pattern-drip-pricing",
+        "complaint-procedure",
+        "nch-prelitigation-limits"
+      ],
+      "query_ms": 0.4625
+    },
+    {
+      "id": "W11",
+      "kind": "in_scope",
+      "category": "filing_scrutiny",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "nch-prelitigation-limits",
+        "ejagriti-help-resources"
+      ],
+      "supported": [
+        "NCH pre-litigation limits: NCH does not guarantee a remedy or replace a Commission",
+        "e-Jagriti filing help: Official filing manuals and videos"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"My online clothing order was never delivered or refunded\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"More than two months later it still says Pending for Scrutiny\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "These records do not verify a complete filing checklist, exact fee, registry acceptance, portal error or whether particular evidence will be accepted. Use the current official filing instructions.",
+        "No bounded source lookup was identified for: \"Is that normal, should I contact the District Commission,\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"how do I follow up\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0.5,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0.5
+      },
+      "baseline_retrieved": [
+        "filing-complaint",
+        "dark-pattern-drip-pricing"
+      ],
+      "query_ms": 0.6456
+    },
+    {
+      "id": "W12",
+      "kind": "in_scope",
+      "category": "residence_proof",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "filing-complaint",
+        "district-commission-jurisdiction",
+        "district-commission-remedies"
+      ],
+      "supported": [
+        "Section 35: Manner in which complaint shall be made",
+        "Section 34: Jurisdiction of District Commission",
+        "Section 39: Findings and orders of District Commission"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"I have no rent agreement or identity document with my current address\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "These records do not verify a complete filing checklist, exact fee, registry acceptance, portal error or whether particular evidence will be accepted. Use the current official filing instructions.",
+        "No bounded source lookup was identified for: \"could the case be rejected for jurisdiction\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case.",
+        "Only three source records can be included at once. Other requested lookups were omitted; ask them separately."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0.5,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0.5
+      },
+      "baseline_retrieved": [
+        "ejagriti-help-resources",
+        "ccpa-investigation",
+        "district-commission-jurisdiction"
+      ],
+      "query_ms": 0.9017
+    },
+    {
+      "id": "W13",
+      "kind": "in_scope",
+      "category": "appeal_portal",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "appeal-district-commission",
+        "ejagriti-help-resources"
+      ],
+      "supported": [
+        "Section 41: Appeal against order of District Commission",
+        "e-Jagriti filing help: Official filing manuals and videos"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"Which proceeding should I choose, what documents do I need,\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "These records do not verify a complete filing checklist, exact fee, registry acceptance, portal error or whether particular evidence will be accepted. Use the current official filing instructions.",
+        "No bounded source lookup was identified for: \"is the downloaded order enough\". Ask this part separately with a focused consumer-law topic or provision number."
+      ],
+      "grade": {
+        "hit_at_1": true,
+        "recall_at_k": 1,
+        "complete_at_k": true,
+        "reciprocal_rank_at_k": 1
+      },
+      "baseline_retrieved": [
+        "filing-complaint"
+      ],
+      "query_ms": 0.6018
+    },
+    {
+      "id": "W14",
+      "kind": "in_scope",
+      "category": "expired_warranty",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"I got a faulty product, but its warranty has expired\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"Can I still take legal action\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": false,
+        "recall_at_k": 0,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 0
+      },
+      "baseline_retrieved": [
+        "consumer-definition",
+        "dark-pattern-false-urgency",
+        "dark-pattern-basket-sneaking"
+      ],
+      "query_ms": 0.2564
+    },
+    {
+      "id": "W15",
+      "kind": "in_scope",
+      "category": "filing_after_nch",
+      "coverage": "partial",
+      "mode": "retrieval_fallback",
+      "retrieved": [
+        "nch-prelitigation-limits",
+        "filing-complaint"
+      ],
+      "supported": [
+        "NCH pre-litigation limits: NCH does not guarantee a remedy or replace a Commission",
+        "Section 35: Manner in which complaint shall be made"
+      ],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"A local shop sent me a different product and no longer answers my calls or messages\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "hit_at_1": true,
+        "recall_at_k": 0.6666666666666666,
+        "complete_at_k": false,
+        "reciprocal_rank_at_k": 1
+      },
+      "baseline_retrieved": [
+        "marketplace-seller-fair-practices",
+        "inventory-platform-returns-and-reviews",
+        "dark-pattern-basket-sneaking"
+      ],
+      "query_ms": 0.6636
+    },
+    {
+      "id": "W16",
+      "kind": "out_of_scope",
+      "category": "banking_rules",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "No bounded source lookup was identified for: \"A food-order payment failed through UPI linked to a credit card\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"The amount was debited on 1 July and refunded on 9 July\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "Banking rules, payment-reversal entitlements and bank/app mandate instructions are not verified by this corpus.",
+        "No bounded source lookup was identified for: \"Am I interpreting it correctly,\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"can I claim compensation\". Ask this part separately with a focused consumer-law topic or provision number."
+      ],
+      "grade": {
+        "abstained": true
+      },
+      "baseline_retrieved": [
+        "appeal-district-commission",
+        "appeal-national-commission",
+        "ecommerce-accepted-refunds"
+      ],
+      "query_ms": 0.4589
+    },
+    {
+      "id": "W17",
+      "kind": "out_of_scope",
+      "category": "data_deletion",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "Privacy, data-erasure and medical-record retention authorities are not included."
+      ],
+      "grade": {
+        "abstained": true
+      },
+      "baseline_retrieved": [
+        "ecommerce-platform-information",
+        "marketplace-post-purchase-seller-details"
+      ],
+      "query_ms": 0.0721
+    },
+    {
+      "id": "W18",
+      "kind": "out_of_scope",
+      "category": "medical_data_retention",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "Privacy, data-erasure and medical-record retention authorities are not included.",
+        "No bounded source lookup was identified for: \"Is that the correct interpretation,\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"can it legally refuse deletion\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "The source explanations do not establish the disputed facts, your eligibility, liability, an entitlement to a particular remedy or the outcome of your case."
+      ],
+      "grade": {
+        "abstained": true
+      },
+      "baseline_retrieved": [
+        "marketplace-seller-accuracy-undertaking",
+        "inventory-platform-returns-and-reviews",
+        "complaint-limitation"
+      ],
+      "query_ms": 0.2575
+    },
+    {
+      "id": "W19",
+      "kind": "out_of_scope",
+      "category": "tenancy",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "The requested tenancy, criminal, family, tax or other non-consumer-law procedure is outside this source set.",
+        "No bounded source lookup was identified for: \"Should I send a legal notice or go to the police,\". Ask this part separately with a focused consumer-law topic or provision number.",
+        "No bounded source lookup was identified for: \"what recovery options do I have\". Ask this part separately with a focused consumer-law topic or provision number."
+      ],
+      "grade": {
+        "abstained": true
+      },
+      "baseline_retrieved": [
+        "unsafe-goods-recall",
+        "dark-pattern-drip-pricing",
+        "unfair-contract-definition"
+      ],
+      "query_ms": 0.2768
+    },
+    {
+      "id": "W20",
+      "kind": "out_of_scope",
+      "category": "food_label_definition",
+      "coverage": "unsupported",
+      "mode": "no_answer",
+      "retrieved": [],
+      "supported": [],
+      "not_verified": [
+        "FSSAI rules, food-labelling compliance and food-regulator procedures are not included.",
+        "No bounded source lookup was identified for: \"Why can the label say zero,\". Ask this part separately with a focused consumer-law topic or provision number."
+      ],
+      "grade": {
+        "abstained": true
+      },
+      "baseline_retrieved": [
+        "inventory-platform-returns-and-reviews",
+        "marketplace-seller-accuracy-undertaking",
+        "marketplace-seller-returns"
+      ],
+      "query_ms": 0.1677
+    }
+  ]
+}

@@ -348,6 +348,20 @@ button {
   margin-bottom: 0.45rem;
 }
 
+.coverage-limits {
+  border-left: 3px solid var(--gold);
+  background: #fff5df;
+  padding: 1rem 1.25rem;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.coverage-limits ul {
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
 .answer-text {
   margin-bottom: 0;
   color: var(--ink);
