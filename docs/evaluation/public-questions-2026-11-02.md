@@ -63,7 +63,18 @@ groups to appear in a three-record result budget.
 The new scores are not a measured performance regression caused by code changes:
 production code did not change. They show that the earlier benchmark is not a good
 proxy for this harder sample. Do not combine their scores into one accuracy claim.
-Source choices and minimum-evidence labels remain open to owner review.
+Source choices and evidence labels are provisional; see the post-run review below.
+
+### Post-run delegated review
+
+The owner subsequently asked the implementation agent to perform the eight-row
+check. That [review is complete](public-question-owner-review.md), but it is
+post-scoring self-review, not independent human or professional legal validation.
+W06 adds an unestablished signature fact, and W12 omits a claimed message-receipt
+location relevant to the jurisdiction question. Several labels also require a
+preferred help/explanation record rather than all potentially useful evidence.
+The exact counts above remain provisional. Frozen questions, labels and raw
+results were not changed; a later corrected version must disclose the revisions.
 
 ## Examples to inspect
 
@@ -111,10 +122,11 @@ unrelated provisions from being presented as sufficient evidence. Retrieval
 changes then need a new untouched test set as well as these regression examples.
 Do not tune thresholds on these questions and report that as unseen performance.
 
-[Eight rows are ready for owner review](public-question-owner-review.md).
-**All owner checks remain pending.** A meaning/evidence check is useful but is not
-professional legal validation. If the review finds a missing equivalent source or
-a mistaken checkpoint, record a label erratum and a new version; preserve this run.
+[The delegated eight-row review](public-question-owner-review.md) documents the
+prompt corrections and label qualifications. The requested review task is complete;
+independent owner approval and professional legal validation were not performed.
+The original raw metadata remains a snapshot of the pre-review run. Preserve this
+run and document any later prompt/label corrections in a new version.
 
 ## Reproduce
 

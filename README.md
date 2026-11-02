@@ -62,8 +62,10 @@ The [public-question check](docs/evaluation/public-questions-2026-11-02.md) is h
 on 15 partly supported requests from public posts, keyword found all labelled
 evidence for 1, BM25 for 2, dense for 4 and hybrid for 3. All four returned candidates
 for five unsupported requests. These are agent-condensed prompts with provisional
-source-based labels, not full-answer scores or independent legal validation. Owner
-review is pending. The result shows that the live prototype is not reliable enough
+source-based labels, not full-answer scores or independent legal validation. A
+[delegated agent review](docs/evaluation/public-question-owner-review.md) found two
+prompt-fact corrections and overly narrow evidence labels; the frozen counts remain
+provisional. The result shows that the live prototype is not reliable enough
 for broad practical consumer questions; adding embeddings alone did not solve it.
 
 The [2 November retrieval comparison](docs/evaluation/retrieval-comparison-2026-11-02.md)
