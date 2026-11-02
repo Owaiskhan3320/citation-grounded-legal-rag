@@ -4,6 +4,13 @@ This folder records evaluation runs for the deployed application. The aim is to 
 
 ## Current corpus: offline retrieval
 
+The [public-question check](public-questions-2026-11-02.md) uses 20 externally posted
+scenarios, selected and anonymised before scoring. Fifteen are only partly
+answerable and five request authorities outside the corpus. The measured evidence
+coverage is much weaker than on the focused agent-authored set. Source access and
+every failure are documented; [owner review](public-question-owner-review.md) is
+pending. These prompts are not independently validated legal ground truth.
+
 The [2 November comparison](retrieval-comparison-2026-11-02.md) evaluates 50 frozen
 questions against the versioned 90-record corpus. It compares the actual keyword
 retriever, BM25, MiniLM embeddings and reciprocal rank fusion. The report includes
@@ -12,7 +19,8 @@ answers were evaluated and no production retriever was changed.
 
 The [protocol](retrieval-protocol.md) and questions were committed before scoring.
 The implementation agent wrote them: **they are not an independent human holdout**.
-The 20 independently authored questions are still pending. These results and the
+The public-source prompts above address external authorship of scenarios, but their
+condensing and labelling still need review. These results and the
 older reports below should not be combined into an overall accuracy figure.
 
 ## Run 3 baseline
