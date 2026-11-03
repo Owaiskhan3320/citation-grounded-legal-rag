@@ -10,7 +10,12 @@ repo_root = str(Path(__file__).resolve().parents[1])
 if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
-from python_rag.retrieval import build_index, current_date, load_model, search
+try:
+    from python_rag.retrieval import build_index, current_date, load_model, search
+except ModuleNotFoundError as error:
+    runtime = ".".join(map(str, sys.version_info[:3]))
+    st.error(f"Retrieval import failed on Python {runtime}: missing module {error.name!r}.")
+    st.stop()
 
 
 @st.cache_resource
