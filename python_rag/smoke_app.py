@@ -1,6 +1,14 @@
 """Week 1 hosting check, not the public question-answering app."""
 
+from pathlib import Path
+import sys
+
 import streamlit as st
+
+# Streamlit can launch this nested entrypoint without the repo root on sys.path.
+repo_root = str(Path(__file__).resolve().parents[1])
+if repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
 
 from python_rag.retrieval import build_index, current_date, load_model, search
 
