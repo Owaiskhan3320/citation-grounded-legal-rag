@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "name": "Python v2 unscored scenario set",
+  "as_of": "2026-11-03",
+  "provenance": "Agent-authored synthetic scenarios labelled against the existing corpus before running retrieval. Not sourced from real posts or independently labelled. Prior results informed topic selection.",
+  "questions": [
+    {
+      "id": "P01",
+      "question": "The shop insists I can only complain in the city where it is based. I work full-time in another city. Is that location relevant?",
+      "coverage": "supported",
+      "expected_ids": [
+        "district-commission-jurisdiction"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P02",
+      "question": "The District Commission ruled against me yesterday. Which commission hears a challenge to that order?",
+      "coverage": "supported",
+      "expected_ids": [
+        "appeal-district-commission"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P03",
+      "question": "I bought a fridge and the commission accepted my complaint. What happens after it gets admitted?",
+      "coverage": "supported",
+      "expected_ids": [
+        "complaint-procedure"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P04",
+      "question": "Both sides agreed to settle in mediation. What happens to the signed agreement and the pending case?",
+      "coverage": "supported",
+      "expected_ids": [
+        "mediation-settlement",
+        "recording-mediation-settlement"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P05",
+      "question": "The online marketplace won't tell me where the seller is based after I wrote to ask. Where can I read about that?",
+      "coverage": "supported",
+      "expected_ids": [
+        "marketplace-post-purchase-seller-details"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P06",
+      "question": "The marketplace keeps sending canned replies. How quickly is its grievance officer supposed to acknowledge a complaint?",
+      "coverage": "supported",
+      "expected_ids": [
+        "ecommerce-platform-response-time"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P07",
+      "question": "My online refund was accepted but the money hasn't come. Does the rule itself give a fixed number of days?",
+      "coverage": "supported",
+      "expected_ids": [
+        "ecommerce-accepted-refunds"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P08",
+      "question": "At checkout the app quietly added a small charity payment to my order. What guidance covers this?",
+      "coverage": "supported",
+      "expected_ids": [
+        "dark-pattern-basket-sneaking"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P09",
+      "question": "The countdown on a deal restarts every time I reload the page. Which online shopping guidance covers false time pressure?",
+      "coverage": "supported",
+      "expected_ids": [
+        "dark-pattern-false-urgency"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P10",
+      "question": "An ad said the sample was free, but I had to pay a handling fee. What guidance covers that claim?",
+      "coverage": "supported",
+      "expected_ids": [
+        "free-claim-advertisements"
+      ],
+      "unsupported_part": null
+    },
+    {
+      "id": "P11",
+      "question": "How can I search for a commission order online, and can you tell me what the commission awarded in my neighbour's case?",
+      "coverage": "mixed",
+      "expected_ids": [
+        "ejagriti-case-search"
+      ],
+      "unsupported_part": "The specific case and its outcome are not supplied or indexed."
+    },
+    {
+      "id": "P12",
+      "question": "Where can I file a consumer complaint online, and which exact document format does my local registry require for an affidavit?",
+      "coverage": "mixed",
+      "expected_ids": [
+        "ejagriti-online-filing"
+      ],
+      "unsupported_part": "Local affidavit format is not verified by the corpus."
+    },
+    {
+      "id": "P13",
+      "question": "Can I contact the consumer helpline online, and how do I force my bank to reverse a transfer to the wrong account?",
+      "coverage": "mixed",
+      "expected_ids": [
+        "nch-complaint-channels"
+      ],
+      "unsupported_part": "Bank transfer reversal procedure is not covered."
+    },
+    {
+      "id": "P14",
+      "question": "My housing lease ended and the owner kept the security deposit. Which tenancy procedure lets me recover it?",
+      "coverage": "unsupported",
+      "expected_ids": [],
+      "unsupported_part": "Tenancy procedure is not covered."
+    },
+    {
+      "id": "P15",
+      "question": "What nutrition label is mandatory for a drink sold in a small bottle?",
+      "coverage": "unsupported",
+      "expected_ids": [],
+      "unsupported_part": "Food-labelling requirements are not covered."
+    },
+    {
+      "id": "P16",
+      "question": "How do I make a company erase my account under India's data protection law?",
+      "coverage": "unsupported",
+      "expected_ids": [],
+      "unsupported_part": "Data protection erasure procedure is not covered."
+    },
+    {
+      "id": "P17",
+      "question": "Can I use the police portal to report a stolen scooter?",
+      "coverage": "unsupported",
+      "expected_ids": [],
+      "unsupported_part": "Police reporting procedure is not covered."
+    },
+    {
+      "id": "P18",
+      "question": "How do I dispute interest on my credit card through the banking ombudsman?",
+      "coverage": "unsupported",
+      "expected_ids": [],
+      "unsupported_part": "Banking ombudsman procedure is not covered."
+    }
+  ]
+}
