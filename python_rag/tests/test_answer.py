@@ -1,7 +1,10 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from python_rag.answer import answer, redact
+import httpx
+from groq import Groq
+
+from python_rag.answer import answer, groq_select, redact
 
 
 class AnswerTests(unittest.TestCase):
@@ -36,3 +39,18 @@ class AnswerTests(unittest.TestCase):
         provider = Mock()
         self.assertEqual(self.ask("Explain consent", provider)["mode"], "not_verified")
         provider.assert_not_called()
+
+    def test_sdk_requests_completion_and_classifies_plain_text_denial(self):
+        def deny(request):
+            self.assertEqual(request.url.path, "/openai/v1/chat/completions")
+            self.assertEqual(request.headers["authorization"], "Bearer test-only")
+            self.assertNotIn(b"me@example.org", request.content)
+            return httpx.Response(403, text="error code: 1010")
+
+        client = Groq(api_key="test-only", max_retries=0,
+                      http_client=httpx.Client(transport=httpx.MockTransport(deny)))
+        with patch("python_rag.answer.Groq", return_value=client):
+            result = self.ask("Explain consent for me@example.org",
+                              lambda q, s: groq_select(q, s, api_key="test-only"))
+        self.assertEqual(result["mode"], "excerpts")
+        self.assertIn("1010", result["diagnostic"])

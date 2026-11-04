@@ -7,4 +7,5 @@ numpy==2.3.5; python_version >= "3.14"
 transformers==5.1.0
 huggingface-hub==1.4.1
 streamlit==1.55.0
+groq==0.37.1
 tzdata
