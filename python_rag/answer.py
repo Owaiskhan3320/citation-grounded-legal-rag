@@ -47,11 +47,21 @@ def groq_select(question, sources):
     return json.loads(choice["message"]["content"])["quotes"]
 
 
+CASE_OUTCOME = re.compile(
+    r"\b(?:what did .{1,80}\b(?:win|receive|get awarded)|"
+    r"(?:awarded|decided|ruled|outcome|judgment)\b.{0,100}\b"
+    r"(?:my|our|his|her|their|this|that)\b.{0,45}\bcase)\b", re.I
+)
+
+
 def answer(question, model, index, records, as_of, select=None):
     question = question.strip()
     parts = re.split(r"[?;]\s*|,?\s+and\s+(?=(?:how|what|which|can|could|where|when)\b)", question, flags=re.I)
     sources, limits = {}, []
     for part in filter(str.strip, parts):
+        if CASE_OUTCOME.search(part):
+            limits.append("A specific case outcome cannot be verified from the indexed sources.")
+            continue
         if OUTSIDE.search(part):
             limits.append("A requested topic is outside the indexed consumer-law sources.")
             continue
