@@ -3,6 +3,7 @@
 import json
 import os
 import re
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 from python_rag.retrieval import search
@@ -21,7 +22,7 @@ def redact(question):
     return PERSONAL.sub("[redacted]", question)
 
 
-def groq_select(question, sources):
+def groq_select(question, sources, *, api_key=None):
     payload = {
         "model": "openai/gpt-oss-20b",
         "response_format": {"type": "json_object"},
@@ -37,7 +38,7 @@ def groq_select(question, sources):
     request = Request(
         "https://api.groq.com/openai/v1/chat/completions",
         data=json.dumps(payload).encode(),
-        headers={"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}",
+        headers={"Authorization": f"Bearer {api_key or os.environ['GROQ_API_KEY']}",
                  "Content-Type": "application/json"},
     )
     with urlopen(request, timeout=16) as response:
@@ -85,19 +86,23 @@ def answer(question, model, index, records, as_of, select=None):
         return result
     select = select or (groq_select if os.environ.get("GROQ_API_KEY") else None)
     if select is None:
-        return result
+        return {**result, "diagnostic": "Groq key not available to the app."}
     try:
         quotes = select(redact(question), sources)
         if not isinstance(quotes, list) or len(quotes) > TOP_K:
-            return result
+            return {**result, "diagnostic": "Groq returned an invalid quote list."}
         if not quotes:
             return {"mode": "not_verified", "sources": {}, "limits": ["No supporting excerpt selected."], "quotes": []}
         checked = []
         for quote in quotes:
             source, content = quote["source"], quote["text"].strip()
             if not content or not any(content in p["text"] for p in sources[source]["passages"]):
-                return result
+                return {**result, "diagnostic": "Groq quote did not match the cited source."}
             checked.append({"source": source, "text": content})
         return {**result, "mode": "grounded_quotes", "quotes": checked}
-    except (OSError, ValueError, KeyError, IndexError, AttributeError, TypeError):
-        return result
+    except HTTPError as error:
+        return {**result, "diagnostic": f"Groq returned HTTP {error.code}."}
+    except OSError:
+        return {**result, "diagnostic": "Groq request timed out or could not connect."}
+    except (ValueError, KeyError, IndexError, AttributeError, TypeError):
+        return {**result, "diagnostic": "Groq output could not be validated."}

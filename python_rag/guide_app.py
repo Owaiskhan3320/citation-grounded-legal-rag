@@ -1,16 +1,18 @@
 """Streamlit entrypoint for the consumer-law guide."""
 
+from functools import partial
 import json
 from pathlib import Path
 import sys
 
 import streamlit as st
+from streamlit.errors import StreamlitSecretNotFoundError
 
 repo_root = str(Path(__file__).resolve().parents[1])
 if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
-from python_rag.answer import answer
+from python_rag.answer import answer, groq_select
 from python_rag.retrieval import CORPUS, active, build_index, corpus_snapshot, current_date, load_model
 
 
@@ -44,6 +46,8 @@ def show_result(result, manifest):
 
     for limit in result["limits"]:
         st.caption(limit)
+    if result.get("diagnostic"):
+        st.caption(result["diagnostic"])
     if result["sources"]:
         st.subheader("Sources")
     for label, source in result["sources"].items():
@@ -85,7 +89,12 @@ with st.form("ask"):
 if submitted:
     if question.strip():
         with st.spinner("Searching the sources..."):
-            result = answer(question, *load_pipeline(), as_of)
+            try:
+                key = st.secrets.get("GROQ_API_KEY", "")
+            except StreamlitSecretNotFoundError:
+                key = ""
+            selector = partial(groq_select, api_key=key) if key else None
+            result = answer(question, *load_pipeline(), as_of, select=selector)
         show_result(result, manifest)
     else:
         st.info("Enter a question first.")
