@@ -1,0 +1,206 @@
+{
+  "mode": "offline_excerpt_fallback",
+  "live_groq": false,
+  "top_k": 3,
+  "threshold": 0.3656768202781677,
+  "rows": [
+    {
+      "id": "P01",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "state-commission-territorial-jurisdiction",
+        "district-commission-jurisdiction",
+        "class-complaints-to-authorities"
+      ],
+      "missing_ids": [],
+      "ms": 31.2
+    },
+    {
+      "id": "P02",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "district-review",
+        "complaint-admission",
+        "appeal-district-commission"
+      ],
+      "missing_ids": [],
+      "ms": 11.4
+    },
+    {
+      "id": "P03",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "complaint-procedure",
+        "recording-mediation-settlement",
+        "complaint-admission"
+      ],
+      "missing_ids": [],
+      "ms": 12
+    },
+    {
+      "id": "P04",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "mediation-settlement",
+        "reference-to-mediation",
+        "mediation-procedure"
+      ],
+      "missing_ids": [
+        "recording-mediation-settlement"
+      ],
+      "ms": 11.4
+    },
+    {
+      "id": "P05",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "marketplace-post-purchase-seller-details",
+        "marketplace-disclosures",
+        "marketplace-seller-fair-practices"
+      ],
+      "missing_ids": [],
+      "ms": 12
+    },
+    {
+      "id": "P06",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "ecommerce-platform-response-time",
+        "marketplace-seller-grievance",
+        "complaint-procedure"
+      ],
+      "missing_ids": [],
+      "ms": 13.3
+    },
+    {
+      "id": "P07",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "ecommerce-accepted-refunds",
+        "marketplace-seller-returns",
+        "appeal-national-commission"
+      ],
+      "missing_ids": [],
+      "ms": 12.4
+    },
+    {
+      "id": "P08",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "dark-pattern-basket-sneaking",
+        "dark-pattern-confirm-shaming",
+        "dark-pattern-drip-pricing"
+      ],
+      "missing_ids": [],
+      "ms": 10.4
+    },
+    {
+      "id": "P09",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "dark-pattern-false-urgency",
+        "dark-pattern-drip-pricing",
+        "marketplace-seller-returns"
+      ],
+      "missing_ids": [],
+      "ms": 12.4
+    },
+    {
+      "id": "P10",
+      "expected": "supported",
+      "mode": "excerpts",
+      "source_ids": [
+        "free-claim-advertisements",
+        "dark-pattern-drip-pricing",
+        "ecommerce-affirmative-consent"
+      ],
+      "missing_ids": [],
+      "ms": 15
+    },
+    {
+      "id": "P11",
+      "expected": "mixed",
+      "mode": "excerpts",
+      "source_ids": [
+        "ejagriti-case-search",
+        "enforcement-of-orders",
+        "district-review"
+      ],
+      "missing_ids": [],
+      "ms": 19.7
+    },
+    {
+      "id": "P12",
+      "expected": "mixed",
+      "mode": "partial",
+      "source_ids": [
+        "class-complaints-to-authorities",
+        "complainant-definition",
+        "ejagriti-online-filing"
+      ],
+      "missing_ids": [],
+      "ms": 20
+    },
+    {
+      "id": "P13",
+      "expected": "mixed",
+      "mode": "partial",
+      "source_ids": [
+        "nch-complaint-channels",
+        "marketplace-post-purchase-seller-details",
+        "marketplace-disclosures"
+      ],
+      "missing_ids": [],
+      "ms": 9
+    },
+    {
+      "id": "P14",
+      "expected": "unsupported",
+      "mode": "not_verified",
+      "source_ids": [],
+      "missing_ids": [],
+      "ms": 0
+    },
+    {
+      "id": "P15",
+      "expected": "unsupported",
+      "mode": "not_verified",
+      "source_ids": [],
+      "missing_ids": [],
+      "ms": 9.4
+    },
+    {
+      "id": "P16",
+      "expected": "unsupported",
+      "mode": "not_verified",
+      "source_ids": [],
+      "missing_ids": [],
+      "ms": 0
+    },
+    {
+      "id": "P17",
+      "expected": "unsupported",
+      "mode": "not_verified",
+      "source_ids": [],
+      "missing_ids": [],
+      "ms": 0
+    },
+    {
+      "id": "P18",
+      "expected": "unsupported",
+      "mode": "not_verified",
+      "source_ids": [],
+      "missing_ids": [],
+      "ms": 0
+    }
+  ]
+}
