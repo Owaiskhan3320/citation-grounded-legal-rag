@@ -101,6 +101,17 @@ def answer(question, model, index, records, as_of, select=None):
             checked.append({"source": source, "text": content})
         return {**result, "mode": "grounded_quotes", "quotes": checked}
     except HTTPError as error:
+        if error.code == 403:
+            with error:
+                try:
+                    code = json.loads(error.read(8192))["error"]["code"]
+                except (OSError, ValueError, KeyError, TypeError):
+                    code = None
+            if code == "model_permission_blocked_project":
+                return {**result, "diagnostic": "Groq HTTP 403: the project blocks openai/gpt-oss-20b."}
+            if code == "model_permission_blocked_org":
+                return {**result, "diagnostic": "Groq HTTP 403: the organization blocks openai/gpt-oss-20b."}
+            return {**result, "diagnostic": "Groq HTTP 403: no recognized model-permission code."}
         return {**result, "diagnostic": f"Groq returned HTTP {error.code}."}
     except OSError:
         return {**result, "diagnostic": "Groq request timed out or could not connect."}
