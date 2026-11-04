@@ -1,3 +1,4 @@
+import json
 import unittest
 from unittest.mock import Mock, patch
 
@@ -54,3 +55,24 @@ class AnswerTests(unittest.TestCase):
                               lambda q, s: groq_select(q, s, api_key="test-only"))
         self.assertEqual(result["mode"], "excerpts")
         self.assertIn("1010", result["diagnostic"])
+
+    def test_sdk_selects_passage_ids_and_returns_original_text(self):
+        for ids, expected in [(["S1-P1"], "grounded_quotes"), (["S9-P1"], "excerpts")]:
+            with self.subTest(ids=ids):
+                def complete(request):
+                    payload = json.loads(request.content)
+                    evidence = json.loads(payload["messages"][-1]["content"])["passages"]
+                    self.assertEqual(evidence["S1-P1"]["text"], "Consent must be explicit.")
+                    return httpx.Response(200, json={"choices": [{
+                        "finish_reason": "stop",
+                        "message": {"role": "assistant", "content": json.dumps({"passage_ids": ids})},
+                    }]})
+
+                client = Groq(api_key="test-only", max_retries=0,
+                              http_client=httpx.Client(transport=httpx.MockTransport(complete)))
+                with patch("python_rag.answer.Groq", return_value=client):
+                    result = self.ask("Explain consent",
+                                      lambda q, s: groq_select(q, s, api_key="test-only"))
+                self.assertEqual(result["mode"], expected)
+                if expected == "grounded_quotes":
+                    self.assertEqual(result["quotes"], [{"source": "S1", "text": "Consent must be explicit."}])
