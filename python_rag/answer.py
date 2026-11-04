@@ -39,7 +39,9 @@ def groq_select(question, sources, *, api_key=None):
         "https://api.groq.com/openai/v1/chat/completions",
         data=json.dumps(payload).encode(),
         headers={"Authorization": f"Bearer {api_key or os.environ['GROQ_API_KEY']}",
-                 "Content-Type": "application/json"},
+                 "Content-Type": "application/json",
+                 "Accept": "application/json",
+                 "User-Agent": "ConsumerLawGuide/1.0"},
     )
     with urlopen(request, timeout=16) as response:
         choice = json.load(response)["choices"][0]
@@ -111,6 +113,8 @@ def answer(question, model, index, records, as_of, select=None):
                 return {**result, "diagnostic": "Groq HTTP 403: the project blocks openai/gpt-oss-20b."}
             if code == "model_permission_blocked_org":
                 return {**result, "diagnostic": "Groq HTTP 403: the organization blocks openai/gpt-oss-20b."}
+            if error.headers and error.headers.get_content_type() == "text/html":
+                return {**result, "diagnostic": "Groq HTTP 403: received an HTML denial, not an API error."}
             return {**result, "diagnostic": "Groq HTTP 403: no recognized model-permission code."}
         return {**result, "diagnostic": f"Groq returned HTTP {error.code}."}
     except OSError:
