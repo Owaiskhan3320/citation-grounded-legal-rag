@@ -70,5 +70,27 @@ still passed. The one-question lead over BM25 on complete evidence is not
 enough to claim a general improvement. These are retrieval counts, not
 answer accuracy or a production threshold recommendation.
 
-The 18 synthetic scenarios were not scored. Their SHA-256 is
+The 18 synthetic scenarios were not scored during Week 2. Their SHA-256 is
 `0f9b683c28d9f9663f9c093ec7efdc89c3158997e65eabd644b183328043cc40`.
+
+## Week 3 answer pipeline
+
+`answer.py` uses the frozen k and threshold. It returns source candidates,
+partial excerpts or a decline. On requests without detected gaps, Groq can
+select exact excerpts; the app checks the selected text against the cited
+passage. Quotation matching does not prove relevance. Do not enter private
+case details: email and phone/long-digit redaction is not anonymization.
+
+Run `python -m python_rag.evaluate_answers` to reproduce the offline run.
+The [recorded results](../evaluation/results/python-week3-offline.json)
+cover the frozen synthetic set. Python found all labeled evidence in 12/13
+supported or mixed scenarios (JS scope wrapper: 1/13); both declined 5/5
+unsupported requests. Python marked 2/3 mixed requests partial. P04 missed
+one mediation provision. P11 found the case-search record but failed to
+flag the request for a specific case outcome as unverified. The excerpt
+fallback can also show unrelated candidates. Neither pipeline was tuned
+after scoring this set.
+
+Local warm processing took 0 to 31.2 ms per scenario, excluding startup
+and network. Groq was mocked in tests; live answer quality and latency
+were not measured.
