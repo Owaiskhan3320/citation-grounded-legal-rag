@@ -94,3 +94,17 @@ after scoring this set.
 Local warm processing took 0 to 31.2 ms per scenario, excluding startup
 and network. Groq was mocked in tests; live answer quality and latency
 were not measured.
+
+## Consumer Law Guide
+
+From the repository root, run:
+
+```powershell
+python -m streamlit run python_rag/guide_app.py
+```
+
+The coverage panel reads the corpus without loading MiniLM. The first
+question loads the model and builds the index; later questions reuse both.
+Without a Groq key, the guide displays labeled candidate excerpts rather
+than a generated answer. The original `smoke_app.py` remains a separate
+deployment check.
