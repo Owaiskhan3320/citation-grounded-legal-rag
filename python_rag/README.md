@@ -47,3 +47,28 @@ The project owner records the question (without personal information), the
 expected record IDs for each supported part, and what the corpus cannot
 answer. Freeze the file before scoring. Do not use those questions to set
 the similarity threshold or tune retrieval.
+
+## Week 2 development comparison
+
+After building the index, run `python -m python_rag.evaluate` from the
+repository root. This reuses the frozen JS keyword and BM25 rankings after
+checking their input fingerprints. It does not install a second BM25
+implementation or overwrite prior runs.
+
+| Method at k=3 | Any evidence (/40) | All evidence (/40) | False declines (/40) | Outside declines (/10) |
+| --- | ---: | ---: | ---: | ---: |
+| Historical JS keyword | 32 | 30 | 0 | 2 |
+| Historical JS BM25 | 36 | 35 | 0 | 0 |
+| Python FAISS | 38 | 36 | 0 | 0 |
+| Python FAISS with threshold | 38 | 36 | 0 | 6 |
+
+Freeze the current MiniLM revision, k=3, and threshold
+`0.3656768202781677` for the next evaluation. The threshold minimizes the
+sum of outside requests accepted and in-scope requests declined on this
+development set; ties favor fewer false declines. Four outside requests
+still passed. The one-question lead over BM25 on complete evidence is not
+enough to claim a general improvement. These are retrieval counts, not
+answer accuracy or a production threshold recommendation.
+
+The 18 synthetic scenarios were not scored. Their SHA-256 is
+`0f9b683c28d9f9663f9c093ec7efdc89c3158997e65eabd644b183328043cc40`.
