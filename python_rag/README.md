@@ -77,8 +77,8 @@ The 18 synthetic scenarios were not scored during Week 2. Their SHA-256 is
 
 `answer.py` uses the frozen k and threshold. It returns source candidates,
 partial excerpts or a decline. On requests without detected gaps, Groq can
-select exact excerpts; the app checks the selected text against the cited
-passage. Quotation matching does not prove relevance. Do not enter private
+select passage IDs; the app resolves those IDs to the original text from
+the cited records. A valid passage ID does not prove relevance. Do not enter private
 case details: email and phone/long-digit redaction is not anonymization.
 
 Run `python -m python_rag.evaluate_answers` to reproduce the offline run.
@@ -108,3 +108,18 @@ question loads the model and builds the index; later questions reuse both.
 Without a Groq key, the guide displays labeled candidate excerpts rather
 than a generated answer. The original `smoke_app.py` remains a separate
 deployment check.
+
+### Live release check
+
+The [Streamlit preview](https://citation-grounded-legal-rag-zjsgsuk3a4u9glebbs7xnp.streamlit.app/)
+opened without signing in. The form and source excerpts were readable at
+desktop and 390 px widths. The Section 2(9) source card linked to the
+official Act PDF, which returned HTTP 200. A mixed consumer-rights/RBI
+question retained the Act source and flagged the RBI part. The RBI-only
+question showed no source cards.
+
+An earlier live run selected both Section 2(9) passages. The release check
+fell back to candidate excerpts with a quote-mismatch diagnostic instead;
+the deployed revision could not be confirmed. This is not a repeatable live
+generation pass. Keep Vercel as the primary demo until a known deployment
+revision passes the supported lookup consistently.

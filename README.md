@@ -2,9 +2,24 @@
 
 [Open the live demo](https://citation-grounded-legal-rag.vercel.app/)
 
+[Try the Python Streamlit preview](https://citation-grounded-legal-rag-zjsgsuk3a4u9glebbs7xnp.streamlit.app/)
+
 This is a small legal-research prototype for selected Indian consumer-law sources. A question is matched against a curated source set before an answer is generated. The page always shows the records used and links back to the primary source.
 
 The project is intentionally narrow. It is a demonstration of retrieval, evidence handling, safe fallback behaviour, and evaluation, not a general-purpose legal assistant.
+
+## Python Preview
+
+The Streamlit guide loads the same versioned corpus and uses MiniLM and FAISS
+for semantic lookup. Named provisions use exact matching. For supported
+requests, Groq can select passage IDs; the app displays the original text
+and links to the source. Partial requests show their limits, and provider
+failures fall back to labeled excerpts.
+
+See the [Python setup and checks](python_rag/README.md) for local commands,
+offline retrieval results, and the live release check. The original Vercel
+app remains the primary demo. The interface and request path below describe
+that original version.
 
 ## Interface
 
