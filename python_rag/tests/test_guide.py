@@ -27,7 +27,7 @@ class GuideTests(unittest.TestCase):
         self.assertFalse(self.app.exception)
 
     def test_supported_lookup_shows_summary_and_keeps_wording_in_sources(self):
-        self.provider.return_value = [{"source": "S1", "text": self.quote}]
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
         self.ask("Where can I search for a Commission order?")
         self.assertEqual([heading.value for heading in self.app.subheader], ["Short answer", "Sources"])
         self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
@@ -38,7 +38,9 @@ class GuideTests(unittest.TestCase):
     def test_rights_lookup_lists_six_rights_before_one_citation(self):
         rights = next(record for record in self.records if record["id"] == "consumer-rights")
         self.search.return_value = [(rights, None)]
-        self.provider.return_value = [{"source": "S1", "text": p["text"]} for p in rights["passages"]]
+        self.provider.return_value = {
+            "Q1": [{"source": "S1", "text": p["text"]} for p in rights["passages"]]
+        }
         self.ask("What consumer rights are listed in Section 2(9)?")
         body = [element.value for element in self.app.chat_message[1].markdown]
         self.assertEqual(body[0], "You have six main rights as a consumer:")
@@ -48,7 +50,7 @@ class GuideTests(unittest.TestCase):
         self.assertIn("PDF pages 3, 4", links[0])
 
     def test_question_and_answer_survive_reruns_without_another_provider_call(self):
-        self.provider.return_value = [{"source": "S1", "text": self.quote}]
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
         question = "Where can I search for a Commission order?"
         self.ask(question)
         self.app.run()
@@ -60,16 +62,30 @@ class GuideTests(unittest.TestCase):
         self.assertEqual(self.app.chat_message[0].text[0].value, "How do I contact RBI?")
         self.assertFalse(self.app.subheader)
 
-    def test_mixed_requests_show_limits_without_calling_provider(self):
-        for suffix in ("what did my neighbour win?", "can you tell me what the commission awarded in my neighbour's case?",
-                       "how do I contact RBI?"):
+    def test_mixed_requests_show_supported_answer_and_name_the_unresolved_part(self):
+        for suffix, limit in (
+            ("can you tell me the result of my own pending case?", "specific case outcome"),
+            ("how do I contact RBI?", "outside the indexed"),
+        ):
             with self.subTest(suffix=suffix):
+                self.provider.reset_mock()
+                self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
                 self.ask(f"Where can I search for a Commission order, and {suffix}")
                 self.assertIn("Limited source coverage", self.app.warning[0].value)
-                self.assertTrue(any(exp.label.startswith("Source excerpts:") for exp in self.app.expander))
-                self.assertNotIn("Short answer", [heading.value for heading in self.app.subheader])
-                self.provider.assert_not_called()
-        self.assertEqual(self.search.call_count, 3)
+                self.assertEqual([h.value for h in self.app.subheader], ["Short answer", "Sources"])
+                self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
+                self.assertIn(suffix.rstrip("?"), [text.value for text in self.app.chat_message[1].text])
+                self.assertTrue(any(limit in caption.value for caption in self.app.chat_message[1].caption))
+                self.provider.assert_called_once()
+                self.assertEqual(list(self.provider.call_args.args[0]), ["Q1"])
+        self.assertEqual(self.search.call_count, 2)
+
+    def test_mixed_request_provider_failure_shows_candidate_sources_not_an_answer(self):
+        self.provider.side_effect = TimeoutError
+        self.ask("Where can I search for a Commission order, and how do I contact RBI?")
+        self.assertEqual([h.value for h in self.app.subheader], ["Candidate sources"])
+        self.assertTrue(any("outside the indexed" in c.value for c in self.app.chat_message[1].caption))
+        self.assertTrue(any("could not connect" in c.value for c in self.app.chat_message[1].caption))
 
     def test_unsupported_request_has_no_sources_or_provider_call(self):
         self.ask("How do I contact RBI?")
@@ -82,7 +98,7 @@ class GuideTests(unittest.TestCase):
         self.ask("Where can I search for a Commission order?")
         self.assertIn("Candidate excerpts only", self.app.info[0].value)
         self.provider.side_effect = None
-        self.provider.return_value = [{"source": "S1", "text": "Invented excerpt."}]
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": "Invented excerpt."}]}
         self.ask("Where can I search for a Commission order?")
         self.assertIn("Candidate excerpts only", self.app.info[0].value)
         self.assertFalse(any("Invented excerpt" in text.value for text in self.app.text))
