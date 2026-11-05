@@ -67,6 +67,38 @@ class AnswerTests(unittest.TestCase):
         self.search.assert_called_once()
         self.assertIn("what if it does not", self.search.call_args.args[0])
 
+    def test_two_pattern_descriptions_are_searched_and_answered_separately(self):
+        basket = {**self.consent, "id": "basket", "passages": [{"text": "An unwanted donation."}]}
+        drip = {**self.consent, "id": "drip", "passages": [{"text": "A fee disclosed at the end."}]}
+        for separator, ask in ((", and ", "What are the two patterns?"),
+                               ("; ", "Which dark patterns apply here?")):
+            with self.subTest(separator=separator):
+                self.search.reset_mock()
+                self.search.side_effect = [[(basket, 0.5)], [(drip, 0.5)]]
+                provider = Mock(return_value={
+                    "Q1": [{"source": "S1", "text": "An unwanted donation."}],
+                    "Q2": [{"source": "S2", "text": "A fee disclosed at the end."}],
+                })
+                result = self.ask(
+                    f"The checkout added a donation I didn't choose{separator}"
+                    f"a compulsory service fee only appeared at the last step. {ask}",
+                    provider,
+                )
+                queries = [call.args[0] for call in self.search.call_args_list]
+                self.assertEqual(len(queries), 2)
+                self.assertIn("donation", queries[0])
+                self.assertNotIn("service fee", queries[0])
+                self.assertIn("service fee", queries[1])
+                self.assertNotIn("donation", queries[1])
+                provider.assert_called_once()
+                self.assertEqual(result["mode"], "grounded_quotes")
+                self.assertEqual([quote["source"] for quote in result["quotes"]], ["S1", "S2"])
+
+    def test_conjoined_facts_in_an_ordinary_question_stay_together(self):
+        self.ask("The seller charged me, and the goods never arrived. Can I seek a refund?", Mock())
+        self.search.assert_called_once()
+        self.assertIn("the goods never arrived", self.search.call_args.args[0])
+
     def test_long_list_of_questions_does_not_retrieve_or_call_provider(self):
         provider = Mock()
         result = self.ask("One? Two? Three? Four? Five?", provider)
