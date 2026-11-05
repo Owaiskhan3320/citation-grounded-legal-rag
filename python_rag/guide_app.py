@@ -12,7 +12,7 @@ repo_root = str(Path(__file__).resolve().parents[1])
 if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
-from python_rag.answer import answer, groq_select
+from python_rag.answer import answer, groq_select, redact
 from python_rag.retrieval import CORPUS, active, build_index, corpus_snapshot, current_date, load_model
 
 SOURCE_DESCRIPTIONS = {
@@ -27,6 +27,15 @@ SOURCE_DESCRIPTIONS = {
     "ejagriti-nic-overview": "Describes the online portal for consumer complaints and case searches.",
     "ejagriti-official-help-links": "Links to official help for using the consumer complaint portal.",
 }
+
+CONSUMER_RIGHTS = (
+    "**Safety:** Be protected from the marketing of goods or services that can harm people or property.",
+    "**Information:** Know what you're paying for, including its quality, quantity, strength, purity, standards and price.",
+    "**Choice:** Have access to a variety of goods or services at competitive prices, wherever possible.",
+    "**Being heard:** Have the appropriate body listen to and consider your concerns.",
+    "**A remedy:** Seek help to put things right if you face unfair or restrictive business practices or exploitation.",
+    "**Awareness:** Learn about your rights as a consumer.",
+)
 
 
 @st.cache_data
@@ -44,41 +53,62 @@ def load_pipeline():
     return model, index, records
 
 
-def show_citation(section, passage, manifest):
-    metadata = manifest[passage["source_id"]]
-    st.caption(f"{metadata['title']} · {section}")
-    page = passage.get("page")
-    page_label = f" (PDF page {page})" if page else ""
-    st.markdown(f"[Read the official wording]({metadata['official_url']}){page_label}")
+def show_source(source, manifest):
+    by_document = {}
+    for passage in source["passages"]:
+        pages = by_document.setdefault(passage["source_id"], set())
+        if passage.get("page"):
+            pages.add(passage["page"])
+    for source_id, pages in by_document.items():
+        metadata = manifest[source_id]
+        st.caption(f"{metadata['title']} · {source['section']}")
+        page_label = ""
+        if pages:
+            unit = "page" if len(pages) == 1 else "pages"
+            page_label = f" (PDF {unit} {', '.join(map(str, sorted(pages)))})"
+        st.markdown(f"[Read the official wording]({metadata['official_url']}){page_label}")
+    with st.expander(f"Source excerpts: {source['title']}"):
+        for passage in source["passages"]:
+            if passage.get("page"):
+                st.caption(f"PDF page {passage['page']}")
+            st.text(passage["text"])
 
 
-def show_result(result, manifest):
+def show_short_answer(sources, records):
+    st.subheader("Short answer")
+    for source in sources:
+        record = records[source["record_id"]]
+        if len(sources) > 1:
+            st.markdown(f"**{source['title']}**")
+        if record["id"] == "consumer-rights":
+            st.write("You have six main rights as a consumer:")
+            st.markdown("\n".join(f"- {right}" for right in CONSUMER_RIGHTS))
+        else:
+            st.write(record["summary"])
+
+
+def show_result(result, manifest, records):
     mode = result["mode"]
+    sources = list(result["sources"].values())
     if mode == "not_verified":
         st.warning("No verified answer from the indexed sources.")
     elif mode == "partial":
         st.warning("Limited source coverage. These excerpts do not answer every part.")
     elif mode == "excerpts":
         st.info("Candidate excerpts only. Their relevance has not been verified.")
-    else:
-        st.subheader("Selected source quotes")
-        for quote in result["quotes"]:
-            source = result["sources"][quote["source"]]
-            passage = next(p for p in source["passages"] if quote["text"] in p["text"])
-            st.text(quote["text"])
-            show_citation(source["section"], passage, manifest)
+    elif mode == "grounded_quotes":
+        labels = dict.fromkeys(quote["source"] for quote in result["quotes"])
+        sources = [result["sources"][label] for label in labels]
+        show_short_answer(sources, records)
 
     for limit in result["limits"]:
         st.caption(limit)
     if result.get("diagnostic"):
         st.caption(result["diagnostic"])
-    if result["sources"]:
+    if sources:
         st.subheader("Sources")
-    for label, source in result["sources"].items():
-        with st.expander(f"[{label}] {source['section']}: {source['title']}"):
-            for passage in source["passages"]:
-                show_citation(source["section"], passage, manifest)
-                st.text(passage["text"])
+    for source in sources:
+        show_source(source, manifest)
 
 
 st.set_page_config(page_title="Consumer Law Guide")
@@ -91,15 +121,30 @@ with st.container():
     st.caption("Don’t include names, phone numbers, or other personal details.")
     question = st.chat_input("Ask a question about consumer rights", max_chars=600)
 
-if question and question.strip():
+submitted = (question or "").strip()
+if submitted:
+    st.session_state["guide_question"] = redact(submitted)
+    st.session_state.pop("guide_result", None)
+
+if "guide_question" in st.session_state:
+    with st.chat_message("user"):
+        st.text(st.session_state["guide_question"])
+
+if submitted:
     with st.spinner("Searching the sources..."):
         try:
             key = st.secrets.get("GROQ_API_KEY", "")
         except StreamlitSecretNotFoundError:
             key = ""
         selector = partial(groq_select, api_key=key) if key else None
-        result = answer(question, *load_pipeline(), as_of, select=selector)
-    show_result(result, manifest)
+        result = answer(submitted, *load_pipeline(), as_of, select=selector)
+        st.session_state["guide_result"] = (result, as_of)
+
+if "guide_result" in st.session_state:
+    result, result_date = st.session_state["guide_result"]
+    result_records, _ = source_metadata(result_date)
+    with st.chat_message("assistant"):
+        show_result(result, manifest, {r["id"]: r for r in result_records})
 
 with st.expander("Sources and coverage"):
     by_source = {}
