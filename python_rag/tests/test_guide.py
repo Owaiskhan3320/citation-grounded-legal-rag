@@ -21,16 +21,16 @@ class GuideTests(unittest.TestCase):
         self.app = AppTest.from_file(str(ROOT / "python_rag/guide_app.py"), default_timeout=20).run()
 
     def ask(self, question):
-        self.app.text_area[0].set_value(question)
-        self.app.button[0].click().run()
+        self.app.chat_input[0].set_value(question).run()
         self.assertFalse(self.app.exception)
 
     def test_supported_lookup_shows_quote_and_source_link(self):
         self.provider.return_value = [{"source": "S1", "text": self.quote}]
         self.ask("Where can I search for a Commission order?")
         self.assertIn("Selected source quotes", [heading.value for heading in self.app.subheader])
-        self.assertTrue(any("[S1]" in text.value for text in self.app.text))
-        self.assertTrue(any("https://" in link.value for link in self.app.markdown))
+        self.assertTrue(any(text.value == self.quote for text in self.app.text))
+        self.assertTrue(any("Read the official wording" in link.value for link in self.app.markdown))
+        self.assertEqual([exp.label for exp in self.app.expander][-2:], ["Sources and coverage", "Privacy"])
 
     def test_mixed_requests_show_limits_without_calling_provider(self):
         for suffix in ("what did my neighbour win?", "can you tell me what the commission awarded in my neighbour's case?",

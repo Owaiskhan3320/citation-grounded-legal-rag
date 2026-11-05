@@ -15,6 +15,19 @@ if repo_root not in sys.path:
 from python_rag.answer import answer, groq_select
 from python_rag.retrieval import CORPUS, active, build_index, corpus_snapshot, current_date, load_model
 
+SOURCE_DESCRIPTIONS = {
+    "consumer-protection-act-2019": "Explains consumer rights, complaints, and the remedies a commission can order.",
+    "ecommerce-rules-2020": "Covers duties of online shops and marketplaces, including refunds and complaint handling.",
+    "ecommerce-amendment-2026": "Updates selected obligations for online shopping platforms.",
+    "advertising-guidelines-2022": "Explains rules for misleading ads and endorsements.",
+    "dark-patterns-guidelines-2023": "Explains shopping tricks such as hidden charges and subscriptions that are difficult to cancel.",
+    "commission-jurisdiction-rules-2021": "Explains which level of consumer commission hears an ordinary complaint based on the amount paid.",
+    "nch-official-guidance": "Shows how to contact the National Consumer Helpline.",
+    "nch-official-faq": "Answers common questions about using the Consumer Helpline.",
+    "ejagriti-nic-overview": "Describes the online portal for consumer complaints and case searches.",
+    "ejagriti-official-help-links": "Links to official help for using the consumer complaint portal.",
+}
+
 
 @st.cache_data
 def source_metadata(as_of):
@@ -31,6 +44,14 @@ def load_pipeline():
     return model, index, records
 
 
+def show_citation(section, passage, manifest):
+    metadata = manifest[passage["source_id"]]
+    st.caption(f"{metadata['title']} · {section}")
+    page = passage.get("page")
+    page_label = f" (PDF page {page})" if page else ""
+    st.markdown(f"[Read the official wording]({metadata['official_url']}){page_label}")
+
+
 def show_result(result, manifest):
     mode = result["mode"]
     if mode == "not_verified":
@@ -42,7 +63,10 @@ def show_result(result, manifest):
     else:
         st.subheader("Selected source quotes")
         for quote in result["quotes"]:
-            st.text(f"[{quote['source']}] {quote['text']}")
+            source = result["sources"][quote["source"]]
+            passage = next(p for p in source["passages"] if quote["text"] in p["text"])
+            st.text(quote["text"])
+            show_citation(source["section"], passage, manifest)
 
     for limit in result["limits"]:
         st.caption(limit)
@@ -53,50 +77,48 @@ def show_result(result, manifest):
     for label, source in result["sources"].items():
         with st.expander(f"[{label}] {source['section']}: {source['title']}"):
             for passage in source["passages"]:
-                metadata = manifest[passage["source_id"]]
-                page = passage.get("page")
-                page_label = f", PDF page {page}" if page else ""
-                st.markdown(f"[{metadata['title']}]({metadata['official_url']}){page_label}")
+                show_citation(source["section"], passage, manifest)
                 st.text(passage["text"])
 
 
 st.set_page_config(page_title="Consumer Law Guide")
 st.title("Consumer Law Guide")
-st.write("Look up Indian consumer-law provisions and read the official sources.")
+st.write("Your consumer rights, straight from the source.")
 as_of = current_date()
 active_records, manifest = source_metadata(as_of)
 
-with st.expander("What can this answer?"):
+with st.container():
+    st.caption("Don’t include names, phone numbers, or other personal details.")
+    question = st.chat_input("Ask a question about consumer rights", max_chars=600)
+
+if question and question.strip():
+    with st.spinner("Searching the sources..."):
+        try:
+            key = st.secrets.get("GROQ_API_KEY", "")
+        except StreamlitSecretNotFoundError:
+            key = ""
+        selector = partial(groq_select, api_key=key) if key else None
+        result = answer(question, *load_pipeline(), as_of, select=selector)
+    show_result(result, manifest)
+
+with st.expander("Sources and coverage"):
     by_source = {}
     for record in active_records:
         by_source.setdefault(record["source_id"], set()).add(record["effective_from"])
     for source_id, dates in by_source.items():
         source = manifest[source_id]
-        st.markdown(f"- [{source['title']}]({source['official_url']})"
-                    f" (record effective dates: {', '.join(sorted(dates))})")
+        st.markdown(f"**[{source['title']}]({source['official_url']})**")
+        st.write(SOURCE_DESCRIPTIONS.get(source_id, "Official source for indexed provisions."))
+        st.caption(f"Indexed record effective dates: {', '.join(sorted(dates))}")
     checked = max((record["checked_on"] for record in active_records), default="not available")
     st.caption(f"{len(active_records)} active records as of {as_of}. Latest source check: {checked}.")
     st.markdown("**Not covered:** Individual case outcomes, banking disputes, food-label rules, "
                 "privacy, tenancy, or criminal procedure.")
 
-st.caption("Do not enter names, phone numbers, or private case details. "
-           "When enabled, the app sends the redacted question and source excerpts to Groq.")
-with st.form("ask"):
-    question = st.text_area("Ask a question", max_chars=600,
-                            placeholder="e.g. An online seller refuses a refund for a damaged item.")
-    submitted = st.form_submit_button("Ask")
-
-if submitted:
-    if question.strip():
-        with st.spinner("Searching the sources..."):
-            try:
-                key = st.secrets.get("GROQ_API_KEY", "")
-            except StreamlitSecretNotFoundError:
-                key = ""
-            selector = partial(groq_select, api_key=key) if key else None
-            result = answer(question, *load_pipeline(), as_of, select=selector)
-        show_result(result, manifest)
-    else:
-        st.info("Enter a question first.")
+with st.expander("Privacy"):
+    st.write("When Groq is enabled and the guide tries to select supporting passages, "
+             "it sends the redacted question and source excerpts to Groq. Redaction "
+             "only catches some details, such as common email addresses and phone numbers. "
+             "Leave out names and private case details.")
 
 st.caption("Not legal advice.")
