@@ -75,11 +75,12 @@ The 18 synthetic scenarios were not scored during Week 2. Their SHA-256 is
 
 ## Week 3 answer pipeline
 
-`answer.py` uses the frozen k and threshold. It returns source candidates,
-partial excerpts or a decline. On requests without detected gaps, Groq can
-select passage IDs; the app resolves those IDs to the original text from
-the cited records. A valid passage ID does not prove relevance. Do not enter private
-case details: email and phone/long-digit redaction is not anonymization.
+`answer.py` uses the frozen k and threshold. Each detected question part
+gets its own candidates. The app sends eligible parts together in one Groq
+call and checks each returned passage against that part's candidates. It
+shows a source summary for supported parts and says which parts could not be
+verified. The splitter is heuristic, and a valid passage ID does not prove
+relevance. Email and phone/long-digit redaction is not anonymization.
 
 Run `python -m python_rag.evaluate_answers` to reproduce the offline run.
 The [recorded results](../evaluation/results/python-week3-offline.json)

@@ -74,8 +74,7 @@ def show_source(source, manifest):
             st.text(passage["text"])
 
 
-def show_short_answer(sources, records):
-    st.subheader("Short answer")
+def show_summaries(sources, records):
     for source in sources:
         record = records[source["record_id"]]
         if len(sources) > 1:
@@ -89,26 +88,43 @@ def show_short_answer(sources, records):
 
 def show_result(result, manifest, records):
     mode = result["mode"]
-    sources = list(result["sources"].values())
+    sources = result["sources"]
+    parts = result["parts"]
     if mode == "not_verified":
         st.warning("No verified answer from the indexed sources.")
     elif mode == "partial":
-        st.warning("Limited source coverage. These excerpts do not answer every part.")
+        st.warning("Limited source coverage. Some parts could not be verified.")
     elif mode == "excerpts":
         st.info("Candidate excerpts only. Their relevance has not been verified.")
-    elif mode == "grounded_quotes":
-        labels = dict.fromkeys(quote["source"] for quote in result["quotes"])
-        sources = [result["sources"][label] for label in labels]
-        show_short_answer(sources, records)
 
-    for limit in result["limits"]:
-        st.caption(limit)
+    selected, candidates = {}, {}
+    if result["quotes"]:
+        st.subheader("Short answer")
+    for part in parts.values():
+        if len(parts) > 1:
+            st.text(part["question"])
+        if part["quotes"]:
+            labels = dict.fromkeys(quote["source"] for quote in part["quotes"])
+            show_summaries([sources[label] for label in labels], records)
+            selected.update(labels)
+        else:
+            if part["limit"]:
+                st.caption(part["limit"])
+            elif len(parts) > 1:
+                st.caption("Only candidate excerpts are available for this part.")
+            candidates.update(dict.fromkeys(part["source_ids"]))
     if result.get("diagnostic"):
         st.caption(result["diagnostic"])
-    if sources:
+
+    if selected:
         st.subheader("Sources")
-    for source in sources:
-        show_source(source, manifest)
+        for label in selected:
+            show_source(sources[label], manifest)
+    remaining = [label for label in candidates if label not in selected]
+    if remaining:
+        st.subheader("Candidate sources")
+        for label in remaining:
+            show_source(sources[label], manifest)
 
 
 st.set_page_config(page_title="Consumer Law Guide")
