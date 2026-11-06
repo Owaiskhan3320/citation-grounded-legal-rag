@@ -26,6 +26,13 @@ class GuideTests(unittest.TestCase):
         self.app.chat_input[0].set_value(question).run()
         self.assertFalse(self.app.exception)
 
+    def test_landing_page_omits_the_privacy_notice(self):
+        self.assertFalse(self.app.exception)
+        self.assertEqual([exp.label for exp in self.app.expander], ["Sources and coverage"])
+        captions = [caption.value for caption in self.app.caption]
+        self.assertIn("Not legal advice.", captions)
+        self.assertFalse(any("other personal details" in caption for caption in captions))
+
     def test_supported_lookup_shows_summary_and_keeps_wording_in_sources(self):
         self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
         self.ask("Where can I search for a Commission order?")
@@ -33,7 +40,7 @@ class GuideTests(unittest.TestCase):
         self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
         self.assertEqual(self.app.expander[0].text[0].value, self.quote)
         self.assertTrue(any("Read the official wording" in link.value for link in self.app.markdown))
-        self.assertEqual([exp.label for exp in self.app.expander][-2:], ["Sources and coverage", "Privacy"])
+        self.assertEqual(self.app.expander[-1].label, "Sources and coverage")
 
     def test_rights_lookup_lists_six_rights_before_one_citation(self):
         rights = next(record for record in self.records if record["id"] == "consumer-rights")
