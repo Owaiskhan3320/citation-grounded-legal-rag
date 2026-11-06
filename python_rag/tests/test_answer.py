@@ -21,7 +21,8 @@ class AnswerTests(unittest.TestCase):
         return answer(question, None, None, [], "2026-11-03", select=selector)
 
     def test_mixed_request_selects_only_for_supported_part(self):
-        for suffix in ("how do I contact RBI?", "can you tell me the result of my pending case?"):
+        for suffix in ("how do I contact RBI?", "can you tell me the result of my pending case?",
+                       "what punishment will the Commission impose in my pending case?"):
             with self.subTest(suffix=suffix):
                 self.search.reset_mock()
                 provider = Mock(return_value={"Q1": [self.consent_quote]})
@@ -66,6 +67,25 @@ class AnswerTests(unittest.TestCase):
         self.ask("When must the platform respond, and what if it does not?", provider)
         self.search.assert_called_once()
         self.assertIn("what if it does not", self.search.call_args.args[0])
+
+    def test_general_penalties_remain_answerable(self):
+        result = self.ask("What penalties can a Commission impose under Section 72?",
+                          Mock(return_value={"Q1": [self.consent_quote]}))
+        self.assertEqual(result["mode"], "grounded_quotes")
+        self.search.assert_called_once()
+
+    def test_dependent_deadline_and_context_stay_in_one_query(self):
+        for question, context in (
+            ("Where do I appeal and what is the usual time limit?", "usual time limit"),
+            ("What does Rule 4(2) require? Use the version currently in force.", "currently in force"),
+            ("Where can I see return shipping costs? I am buying from a marketplace seller.", "marketplace seller"),
+        ):
+            with self.subTest(question=question):
+                self.search.reset_mock()
+                result = self.ask(question, Mock(return_value={"Q1": [self.consent_quote]}))
+                self.assertEqual(list(result["parts"]), ["Q1"])
+                self.search.assert_called_once()
+                self.assertIn(context, self.search.call_args.args[0])
 
     def test_two_pattern_descriptions_are_searched_and_answered_separately(self):
         basket = {**self.consent, "id": "basket", "passages": [{"text": "An unwanted donation."}]}

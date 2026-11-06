@@ -32,6 +32,11 @@ class RetrievalTests(unittest.TestCase):
     def test_missing_reference_does_not_fall_through(self):
         self.assertEqual(self.lookup("What does section 210 say?"), [])
 
+    def test_section_heading_matches_a_record_with_a_subsection_range(self):
+        hits = self.lookup("Under Section 38, how long does the opposite party have to reply?")
+        self.assertEqual([(r["id"], score) for r, score in hits], [("complaint-procedure", None)])
+        self.assertEqual(self.lookup("What does Section 38(99) say?"), [])
+
     def test_expired_and_future_rows_do_not_use_top_k_slots(self):
         for date in ("2026-11-03", "2027-01-01"):
             hits = self.lookup("shopping app", date)
@@ -45,6 +50,14 @@ class RetrievalTests(unittest.TestCase):
         path = self.folder / "metadata.json"
         metadata = json.loads(path.read_text())
         metadata["rows"].reverse()
+        path.write_text(json.dumps(metadata))
+        with self.assertRaisesRegex(ValueError, "stale"):
+            load_index(self.folder)
+
+    def test_stale_summary_hash_is_rejected(self):
+        path = self.folder / "metadata.json"
+        metadata = json.loads(path.read_text())
+        metadata["summaries_sha256"] = "old-hash"
         path.write_text(json.dumps(metadata))
         with self.assertRaisesRegex(ValueError, "stale"):
             load_index(self.folder)

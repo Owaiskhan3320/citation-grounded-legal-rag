@@ -1,0 +1,8 @@
+{
+  "suite": "consumer-law-guide-holdout-v2",
+  "as_of": "2026-11-06",
+  "questions": 15,
+  "provenance": "Agent-authored scenarios checked against versioned official source passages before the first run. Uses the v1 grading rubric, not its question counts or authorship description.",
+  "dataset_sha256_lf": "c167cc52d2c6fed8f5408079612d989f653acdfdf8c948b7752ee4a46b28322e",
+  "rubric_sha256_lf": "704484814dc04066215d278ad4cb31e2636f90f939f4f210dd49f8cfe21d0971"
+}

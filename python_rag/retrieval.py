@@ -13,6 +13,7 @@ import faiss
 
 ROOT = Path(__file__).resolve().parents[1]
 CORPUS = ROOT / "data/consumer-law/v1/records.json"
+SUMMARIES = ROOT / "python_rag/record_summaries.json"
 INDEX_DIR = ROOT / "tmp/python-index"
 MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 REVISION = "c9745ed1d9f207416be6d2e6f8de32d1f16199bf"
@@ -34,11 +35,21 @@ def load_model():
 def corpus_snapshot():
     raw = CORPUS.read_bytes()
     records = [r for r in json.loads(raw)["records"] if r["review_status"] == "source_checked"]
+    summary_bytes = SUMMARIES.read_bytes()
+    summaries = json.loads(summary_bytes)
+    keys = {f"{record['id']}@{record['version']}" for record in records}
+    if set(summaries) - keys:
+        raise ValueError("A summary references an unknown or unchecked record version.")
+    for record in records:
+        key = f"{record['id']}@{record['version']}"
+        if key in summaries:
+            record["summary"] = summaries[key]
     metadata = {
-        "format": 1,
+        "format": 2,
         "model": MODEL,
         "revision": REVISION,
         "corpus_sha256": sha256(raw).hexdigest(),
+        "summaries_sha256": sha256(summary_bytes).hexdigest(),
         "rows": [[r["id"], r["version"]] for r in records],
     }
     return records, metadata
@@ -81,13 +92,20 @@ def reference_key(text):
     return re.sub(r"\s+", "", text.lower())
 
 
+def record_references(record):
+    yield from map(reference_key, record["provisions"])
+    # An indexed section heading can cover a range of subsections in the source.
+    if REFERENCE.fullmatch(record["section"]):
+        yield reference_key(record["section"])
+
+
 def search(question, model, index, records, as_of, k=5):
     references = {reference_key(m.group()) for m in REFERENCE.finditer(question)}
     if references:
         return [
             (record, None) for record in records
             if active(record, as_of)
-            and references.intersection(map(reference_key, record["provisions"]))
+            and references.intersection(record_references(record))
         ][:k]
     query = model.encode([question], normalize_embeddings=True, show_progress_bar=False)
     # Search all rows in this small index so expired versions never consume top-k slots.

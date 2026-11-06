@@ -33,6 +33,21 @@ class EvaluationTests(unittest.TestCase):
             [12, 8, 5],
         )
 
+    def test_second_holdout_lock_and_versioned_passage_references(self):
+        records, _ = corpus_snapshot()
+        lock, cases = load_benchmark("holdout-v2", records)
+        self.assertEqual(lock["questions"], 15)
+        self.assertEqual(
+            [sum(q["slice"] == name for q in cases) for name in ("answerable", "mixed", "outside")],
+            [8, 4, 3],
+        )
+
+    def test_development_replay_does_not_score_unlabeled_questions(self):
+        records, _ = corpus_snapshot()
+        _, cases = load_benchmark("development", records)
+        self.assertEqual(len(cases), 50)
+        self.assertEqual(sum(bool(q["parts"]) for q in cases), 14)
+
     def test_trace_scores_filtered_evidence_and_unmatched_parts_separately(self):
         gold = [
             {"anchor": "review", "evidence": [["a@v1#1", "b@v1#1"], ["c@v1#1"]]},
