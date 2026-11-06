@@ -134,7 +134,6 @@ as_of = current_date()
 active_records, manifest = source_metadata(as_of)
 
 with st.container():
-    st.caption("Don’t include names, phone numbers, or other personal details.")
     question = st.chat_input("Ask a question about consumer rights", max_chars=600)
 
 submitted = (question or "").strip()
@@ -175,11 +174,5 @@ with st.expander("Sources and coverage"):
     st.caption(f"{len(active_records)} active records as of {as_of}. Latest source check: {checked}.")
     st.markdown("**Not covered:** Individual case outcomes, banking disputes, food-label rules, "
                 "privacy, tenancy, or criminal procedure.")
-
-with st.expander("Privacy"):
-    st.write("When Groq is enabled and the guide tries to select supporting passages, "
-             "it sends the redacted question and source excerpts to Groq. Redaction "
-             "only catches some details, such as common email addresses and phone numbers. "
-             "Leave out names and private case details.")
 
 st.caption("Not legal advice.")
