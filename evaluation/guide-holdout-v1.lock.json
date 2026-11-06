@@ -1,0 +1,7 @@
+{
+  "suite": "consumer-law-guide-holdout-v1",
+  "as_of": "2026-11-06",
+  "questions": 25,
+  "dataset_sha256_lf": "805462364569413361b542cbe6873b696fd81c9df3a064fded6fcaa4b9adfe82",
+  "rubric_sha256_lf": "704484814dc04066215d278ad4cb31e2636f90f939f4f210dd49f8cfe21d0971"
+}

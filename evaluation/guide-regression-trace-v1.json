@@ -1,0 +1,21 @@
+{
+  "suite": "consumer-law-guide-regression-trace-v1",
+  "as_of": "2026-11-06",
+  "questions_from": "docs/evaluation/live-guide-day1-questions.md",
+  "record_ids": {
+    "D08": ["marketplace-seller-prepurchase-information"],
+    "D13": ["nch-prelitigation-limits"],
+    "D20": ["appeal-district-commission"],
+    "D21": ["recording-mediation-settlement"],
+    "D23": ["consumer-definition"],
+    "D25": ["dark-pattern-false-urgency"],
+    "D28": ["dark-pattern-confirm-shaming"],
+    "D37": ["ejagriti-online-filing"],
+    "D40": ["complaint-admission", "appeal-district-commission"],
+    "D41": ["dark-pattern-basket-sneaking", "dark-pattern-drip-pricing"],
+    "D42": ["ecommerce-cancellation-charges"],
+    "D43": [],
+    "D48": [],
+    "D50": []
+  }
+}

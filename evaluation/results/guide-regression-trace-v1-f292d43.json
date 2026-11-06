@@ -1,0 +1,799 @@
+{
+  "suite": {
+    "suite": "consumer-law-guide-regression-trace-v1",
+    "as_of": "2026-11-06",
+    "questions_from": "docs/evaluation/live-guide-day1-questions.md",
+    "record_ids": {
+      "D08": [
+        "marketplace-seller-prepurchase-information"
+      ],
+      "D13": [
+        "nch-prelitigation-limits"
+      ],
+      "D20": [
+        "appeal-district-commission"
+      ],
+      "D21": [
+        "recording-mediation-settlement"
+      ],
+      "D23": [
+        "consumer-definition"
+      ],
+      "D25": [
+        "dark-pattern-false-urgency"
+      ],
+      "D28": [
+        "dark-pattern-confirm-shaming"
+      ],
+      "D37": [
+        "ejagriti-online-filing"
+      ],
+      "D40": [
+        "complaint-admission",
+        "appeal-district-commission"
+      ],
+      "D41": [
+        "dark-pattern-basket-sneaking",
+        "dark-pattern-drip-pricing"
+      ],
+      "D42": [
+        "ecommerce-cancellation-charges"
+      ],
+      "D43": [],
+      "D48": [],
+      "D50": []
+    },
+    "dataset_sha256_lf": "32eb9428b41d5df2db202bfcb480e18cead4e28536bfe6025a03b7c52ccb505c",
+    "question_text_sha256_lf": "9c0b40e4e731895e460cfd040388684d7530f7c5d3a2a36cd31b402e489fe113"
+  },
+  "revision_label": "f292d43",
+  "corpus_sha256_lf": "38e7b56bd0d10cf9c6c6966a241d0ec16122ac2ad9754ba39e1f4801a9d8abbb",
+  "pipeline_sha256_lf": {
+    "answer.py": "ffa234f7940917b7bacda8e894b65416c03c6a7deba17eca863cdde35bd8d029",
+    "retrieval.py": "9d2bf86af7717592e658c50f3a1e6ebc0d1955a99989d832d7f57cfcb8c1b636",
+    "guide_app.py": "e28f12a691d10f65639964db3d953e6839bce81b3a9f82a2636671646740bf9c"
+  },
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf",
+  "selector_model": null,
+  "top_k": 3,
+  "threshold": 0.3656768202781677,
+  "metrics": {
+    "cases": 14,
+    "answerable_parts": 11,
+    "evidence_groups": 13,
+    "ranked_groups_found": 8,
+    "retained_groups_found": 8,
+    "ranked_complete_parts": 6,
+    "retained_complete_parts": 6,
+    "answerable_parts_without_candidates": 1,
+    "unsupported_parts": 3,
+    "unsupported_parts_with_candidates": 0,
+    "unmatched_gold_parts": 0
+  },
+  "cases": [
+    {
+      "id": "D08",
+      "slice": "regression",
+      "mode": "excerpts",
+      "ms": 34.8,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Before placing an order, where should I be able to see what return shipping will cost me",
+          "ranked": [
+            {
+              "record": "inventory-platform-information@2020-07-23",
+              "score": 0.40891769528388977
+            },
+            {
+              "record": "marketplace-seller-prepurchase-information@2020-07-23",
+              "score": 0.40594446659088135
+            },
+            {
+              "record": "marketplace-seller-returns@2020-07-23",
+              "score": 0.3632177412509918
+            }
+          ],
+          "retained": [
+            "inventory-platform-information@2020-07-23",
+            "marketplace-seller-prepurchase-information@2020-07-23",
+            "marketplace-seller-returns@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "I am buying from a marketplace seller.",
+          "ranked": [
+            {
+              "record": "marketplace-seller-prepurchase-information@2020-07-23",
+              "score": 0.5486694574356079
+            },
+            {
+              "record": "marketplace-seller-fair-practices@2020-07-23",
+              "score": 0.5403590202331543
+            },
+            {
+              "record": "marketplace-disclosures@2020-07-23",
+              "score": 0.5175356864929199
+            }
+          ],
+          "retained": [
+            "marketplace-seller-prepurchase-information@2020-07-23",
+            "marketplace-seller-fair-practices@2020-07-23",
+            "marketplace-disclosures@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D13",
+      "slice": "regression",
+      "mode": "excerpts",
+      "ms": 10.1,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "A seller won't resolve my issue. Is the National Consumer Helpline the same as filing a case before a Consumer Commission",
+          "ranked": [
+            {
+              "record": "recording-mediation-settlement@2020-07-20",
+              "score": 0.6175750494003296
+            },
+            {
+              "record": "complaint-procedure@2020-07-20",
+              "score": 0.5988633632659912
+            },
+            {
+              "record": "marketplace-seller-grievance@2020-07-23",
+              "score": 0.5663231611251831
+            }
+          ],
+          "retained": [
+            "recording-mediation-settlement@2020-07-20",
+            "complaint-procedure@2020-07-20",
+            "marketplace-seller-grievance@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D20",
+      "slice": "regression",
+      "mode": "partial",
+      "ms": 22.9,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "The District Commission rejected my complaint. Which body hears an appeal",
+          "ranked": [
+            {
+              "record": "complaint-admission@2020-07-20",
+              "score": 0.6681605577468872
+            },
+            {
+              "record": "complaint-procedure@2020-07-20",
+              "score": 0.6555188894271851
+            },
+            {
+              "record": "appeal-district-commission@2020-07-20",
+              "score": 0.638892650604248
+            }
+          ],
+          "retained": [
+            "complaint-admission@2020-07-20",
+            "complaint-procedure@2020-07-20",
+            "appeal-district-commission@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "what is the usual time limit",
+          "ranked": [
+            {
+              "record": "complaint-limitation@2020-07-20",
+              "score": 0.33530864119529724
+            },
+            {
+              "record": "ecommerce-platform-response-time@2020-07-23",
+              "score": 0.27126961946487427
+            },
+            {
+              "record": "complaint-admission@2020-07-20",
+              "score": 0.2522556483745575
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D21",
+      "slice": "regression",
+      "mode": "excerpts",
+      "ms": 10.0,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "My dispute settled in mediation only for the refund, not the compensation. What happens to the unresolved part",
+          "ranked": [
+            {
+              "record": "reference-to-mediation@2020-07-20",
+              "score": 0.6602598428726196
+            },
+            {
+              "record": "mediation-settlement@2020-07-20",
+              "score": 0.6541963219642639
+            },
+            {
+              "record": "complaint-procedure@2020-07-20",
+              "score": 0.5806413888931274
+            }
+          ],
+          "retained": [
+            "reference-to-mediation@2020-07-20",
+            "mediation-settlement@2020-07-20",
+            "complaint-procedure@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D23",
+      "slice": "regression",
+      "mode": "not_verified",
+      "ms": 11.1,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "I bought a single tool only to earn a living by doing the work myself. Does the commercial-purpose exclusion always make me ineligible",
+          "ranked": [
+            {
+              "record": "product-liability-exceptions@2020-07-20",
+              "score": 0.3475865423679352
+            },
+            {
+              "record": "endorser-due-diligence@2022-06-09",
+              "score": 0.3145173192024231
+            },
+            {
+              "record": "harm-definition@2020-07-20",
+              "score": 0.30935463309288025
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "D25",
+      "slice": "regression",
+      "mode": "excerpts",
+      "ms": 14.9,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "A website promises the last two units, but refreshing resets the inventory warning each time. What kind of dark pattern might that be",
+          "ranked": [
+            {
+              "record": "dark-pattern-definition@2023-11-30",
+              "score": 0.48626312613487244
+            },
+            {
+              "record": "inventory-platform-returns-and-reviews@2020-07-23",
+              "score": 0.3517422676086426
+            },
+            {
+              "record": "inventory-platform-information@2020-07-23",
+              "score": 0.3076026439666748
+            }
+          ],
+          "retained": [
+            "dark-pattern-definition@2023-11-30",
+            "inventory-platform-returns-and-reviews@2020-07-23",
+            "inventory-platform-information@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D28",
+      "slice": "regression",
+      "mode": "excerpts",
+      "ms": 9.6,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "The decline button says 'No, I prefer to waste money.' Which dark pattern might that illustrate",
+          "ranked": [
+            {
+              "record": "dark-pattern-definition@2023-11-30",
+              "score": 0.5210869312286377
+            },
+            {
+              "record": "dark-pattern-trick-question@2023-11-30",
+              "score": 0.4057592749595642
+            },
+            {
+              "record": "dark-pattern-interface-interference@2023-11-30",
+              "score": 0.3779236078262329
+            }
+          ],
+          "retained": [
+            "dark-pattern-definition@2023-11-30",
+            "dark-pattern-trick-question@2023-11-30",
+            "dark-pattern-interface-interference@2023-11-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D37",
+      "slice": "regression",
+      "mode": "partial",
+      "ms": 16.6,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Where can I file a Consumer Commission complaint online",
+          "ranked": [
+            {
+              "record": "class-complaints-to-authorities@2020-07-24",
+              "score": 0.6037267446517944
+            },
+            {
+              "record": "recording-mediation-settlement@2020-07-20",
+              "score": 0.5771856904029846
+            },
+            {
+              "record": "ejagriti-online-filing@2026-11-01",
+              "score": 0.5596091151237488
+            }
+          ],
+          "retained": [
+            "class-complaints-to-authorities@2020-07-24",
+            "recording-mediation-settlement@2020-07-20",
+            "ejagriti-online-filing@2026-11-01"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "what exact affidavit format does my local registry require",
+          "ranked": [
+            {
+              "record": "ejagriti-help-resources@2026-11-01",
+              "score": 0.2575773000717163
+            },
+            {
+              "record": "consumer-mediation-cell@2020-07-20",
+              "score": 0.22611071169376373
+            },
+            {
+              "record": "endorser-due-diligence@2022-06-09",
+              "score": 0.2188401222229004
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D40",
+      "slice": "regression",
+      "mode": "excerpts",
+      "ms": 0.8,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "What does Section 36 say about admission",
+          "ranked": [
+            {
+              "record": "complaint-admission@2020-07-20",
+              "score": null
+            }
+          ],
+          "retained": [
+            "complaint-admission@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "where do I appeal a District Commission order under Section 41",
+          "ranked": [
+            {
+              "record": "appeal-district-commission@2020-07-20",
+              "score": null
+            }
+          ],
+          "retained": [
+            "appeal-district-commission@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 2,
+          "ranked_hits": 2,
+          "retained_hits": 2,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D41",
+      "slice": "regression",
+      "mode": "excerpts",
+      "ms": 21.5,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "The checkout added a donation I didn't choose. Which dark pattern might this describe?",
+          "ranked": [
+            {
+              "record": "dark-pattern-definition@2023-11-30",
+              "score": 0.5188846588134766
+            },
+            {
+              "record": "dark-pattern-basket-sneaking@2023-11-30",
+              "score": 0.36982834339141846
+            },
+            {
+              "record": "dark-pattern-interface-interference@2023-11-30",
+              "score": 0.3087488114833832
+            }
+          ],
+          "retained": [
+            "dark-pattern-definition@2023-11-30",
+            "dark-pattern-basket-sneaking@2023-11-30",
+            "dark-pattern-interface-interference@2023-11-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "a compulsory service fee only appeared at the last step. Which dark pattern might this describe?",
+          "ranked": [
+            {
+              "record": "dark-pattern-definition@2023-11-30",
+              "score": 0.4791179299354553
+            },
+            {
+              "record": "dark-pattern-basket-sneaking@2023-11-30",
+              "score": 0.41732943058013916
+            },
+            {
+              "record": "dark-pattern-drip-pricing@2023-11-30",
+              "score": 0.39234939217567444
+            }
+          ],
+          "retained": [
+            "dark-pattern-definition@2023-11-30",
+            "dark-pattern-basket-sneaking@2023-11-30",
+            "dark-pattern-drip-pricing@2023-11-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 2,
+          "ranked_hits": 2,
+          "retained_hits": 2,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D42",
+      "slice": "regression",
+      "mode": "partial",
+      "ms": 0.2,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "What does Rule 4(8) say about cancellation fees",
+          "ranked": [
+            {
+              "record": "ecommerce-cancellation-charges@2020-07-23",
+              "score": null
+            }
+          ],
+          "retained": [
+            "ecommerce-cancellation-charges@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "can you tell me the result of my own pending case",
+          "ranked": [],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "A specific case outcome cannot be verified from the indexed sources."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "D43",
+      "slice": "regression",
+      "mode": "not_verified",
+      "ms": 0.0,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "How do I dispute a fraudulent credit-card transaction with the RBI Ombudsman",
+          "ranked": [],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "A requested topic is outside the indexed consumer-law sources."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "D48",
+      "slice": "regression",
+      "mode": "not_verified",
+      "ms": 8.5,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Can you calculate my income tax refund based on my salary and tax withheld",
+          "ranked": [
+            {
+              "record": "ecommerce-accepted-refunds@2020-07-23",
+              "score": 0.271088182926178
+            },
+            {
+              "record": "district-commission-remedies@2020-07-20",
+              "score": 0.13069379329681396
+            },
+            {
+              "record": "jurisdiction-state-value@2021-12-30",
+              "score": 0.12316707521677017
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "D50",
+      "slice": "regression",
+      "mode": "not_verified",
+      "ms": 0.1,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Can you tell me the final award in my specific pending Consumer Commission case",
+          "ranked": [],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "A specific case outcome cannot be verified from the indexed sources."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    }
+  ]
+}

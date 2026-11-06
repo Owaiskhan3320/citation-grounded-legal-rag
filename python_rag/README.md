@@ -119,8 +119,17 @@ official Act PDF, which returned HTTP 200. A mixed consumer-rights/RBI
 question retained the Act source and flagged the RBI part. The RBI-only
 question showed no source cards.
 
-An earlier live run selected both Section 2(9) passages. The release check
-fell back to candidate excerpts with a quote-mismatch diagnostic instead;
-the deployed revision could not be confirmed. This is not a repeatable live
-generation pass. Keep Vercel as the primary demo until a known deployment
-revision passes the supported lookup consistently.
+The [live holdout report](../docs/evaluation/guide-holdout-v1-results.md)
+distinguishes the browser results from the offline trace on release `f292d43`.
+To reproduce the offline traces, build the index and run:
+
+```powershell
+python -m python_rag.evaluate_answers --suite regression --revision f292d43
+python -m python_rag.evaluate_answers --suite holdout --revision f292d43
+```
+
+Use `--output` with a new path to persist a run. The holdout loader verifies
+the dataset and rubric hashes and each active passage reference. The trace
+records ranked, retained and selected evidence separately; it does not grade
+the user-visible text. The optional `--groq` mode needs a locally configured
+API key and exercises the actual selector, not the public Streamlit UI.
