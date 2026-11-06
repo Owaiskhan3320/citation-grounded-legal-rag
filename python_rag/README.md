@@ -104,11 +104,19 @@ From the repository root, run:
 python -m streamlit run python_rag/guide_app.py
 ```
 
-The coverage panel reads the corpus without loading MiniLM. The first
+The coverage panel reads the corpus without loading MiniLM. The first legal
 question loads the model and builds the index; later questions reuse both.
 Without a Groq key, the guide displays labeled candidate excerpts rather
 than a generated answer. The original `smoke_app.py` remains a separate
 deployment check.
+
+The current Streamlit session keeps the last six turns. Short follow-ups can
+use the latest verified legal topic to search the corpus again; unclear
+follow-ups ask for clarification. Previous user wording stays local to
+retrieval. Groq receives the current question, candidate passages, and, when
+needed, official titles from the previous lookup, not the chat transcript.
+New chat clears the turns. Greetings and questions about the guide use
+built-in replies without retrieval or a Groq call.
 
 ### Live release check
 

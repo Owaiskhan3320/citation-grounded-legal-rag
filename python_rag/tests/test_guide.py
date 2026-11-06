@@ -3,8 +3,10 @@
 import unittest
 from unittest.mock import Mock, patch
 
+import streamlit as st
 from streamlit.testing.v1 import AppTest
 
+from python_rag.conversation import CLARIFY, MAX_TURNS
 from python_rag.retrieval import ROOT, corpus_snapshot
 
 
@@ -36,7 +38,7 @@ class GuideTests(unittest.TestCase):
     def test_supported_lookup_shows_summary_and_keeps_wording_in_sources(self):
         self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
         self.ask("Where can I search for a Commission order?")
-        self.assertEqual([heading.value for heading in self.app.subheader], ["Short answer", "Sources"])
+        self.assertEqual([heading.value for heading in self.app.subheader], ["Sources"])
         self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
         self.assertEqual(self.app.expander[0].text[0].value, self.quote)
         self.assertTrue(any("Read the official wording" in link.value for link in self.app.markdown))
@@ -84,8 +86,9 @@ class GuideTests(unittest.TestCase):
         self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
         self.provider.assert_called_once()
         self.ask("How do I contact RBI?")
-        self.assertEqual(self.app.chat_message[0].text[0].value, "How do I contact RBI?")
-        self.assertFalse(self.app.subheader)
+        self.assertEqual(self.app.chat_message[0].text[0].value, question)
+        self.assertEqual(self.app.chat_message[-2].text[0].value, "How do I contact RBI?")
+        self.assertFalse(self.app.chat_message[-1].subheader)
 
     def test_mixed_requests_show_supported_answer_and_name_the_unresolved_part(self):
         for suffix, limit in (
@@ -96,11 +99,12 @@ class GuideTests(unittest.TestCase):
                 self.provider.reset_mock()
                 self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
                 self.ask(f"Where can I search for a Commission order, and {suffix}")
-                self.assertIn("Limited source coverage", self.app.warning[0].value)
-                self.assertEqual([h.value for h in self.app.subheader], ["Short answer", "Sources"])
-                self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
-                self.assertIn(suffix.rstrip("?"), [text.value for text in self.app.chat_message[1].text])
-                self.assertTrue(any(limit in caption.value for caption in self.app.chat_message[1].caption))
+                reply = self.app.chat_message[-1]
+                self.assertIn("Limited source coverage", reply.warning[0].value)
+                self.assertEqual([h.value for h in reply.subheader], ["Sources"])
+                self.assertEqual(reply.markdown[0].value, self.summary)
+                self.assertIn(suffix.rstrip("?"), [text.value for text in reply.text])
+                self.assertTrue(any(limit in caption.value for caption in reply.caption))
                 self.provider.assert_called_once()
                 self.assertEqual(list(self.provider.call_args.args[0]), ["Q1"])
         self.assertEqual(self.search.call_count, 2)
@@ -127,3 +131,73 @@ class GuideTests(unittest.TestCase):
         self.ask("Where can I search for a Commission order?")
         self.assertIn("Candidate excerpts only", self.app.info[0].value)
         self.assertFalse(any("Invented excerpt" in text.value for text in self.app.text))
+
+    def test_built_in_replies_do_not_search_or_show_a_spinner(self):
+        examples = (
+            ("Hello!", "Hello!"),
+            ("Hi, what can you answer?", "misleading ads"),
+            ("How can we use you?", "Describe what happened"),
+            ("What data are you trained on?", "reference documents, not the training data"),
+        )
+        with patch("streamlit.spinner", wraps=st.spinner) as spinner:
+            for question, expected in examples:
+                self.ask(question)
+                self.assertIn(expected, self.app.chat_message[-1].markdown[0].value)
+            spinner.assert_not_called()
+        self.search.assert_not_called()
+        self.provider.assert_not_called()
+
+    def test_legal_question_with_greeting_uses_only_the_source_spinner(self):
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
+        with patch("streamlit.spinner", wraps=st.spinner) as spinner:
+            self.ask("Hello, where can I search for a Commission order?")
+            spinner.assert_called_once_with("Searching the sources...")
+        self.provider.assert_called_once()
+        self.assertEqual([heading.value for heading in self.app.subheader], ["Sources"])
+
+    def test_follow_up_uses_last_grounded_topic_without_sending_previous_question(self):
+        original = "Where can I search for a Commission order about the fictional Orchid dispute?"
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
+        self.ask(original)
+        self.ask("What can you answer?")
+        self.ask("Where can I file it?")
+        self.assertEqual(len(self.app.chat_message), 6)
+        self.assertEqual(self.search.call_args.kwargs["context"], original)
+        parts = self.provider.call_args.args[0]
+        self.assertEqual(parts["Q1"]["question"], "Where can I file it")
+        self.assertNotIn("Orchid", repr(self.provider.call_args))
+        self.assertTrue(parts["Q1"]["context_topics"])
+        self.assertEqual(self.app.chat_message[-1].subheader[0].value, "Sources")
+
+    def test_standalone_question_does_not_inherit_the_previous_topic(self):
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
+        self.ask("Where can I search for a Commission order?")
+        self.ask("Can the District Commission order a refund if it finds a product defect?")
+        self.assertNotIn("context", self.search.call_args.kwargs)
+        self.assertNotIn("context_topics", self.provider.call_args.args[0]["Q1"])
+
+    def test_new_chat_clears_history_and_follow_up_context(self):
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
+        self.ask("Where can I search for a Commission order?")
+        self.app.button[0].click().run()
+        self.assertFalse(self.app.chat_message)
+        self.ask("What if they refuse?")
+        self.assertEqual(self.app.chat_message[-1].markdown[0].value, CLARIFY)
+        self.search.assert_called_once()
+        self.provider.assert_called_once()
+
+    def test_recent_unverified_question_does_not_reuse_an_older_topic(self):
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
+        self.ask("Where can I search for a Commission order?")
+        self.ask("How do I contact RBI?")
+        self.ask("What if they refuse?")
+        self.assertEqual(self.app.chat_message[-1].markdown[0].value, CLARIFY)
+        self.search.assert_called_once()
+        self.provider.assert_called_once()
+
+    def test_history_keeps_only_the_recent_turns(self):
+        self.ask("What can you answer?")
+        for _ in range(MAX_TURNS):
+            self.ask("Hello")
+        self.assertEqual(len(self.app.chat_message), 2 * MAX_TURNS)
+        self.assertEqual(self.app.chat_message[0].text[0].value, "Hello")

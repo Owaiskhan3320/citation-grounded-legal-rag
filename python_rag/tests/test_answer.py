@@ -6,6 +6,7 @@ import httpx
 from groq import Groq
 
 from python_rag.answer import answer, groq_select, redact
+from python_rag.conversation import ChatContext
 
 
 class AnswerTests(unittest.TestCase):
@@ -144,6 +145,48 @@ class AnswerTests(unittest.TestCase):
         provider = Mock()
         self.assertEqual(self.ask("Explain consent", provider)["mode"], "not_verified")
         provider.assert_not_called()
+
+    def test_follow_up_sends_official_titles_but_not_previous_text(self):
+        context = ChatContext("Earlier private example: Orchid order", ("Consent",))
+
+        def complete(request):
+            self.assertNotIn(b"Orchid", request.content)
+            data = json.loads(json.loads(request.content)["messages"][-1]["content"])
+            self.assertEqual(data["questions"]["Q1"]["question"], "What if they refuse")
+            self.assertEqual(data["questions"]["Q1"]["context_topics"], ["Consent"])
+            return httpx.Response(200, json={"choices": [{
+                "finish_reason": "stop",
+                "message": {"role": "assistant", "content": '{"Q1":["S1-P1"]}'},
+            }]})
+
+        client = Groq(api_key="test-only", max_retries=0,
+                      http_client=httpx.Client(transport=httpx.MockTransport(complete)))
+        with patch("python_rag.answer.Groq", return_value=client):
+            result = answer("What if they refuse?", None, None, [], "2026-11-03",
+                            select=lambda q, s: groq_select(q, s, api_key="test-only"), context=context)
+        self.assertEqual(result["mode"], "grounded_quotes")
+        self.assertEqual(self.search.call_args.kwargs["context"], context.question)
+
+    def test_case_prediction_stays_out_of_scope_with_previous_context(self):
+        provider = Mock()
+        result = answer("Will I win?", None, None, [], "2026-11-03", select=provider,
+                        context=ChatContext("How can I file a complaint?", ("Consumer complaints",)))
+        self.assertEqual(result["mode"], "not_verified")
+        self.assertIn("specific case outcome", result["limits"][0])
+        self.search.assert_not_called()
+        provider.assert_not_called()
+
+    def test_marketplace_follow_up_does_not_select_inventory_rules(self):
+        marketplace = {**self.consent, "id": "seller", "title": "Returns by marketplace sellers"}
+        inventory = {**self.consent, "id": "inventory", "title": "Returns on inventory platforms"}
+        self.search.return_value = [(inventory, 0.7), (marketplace, 0.6), (self.consent, 0.5)]
+        provider = Mock(return_value={"Q1": [self.consent_quote]})
+        context = ChatContext("A seller sent the wrong item.", (marketplace["title"],))
+        result = answer("What if they refuse?", None, None, [], "2026-11-03",
+                        select=provider, context=context)
+        self.assertEqual(result["mode"], "grounded_quotes")
+        self.assertEqual([source["record_id"] for source in provider.call_args.args[1].values()],
+                         ["seller", "consent"])
 
     def test_sdk_requests_completion_and_classifies_plain_text_denial(self):
         def deny(request):

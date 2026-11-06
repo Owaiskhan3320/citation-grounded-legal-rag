@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
@@ -31,6 +32,18 @@ class RetrievalTests(unittest.TestCase):
 
     def test_missing_reference_does_not_fall_through(self):
         self.assertEqual(self.lookup("What does section 210 say?"), [])
+
+    def test_only_the_current_question_can_trigger_exact_lookup(self):
+        with patch.object(self.model, "encode", wraps=self.model.encode) as encode:
+            search("What if they refuse?", self.model, self.index, self.records,
+                   "2026-11-03", context="Section 38")
+            encode.assert_called_once_with(["What if they refuse?\nSection 38"],
+                                           normalize_embeddings=True, show_progress_bar=False)
+            encode.reset_mock()
+            hits = search("What does Section 2(9) mean?", self.model, self.index, self.records,
+                          "2026-11-03", context="Section 38")
+            self.assertEqual([(r["id"], score) for r, score in hits], [("consumer-rights", None)])
+            encode.assert_not_called()
 
     def test_section_heading_matches_a_record_with_a_subsection_range(self):
         hits = self.lookup("Under Section 38, how long does the opposite party have to reply?")

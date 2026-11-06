@@ -99,7 +99,7 @@ def record_references(record):
         yield reference_key(record["section"])
 
 
-def search(question, model, index, records, as_of, k=5):
+def search(question, model, index, records, as_of, k=5, *, context=None):
     references = {reference_key(m.group()) for m in REFERENCE.finditer(question)}
     if references:
         return [
@@ -107,7 +107,9 @@ def search(question, model, index, records, as_of, k=5):
             if active(record, as_of)
             and references.intersection(record_references(record))
         ][:k]
-    query = model.encode([question], normalize_embeddings=True, show_progress_bar=False)
+    # Only references in the current question trigger exact lookup.
+    text = f"{question}\n{context}" if context else question
+    query = model.encode([text], normalize_embeddings=True, show_progress_bar=False)
     # Search all rows in this small index so expired versions never consume top-k slots.
     scores, rows = index.search(query, index.ntotal)
     return [
