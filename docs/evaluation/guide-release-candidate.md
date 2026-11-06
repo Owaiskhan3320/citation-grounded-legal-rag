@@ -32,8 +32,9 @@ python -m python_rag.evaluate_answers --suite holdout --output tmp/holdout-v1-re
 python -m python_rag.evaluate_answers --suite holdout-v2 --output tmp/holdout-v2-replay.json
 ```
 
-Release gate: pending. Repeat H15 and H18 with the real provider, grade the
-frozen v2 questions and check the original 50 for new material regressions before
-advancing the Streamlit release branch. The evaluator's `--groq` flag can record
-the provider's selected passages using a privately configured `GROQ_API_KEY`;
-it does not substitute for checking the rendered answers and citations.
+The [live Groq evaluation](guide-release-candidate-live.md) checks the two
+previous blockers, the frozen v2 questions, and the original 50 against the
+rendered Streamlit answers. It passed the release gate. The evaluator's `--groq`
+flag can record the provider's selected passages using a privately configured
+`GROQ_API_KEY`; it does not substitute for checking the rendered answers and
+citations.
