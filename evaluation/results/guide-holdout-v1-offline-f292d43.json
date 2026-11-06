@@ -1,0 +1,1457 @@
+{
+  "suite": {
+    "suite": "consumer-law-guide-holdout-v1",
+    "as_of": "2026-11-06",
+    "questions": 25,
+    "dataset_sha256_lf": "805462364569413361b542cbe6873b696fd81c9df3a064fded6fcaa4b9adfe82",
+    "rubric_sha256_lf": "704484814dc04066215d278ad4cb31e2636f90f939f4f210dd49f8cfe21d0971"
+  },
+  "revision_label": "f292d43",
+  "corpus_sha256_lf": "38e7b56bd0d10cf9c6c6966a241d0ec16122ac2ad9754ba39e1f4801a9d8abbb",
+  "pipeline_sha256_lf": {
+    "answer.py": "ffa234f7940917b7bacda8e894b65416c03c6a7deba17eca863cdde35bd8d029",
+    "retrieval.py": "9d2bf86af7717592e658c50f3a1e6ebc0d1955a99989d832d7f57cfcb8c1b636",
+    "guide_app.py": "e28f12a691d10f65639964db3d953e6839bce81b3a9f82a2636671646740bf9c"
+  },
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf",
+  "selector_model": null,
+  "top_k": 3,
+  "threshold": 0.3656768202781677,
+  "metrics": {
+    "cases": 25,
+    "answerable_parts": 20,
+    "evidence_groups": 20,
+    "ranked_groups_found": 20,
+    "retained_groups_found": 20,
+    "ranked_complete_parts": 20,
+    "retained_complete_parts": 20,
+    "answerable_parts_without_candidates": 0,
+    "unsupported_parts": 13,
+    "unsupported_parts_with_candidates": 6,
+    "unmatched_gold_parts": 0
+  },
+  "cases": [
+    {
+      "id": "H01",
+      "slice": "answerable",
+      "mode": "partial",
+      "ms": 34.5,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "The District Commission's order has an obvious arithmetic error on its face. Can that same Commission review it",
+          "ranked": [
+            {
+              "record": "district-review@2020-07-20",
+              "score": 0.7803666591644287
+            },
+            {
+              "record": "enforcement-of-orders@2020-07-20",
+              "score": 0.547736644744873
+            },
+            {
+              "record": "appeal-district-commission@2020-07-20",
+              "score": 0.546684980392456
+            }
+          ],
+          "retained": [
+            "district-review@2020-07-20",
+            "enforcement-of-orders@2020-07-20",
+            "appeal-district-commission@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "what is the ordinary deadline for my application",
+          "ranked": [
+            {
+              "record": "complaint-admission@2020-07-20",
+              "score": 0.3599432110786438
+            },
+            {
+              "record": "ecommerce-accepted-refunds@2020-07-23",
+              "score": 0.3543449640274048
+            },
+            {
+              "record": "appeal-national-commission@2020-07-20",
+              "score": 0.33671000599861145
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 12.4,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Two vendors list the same type of appliance on a marketplace, but the platform gives one vendor different treatment. Where are those differences supposed to be described",
+          "ranked": [
+            {
+              "record": "marketplace-differentiated-treatment@2020-07-23",
+              "score": 0.561129629611969
+            },
+            {
+              "record": "marketplace-seller-fair-practices@2020-07-23",
+              "score": 0.47789186239242554
+            },
+            {
+              "record": "marketplace-disclosures@2020-07-23",
+              "score": 0.44743505120277405
+            }
+          ],
+          "retained": [
+            "marketplace-differentiated-treatment@2020-07-23",
+            "marketplace-seller-fair-practices@2020-07-23",
+            "marketplace-disclosures@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 10.9,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "A defective blender only damaged the blender itself. Does damage to that very product count as harm under the Act's product-liability definition",
+          "ranked": [
+            {
+              "record": "product-manufacturer-liability@2020-07-20",
+              "score": 0.6372220516204834
+            },
+            {
+              "record": "harm-definition@2020-07-20",
+              "score": 0.632981538772583
+            },
+            {
+              "record": "product-liability-exceptions@2020-07-20",
+              "score": 0.6268059015274048
+            }
+          ],
+          "retained": [
+            "product-manufacturer-liability@2020-07-20",
+            "harm-definition@2020-07-20",
+            "product-liability-exceptions@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 10.9,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Can a manufacturer face a product-liability claim if a household appliance came without adequate safety warnings and that caused harm",
+          "ranked": [
+            {
+              "record": "product-manufacturer-liability@2020-07-20",
+              "score": 0.6051323413848877
+            },
+            {
+              "record": "product-liability-action@2020-07-20",
+              "score": 0.5946921706199646
+            },
+            {
+              "record": "product-liability-exceptions@2020-07-20",
+              "score": 0.5714278817176819
+            }
+          ],
+          "retained": [
+            "product-manufacturer-liability@2020-07-20",
+            "product-liability-action@2020-07-20",
+            "product-liability-exceptions@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 0.3,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Under Rule 7(1), if an online retailer sells from its own inventory, what total price and breakdown should it show before I buy",
+          "ranked": [
+            {
+              "record": "inventory-platform-information@2020-07-23",
+              "score": null
+            }
+          ],
+          "retained": [
+            "inventory-platform-information@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 11.7,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "A toy commercial directed at children suggests that kids who do not own the toy are inferior to their friends. What do the advertising guidelines say about that message",
+          "ranked": [
+            {
+              "record": "advertisements-targeting-children@2022-06-09",
+              "score": 0.5894360542297363
+            },
+            {
+              "record": "advertisement-validity-and-disclaimers@2022-06-09",
+              "score": 0.4867050349712372
+            },
+            {
+              "record": "false-or-misleading-advertisement-definition@2020-07-20",
+              "score": 0.4401606321334839
+            }
+          ],
+          "retained": [
+            "advertisements-targeting-children@2022-06-09",
+            "advertisement-validity-and-disclaimers@2022-06-09",
+            "false-or-misleading-advertisement-definition@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H07",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 11.1,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Several buyers report that the same appliance batch catches fire. Can the Central Authority order the products recalled or purchasers reimbursed after investigation",
+          "ranked": [
+            {
+              "record": "unsafe-goods-recall@2020-07-24",
+              "score": 0.6297562718391418
+            },
+            {
+              "record": "marketplace-seller-returns@2020-07-23",
+              "score": 0.40586328506469727
+            },
+            {
+              "record": "district-commission-remedies@2020-07-20",
+              "score": 0.40518495440483093
+            }
+          ],
+          "retained": [
+            "unsafe-goods-recall@2020-07-24",
+            "marketplace-seller-returns@2020-07-23",
+            "district-commission-remedies@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H08",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 11.7,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "An ad's headline is literally true, but the seller intentionally hides an important condition. Can deliberate concealment itself make an ad misleading under the Act",
+          "ranked": [
+            {
+              "record": "false-or-misleading-advertisement-definition@2020-07-20",
+              "score": 0.6562923789024353
+            },
+            {
+              "record": "advertisement-validity-and-disclaimers@2022-06-09",
+              "score": 0.6147443652153015
+            },
+            {
+              "record": "advertisement-disclaimers@2022-06-09",
+              "score": 0.5609978437423706
+            }
+          ],
+          "retained": [
+            "false-or-misleading-advertisement-definition@2020-07-20",
+            "advertisement-validity-and-disclaimers@2022-06-09",
+            "advertisement-disclaimers@2022-06-09"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H09",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 12.5,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "In an ordinary consumer complaint I paid exactly 50 lakh rupees and am asking for 70 lakh including compensation. Which level of Commission does the amount paid point to",
+          "ranked": [
+            {
+              "record": "jurisdiction-district-value@2021-12-30",
+              "score": 0.6702986359596252
+            },
+            {
+              "record": "jurisdiction-state-value@2021-12-30",
+              "score": 0.6462936997413635
+            },
+            {
+              "record": "jurisdiction-national-value@2021-12-30",
+              "score": 0.6296839714050293
+            }
+          ],
+          "retained": [
+            "jurisdiction-district-value@2021-12-30",
+            "jurisdiction-state-value@2021-12-30",
+            "jurisdiction-national-value@2021-12-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H10",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 12.4,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "For the ordinary monetary jurisdiction bands, is exactly two crore rupees paid for a service still within the State Commission's range, or does it go above that range",
+          "ranked": [
+            {
+              "record": "jurisdiction-state-value@2021-12-30",
+              "score": 0.612250804901123
+            },
+            {
+              "record": "jurisdiction-national-value@2021-12-30",
+              "score": 0.6070995330810547
+            },
+            {
+              "record": "jurisdiction-district-value@2021-12-30",
+              "score": 0.5208344459533691
+            }
+          ],
+          "retained": [
+            "jurisdiction-state-value@2021-12-30",
+            "jurisdiction-national-value@2021-12-30",
+            "jurisdiction-district-value@2021-12-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H11",
+      "slice": "answerable",
+      "mode": "partial",
+      "ms": 8.0,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Under Rule 4(2), what identity and customer-contact details should an e-commerce entity display",
+          "ranked": [
+            {
+              "record": "ecommerce-platform-information@2020-07-23",
+              "score": null
+            }
+          ],
+          "retained": [
+            "ecommerce-platform-information@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "Use the version currently in force.",
+          "ranked": [
+            {
+              "record": "ejagriti-help-resources@2026-11-01",
+              "score": 0.14002269506454468
+            },
+            {
+              "record": "nch-tracking@2026-11-01",
+              "score": 0.13924528658390045
+            },
+            {
+              "record": "nch-complaint-channels@2026-11-01",
+              "score": 0.12493690103292465
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1",
+            "Q2"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H12",
+      "slice": "answerable",
+      "mode": "excerpts",
+      "ms": 12.8,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "A checkout checkbox reads 'uncheck here if you do not want to not receive offers.' Which dark-pattern category covers the deliberate double negative",
+          "ranked": [
+            {
+              "record": "dark-pattern-definition@2023-11-30",
+              "score": 0.48361554741859436
+            },
+            {
+              "record": "dark-pattern-trick-question@2023-11-30",
+              "score": 0.4581835865974426
+            },
+            {
+              "record": "dark-pattern-interface-interference@2023-11-30",
+              "score": 0.42124927043914795
+            }
+          ],
+          "retained": [
+            "dark-pattern-definition@2023-11-30",
+            "dark-pattern-trick-question@2023-11-30",
+            "dark-pattern-interface-interference@2023-11-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H13",
+      "slice": "mixed",
+      "mode": "excerpts",
+      "ms": 8.5,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Does a Consumer Commission need the parties' consent before referring a complaint to mediation under Section 37",
+          "ranked": [
+            {
+              "record": "reference-to-mediation@2020-07-20",
+              "score": null
+            }
+          ],
+          "retained": [
+            "reference-to-mediation@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "which form starts a separate rent tribunal proceeding to recover my deposit",
+          "ranked": [
+            {
+              "record": "appeal-district-commission@2020-07-20",
+              "score": 0.42805084586143494
+            },
+            {
+              "record": "appeal-state-commission@2020-07-20",
+              "score": 0.36650264263153076
+            },
+            {
+              "record": "state-commission-territorial-jurisdiction@2020-07-20",
+              "score": 0.36632853746414185
+            }
+          ],
+          "retained": [
+            "appeal-district-commission@2020-07-20",
+            "appeal-state-commission@2020-07-20",
+            "state-commission-territorial-jurisdiction@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "Section 37",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "rent tribunal",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H14",
+      "slice": "mixed",
+      "mode": "excerpts",
+      "ms": 11.2,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Under Rule 4(4), what identifying details must an e-commerce platform display about its grievance officer",
+          "ranked": [
+            {
+              "record": "ecommerce-platform-grievance@2020-07-23",
+              "score": null
+            }
+          ],
+          "retained": [
+            "ecommerce-platform-grievance@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "which GST return table should a seller use for the transaction",
+          "ranked": [
+            {
+              "record": "marketplace-seller-returns@2020-07-23",
+              "score": 0.40552860498428345
+            },
+            {
+              "record": "marketplace-seller-prepurchase-information@2020-07-23",
+              "score": 0.39988136291503906
+            },
+            {
+              "record": "marketplace-post-purchase-seller-details@2020-07-23",
+              "score": 0.3793255090713501
+            }
+          ],
+          "retained": [
+            "marketplace-seller-returns@2020-07-23",
+            "marketplace-seller-prepurchase-information@2020-07-23",
+            "marketplace-post-purchase-seller-details@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "Rule 4(4)",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "GST return",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H15",
+      "slice": "mixed",
+      "mode": "partial",
+      "ms": 19.1,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Can a non-manufacturer seller's own express warranty be relevant to product liability",
+          "ranked": [
+            {
+              "record": "product-manufacturer-liability@2020-07-20",
+              "score": 0.7766390442848206
+            },
+            {
+              "record": "product-seller-liability@2020-07-20",
+              "score": 0.6901154518127441
+            },
+            {
+              "record": "product-service-provider-liability@2020-07-20",
+              "score": 0.6591140031814575
+            }
+          ],
+          "retained": [
+            "product-manufacturer-liability@2020-07-20",
+            "product-seller-liability@2020-07-20",
+            "product-service-provider-liability@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "which medical test would diagnose the cause of a rash after using the item",
+          "ranked": [
+            {
+              "record": "product-liability-exceptions@2020-07-20",
+              "score": 0.2647572159767151
+            },
+            {
+              "record": "product-liability-action@2020-07-20",
+              "score": 0.2158292680978775
+            },
+            {
+              "record": "harm-definition@2020-07-20",
+              "score": 0.20047757029533386
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "express warranty",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "medical test",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "slice": "mixed",
+      "mode": "partial",
+      "ms": 19.3,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Which Commission's ordinary value band covers a payment of three crore rupees",
+          "ranked": [
+            {
+              "record": "jurisdiction-national-value@2021-12-30",
+              "score": 0.6003459692001343
+            },
+            {
+              "record": "jurisdiction-state-value@2021-12-30",
+              "score": 0.5450223684310913
+            },
+            {
+              "record": "jurisdiction-district-value@2021-12-30",
+              "score": 0.5254292488098145
+            }
+          ],
+          "retained": [
+            "jurisdiction-national-value@2021-12-30",
+            "jurisdiction-state-value@2021-12-30",
+            "jurisdiction-district-value@2021-12-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "what proof of funds is needed for a tourist visa",
+          "ranked": [
+            {
+              "record": "endorser-due-diligence@2022-06-09",
+              "score": 0.34752005338668823
+            },
+            {
+              "record": "dark-pattern-basket-sneaking@2023-11-30",
+              "score": 0.28365278244018555
+            },
+            {
+              "record": "advertisement-disclaimers@2022-06-09",
+              "score": 0.2184501439332962
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "three crore",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "tourist visa",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "H17",
+      "slice": "mixed",
+      "mode": "excerpts",
+      "ms": 17.4,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Does a shared brand name alone make an otherwise unobjectionable advertisement a surrogate ad",
+          "ranked": [
+            {
+              "record": "surrogate-advertisements@2022-06-09",
+              "score": 0.6301249265670776
+            },
+            {
+              "record": "advertisement-validity-and-disclaimers@2022-06-09",
+              "score": 0.47501832246780396
+            },
+            {
+              "record": "false-or-misleading-advertisement-definition@2020-07-20",
+              "score": 0.38850176334381104
+            }
+          ],
+          "retained": [
+            "surrogate-advertisements@2022-06-09",
+            "advertisement-validity-and-disclaimers@2022-06-09",
+            "false-or-misleading-advertisement-definition@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "what is the advertiser's current market capitalization",
+          "ranked": [
+            {
+              "record": "bait-and-free-claim-advertisements@2022-06-09",
+              "score": 0.38972777128219604
+            },
+            {
+              "record": "dark-pattern-bait-switch-and-disguised-ads@2023-11-30",
+              "score": 0.35345447063446045
+            },
+            {
+              "record": "advertisement-validity-and-disclaimers@2022-06-09",
+              "score": 0.34038490056991577
+            }
+          ],
+          "retained": [
+            "bait-and-free-claim-advertisements@2022-06-09",
+            "dark-pattern-bait-switch-and-disguised-ads@2023-11-30",
+            "advertisement-validity-and-disclaimers@2022-06-09"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "shared brand name",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "market capitalization",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H18",
+      "slice": "mixed",
+      "mode": "excerpts",
+      "ms": 8.9,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "What consequences can follow under Section 72 if a Commission order is ignored",
+          "ranked": [
+            {
+              "record": "noncompliance-with-orders@2020-07-20",
+              "score": null
+            }
+          ],
+          "retained": [
+            "noncompliance-with-orders@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "what punishment will the Commission impose in my pending case",
+          "ranked": [
+            {
+              "record": "appeal-district-commission@2020-07-20",
+              "score": 0.6546531319618225
+            },
+            {
+              "record": "complaint-admission@2020-07-20",
+              "score": 0.6093031167984009
+            },
+            {
+              "record": "noncompliance-with-orders@2020-07-20",
+              "score": 0.5998526811599731
+            }
+          ],
+          "retained": [
+            "appeal-district-commission@2020-07-20",
+            "complaint-admission@2020-07-20",
+            "noncompliance-with-orders@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "Section 72",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "my pending case",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H19",
+      "slice": "mixed",
+      "mode": "partial",
+      "ms": 8.1,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Under the currently effective Rule 4(5), how long does the platform's grievance officer have to acknowledge and redress a complaint",
+          "ranked": [
+            {
+              "record": "ecommerce-platform-response-time@2020-07-23",
+              "score": null
+            }
+          ],
+          "retained": [
+            "ecommerce-platform-response-time@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "where is my courier parcel right now",
+          "ranked": [
+            {
+              "record": "marketplace-post-purchase-seller-details@2020-07-23",
+              "score": 0.2797635495662689
+            },
+            {
+              "record": "marketplace-seller-grievance@2020-07-23",
+              "score": 0.2186620980501175
+            },
+            {
+              "record": "marketplace-seller-prepurchase-information@2020-07-23",
+              "score": 0.2116876244544983
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "Rule 4(5)",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "courier parcel",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "H20",
+      "slice": "mixed",
+      "mode": "excerpts",
+      "ms": 17.7,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Can I contact the National Consumer Helpline without using its website",
+          "ranked": [
+            {
+              "record": "nch-complaint-channels@2026-11-01",
+              "score": 0.5072254538536072
+            },
+            {
+              "record": "marketplace-post-purchase-seller-details@2020-07-23",
+              "score": 0.42884910106658936
+            },
+            {
+              "record": "marketplace-disclosures@2020-07-23",
+              "score": 0.4036601185798645
+            }
+          ],
+          "retained": [
+            "nch-complaint-channels@2026-11-01",
+            "marketplace-post-purchase-seller-details@2020-07-23",
+            "marketplace-disclosures@2020-07-23"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        },
+        {
+          "id": "Q2",
+          "question": "how much will the retailer offer to settle my particular dispute",
+          "ranked": [
+            {
+              "record": "complaint-procedure@2020-07-20",
+              "score": 0.5091474652290344
+            },
+            {
+              "record": "marketplace-post-purchase-seller-details@2020-07-23",
+              "score": 0.47309252619743347
+            },
+            {
+              "record": "jurisdiction-district-value@2021-12-30",
+              "score": 0.4693611264228821
+            }
+          ],
+          "retained": [
+            "complaint-procedure@2020-07-20",
+            "marketplace-post-purchase-seller-details@2020-07-23",
+            "jurisdiction-district-value@2021-12-30"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": "National Consumer Helpline",
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 1,
+          "ranked_hits": 1,
+          "retained_hits": 1,
+          "retained_any": true
+        },
+        {
+          "anchor": "retailer offer",
+          "matched_parts": [
+            "Q2"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H21",
+      "slice": "outside",
+      "mode": "excerpts",
+      "ms": 10.6,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "My employer deducted a uniform charge from my wages. Which employment tribunal form should I submit to dispute the deduction",
+          "ranked": [
+            {
+              "record": "jurisdiction-state-value@2021-12-30",
+              "score": 0.4062628746032715
+            },
+            {
+              "record": "district-commission-remedies@2020-07-20",
+              "score": 0.4045941233634949
+            },
+            {
+              "record": "complaint-procedure@2020-07-20",
+              "score": 0.39491164684295654
+            }
+          ],
+          "retained": [
+            "jurisdiction-state-value@2021-12-30",
+            "district-commission-remedies@2020-07-20",
+            "complaint-procedure@2020-07-20"
+          ],
+          "selected": [],
+          "record_summaries": {},
+          "limit": null
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": true
+        }
+      ]
+    },
+    {
+      "id": "H22",
+      "slice": "outside",
+      "mode": "not_verified",
+      "ms": 9.2,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "What fee do I pay to renew my trademark registration in India this year",
+          "ranked": [
+            {
+              "record": "endorser-due-diligence@2022-06-09",
+              "score": 0.32249385118484497
+            },
+            {
+              "record": "ecommerce-scope@2020-07-23",
+              "score": 0.2933294177055359
+            },
+            {
+              "record": "marketplace-seller-prepurchase-information@2020-07-23",
+              "score": 0.29270675778388977
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "H23",
+      "slice": "outside",
+      "mode": "not_verified",
+      "ms": 9.1,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "My flight was cancelled in France. What fixed compensation in euros do European passenger rules give me",
+          "ranked": [
+            {
+              "record": "ecommerce-cancellation-charges@2020-07-23",
+              "score": 0.3263913094997406
+            },
+            {
+              "record": "product-liability-scope@2020-07-20",
+              "score": 0.2950649857521057
+            },
+            {
+              "record": "complaint-definition@2020-07-20",
+              "score": 0.2643694281578064
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "H24",
+      "slice": "outside",
+      "mode": "not_verified",
+      "ms": 11.3,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "What rate of customs duty applies today if I import a refurbished smartphone for personal use",
+          "ranked": [
+            {
+              "record": "marketplace-seller-prepurchase-information@2020-07-23",
+              "score": 0.31540021300315857
+            },
+            {
+              "record": "unfair-trade-practice@2020-07-20",
+              "score": 0.28611963987350464
+            },
+            {
+              "record": "ecommerce-scope@2020-07-23",
+              "score": 0.27305519580841064
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    },
+    {
+      "id": "H25",
+      "slice": "outside",
+      "mode": "not_verified",
+      "ms": 13.5,
+      "diagnostic": null,
+      "parts": [
+        {
+          "id": "Q1",
+          "question": "Can you look up the live docket for my consumer case and tell me whether the next hearing was moved to Tuesday",
+          "ranked": [
+            {
+              "record": "nch-forwarding-and-docket@2026-11-01",
+              "score": 0.3253665566444397
+            },
+            {
+              "record": "recording-mediation-settlement@2020-07-20",
+              "score": 0.3172856271266937
+            },
+            {
+              "record": "nch-grievance-details@2026-11-01",
+              "score": 0.2875114679336548
+            }
+          ],
+          "retained": [],
+          "selected": [],
+          "record_summaries": {},
+          "limit": "No strong source candidate was found for this part."
+        }
+      ],
+      "evidence": [
+        {
+          "anchor": null,
+          "matched_parts": [
+            "Q1"
+          ],
+          "groups": 0,
+          "ranked_hits": 0,
+          "retained_hits": 0,
+          "retained_any": false
+        }
+      ]
+    }
+  ]
+}

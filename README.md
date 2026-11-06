@@ -1,25 +1,27 @@
 # Citation-Grounded Legal RAG
 
-[Open the live demo](https://citation-grounded-legal-rag.vercel.app/)
+[Open the Consumer Law Guide (Streamlit)](https://citation-grounded-legal-rag-zjsgsuk3a4u9glebbs7xnp.streamlit.app/)
 
-[Try the Python Streamlit preview](https://citation-grounded-legal-rag-zjsgsuk3a4u9glebbs7xnp.streamlit.app/)
+[Earlier Vercel prototype](https://citation-grounded-legal-rag.vercel.app/)
 
 This is a small legal-research prototype for selected Indian consumer-law sources. A question is matched against a curated source set before an answer is generated. The page always shows the records used and links back to the primary source.
 
 The project is intentionally narrow. It is a demonstration of retrieval, evidence handling, safe fallback behaviour, and evaluation, not a general-purpose legal assistant.
 
-## Python Preview
+## Consumer Law Guide
 
 The Streamlit guide loads the same versioned corpus and uses MiniLM and FAISS
 for semantic lookup. Named provisions use exact matching. For supported
-requests, Groq can select passage IDs; the app displays the original text
-and links to the source. Partial requests show their limits, and provider
+requests, Groq selects passage IDs; the app displays curated summaries,
+source excerpts and official links. Partial requests show their limits, and provider
 failures fall back to labeled excerpts.
 
 See the [Python setup and checks](python_rag/README.md) for local commands,
-offline retrieval results, and the live release check. The original Vercel
-app remains the primary demo. The interface and request path below describe
-that original version.
+offline retrieval results, and the live release check. The Streamlit demo passed
+43/50 known regression cases and 18/25 fresh cases (5 partial, 2 failed).
+The [fresh evaluation and known limitations](docs/evaluation/guide-holdout-v1-results.md)
+are source-scoped tests, not an independent estimate of legal accuracy. The
+interface and request path below describe the earlier Vercel version.
 
 ## Interface
 
@@ -112,8 +114,9 @@ Those reports predate the versioned-corpus migration. The updated quotations nee
 a fresh answer evaluation before reusing the same accuracy figures.
 
 The expanded corpus also has 38 additional retrieval regression queries. CI checks
-the frozen 50-question keyword/BM25 rankings without downloading models. The
-embedding experiment is optional and local; it adds no dependency to the live app.
+the frozen 50-question keyword/BM25 rankings without downloading models. Those
+embedding experiments are separate from the older Vercel app, which does not
+load an embedding model.
 
 ## Run locally
 

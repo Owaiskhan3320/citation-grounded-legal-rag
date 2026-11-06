@@ -2,6 +2,11 @@
 
 This folder records evaluation runs for the deployed application. The aim is to make quality claims inspectable rather than relying on a few favourable examples.
 
+## Consumer Law Guide: live and offline
+
+- [50-case live regression retest](live-guide-full-retest-results.md): 43 pass, 2 partial, 5 fail.
+- [Frozen 25-case holdout](guide-holdout-v1-results.md): 18 pass, 5 partial, 2 fail, with a separate offline retrieval trace. The report identifies material limitations and the release decision.
+
 ## Current corpus: offline retrieval
 
 The [request-scope follow-up](request-scope-development.md) records the new API and
