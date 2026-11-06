@@ -12,8 +12,9 @@ repo_root = str(Path(__file__).resolve().parents[1])
 if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
-from python_rag.answer import answer, groq_select, redact
-from python_rag.retrieval import CORPUS, active, build_index, corpus_snapshot, current_date, load_model
+from python_rag.answer import CASE_OUTCOME, OUTSIDE, answer, groq_select, redact
+from python_rag.conversation import CLARIFY, MAX_TURNS, VAGUE, context_after_answer, needs_context, quick_reply
+from python_rag.retrieval import CORPUS, REFERENCE, active, build_index, corpus_snapshot, current_date, load_model
 
 SOURCE_DESCRIPTIONS = {
     "consumer-protection-act-2019": "Explains consumer rights, complaints, and the remedies a commission can order.",
@@ -38,7 +39,7 @@ CONSUMER_RIGHTS = (
 )
 
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def source_metadata(as_of):
     records, _ = corpus_snapshot()
     records = [record for record in records if active(record, as_of)]
@@ -46,7 +47,7 @@ def source_metadata(as_of):
     return records, {source["id"]: source for source in manifest["sources"]}
 
 
-@st.cache_resource
+@st.cache_resource(show_spinner=False)
 def load_pipeline():
     model = load_model()
     index, records = build_index(model)
@@ -98,8 +99,6 @@ def show_result(result, manifest, records):
         st.info("Candidate excerpts only. Their relevance has not been verified.")
 
     selected, candidates = {}, {}
-    if result["quotes"]:
-        st.subheader("Short answer")
     for part in parts.values():
         if len(parts) > 1:
             st.text(part["question"])
@@ -127,39 +126,74 @@ def show_result(result, manifest, records):
             show_source(sources[label], manifest)
 
 
-st.set_page_config(page_title="Consumer Law Guide")
-st.title("Consumer Law Guide")
-st.write("Your consumer rights, straight from the source.")
-as_of = current_date()
-active_records, manifest = source_metadata(as_of)
+def show_reply(turn):
+    with st.chat_message("assistant"):
+        if "reply" in turn:
+            st.write(turn["reply"])
+        else:
+            records, manifest = source_metadata(turn["as_of"])
+            show_result(turn["result"], manifest, {record["id"]: record for record in records})
 
-with st.container():
-    question = st.chat_input("Ask a question about consumer rights", max_chars=600)
 
-submitted = (question or "").strip()
-if submitted:
-    st.session_state["guide_question"] = redact(submitted)
-    st.session_state.pop("guide_result", None)
-
-if "guide_question" in st.session_state:
+def show_question(question):
     with st.chat_message("user"):
-        st.text(st.session_state["guide_question"])
+        st.text(question)
 
-if submitted:
+
+def respond(question, turns, as_of):
+    display_question = redact(question)
+    reply = quick_reply(question)
+    if reply:
+        return {"question": display_question, "reply": reply}
+
+    context = None
+    if not any(pattern.search(question) for pattern in (REFERENCE, OUTSIDE, CASE_OUTCOME)):
+        if VAGUE.fullmatch(question.rstrip("?!. ")):
+            return {"question": display_question, "reply": CLARIFY}
+        if needs_context(question):
+            last_legal_turn = next((turn for turn in reversed(turns) if "result" in turn), {})
+            context = last_legal_turn.get("context")
+            if context is None:
+                return {"question": display_question, "reply": CLARIFY}
+
     with st.spinner("Searching the sources..."):
         try:
             key = st.secrets.get("GROQ_API_KEY", "")
         except StreamlitSecretNotFoundError:
             key = ""
         selector = partial(groq_select, api_key=key) if key else None
-        result = answer(submitted, *load_pipeline(), as_of, select=selector)
-        st.session_state["guide_result"] = (result, as_of)
+        result = answer(question, *load_pipeline(), as_of, select=selector, context=context)
+    return {"question": display_question, "result": result, "as_of": as_of,
+            "context": context_after_answer(display_question, result, context)}
 
-if "guide_result" in st.session_state:
-    result, result_date = st.session_state["guide_result"]
-    result_records, _ = source_metadata(result_date)
-    with st.chat_message("assistant"):
-        show_result(result, manifest, {r["id"]: r for r in result_records})
+
+def new_chat():
+    st.session_state.pop("guide_turns", None)
+
+
+st.set_page_config(page_title="Consumer Law Guide")
+st.title("Consumer Law Guide")
+st.write("Your consumer rights, straight from the source.")
+as_of = current_date()
+active_records, manifest = source_metadata(as_of)
+turns = st.session_state.setdefault("guide_turns", [])
+st.button("New chat", on_click=new_chat)
+
+with st.container():
+    question = st.chat_input("Ask a question about consumer rights", max_chars=600)
+
+submitted = (question or "").strip()
+visible_turns = turns[-(MAX_TURNS - 1):] if submitted else turns
+for turn in visible_turns:
+    show_question(turn["question"])
+    show_reply(turn)
+
+if submitted:
+    show_question(redact(submitted))
+    turn = respond(submitted, turns, as_of)
+    turns.append(turn)
+    del turns[:-MAX_TURNS]
+    show_reply(turn)
 
 with st.expander("Sources and coverage"):
     by_source = {}
