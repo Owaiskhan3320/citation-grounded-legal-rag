@@ -49,6 +49,24 @@ class GuideTests(unittest.TestCase):
         self.assertEqual(len(links), 1)
         self.assertIn("PDF pages 3, 4", links[0])
 
+    def test_seller_warranty_summary_states_why_it_matters(self):
+        seller = next(record for record in self.records if record["id"] == "product-seller-liability")
+        self.search.return_value = [(seller, None)]
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": seller["passages"][0]["text"]}]}
+        self.ask("Can the seller's own warranty matter under Section 86?")
+        body = self.app.chat_message[1].markdown[0].value
+        self.assertIn("express warranty independent of the manufacturer's", body)
+        self.assertIn("failure to meet that warranty caused harm", body)
+
+    def test_complaint_response_does_not_confuse_sending_and_reply_deadlines(self):
+        procedure = next(record for record in self.records if record["id"] == "complaint-procedure")
+        self.search.return_value = [(procedure, None)]
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": procedure["passages"][0]["text"]}]}
+        self.ask("How long does the opposite party have to respond under Section 38?")
+        body = self.app.chat_message[1].markdown[0].value
+        self.assertIn("sends it to the other party within 21 days", body)
+        self.assertIn("30 days to respond, with up to 15 extra days", body)
+
     def test_question_and_answer_survive_reruns_without_another_provider_call(self):
         self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
         question = "Where can I search for a Commission order?"

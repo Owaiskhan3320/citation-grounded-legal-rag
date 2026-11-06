@@ -21,8 +21,9 @@ def record_key(record):
 
 
 def load_benchmark(name, records):
-    if name == "holdout":
-        path = ROOT / "evaluation/guide-holdout-v1.jsonl"
+    if name in ("holdout", "holdout-v2"):
+        version = "v1" if name == "holdout" else "v2"
+        path = ROOT / f"evaluation/guide-holdout-{version}.jsonl"
         lock = json.loads(path.with_suffix(".lock.json").read_text(encoding="utf-8"))
         rubric = ROOT / "docs/evaluation/guide-holdout-rubric-v1.md"
         if fingerprint(path) != lock["dataset_sha256_lf"] or fingerprint(rubric) != lock["rubric_sha256_lf"]:
@@ -48,15 +49,18 @@ def load_benchmark(name, records):
     question_text = {}
     for line in questions_path.read_text(encoding="utf-8").splitlines():
         if line.startswith("| D"):
-            case_id, _, question, _ = (x.strip() for x in line.split("|")[1:-1])
-            question_text[case_id] = question
+            case_id, category, question, _ = (x.strip() for x in line.split("|")[1:-1])
+            question_text[case_id] = (category, question)
     by_id = {r["id"]: record_key(r) for r in records if active(r, meta["as_of"])}
-    questions = [
-        {"id": case_id, "question": question_text[case_id], "parts": [
-            {"evidence": [[by_id[rid]] for rid in ids]}
-        ]}
-        for case_id, ids in meta["record_ids"].items()
-    ]
+    labels = meta["record_ids"]
+    questions = []
+    for case_id, (category, question) in question_text.items():
+        if name != "development" and case_id not in labels:
+            continue
+        parts = [{"evidence": [[by_id[rid]] for rid in labels[case_id]]}] if case_id in labels else []
+        questions.append({"id": case_id, "question": question, "slice": category, "parts": parts})
+    if name == "development":
+        meta["suite"] = "consumer-law-guide-development-replay"
     return {**meta, "dataset_sha256_lf": fingerprint(path),
             "question_text_sha256_lf": fingerprint(questions_path)}, questions
 
@@ -127,6 +131,7 @@ def summarize(rows):
     unsupported = [part for part in parts if not part["groups"]]
     return {
         "cases": len(rows), "answerable_parts": len(answerable),
+        "scored_cases": sum(bool(row["evidence"]) for row in rows),
         "evidence_groups": sum(p["groups"] for p in answerable),
         "ranked_groups_found": sum(p["ranked_hits"] for p in answerable),
         "retained_groups_found": sum(p["retained_hits"] for p in answerable),
@@ -157,7 +162,7 @@ def run_benchmark(args):
         "suite": metadata, "revision_label": args.revision,
         "corpus_sha256_lf": fingerprint(CORPUS),
         "pipeline_sha256_lf": {name: fingerprint(ROOT / "python_rag" / name)
-                               for name in ("answer.py", "retrieval.py", "guide_app.py")},
+                               for name in ("answer.py", "retrieval.py", "guide_app.py", "record_summaries.json")},
         "embedding_model": MODEL, "embedding_revision": REVISION,
         "selector_model": "openai/gpt-oss-20b" if args.groq else None,
         "top_k": TOP_K, "threshold": THRESHOLD,
@@ -188,7 +193,7 @@ def run_legacy():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--suite", choices=("regression", "holdout"))
+    parser.add_argument("--suite", choices=("regression", "development", "holdout", "holdout-v2"))
     parser.add_argument("--groq", action="store_true", help="use the configured live selector; not a browser test")
     parser.add_argument("--revision", help="Git SHA or other descriptive version label")
     parser.add_argument("--output", type=Path)
