@@ -35,14 +35,26 @@ class GuideTests(unittest.TestCase):
         self.assertIn("Not legal advice.", captions)
         self.assertFalse(any("other personal details" in caption for caption in captions))
 
+    def test_composer_is_pinned_below_chronological_chat(self):
+        self.ask("Hello")
+        self.ask("What can you answer?")
+        self.assertEqual(len(self.app.chat_input), 1)
+        self.assertFalse(self.app.main.chat_input)
+        self.assertFalse(self.app.sidebar.chat_input)
+        first, first_reply, second, second_reply = self.app.main.chat_message
+        self.assertEqual(first.text[0].value, "Hello")
+        self.assertIn("Hello!", first_reply.markdown[0].value)
+        self.assertEqual(second.text[0].value, "What can you answer?")
+        self.assertIn("misleading ads", second_reply.markdown[0].value)
+
     def test_supported_lookup_shows_summary_and_keeps_wording_in_sources(self):
         self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
         self.ask("Where can I search for a Commission order?")
         self.assertEqual([heading.value for heading in self.app.subheader], ["Sources"])
         self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
-        self.assertEqual(self.app.expander[0].text[0].value, self.quote)
+        self.assertEqual(self.app.chat_message[1].expander[0].text[0].value, self.quote)
         self.assertTrue(any("Read the official wording" in link.value for link in self.app.markdown))
-        self.assertEqual(self.app.expander[-1].label, "Sources and coverage")
+        self.assertEqual(self.app.expander[0].label, "Sources and coverage")
 
     def test_rights_lookup_lists_six_rights_before_one_citation(self):
         rights = next(record for record in self.records if record["id"] == "consumer-rights")
