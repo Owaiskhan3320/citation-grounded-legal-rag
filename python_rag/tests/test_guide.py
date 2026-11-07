@@ -35,7 +35,12 @@ class GuideTests(unittest.TestCase):
         self.assertIn("Not legal advice.", captions)
         self.assertFalse(any("other personal details" in caption for caption in captions))
 
-    def test_coverage_is_a_subtle_footer_control_with_source_links(self):
+    def test_footer_keeps_reset_and_coverage_outside_the_scrolling_chat(self):
+        self.assertFalse(self.app.main.button)
+        self.assertFalse(self.app.sidebar.button)
+        reset, = self.app.button
+        self.assertEqual(reset.label, "New chat")
+        self.assertNotIn("Not legal advice.", [caption.value for caption in self.app.main.caption])
         self.assertFalse(self.app.main.get("popover"))
         self.assertFalse(self.app.sidebar.get("popover"))
         coverage, = self.app.get("popover")
