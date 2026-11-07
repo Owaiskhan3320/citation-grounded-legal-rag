@@ -27,12 +27,22 @@ FOLLOW_UP = re.compile(
 )
 CONCRETE_CONDITION = re.compile(r"\bif\s+(?:an?|the|my)\s+(?:\w+\s+){0,2}(?:seller|platform|commission|merchant)\b", re.I)
 VAGUE = re.compile(r"(?:and\s+)?(?:what about (?:it|that|this)|what do you mean|can you explain that)", re.I)
+SHORT_FOLLOW_UP = re.compile(
+    r"(?:how long do (?:i|we|they) have|(?:what is|what's) the (?:deadline|time limit)|"
+    r"what if (?:the |my )?(?:order|item|delivery|refund) (?:was|is|comes|arrives|arrived) "
+    r"(?:late|delayed|damaged|wrong)(?: instead)?)", re.I,
+)
 
 
 @dataclass(frozen=True)
 class ChatContext:
     question: str
     topics: tuple[str, ...]
+    latest_follow_up: str = ""
+
+    def search_context(self):
+        # Keep the most recent detail ahead of the original scenario. Neither leaves the app.
+        return "\n".join(filter(None, (self.latest_follow_up, self.question)))
 
 
 def quick_reply(message):
@@ -51,11 +61,14 @@ def quick_reply(message):
 def needs_context(question):
     text = question.strip().rstrip("?!. ")
     return (len(text) <= 160 and "?" not in text and ";" not in text
-            and bool(FOLLOW_UP.match(text)) and not CONCRETE_CONDITION.search(text))
+            and bool(FOLLOW_UP.match(text) or SHORT_FOLLOW_UP.fullmatch(text))
+            and not CONCRETE_CONDITION.search(text))
 
 
 def context_after_answer(question, result, previous=None):
     if result["mode"] != "grounded_quotes" or len(result["parts"]) != 1:
         return None
     titles = tuple(dict.fromkeys(result["sources"][quote["source"]]["title"] for quote in result["quotes"]))
-    return ChatContext(previous.question if previous else question[:MAX_CONTEXT_CHARS], titles)
+    if previous:
+        return ChatContext(previous.question, titles, question[:160])
+    return ChatContext(question[:MAX_CONTEXT_CHARS], titles)
