@@ -32,7 +32,9 @@ def groq_select(questions, sources, *, api_key=None):
     }
     topic_instruction = (
         " For a follow-up, use the official topic titles only to interpret the current question. "
-        "They are not evidence; select only passages that support the answer."
+        "They are not evidence. Prioritise the new condition or action in the current question; "
+        "do not select a passage just because it answered the previous topic. "
+        "Include any exception that directly affects the answer."
         if any(part.get("context_topics") for part in questions.values()) else ""
     )
     with Groq(api_key=(api_key or os.environ["GROQ_API_KEY"]).strip(),
@@ -183,7 +185,7 @@ def answer(question, model, index, records, as_of, select=None, *, context=None)
         models = set()
         if context and len(clauses) == 1:
             # Keep previous user wording local; only official titles reach the selector.
-            options["context"] = context.question
+            options["context"] = context.search_context()
             part["context_topics"] = context.topics
             models = set(COMMERCE_MODEL.findall(clause.lower()) or
                          COMMERCE_MODEL.findall(" ".join(context.topics).lower()))

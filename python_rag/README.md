@@ -111,11 +111,14 @@ than a generated answer. The original `smoke_app.py` remains a separate
 deployment check.
 
 The question box stays at the bottom, with messages in order above it.
-Below it, New chat is on the left and Sources and coverage is on the right.
+Below it, New chat is on the left, with Sources and coverage and View evaluation
+on the right. The evaluation view links to dated benchmark reports; it does
+not measure live accuracy.
 The current Streamlit session keeps the last six turns. Short follow-ups can
 use the latest verified legal topic to search the corpus again; unclear
-follow-ups ask for clarification. Previous user wording stays local to
-retrieval. Groq receives the current question, candidate passages, and, when
+follow-ups ask for clarification. For common timing questions, the guide shows
+a narrower explanation when the selected source supports it. Previous user
+wording stays local to retrieval. Groq receives the current question, candidate passages, and, when
 needed, official titles from the previous lookup, not the chat transcript.
 New chat clears the turns. Greetings and questions about the guide use
 built-in replies without retrieval or a Groq call.

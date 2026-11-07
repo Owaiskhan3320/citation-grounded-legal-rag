@@ -2,6 +2,7 @@
 
 from functools import partial
 import json
+import logging
 from pathlib import Path
 import sys
 
@@ -14,7 +15,45 @@ if repo_root not in sys.path:
 
 from python_rag.answer import CASE_OUTCOME, OUTSIDE, answer, groq_select, redact
 from python_rag.conversation import CLARIFY, MAX_TURNS, VAGUE, context_after_answer, needs_context, quick_reply
+from python_rag.evaluation_dashboard import show_evaluation
+from python_rag.follow_up import focused_summary
 from python_rag.retrieval import CORPUS, REFERENCE, active, build_index, corpus_snapshot, current_date, load_model
+
+LOGGER = logging.getLogger(__name__)
+INTRO = (
+    "Ask about consumer issues such as delayed refunds, misleading offers, hidden charges, or filing a complaint. "
+    "Answers are based on Indian consumer protection law and e-commerce rules, with links to the relevant official sources."
+)
+UNVERIFIED = "I couldn't verify an answer from the sources available to this guide."
+LIMIT_MESSAGES = {
+    "A specific case outcome cannot be verified from the indexed sources.":
+        "This guide cannot predict the outcome of a specific case.",
+    "A requested topic is outside the indexed consumer-law sources.":
+        "This question is outside the scope of this consumer law guide.",
+    "Please ask fewer questions at a time.": "Please ask up to four questions at a time.",
+}
+
+CHAT_STYLE = """
+<style>
+[data-testid="stChatMessage"] {
+    border: 1px solid color-mix(in srgb, #358069 19%, transparent);
+    background: color-mix(in srgb, #358069 7%, transparent);
+    border-radius: 0.8rem;
+}
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) {
+    border-color: color-mix(in srgb, #3977b5 24%, transparent);
+    background: color-mix(in srgb, #3977b5 13%, transparent);
+}
+[data-testid="stChatMessageAvatarUser"], [data-testid="stChatMessageAvatarAssistant"] {
+    display: none;
+}
+.st-key-coverage-footer button[data-testid="stPopoverButton"] p,
+.st-key-guide-evaluation button p {
+    font-size: 0.75rem;
+}
+.st-key-guide-evaluation button { min-height: 1.6rem; }
+</style>
+"""
 
 SOURCE_DESCRIPTIONS = {
     "consumer-protection-act-2019": "Explains consumer rights, complaints, and the remedies a commission can order.",
@@ -75,28 +114,33 @@ def show_source(source, manifest):
             st.text(passage["text"])
 
 
-def show_summaries(sources, records):
-    for source in sources:
+def show_summaries(labels, sources, records, quotes, question=None):
+    for label in labels:
+        source = sources[label]
         record = records[source["record_id"]]
-        if len(sources) > 1:
+        if len(labels) > 1:
             st.markdown(f"**{source['title']}**")
         if record["id"] == "consumer-rights":
             st.write("You have six main rights as a consumer:")
             st.markdown("\n".join(f"- {right}" for right in CONSUMER_RIGHTS))
         else:
-            st.write(record["summary"])
+            summary = focused_summary(question, record["id"],
+                                      [q["text"] for q in quotes if q["source"] == label]) if question else None
+            st.write(summary or record["summary"])
 
 
-def show_result(result, manifest, records):
+def show_result(result, manifest, records, *, follow_up=False):
     mode = result["mode"]
     sources = result["sources"]
     parts = result["parts"]
     if mode == "not_verified":
-        st.warning("No verified answer from the indexed sources.")
+        reason = next(iter(parts.values()))["limit"] if len(parts) == 1 else None
+        st.warning(LIMIT_MESSAGES.get(reason, UNVERIFIED))
+        return
     elif mode == "partial":
-        st.warning("Limited source coverage. Some parts could not be verified.")
+        st.warning("I could verify only part of this request.")
     elif mode == "excerpts":
-        st.info("Candidate excerpts only. Their relevance has not been verified.")
+        st.info("I couldn't verify an answer right now. You can review the candidate sources below.")
 
     selected, candidates = {}, {}
     for part in parts.values():
@@ -104,17 +148,15 @@ def show_result(result, manifest, records):
             st.text(part["question"])
         if part["quotes"]:
             labels = dict.fromkeys(quote["source"] for quote in part["quotes"])
-            show_summaries([sources[label] for label in labels], records)
+            question = part["question"] if follow_up else None
+            show_summaries(labels, sources, records, part["quotes"], question)
             selected.update(labels)
         else:
             if part["limit"]:
-                st.caption(part["limit"])
+                st.caption(LIMIT_MESSAGES.get(part["limit"], UNVERIFIED))
             elif len(parts) > 1:
                 st.caption("Only candidate excerpts are available for this part.")
             candidates.update(dict.fromkeys(part["source_ids"]))
-    if result.get("diagnostic"):
-        st.caption(result["diagnostic"])
-
     if selected:
         st.subheader("Sources")
         for label in selected:
@@ -132,7 +174,8 @@ def show_reply(turn):
             st.write(turn["reply"])
         else:
             records, manifest = source_metadata(turn["as_of"])
-            show_result(turn["result"], manifest, {record["id"]: record for record in records})
+            show_result(turn["result"], manifest, {record["id"]: record for record in records},
+                        follow_up=turn.get("follow_up", False))
 
 
 def show_question(question):
@@ -163,7 +206,10 @@ def respond(question, turns, as_of):
             key = ""
         selector = partial(groq_select, api_key=key) if key else None
         result = answer(question, *load_pipeline(), as_of, select=selector, context=context)
+    if result.get("diagnostic"):
+        LOGGER.warning("Source selection unavailable: %s", result["diagnostic"])
     return {"question": display_question, "result": result, "as_of": as_of,
+            "follow_up": context is not None,
             "context": context_after_answer(display_question, result, context)}
 
 
@@ -172,13 +218,6 @@ def new_chat():
 
 
 def show_chat_footer(records, manifest, as_of):
-    st.html("""
-        <style>
-        .st-key-coverage-footer button[data-testid="stPopoverButton"] p {
-            font-size: 0.75rem;
-        }
-        </style>
-    """)
     # The pinned Streamlit 1.55 exposes the chat footer as _bottom.
     footer = getattr(st, "bottom", None) or st._bottom
     with footer.container(horizontal=True, horizontal_alignment="distribute", key="chat-footer"):
@@ -197,12 +236,16 @@ def show_chat_footer(records, manifest, as_of):
                 st.caption(f"{len(records)} active records as of {as_of}. Latest source check: {checked}.")
                 st.markdown("**Not covered:** Individual case outcomes, banking disputes, food-label rules, "
                             "privacy, tenancy, or criminal procedure.")
+            with st.container(horizontal=True, horizontal_alignment="right", key="guide-evaluation"):
+                if st.button("View evaluation", type="tertiary"):
+                    show_evaluation()
             st.caption("Not legal advice.", text_alignment="right")
 
 
 st.set_page_config(page_title="Consumer Law Guide")
+st.html(CHAT_STYLE)
 st.title("Consumer Law Guide")
-st.write("Your consumer rights, straight from the source.")
+st.write(INTRO)
 as_of = current_date()
 active_records, manifest = source_metadata(as_of)
 turns = st.session_state.setdefault("guide_turns", [])

@@ -31,6 +31,10 @@ class GuideTests(unittest.TestCase):
     def test_landing_page_omits_the_privacy_notice(self):
         self.assertFalse(self.app.exception)
         self.assertFalse(self.app.expander)
+        self.assertEqual(self.app.main.markdown[0].value,
+                         "Ask about consumer issues such as delayed refunds, misleading offers, hidden charges, "
+                         "or filing a complaint. Answers are based on Indian consumer protection law and "
+                         "e-commerce rules, with links to the relevant official sources.")
         captions = [caption.value for caption in self.app.caption]
         self.assertIn("Not legal advice.", captions)
         self.assertFalse(any("other personal details" in caption for caption in captions))
@@ -38,8 +42,7 @@ class GuideTests(unittest.TestCase):
     def test_footer_keeps_reset_and_coverage_outside_the_scrolling_chat(self):
         self.assertFalse(self.app.main.button)
         self.assertFalse(self.app.sidebar.button)
-        reset, = self.app.button
-        self.assertEqual(reset.label, "New chat")
+        self.assertEqual([button.label for button in self.app.button], ["New chat", "View evaluation"])
         self.assertNotIn("Not legal advice.", [caption.value for caption in self.app.main.caption])
         self.assertFalse(self.app.main.get("popover"))
         self.assertFalse(self.app.sidebar.get("popover"))
@@ -47,6 +50,18 @@ class GuideTests(unittest.TestCase):
         self.assertEqual(coverage.proto.popover.label, "Sources and coverage")
         self.assertEqual(coverage.proto.popover.type, "tertiary")
         self.assertTrue(any("[Consumer Protection Act, 2019](https://" in m.value for m in coverage.markdown))
+
+    def test_evaluation_dashboard_shows_recorded_results_without_search(self):
+        self.app.button[1].click().run()
+        self.assertFalse(self.app.exception)
+        self.assertEqual([(m.label, m.value) for m in self.app.metric],
+                         [("Passed", "48/50"), ("Partial", "2"), ("Failed", "0")])
+        table = next(m.value for m in self.app.markdown if m.value.startswith("| Run | Passed"))
+        for tally in ("43/50", "48/50", "18/25", "13/15"):
+            self.assertIn(tally, table)
+        self.assertTrue(any("not overall legal accuracy" in m.value for m in self.app.markdown))
+        self.search.assert_not_called()
+        self.provider.assert_not_called()
 
     def test_composer_is_pinned_below_chronological_chat(self):
         self.ask("Hello")
@@ -116,15 +131,15 @@ class GuideTests(unittest.TestCase):
 
     def test_mixed_requests_show_supported_answer_and_name_the_unresolved_part(self):
         for suffix, limit in (
-            ("can you tell me the result of my own pending case?", "specific case outcome"),
-            ("how do I contact RBI?", "outside the indexed"),
+            ("can you tell me the result of my own pending case?", "outcome of a specific case"),
+            ("how do I contact RBI?", "outside the scope"),
         ):
             with self.subTest(suffix=suffix):
                 self.provider.reset_mock()
                 self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
                 self.ask(f"Where can I search for a Commission order, and {suffix}")
                 reply = self.app.chat_message[-1]
-                self.assertIn("Limited source coverage", reply.warning[0].value)
+                self.assertEqual(reply.warning[0].value, "I could verify only part of this request.")
                 self.assertEqual([h.value for h in reply.subheader], ["Sources"])
                 self.assertEqual(reply.markdown[0].value, self.summary)
                 self.assertIn(suffix.rstrip("?"), [text.value for text in reply.text])
@@ -137,23 +152,34 @@ class GuideTests(unittest.TestCase):
         self.provider.side_effect = TimeoutError
         self.ask("Where can I search for a Commission order, and how do I contact RBI?")
         self.assertEqual([h.value for h in self.app.subheader], ["Candidate sources"])
-        self.assertTrue(any("outside the indexed" in c.value for c in self.app.chat_message[1].caption))
-        self.assertTrue(any("could not connect" in c.value for c in self.app.chat_message[1].caption))
+        self.assertTrue(any("outside the scope" in c.value for c in self.app.chat_message[1].caption))
+        self.assertFalse(any("Groq" in c.value for c in self.app.chat_message[1].caption))
 
     def test_unsupported_request_has_no_sources_or_provider_call(self):
         self.ask("How do I contact RBI?")
-        self.assertIn("No verified answer", self.app.warning[0].value)
+        self.assertEqual(self.app.warning[0].value, "This question is outside the scope of this consumer law guide.")
+        self.assertFalse(self.app.chat_message[1].caption)
         self.assertFalse(self.app.subheader)
+        self.provider.assert_not_called()
+
+    def test_weak_match_shows_one_public_sentence(self):
+        self.search.return_value = []
+        self.ask("Can I renew a passport?")
+        reply = self.app.chat_message[1]
+        self.assertEqual([warning.value for warning in reply.warning],
+                         ["I couldn't verify an answer from the sources available to this guide."])
+        self.assertFalse(reply.caption)
+        self.assertFalse(reply.subheader)
         self.provider.assert_not_called()
 
     def test_timeout_and_invalid_quote_render_fallback(self):
         self.provider.side_effect = TimeoutError
         self.ask("Where can I search for a Commission order?")
-        self.assertIn("Candidate excerpts only", self.app.info[0].value)
+        self.assertIn("I couldn't verify an answer right now", self.app.info[0].value)
         self.provider.side_effect = None
         self.provider.return_value = {"Q1": [{"source": "S1", "text": "Invented excerpt."}]}
         self.ask("Where can I search for a Commission order?")
-        self.assertIn("Candidate excerpts only", self.app.info[0].value)
+        self.assertIn("I couldn't verify an answer right now", self.app.info[0].value)
         self.assertFalse(any("Invented excerpt" in text.value for text in self.app.text))
 
     def test_built_in_replies_do_not_search_or_show_a_spinner(self):
@@ -192,6 +218,22 @@ class GuideTests(unittest.TestCase):
         self.assertNotIn("Orchid", repr(self.provider.call_args))
         self.assertTrue(parts["Q1"]["context_topics"])
         self.assertEqual(self.app.chat_message[-1].subheader[0].value, "Sources")
+
+    def test_late_delivery_follow_up_focuses_on_the_exception_and_keeps_the_source(self):
+        returns = next(record for record in self.records if record["id"] == "marketplace-seller-returns")
+        self.search.return_value = [(returns, 0.5)]
+        self.provider.return_value = {"Q1": [{"source": "S1", "text": returns["passages"][0]["text"]}]}
+        original = "An online marketplace seller delivered a damaged mixer and refused a refund. What do the rules say?"
+        self.ask(original)
+        self.ask("What if the delivery was late instead?")
+        self.assertEqual(self.app.chat_message[1].markdown[0].value, returns["summary"])
+        reply = self.app.chat_message[-1]
+        self.assertIn("after the stated delivery date", reply.markdown[0].value)
+        self.assertIn("force majeure caused the delay", reply.markdown[0].value)
+        self.assertIn("Rule 6(3)", reply.caption[0].value)
+        self.ask("What if it arrived late instead?")
+        self.assertEqual(self.search.call_args.kwargs["context"], f"What if the delivery was late instead?\n{original}")
+        self.assertNotIn("damaged mixer", repr(self.provider.call_args))
 
     def test_standalone_question_does_not_inherit_the_previous_topic(self):
         self.provider.return_value = {"Q1": [{"source": "S1", "text": self.quote}]}
