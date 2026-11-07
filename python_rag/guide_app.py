@@ -171,6 +171,32 @@ def new_chat():
     st.session_state.pop("guide_turns", None)
 
 
+def show_coverage_footer(records, manifest, as_of):
+    st.html("""
+        <style>
+        .st-key-coverage-footer button[data-testid="stPopoverButton"] p {
+            font-size: 0.75rem;
+        }
+        </style>
+    """)
+    # The pinned Streamlit 1.55 exposes the chat footer as _bottom.
+    footer = getattr(st, "bottom", None) or st._bottom
+    with footer.container(horizontal=True, horizontal_alignment="right", key="coverage-footer"):
+        with st.popover("Sources and coverage", type="tertiary"):
+            by_source = {}
+            for record in records:
+                by_source.setdefault(record["source_id"], set()).add(record["effective_from"])
+            for source_id, dates in by_source.items():
+                source = manifest[source_id]
+                st.markdown(f"**[{source['title']}]({source['official_url']})**")
+                st.write(SOURCE_DESCRIPTIONS.get(source_id, "Official source for indexed provisions."))
+                st.caption(f"Indexed record effective dates: {', '.join(sorted(dates))}")
+            checked = max((record["checked_on"] for record in records), default="not available")
+            st.caption(f"{len(records)} active records as of {as_of}. Latest source check: {checked}.")
+            st.markdown("**Not covered:** Individual case outcomes, banking disputes, food-label rules, "
+                        "privacy, tenancy, or criminal procedure.")
+
+
 st.set_page_config(page_title="Consumer Law Guide")
 st.title("Consumer Law Guide")
 st.write("Your consumer rights, straight from the source.")
@@ -178,25 +204,11 @@ as_of = current_date()
 active_records, manifest = source_metadata(as_of)
 turns = st.session_state.setdefault("guide_turns", [])
 st.button("New chat", on_click=new_chat)
-
-with st.expander("Sources and coverage"):
-    by_source = {}
-    for record in active_records:
-        by_source.setdefault(record["source_id"], set()).add(record["effective_from"])
-    for source_id, dates in by_source.items():
-        source = manifest[source_id]
-        st.markdown(f"**[{source['title']}]({source['official_url']})**")
-        st.write(SOURCE_DESCRIPTIONS.get(source_id, "Official source for indexed provisions."))
-        st.caption(f"Indexed record effective dates: {', '.join(sorted(dates))}")
-    checked = max((record["checked_on"] for record in active_records), default="not available")
-    st.caption(f"{len(active_records)} active records as of {as_of}. Latest source check: {checked}.")
-    st.markdown("**Not covered:** Individual case outcomes, banking disputes, food-label rules, "
-                "privacy, tenancy, or criminal procedure.")
-
 st.caption("Not legal advice.")
 
 # A top-level chat input is pinned below the scrolling message history.
 question = st.chat_input("Ask a question about consumer rights", max_chars=600)
+show_coverage_footer(active_records, manifest, as_of)
 submitted = (question or "").strip()
 visible_turns = turns[-(MAX_TURNS - 1):] if submitted else turns
 for turn in visible_turns:

@@ -30,10 +30,18 @@ class GuideTests(unittest.TestCase):
 
     def test_landing_page_omits_the_privacy_notice(self):
         self.assertFalse(self.app.exception)
-        self.assertEqual([exp.label for exp in self.app.expander], ["Sources and coverage"])
+        self.assertFalse(self.app.expander)
         captions = [caption.value for caption in self.app.caption]
         self.assertIn("Not legal advice.", captions)
         self.assertFalse(any("other personal details" in caption for caption in captions))
+
+    def test_coverage_is_a_subtle_footer_control_with_source_links(self):
+        self.assertFalse(self.app.main.get("popover"))
+        self.assertFalse(self.app.sidebar.get("popover"))
+        coverage, = self.app.get("popover")
+        self.assertEqual(coverage.proto.popover.label, "Sources and coverage")
+        self.assertEqual(coverage.proto.popover.type, "tertiary")
+        self.assertTrue(any("[Consumer Protection Act, 2019](https://" in m.value for m in coverage.markdown))
 
     def test_composer_is_pinned_below_chronological_chat(self):
         self.ask("Hello")
@@ -54,7 +62,6 @@ class GuideTests(unittest.TestCase):
         self.assertEqual(self.app.chat_message[1].markdown[0].value, self.summary)
         self.assertEqual(self.app.chat_message[1].expander[0].text[0].value, self.quote)
         self.assertTrue(any("Read the official wording" in link.value for link in self.app.markdown))
-        self.assertEqual(self.app.expander[0].label, "Sources and coverage")
 
     def test_rights_lookup_lists_six_rights_before_one_citation(self):
         rights = next(record for record in self.records if record["id"] == "consumer-rights")
