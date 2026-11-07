@@ -110,6 +110,7 @@ Without a Groq key, the guide displays labeled candidate excerpts rather
 than a generated answer. The original `smoke_app.py` remains a separate
 deployment check.
 
+The question box stays at the bottom, with messages in order above it.
 The current Streamlit session keeps the last six turns. Short follow-ups can
 use the latest verified legal topic to search the corpus again; unclear
 follow-ups ask for clarification. Previous user wording stays local to

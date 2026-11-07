@@ -179,22 +179,6 @@ active_records, manifest = source_metadata(as_of)
 turns = st.session_state.setdefault("guide_turns", [])
 st.button("New chat", on_click=new_chat)
 
-with st.container():
-    question = st.chat_input("Ask a question about consumer rights", max_chars=600)
-
-submitted = (question or "").strip()
-visible_turns = turns[-(MAX_TURNS - 1):] if submitted else turns
-for turn in visible_turns:
-    show_question(turn["question"])
-    show_reply(turn)
-
-if submitted:
-    show_question(redact(submitted))
-    turn = respond(submitted, turns, as_of)
-    turns.append(turn)
-    del turns[:-MAX_TURNS]
-    show_reply(turn)
-
 with st.expander("Sources and coverage"):
     by_source = {}
     for record in active_records:
@@ -210,3 +194,18 @@ with st.expander("Sources and coverage"):
                 "privacy, tenancy, or criminal procedure.")
 
 st.caption("Not legal advice.")
+
+# A top-level chat input is pinned below the scrolling message history.
+question = st.chat_input("Ask a question about consumer rights", max_chars=600)
+submitted = (question or "").strip()
+visible_turns = turns[-(MAX_TURNS - 1):] if submitted else turns
+for turn in visible_turns:
+    show_question(turn["question"])
+    show_reply(turn)
+
+if submitted:
+    show_question(redact(submitted))
+    turn = respond(submitted, turns, as_of)
+    turns.append(turn)
+    del turns[:-MAX_TURNS]
+    show_reply(turn)
