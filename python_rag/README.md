@@ -111,7 +111,7 @@ than a generated answer. The original `smoke_app.py` remains a separate
 deployment check.
 
 The question box stays at the bottom, with messages in order above it.
-Open Sources and coverage from the bottom-right button.
+Below it, New chat is on the left and Sources and coverage is on the right.
 The current Streamlit session keeps the last six turns. Short follow-ups can
 use the latest verified legal topic to search the corpus again; unclear
 follow-ups ask for clarification. Previous user wording stays local to
