@@ -1,164 +1,48 @@
 # Citation-Grounded Legal RAG
 
-[Open the Consumer Law Guide (Streamlit)](https://citation-grounded-legal-rag-zjsgsuk3a4u9glebbs7xnp.streamlit.app/)
+**[Open the Consumer Law Guide](https://citation-grounded-legal-rag-zjsgsuk3a4u9glebbs7xnp.streamlit.app/)** · Streamlit demo
 
-[Earlier Vercel prototype](https://citation-grounded-legal-rag.vercel.app/)
+A Python application for looking up Indian consumer law. Ask about refunds, misleading ads, hidden charges, or filing a complaint. The guide searches a curated collection of official sources and shows the relevant provisions, excerpts, and links so you can check the answer yourself.
 
-This is a small legal-research prototype for selected Indian consumer-law sources. A question is matched against a curated source set before an answer is generated. The page always shows the records used and links back to the primary source.
+If Streamlit shows a wake screen, select the wake button and wait for the app to start.
 
-The project is intentionally narrow. It is a demonstration of retrieval, evidence handling, safe fallback behaviour, and evaluation, not a general-purpose legal assistant.
+## Try It
 
-## Consumer Law Guide
+- My shopping app approved a refund. Do the E-Commerce Rules set a fixed deadline for payment?
+- A retailer advertises a discount but expects to have very limited stock. What should the ad disclose?
+- Which official portal lets me file a Consumer Commission complaint online?
 
-The Streamlit guide loads the same versioned corpus and uses MiniLM and FAISS
-for semantic lookup. Named provisions use exact matching. For supported
-requests, Groq selects passage IDs; the app displays curated summaries,
-source excerpts and official links. Partial requests show their limits, and provider
-failures fall back to labeled excerpts.
+## How It Works
 
-See the [Python setup and checks](python_rag/README.md) for local commands,
-offline retrieval results, and the live release check. The Streamlit demo passed
-43/50 known regression cases and 18/25 fresh cases (5 partial, 2 failed).
-The [fresh evaluation and known limitations](docs/evaluation/guide-holdout-v1-results.md)
-are source-scoped tests, not an independent estimate of legal accuracy. The
-interface and request path below describe the earlier Vercel version.
+1. **Retrieve sources.** The guide matches explicit section or rule references directly. For other questions, it uses MiniLM embeddings and FAISS to find relevant records.
+2. **Check the evidence.** Groq selects supporting passages from the retrieved records. The app validates the selection before displaying a summary and its sources.
+3. **Show what could be verified.** If only part of a question is supported, the guide identifies the gap. If passage selection is unavailable, it labels retrieved excerpts as candidates rather than presenting them as a verified answer.
 
-## Interface
+## Source Coverage
 
-Desktop search view:
-
-![Desktop search view](docs/images/live-search-desktop.png)
-
-Mobile search view:
-
-![Mobile search view](docs/images/live-search-mobile.png)
-
-## What is in scope
-
-The current corpus contains 90 source-checked records covering:
-
-- Consumer Protection Act, 2019: definitions, complaints, CCPA powers, remedies, appeals, and limitation.
-- Consumer Protection (E-Commerce) Rules, 2020: platform disclosures, seller duties, refunds, complaint handling, and pre-purchase information.
-- Guidelines for Prevention of Misleading Advertisements and Endorsements, 2022.
-- Guidelines for Prevention and Regulation of Dark Patterns, 2023.
-- Consumer Commission jurisdiction rules, 2021: ordinary complaint limits based on consideration paid.
-- Official NCH grievance guidance and e-Jagriti filing and help resources.
-
-The app does not search judgments yet. Judgment search is held back until Consumer Disputes material has been filtered, source-linked, and reviewed.
-
-Records now live in versioned JSON, with official quotations, PDF page references,
-source hashes, and effective dates. Six replacement versions of existing
-e-commerce records are kept separate until 1 January 2027. See [source data](docs/source-data.md)
-for the format and checks. This is not a complete consolidated edition of these laws.
-
-The six issue guides cover refunds, unsafe products, misleading ads, hidden charges,
-seller disputes and complaint filing. They show selected provisions and official
-routes without asking the model to invent a filing procedure. Preparation notes are
-practical suggestions, not official filing checklists.
-
-## Request path
-
-```mermaid
-flowchart LR
-    Q[Question] --> R[Bounded source-lookup check]
-    R --> N[No lookup: no answer or cards]
-    R --> E[Up to three checked source records]
-    E --> P[Partial request: excerpts and limits]
-    E --> G[Focused lookup: Groq explanation]
-    G --> C[Citation ID and truncation checks]
-    C --> V[Source explanation with cards]
-    G --> F[Generation unavailable: source excerpts]
-```
-
-The API and browser fallback use the same request check. Partial and declined
-requests do not call Groq. Focused generation uses source headings and quotations,
-not the raw user question. Citation-ID checks do not prove factual entailment.
-
-The [request-scope follow-up](docs/evaluation/request-scope-development.md) rejected
-all five known absent-authority requests without cards, but also declined six of
-15 partly supported examples. It is a conservative English-language policy layer,
-not a semantic relevance model or a complete solution for practical case questions.
+The corpus includes selected provisions from the Consumer Protection Act, 2019, the E-Commerce Rules, advertising and dark-pattern guidelines, Consumer Commission jurisdiction rules, and official guidance from the National Consumer Helpline and e-Jagriti. Records include source links and effective dates. The guide does not search court judgments or predict case outcomes.
 
 ## Evaluation
 
-The evaluation notes are kept in [docs/evaluation](docs/evaluation/README.md).
+| Test Run | Pass | Partial | Fail |
+| --- | ---: | ---: | ---: |
+| Hosted regression set, 50 questions | 43 | 2 | 5 |
+| Hosted holdout set, 25 questions | 18 | 5 | 2 |
+| Local regression retest with Groq, 50 questions | 48 | 2 | 0 |
 
-The reports below describe the **older keyword baseline and offline comparators**,
-not the new live request wrapper. Their questions, labels and scores remain intact.
-The separate request-scope run is development evidence on already-seen questions.
+The regression runs reused the same questions. A pass can include correctly declining an unsupported request. These scores describe specific test sets, not overall legal accuracy.
 
-The [public-question check](docs/evaluation/public-questions-2026-11-02.md) is harder:
-on 15 partly supported requests from public posts, keyword found all labelled
-evidence for 1, BM25 for 2, dense for 4 and hybrid for 3. All four returned candidates
-for five unsupported requests. These are agent-condensed prompts with provisional
-source-based labels, not full-answer scores or independent legal validation. A
-[delegated agent review](docs/evaluation/public-question-owner-review.md) found two
-prompt-fact corrections and overly narrow evidence labels; the frozen counts remain
-provisional. The result shows that the live prototype is not reliable enough
-for broad practical consumer questions; adding embeddings alone did not solve it.
+[Hosted regression report](docs/evaluation/live-guide-full-retest-results.md) · [Holdout report](docs/evaluation/guide-holdout-v1-results.md) · [Local retest report](docs/evaluation/guide-release-candidate-live.md)
 
-The [2 November retrieval comparison](docs/evaluation/retrieval-comparison-2026-11-02.md)
-uses the expanded 90-record corpus. Of 40 supported questions, the current retriever
-found all labelled evidence in its top three for 30; BM25 for 35; dense and hybrid
-for 37 each. The current retriever abstained on only 2 of 10 unsupported questions;
-the comparators abstained on none. These agent-authored questions are not an
-independent human holdout or an answer-accuracy score. Production retrieval is
-unchanged while abstention and independent evaluation remain unresolved.
+## Run Locally
 
-- The known 50-question regression suite recorded 45 core passes after Stage 3. See [Run 3](docs/evaluation/run-3-2026-10-29.md).
-- The frozen 20-question unseen set recorded 20 core passes after the Stage 4 retrieval fixes. See the [Stage 4 re-run](docs/evaluation/unseen-set-1-stage4-results-2026-10-31.md).
+From the repository root, use Python 3.12 in a virtual environment:
 
-These are small, source-scoped checks. They are not a claim of overall legal accuracy, production readiness, or legal advice. The Stage 4 report also records eight responses that displayed nonessential extra source cards.
-
-Those reports predate the versioned-corpus migration. The updated quotations need
-a fresh answer evaluation before reusing the same accuracy figures.
-
-The expanded corpus also has 38 additional retrieval regression queries. CI checks
-the frozen 50-question keyword/BM25 rankings without downloading models. Those
-embedding experiments are separate from the older Vercel app, which does not
-load an embedding model.
-
-## Run locally
-
-Requires Node.js 20.18.3+ (22+ recommended) and Python 3.10+ for data checks.
-
-```powershell
-cd B:\Rag\consumer-law-research
-python -m http.server 8080
+```bash
+python -m pip install -r python_rag/requirements.txt
+python -m streamlit run python_rag/guide_app.py
 ```
 
-Open `http://localhost:8080`. A plain static server has no `/api/ask` function, so the interface uses its local, source-backed fallback.
+Set `GROQ_API_KEY` in your local environment to enable passage selection. Without it, the app can still display candidate excerpts. The first search may download the embedding model.
 
-Run the checks with:
-
-```powershell
-python -m pip install -r requirements-dev.txt
-python scripts/validate_corpus.py
-npm test
-python -m unittest discover -s tests -v
-```
-
-For the optional browser checks, keep the local server running and open
-`http://localhost:8080/tests/browser-smoke.html`. It checks the issue guides,
-official routes, responsive layout, offline fallback and overlapping search requests.
-
-## Deploy
-
-The site is deployed on Vercel. Set `GROQ_API_KEY` in Vercel Environment Variables to enable generated answers; without it, the source-backed fallback still works. Deployment details and the security notes are in [docs/deployment.md](docs/deployment.md).
-
-## Source material
-
-- [Consumer Protection Act, 2019](https://www.indiacode.nic.in/bitstream/123456789/15256/1/a2019-35.pdf)
-- [Consumer Protection (E-Commerce) Rules, 2020](https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf)
-- [Misleading Advertisements and Endorsements Guidelines, 2022](https://consumeraffairs.nic.in/latestnews/guidelines-prevention-misleading-advertisements-and-endorsements-misleading)
-- [Dark Patterns Guidelines, 2023](https://consumeraffairs.nic.in/sites/default/files/The%20Guidelines%20for%20Prevention%20and%20Regulation%20of%20Dark%20Patterns%2C%202023.pdf)
-- [Commission jurisdiction rules, 2021](https://consumeraffairs.gov.in/public/upload/files/232278_1732705029.pdf)
-- [National Consumer Helpline](https://consumerhelpline.gov.in/public/)
-- [e-Jagriti filing guides](https://e-jagriti.gov.in/help-docs)
-
-## Limits
-
-- This is an educational research tool, not legal advice.
-- Only the listed source families are searchable.
-- Generated answers depend on Groq availability and request limits; retrieval fallback remains available.
-- Users should read the linked primary source before acting on a result.
+**For research and education only. Not legal advice.**
