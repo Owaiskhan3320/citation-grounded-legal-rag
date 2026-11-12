@@ -15,7 +15,6 @@ if repo_root not in sys.path:
 
 from python_rag.answer import CASE_OUTCOME, OUTSIDE, answer, groq_select, redact
 from python_rag.conversation import CLARIFY, MAX_TURNS, VAGUE, context_after_answer, needs_context, quick_reply
-from python_rag.evaluation_dashboard import show_evaluation
 from python_rag.follow_up import focused_summary
 from python_rag.retrieval import CORPUS, REFERENCE, active, build_index, corpus_snapshot, current_date, load_model
 
@@ -47,11 +46,9 @@ CHAT_STYLE = """
 [data-testid="stChatMessageAvatarUser"], [data-testid="stChatMessageAvatarAssistant"] {
     display: none;
 }
-.st-key-coverage-footer button[data-testid="stPopoverButton"] p,
-.st-key-guide-evaluation button p {
+.st-key-coverage-footer button[data-testid="stPopoverButton"] p {
     font-size: 0.75rem;
 }
-.st-key-guide-evaluation button { min-height: 1.6rem; }
 </style>
 """
 
@@ -236,9 +233,6 @@ def show_chat_footer(records, manifest, as_of):
                 st.caption(f"{len(records)} active records as of {as_of}. Latest source check: {checked}.")
                 st.markdown("**Not covered:** Individual case outcomes, banking disputes, food-label rules, "
                             "privacy, tenancy, or criminal procedure.")
-            with st.container(horizontal=True, horizontal_alignment="right", key="guide-evaluation"):
-                if st.button("View evaluation", type="tertiary"):
-                    show_evaluation()
             st.caption("Not legal advice.", text_alignment="right")
 
 

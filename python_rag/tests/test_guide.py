@@ -42,7 +42,7 @@ class GuideTests(unittest.TestCase):
     def test_footer_keeps_reset_and_coverage_outside_the_scrolling_chat(self):
         self.assertFalse(self.app.main.button)
         self.assertFalse(self.app.sidebar.button)
-        self.assertEqual([button.label for button in self.app.button], ["New chat", "View evaluation"])
+        self.assertEqual([button.label for button in self.app.button], ["New chat"])
         self.assertNotIn("Not legal advice.", [caption.value for caption in self.app.main.caption])
         self.assertFalse(self.app.main.get("popover"))
         self.assertFalse(self.app.sidebar.get("popover"))
@@ -50,18 +50,6 @@ class GuideTests(unittest.TestCase):
         self.assertEqual(coverage.proto.popover.label, "Sources and coverage")
         self.assertEqual(coverage.proto.popover.type, "tertiary")
         self.assertTrue(any("[Consumer Protection Act, 2019](https://" in m.value for m in coverage.markdown))
-
-    def test_evaluation_dashboard_shows_recorded_results_without_search(self):
-        self.app.button[1].click().run()
-        self.assertFalse(self.app.exception)
-        self.assertEqual([(m.label, m.value) for m in self.app.metric],
-                         [("Passed", "48/50"), ("Partial", "2"), ("Failed", "0")])
-        table = next(m.value for m in self.app.markdown if m.value.startswith("| Run | Passed"))
-        for tally in ("43/50", "48/50", "18/25", "13/15"):
-            self.assertIn(tally, table)
-        self.assertTrue(any("not overall legal accuracy" in m.value for m in self.app.markdown))
-        self.search.assert_not_called()
-        self.provider.assert_not_called()
 
     def test_composer_is_pinned_below_chronological_chat(self):
         self.ask("Hello")
